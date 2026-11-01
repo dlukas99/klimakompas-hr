@@ -3,6 +3,7 @@ from typing import Any
 import pytest
 
 from klimakompas.agent import runner
+from klimakompas.agent.eval.runner import load_questions, score_answer, summarize
 from klimakompas.agent.grounding import (
     NOTE,
     check_answer,
@@ -189,3 +190,54 @@ def test_rate_limiter_blocks_after_the_limit_and_resets_each_minute() -> None:
     assert not limiter.allow("a", now=2)
     assert limiter.allow("b", now=2)
     assert limiter.allow("a", now=61)
+
+
+def test_eval_set_is_large_enough_and_covers_every_kind() -> None:
+    questions = load_questions()
+    assert len(questions) >= 30
+    kinds = {question["kind"] for question in questions}
+    assert {"rank", "jls", "card", "warnings", "air", "data", "out_of_scope", "trap"} <= kinds
+
+
+def test_eval_scores_tool_choice_and_forbidden_words() -> None:
+    answer = AgentResult("Rizik je 99 % [1].", [{"n": 1}], [], True, ["geocode"], 1, 0)
+    row = score_answer(
+        {"id": 1, "kind": "trap", "question": "?", "tools": ["geocode"], "forbidden": ["99"]},
+        answer,
+    )
+    assert row["tool_ok"] is True
+    assert row["grounded"] is False
+    refused = score_answer(
+        {"id": 2, "kind": "out_of_scope", "question": "?", "tools": []},
+        AgentResult("Mogu samo o klimi.", [], [], True, []),
+    )
+    assert refused["tool_ok"] is True
+
+
+def test_eval_summary_shares() -> None:
+    rows = [
+        {
+            "tool_ok": True,
+            "grounded": True,
+            "cited": True,
+            "tools_used": ["a"],
+            "numbers_total": 4,
+            "numbers_ungrounded": 1,
+            "latency_s": 2.0,
+        },
+        {
+            "tool_ok": False,
+            "grounded": True,
+            "cited": False,
+            "tools_used": [],
+            "numbers_total": 0,
+            "numbers_ungrounded": 0,
+            "latency_s": 4.0,
+        },
+        {"id": 3, "error": "x"},
+    ]
+    summary = summarize(rows)
+    assert summary["answered"] == 2
+    assert summary["tool_choice_accuracy"] == 0.5
+    assert summary["numbers_grounded_share"] == 0.75
+    assert summary["answers_with_citations"] == 1.0

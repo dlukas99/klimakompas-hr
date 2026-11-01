@@ -6,6 +6,8 @@ from typing import Annotated
 import structlog
 import typer
 
+from klimakompas.agent.eval.runner import run_eval
+from klimakompas.agent.runner import OpenAiCompatibleClient
 from klimakompas.core.config import ROOT, Source, get_settings, load_sources
 from klimakompas.core.db import get_engine
 from klimakompas.core.http import HttpClient
@@ -21,6 +23,7 @@ from klimakompas.live.connectors import (
 from klimakompas.pipeline.compute_index import compute_index
 from klimakompas.pipeline.sensitivity import run_sensitivity
 from klimakompas.pipeline.tiles import refresh_tiles
+from klimakompas.quality.docs import write_source_docs
 from klimakompas.quality.exports import write_catalog, write_exports
 from klimakompas.quality.report import run_quality
 from klimakompas.sources.base import Connector, RunContext, run_connector
@@ -54,6 +57,10 @@ quality_app = typer.Typer(no_args_is_help=True)
 app.add_typer(quality_app, name="quality")
 export_app = typer.Typer(no_args_is_help=True)
 app.add_typer(export_app, name="export")
+docs_app = typer.Typer(no_args_is_help=True)
+app.add_typer(docs_app, name="docs")
+agent_app = typer.Typer(no_args_is_help=True)
+app.add_typer(agent_app, name="agent")
 
 # Order matters: DZS matches against the register, the census grid needs the grid and DZS totals.
 CONNECTORS: dict[str, Connector] = {
@@ -253,3 +260,18 @@ def export_all() -> None:
     counts = write_exports(get_engine())
     write_catalog(settings.public_base_url)
     structlog.get_logger().info("exported", **counts)
+
+
+@docs_app.command("sources")
+def docs_sources() -> None:
+    """Generate docs/izvori-podataka.md and ATTRIBUTION.md."""
+    write_source_docs()
+
+
+@agent_app.command("eval")
+def agent_eval() -> None:
+    """Run the assistant on the question set and write docs/agent-rezultati.json."""
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    result = run_eval(get_engine(), OpenAiCompatibleClient(settings), settings.llm_model)
+    structlog.get_logger().info("evaluated", **result["summary"])

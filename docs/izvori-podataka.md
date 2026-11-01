@@ -1,0 +1,29 @@
+# Izvori podataka
+
+Datoteku generira `kk docs sources` iz `config/sources.yaml`.
+
+| Skup | Izdavač | Pristup | Kadenca | Licenca | Koristi se za |
+|---|---|---|---|---|---|
+| [Upravne jedinice INSPIRE](https://geoportal.dgu.hr/services/atom/au/xml) | Državna geodetska uprava | preuzimanje preko ATOM-a | `jednom` | Otvorena dozvola (zapis na Portalu) | boundaries, jls_codes, settlement_codes, cell_assignment |
+| [Adrese INSPIRE](https://geoportal.dgu.hr/services/atom/ad/xml) | Državna geodetska uprava | preuzimanje preko ATOM-a | `jednom` | Otvorena dozvola (zapis na Portalu) | geocoder |
+| [Popis 2021.: stanovništvo po naseljima](https://podaci.dzs.hr) | Državni zavod za statistiku | preuzimanje datoteke | `jednom` | Otvorena dozvola prema zapisu na Portalu; DZS traži navođenje izvora | settlement_population, control_totals |
+| [Census 2021 population grid, 1 km](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | Eurostat GISCO (iz podataka DZS-a) | preuzimanje datoteke | `jednom` | Ponovna uporaba dopuštena uz navođenje izvora (Eurostat, napomena o autorskim pravima) | population_grid, population_65plus, population_under15 |
+| [River flood hazard maps for Europe and the Mediterranean Basin (v3.1.1)](https://data.jrc.ec.europa.eu/dataset/1d128b6c-a4ee-4858-9e34-6210707f3c81) | European Commission, Joint Research Centre (CEMS-EFAS) | preuzimanje datoteke | `jednom` | TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0; dok JRC ne odgovori, izvedeni sloj nosi ODbL 1.0 (ADR 0003) | flood_hazard, card_point_flood |
+| [Karte opasnosti od poplava 2019. i karte rizika](https://korp.voda.hr) | Hrvatske vode | WMS samo u pregledniku korisnika | `jednom` | Uvjeti iz NIPP-a: izrađeno za Plan upravljanja rizicima od poplava, korištenje na vlastitu odgovornost | flood_official_display |
+| [EEA interpolirani PM2,5, godišnji prosjek, 1 km (2023.)](https://sdi.eea.europa.eu/catalogue/srv/api/records/57807f24-25dc-4df3-9468-dcff8cee5468) | European Environment Agency | preuzimanje datoteke | `jednom` | CC BY 4.0 (zapis u EEA katalogu) | air_chronic |
+| [Kvaliteta zraka u RH – RESTful servis](https://iszz.azo.hr/iskzl/exc.htm) | Ministarstvo zaštite okoliša i zelene tranzicije | REST API | `20 * * * *` | Javni servis; uvjeti ponovne uporabe nisu objavljeni na stranici servisa, pa navodimo izvor | air_live, nowcast |
+| [Upozorenja DHMZ-a (CAP 1.2) i poligoni regija](https://meteo.hr/proizvodi.php?section=podaci&param=xml_korisnici) | Državni hidrometeorološki zavod | preuzimanje datoteke | `*/30 * * * *` | Otvorena dozvola; obavezno navesti DHMZ kao izvor | warnings |
+| Upozorenje na toplinske valove | Državni hidrometeorološki zavod | preuzimanje datoteke | `0 * * * *` | Otvorena dozvola; obavezno navesti DHMZ kao izvor | warnings_heat |
+| Indeks opasnosti od šumskih požara | Državni hidrometeorološki zavod | preuzimanje datoteke | `0 * * * *` | Otvorena dozvola; obavezno navesti DHMZ kao izvor | fire_live |
+| Vrijeme u Hrvatskoj: Tmax, Tmin, oborina, temperatura rijeka | Državni hidrometeorološki zavod | preuzimanje datoteke | `jednom` | Otvorena dozvola; obavezno navesti DHMZ kao izvor | context, nowcast_features |
+| Srednje mjesečne vrijednosti i mjesečne oborine | Državni hidrometeorološki zavod | XML datoteke po postaji | `jednom` | Otvorena dozvola; obavezno navesti DHMZ kao izvor | heat_calibration, drought |
+| [Zaštićena područja, Natura 2000, staništa (Bioportal)](https://services.bioportal.hr/wfs) | Ministarstvo zaštite okoliša i zelene tranzicije | WFS | `0 3 * * *` | Javno dostupno prema AccessConstraints; zapis na Portalu nema licencu (nalaz u izvješću o kvaliteti) | nature_context |
+| [ECDE klimatski indikatori (Copernicus C3S)](https://cds.climate.copernicus.eu/datasets/sis-ecde-climate-indicators) | Copernicus Climate Change Service (ECMWF) | Copernicus CDS API | `jednom` | CC BY 4.0 (CDS katalog) | heat_hazard, fire_hazard |
+| [Landsat 8/9 Collection 2 Level-2, površinska temperatura](https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) | USGS (preko Microsoft Planetary Computera) | STAC API (čitanje prozorima) | `jednom` | Bez ograničenja uporabe i redistribucije, uz navođenje izvora (USGS, provjereno 2. 11. 2026.) | heat_lst |
+| [ESA WorldCover 2021, 10 m](https://planetarycomputer.microsoft.com/dataset/esa-worldcover) | European Space Agency | STAC API (čitanje prozorima) | `jednom` | CC BY 4.0 | greenery, fuel, rural_reference |
+| [Povijest opožarenih površina (MODIS MCD64A1)](https://planetarycomputer.microsoft.com/dataset/modis-64A1-061) | NASA LP DAAC (preko Microsoft Planetary Computera) | STAC API (čitanje prozorima) | `jednom` | CC0 za podatke misija NASA-e, uz snažnu preporuku citiranja (LP DAAC) | fire_history |
+| [Open-Meteo: prognoza, povijesni ERA5 i CAMS kvaliteta zraka](https://open-meteo.com) | Open-Meteo | REST API | `jednom` | CC BY 4.0, uz navođenje; besplatno za nekomercijalnu uporabu | nowcast_features, cams_fallback, ecde_fallback |
+| [Portal otvorenih podataka (CKAN Action API i DCAT)](https://data.gov.hr) | Ministarstvo pravosuđa, uprave i digitalne transformacije | REST API | `30 4 * * *` | Metapodaci Portala; licenca svakog skupa navedena je u njegovu zapisu | source_metadata, quality_report, assistant_search |
+| DOF 2020 WMS | Državna geodetska uprava | WMS | `jednom` | TODO(verify) | optional_basemap |
+| [Vektorska podloga (OpenFreeMap, podaci OpenStreetMap)](https://openfreemap.org) | OpenFreeMap / OpenStreetMap contributors | stil karte u pregledniku korisnika | `jednom` | ODbL, samo za prikaz; OSM ne ulazi u izvedene skupove | basemap_display |
+| [Katalog satelitski detektiranih poplava u Europi 2015.–2024.](https://data.jrc.ec.europa.eu/collection/id-0054) | European Commission, Joint Research Centre | stranica skupa | `jednom` | TODO(verify) | flood_validation |

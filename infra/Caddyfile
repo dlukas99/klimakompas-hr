@@ -1,0 +1,33 @@
+# SITE_ADDRESS is a domain for automatic HTTPS, or :80 for a local test.
+# No access log is configured, on purpose: addresses and searches must not be stored (SPEC §9.7).
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tiles.openfreemap.org https://servisi.voda.hr; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://servisi.voda.hr; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+		-Server
+	}
+
+	handle /api/* {
+		reverse_proxy api:8000 {
+			flush_interval -1
+		}
+	}
+
+	handle_path /tiles/* {
+		reverse_proxy martin:3000
+	}
+
+	handle /ogc* {
+		reverse_proxy pygeoapi:80
+	}
+
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

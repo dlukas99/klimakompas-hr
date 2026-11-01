@@ -85,7 +85,7 @@
     type: files
     urls: ["https://podaci.dzs.hr/media/rqybclnx/popis_2021-stanovnistvo_po_naseljima.xlsx"]
   format: xlsx
-  license: "Otvorena dozvola prema SPEC-u; TODO(verify) točan zapis na Portalu"
+  license: "Otvorena dozvola prema zapisu na Portalu; DZS traži navođenje izvora"
   attribution: "Izvor: Državni zavod za statistiku, Popis stanovništva, kućanstava i stanova 2021."
   schedule: null
   robots_allowed: true
@@ -99,7 +99,7 @@
       treba. Tablica nema šifre, samo nazive, a stupac B razlikuje grad i općinu. Crtica znači „nema
       pojave”. Zbroj 6.757 naselja točno je 3.871.833; 65+ je 869.239, a mlađih od 15 je 552.416.
       Spajanje s DGU-om radi po nazivima, a 7 iznimaka je u config/crosswalks/dzs_dgu_naselja.yaml
-      (ADR 0005). Zapis na Portalu treba potvrditi.
+      (ADR 0005). Zapis na Portalu navodi Otvorenu dozvolu.
   verify:
     portal_query: "popis 2021 stanovništvo po naseljima"
     probes:
@@ -114,7 +114,7 @@
     type: files
     urls: ["https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip"]
   format: zip_csv_gpkg_raster
-  license: "TODO(verify) - ponovna uporaba uz navođenje izvora (Eurostat)"
+  license: "Ponovna uporaba dopuštena uz navođenje izvora (Eurostat, napomena o autorskim pravima)"
   attribution: "© European Union, Eurostat – Census 2021 population grid"
   schedule: null
   robots_allowed: true
@@ -129,8 +129,8 @@
       nedostupno s -9999; RH nema nijedno. CNTR_ID označava i zajedničke ćelije: HR 59.809
       (T = 3.856.955), HR-SI 662 (27.623), HR-HU 400 (4.599), HR-HU-SI 2 (0), ukupno 3.889.177
       (+0,45 % prema Popisu). Dobne skupine imaju odstupanja: u 18.708 od 24.464 naseljene ćelije
-      M + F nije T, a u 452 Y_GE65 je veći od T. Metapodaci za RH ne opisuju metodu. Uvjete ponovne
-      uporabe treba potvrditi.
+      M + F nije T, a u 452 Y_GE65 je veći od T. Metapodaci za RH ne opisuju metodu. Uvjeti: napomena Eurostata o
+      autorskim pravima, provjereno 2. 11. 2026.
   fallback: "DZS GeoSTAT ATOM za ukupno stanovništvo uz udjele 65+ na razini JLS-a"
   verify:
     probes:
@@ -196,7 +196,7 @@
       - "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-mala-vjerojatnost_2019"
   format: wms
   license: >-
-    TODO(verify) - NIPP: izrađeno za Plan upravljanja rizicima od poplava, korištenje na vlastitu
+    Uvjeti iz NIPP-a: izrađeno za Plan upravljanja rizicima od poplava, korištenje na vlastitu
     odgovornost
   attribution: "Izvor: Hrvatske vode – Karte opasnosti od poplava 2019."
   schedule: null
@@ -225,7 +225,7 @@
     urls:
       - "https://sdi.eea.europa.eu/datastore/public/eea_r_3035_1_km_aq-interpolated-pm25_p_2023_v01_r00/pm25_avg_23.tif"
   format: geotiff
-  license: "TODO(verify) - EEA ponovna uporaba uz navođenje"
+  license: "CC BY 4.0 (zapis u EEA katalogu)"
   attribution: "© European Environment Agency (EEA)"
   schedule: null
   robots_allowed: true
@@ -235,8 +235,9 @@
     status: partial
     date: 2026-11-01
     note: >-
-      Datoteka je pm25_avg_23.tif, oko 82 MB, pa je preuzimanje jednostavno. Stara putanja /webdav/
-      preusmjerava na /datastore/public/. Licencu treba potvrditi u zapisu kataloga.
+      Datoteka je pm25_avg_23.tif, oko 82 MB, a raster je poravnat s mrežom INSPIRE. Stara putanja
+      /webdav/ preusmjerava na /datastore/public/. Licenca CC BY 4.0 potvrđena je u zapisu kataloga
+      2. 11. 2026.
   fallback: "godišnji prosjeci postaja AZO s IDW interpolacijom (gruba procjena)"
   verify:
     probes:
@@ -255,7 +256,7 @@
     dtype_hourly: 0
     dtype_daily: 4
   format: json
-  license: "TODO(verify)"
+  license: "Javni servis; uvjeti ponovne uporabe nisu objavljeni na stranici servisa, pa navodimo izvor"
   attribution: "Izvor: Ministarstvo zaštite okoliša i zelene tranzicije – Kvaliteta zraka u RH (iszz.azo.hr)"
   schedule: "20 * * * *"
   stale_after: "PT6H"
@@ -275,8 +276,8 @@
       treba utvrditi. PM2,5 za 29.–31. 10. 2026. vratile su postaje 155, 156, 157, 159, 161, 162,
       165, 255 i 275, a prazno su vratile 160 (Osijek-1), 168, 277, 278, 286 i 300 (Osijek – PPI),
       pa Osijek u tom razdoblju nema trenutni PM2,5. Provjera 1. 11.: postaja 160 ima satni PM10
-      (polutant 5), a postaja 300 nema ni PM10 ni PM2,5; pravilo prikaza je u ADR 0004. Validiranost
-      podataka još nije utvrđena: TODO(verify).
+      (polutant 5), a postaja 300 nema ni PM10 ni PM2,5; pravilo prikaza je u ADR 0004. Odgovor je ograničen na 1.000
+      zapisa po zahtjevu, bez upozorenja. Validiranost podataka još nije utvrđena: TODO(verify).
   fallback: open_meteo
   verify:
     portal_query: "kvaliteta zraka republika hrvatska"
@@ -409,8 +410,7 @@
   format: xml
   license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
   attribution: "Izvor: DHMZ"
-  schedule: "10 * * * *"
-  stale_after: "P1D"
+  schedule: null
   robots_allowed: true
   used_for: [context, nowcast_features]
   priority: P1
@@ -473,7 +473,7 @@
     output_format: "application/json"
     srs: "EPSG:4326"
   format: wfs_geojson
-  license: "Javno dostupno (AccessConstraints) – TODO(verify) licenca"
+  license: "Javno dostupno prema AccessConstraints; zapis na Portalu nema licencu (nalaz u izvješću o kvaliteti)"
   attribution: "Izvor: Bioportal – Ministarstvo zaštite okoliša i zelene tranzicije"
   schedule: "0 3 * * *"
   stale_after: "P3D"
@@ -532,7 +532,7 @@
     collection: "landsat-c2-l2"
     assets: [lwir11, qa_pixel]
   format: cog
-  license: "Javna domena (USGS) prema SPEC-u; STAC navodi „proprietary”: TODO(verify)"
+  license: "Bez ograničenja uporabe i redistribucije, uz navođenje izvora (USGS, provjereno 2. 11. 2026.)"
   attribution: "Landsat-8/9 courtesy of the U.S. Geological Survey"
   schedule: null
   robots_allowed: true
@@ -580,10 +580,9 @@
     url: "https://planetarycomputer.microsoft.com/api/stac/v1"
     collection: "modis-64A1-061"
     assets: [Burn_Date]
-    alternative: "EFFIS burnt areas (JRC) - TODO(verify) stranica i uvjeti"
   format: cog
-  license: "TODO(verify) - STAC navodi „other”"
-  attribution: "TODO(verify)"
+  license: "CC0 za podatke misija NASA-e, uz snažnu preporuku citiranja (LP DAAC)"
+  attribution: "MODIS MCD64A1 v061, NASA EOSDIS Land Processes DAAC"
   schedule: null
   robots_allowed: true
   used_for: [fire_history]
@@ -591,7 +590,7 @@
   verification:
     status: partial
     date: 2026-11-01
-    note: "Kolekcija i asset Burn_Date postoje. EFFIS još nije provjeren."
+    note: "Kolekcija i asset Burn_Date postoje, a koristi se MODIS. Licenca je provjerena na stranici LP DAAC-a 2. 11. 2026. EFFIS nije korišten."
   fallback: "izostavi komponentu; ponder ide na FWI × gorivo (ADR)"
   verify:
     probes:
@@ -650,7 +649,7 @@
     package_show: "https://data.gov.hr/ckan/api/3/action/package_show"
     dcat: "https://data.gov.hr/ckan/catalog.xml"
   format: json
-  license: "TODO(verify)"
+  license: "Metapodaci Portala; licenca svakog skupa navedena je u njegovu zapisu"
   attribution: "Izvor: Portal otvorenih podataka (data.gov.hr)"
   schedule: "30 4 * * *"
   stale_after: "P3D"

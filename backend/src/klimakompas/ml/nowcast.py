@@ -35,7 +35,9 @@ log = structlog.get_logger()
 PM25 = "28"
 HISTORY_DAYS = 730
 MIN_STATION_HOURS = 2000
-BACKFILL_CHUNK_DAYS = 60
+# The AZO service returns at most 1000 records per request, so chunks must stay below that.
+BACKFILL_CHUNK_DAYS = 40
+BACKFILL_DONE_SHARE = 0.5
 MODEL_DIR = ROOT / "data" / "processed" / "ml"
 RESULTS_PATH = ROOT / "docs" / "ml-rezultati.json"
 FOLDS = 3
@@ -88,14 +90,26 @@ def backfill_station(client: HttpClient, engine: Engine, station_id: str, today:
     start = today - timedelta(days=HISTORY_DAYS)
     while start < today:
         end = min(start + timedelta(days=BACKFILL_CHUNK_DAYS), today)
-        threading.Event().wait(AZO_MIN_INTERVAL_S)
-        url = (
-            f"{AZO_BASE}/podatak/export/json?postaja={station_id}&polutant={PM25}"
-            f"&tipPodatka={AZO_HOURLY}&vrijemeOd={start:%d.%m.%Y}&vrijemeDo={end:%d.%m.%Y}"
-        )
-        response = client.get(url)
-        if response.is_success:
-            observations = parse_aq(response.json())
+        with engine.connect() as conn:
+            done = conn.execute(
+                text(
+                    "SELECT count(*) FROM live.aq_obs WHERE station_id = :id "
+                    "AND pollutant_id = :pollutant AND ts >= :start AND ts < :end"
+                ),
+                {"id": station_id, "pollutant": PM25, "start": start, "end": end},
+            ).scalar_one()
+        # A rerun skips what it already has, and a failed chunk does not stop the others.
+        if done < BACKFILL_CHUNK_DAYS * 24 * BACKFILL_DONE_SHARE:
+            threading.Event().wait(AZO_MIN_INTERVAL_S)
+            url = (
+                f"{AZO_BASE}/podatak/export/json?postaja={station_id}&polutant={PM25}"
+                f"&tipPodatka={AZO_HOURLY}&vrijemeOd={start:%d.%m.%Y}&vrijemeDo={end:%d.%m.%Y}"
+            )
+            try:
+                observations = parse_aq(client.get(url).raise_for_status().json())
+            except httpx.HTTPError as error:
+                log.warning("backfill chunk failed", station=station_id, error=type(error).__name__)
+                observations = []
             with engine.begin() as conn:
                 total += upsert_rows(
                     conn,

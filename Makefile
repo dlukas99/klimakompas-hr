@@ -7,7 +7,7 @@ export PATH := $(HOME)/.local/bin:$(NVM_NODE_BIN):$(PATH)
 UV := uv --directory backend run
 NPM := npm --prefix frontend
 
-.PHONY: setup up down test-db migrate sources-verify etl etl-all tiles api web gen-api e2e check check-backend check-frontend licenses
+.PHONY: setup up down test-db migrate sources-verify etl etl-all index sensitivity quality export worker ml-train tiles api web gen-api e2e check check-backend check-frontend licenses db-dump db-restore prod-up smoke screenshots docs-sources docs-pdf
 
 setup:
 	test -f .env || cp .env.example .env
@@ -35,6 +35,49 @@ etl:
 
 etl-all:
 	$(UV) kk etl run-all
+
+index:
+	$(UV) kk index compute
+
+sensitivity:
+	$(UV) kk index sensitivity
+
+quality:
+	$(UV) kk quality report
+
+export:
+	$(UV) kk export all
+
+worker:
+	$(UV) kk worker
+
+ml-train:
+	$(UV) kk ml backfill
+	$(UV) kk ml train
+
+db-dump:
+	mkdir -p data/backups
+	docker compose exec -T db sh -c 'pg_dump -Fc -U "$$POSTGRES_USER" "$$POSTGRES_DB"' > data/backups/klimakompas.dump
+
+# Replaces the database contents on the server with the prepared dump.
+db-restore:
+	docker compose -f docker-compose.prod.yml exec -T db sh -c 'pg_restore --clean --if-exists --no-owner -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" /backups/klimakompas.dump'
+
+prod-up:
+	docker compose -f docker-compose.prod.yml up -d --build
+
+smoke:
+	infra/smoke.sh $(URL)
+
+screenshots:
+	mkdir -p docs/images
+	cd frontend && NODE_PATH=node_modules node ../infra/screenshots.mjs
+
+docs-pdf:
+	cd frontend && node ../infra/docs_pdf.mjs
+
+docs-sources:
+	$(UV) kk docs sources
 
 # Martin finds new views only at start, so it restarts after a refresh.
 tiles:

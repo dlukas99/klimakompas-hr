@@ -332,8 +332,9 @@
     ],
     "limitsTitle": "Ograničenja",
     "limits": [
-      "Karte poplava (JRC) modelirane su i pokrivaju samo riječne poplave, bez bujičnih i obalnih. Precjenjuju poplavna područja za česte poplave.",
-      "Klimatski podaci o toplini i požaru dolaze iz mreže od oko 25 km. Vrući dani ispravljeni su mjerenjima 21 DHMZ postaje, ali lokalne razlike ostaju približne, osobito na obali i u planinama.",
+      "Karte poplava (JRC) modelirane su i pokrivaju samo riječne poplave, bez bujičnih i obalnih. Za česte poplave precjenjuju područje, pa su brojke uz velike rijeke gornja procjena.",
+      "Klimatski podaci o toplini i požaru dolaze iz mreže od oko 25 km. Vrući dani ispravljeni su mjerenjima 21 DHMZ postaje, ali greška je i dalje oko 9 dana godišnje. Dani opasnosti od požara na obali ostaju grubi.",
+      "Razlika površinske temperature mjeri površinu, a ne zrak, i ne uzima u obzir nadmorsku visinu.",
       "Rezolucija je 1 km; točkasta procjena poplava koristi rastere od oko 90 m.",
       "Stanovništvo je iz Popisa 2021. Dobni podaci u malim ćelijama nisu pouzdani, pa se za njih koristi udio naselja ili općine.",
       "Ćelije uz granicu sa Slovenijom i Mađarskom uključuju i stanovnike susjedne zemlje.",

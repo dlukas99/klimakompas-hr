@@ -1,0 +1,117 @@
+# Production stack. Static layers are computed elsewhere and moved with `make db-dump`/`db-restore`.
+x-backend: &backend
+  build:
+    context: .
+    dockerfile: infra/docker/backend.Dockerfile
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    LLM_BASE_URL: ${LLM_BASE_URL:-}
+  volumes:
+    - ./data/processed:/app/data/processed:ro
+    - ./data/export:/app/data/export:ro
+    - worker-raw:/app/data/raw
+  restart: unless-stopped
+
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+      POSTGRES_DB: ${POSTGRES_DB:?set in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./data/backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  migrate:
+    <<: *backend
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: *backend
+    # No access log: the geocoder query is in the URL and must not be logged (SPEC §9.7).
+    command: ["uvicorn", "klimakompas.api.app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "3", "--no-access-log"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  worker:
+    <<: *backend
+    command: ["kk", "worker"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  martin:
+    image: ghcr.io/maplibre/martin:1.16.0
+    command: ["--config", "/config/martin.yaml"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    volumes:
+      - ./infra/martin.yaml:/config/martin.yaml:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  pygeoapi:
+    image: geopython/pygeoapi:0.24.0
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL}
+      SCRIPT_NAME: /ogc
+      WSGI_WORKERS: 2
+    volumes:
+      - ./infra/pygeoapi.yml:/pygeoapi/local.config.yml:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: infra/docker/web.Dockerfile
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports:
+      - "${WEB_PORT:-80}:80"
+      - "443:443"
+    volumes:
+      - caddy-data:/data
+    depends_on:
+      - api
+      - martin
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:0.40.13
+    profiles: [llm]
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  caddy-data:
+  ollama-data:
+  worker-raw:

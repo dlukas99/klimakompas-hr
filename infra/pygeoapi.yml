@@ -1,0 +1,90 @@
+server:
+  bind: { host: 0.0.0.0, port: 80 }
+  url: ${PUBLIC_BASE_URL}/ogc
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  gzip: false
+  languages: [hr, en]
+  cors: false
+  pretty_print: false
+  limits: { default_items: 100, max_items: 1000 }
+  map:
+    url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    attribution: "© OpenStreetMap contributors"
+
+logging:
+  level: ERROR
+
+metadata:
+  identification:
+    title: { hr: KlimaKompas HR – OGC API, en: KlimaKompas HR – OGC API }
+    description: { hr: Klimatski rizik u Hrvatskoj iz otvorenih podataka, en: Climate risk in Croatia from open data }
+    keywords: { hr: [klima, rizik, otvoreni podaci], en: [climate, risk, open data] }
+    keywords_type: theme
+    terms_of_service: https://github.com/dlukas99/klimakompas-hr
+    url: https://github.com/dlukas99/klimakompas-hr
+  license:
+    name: ODbL 1.0 (izvedeno iz karata JRC-a), ostalo CC BY 4.0
+    url: https://opendatacommons.org/licenses/odbl/1-0/
+  provider:
+    name: Tim Požega, FERIT Osijek
+    url: https://github.com/dlukas99/klimakompas-hr
+  contact:
+    name: Tim Požega
+    url: https://github.com/dlukas99/klimakompas-hr
+    role: pointOfContact
+
+resources:
+  grid_risk: &collection
+    type: collection
+    title: { hr: IKR po ćelijama, en: Risk index by cell }
+    description: { hr: Razredi rizika za naseljene ćelije od 1 km, en: Risk classes for populated 1 km cells }
+    keywords: { hr: [IKR], en: [risk] }
+    links: []
+    extents:
+      spatial: { bbox: [13.48, 42.37, 19.45, 46.56], crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84 }
+    providers:
+      - type: feature
+        name: PostgreSQL
+        data: &database
+          host: ${POSTGRES_HOST}
+          dbname: ${POSTGRES_DB}
+          user: ${POSTGRES_USER}
+          password: ${POSTGRES_PASSWORD}
+          search_path: [ogc, public]
+        id_field: cell_id
+        table: grid_risk
+        geom_field: geom
+  jls_risk:
+    <<: *collection
+    title: { hr: IKR po općinama i gradovima, en: Risk index by municipality }
+    description: { hr: IKR i rang za 556 općina i gradova, en: Index and rank for 556 municipalities }
+    providers:
+      - type: feature
+        name: PostgreSQL
+        data: *database
+        id_field: code
+        table: jls_risk
+        geom_field: geom
+  aq_stations:
+    <<: *collection
+    title: { hr: Postaje kvalitete zraka, en: Air quality stations }
+    description: { hr: Postaje i vrijeme zadnjeg mjerenja, en: Stations and their last observation }
+    providers:
+      - type: feature
+        name: PostgreSQL
+        data: *database
+        id_field: station_id
+        table: aq_stations
+        geom_field: geom
+  warnings_active:
+    <<: *collection
+    title: { hr: Aktivna upozorenja, en: Active warnings }
+    description: { hr: Aktivna upozorenja DHMZ-a po županijama, en: Active DHMZ warnings by county }
+    providers:
+      - type: feature
+        name: PostgreSQL
+        data: *database
+        id_field: id
+        table: warnings_active
+        geom_field: geom

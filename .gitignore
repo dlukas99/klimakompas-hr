@@ -27,3 +27,4 @@ frontend/dist/
 .idea/
 frontend/test-results/
 frontend/playwright-report/
+dist/
