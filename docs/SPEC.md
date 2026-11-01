@@ -1769,3 +1769,4 @@ Zadnje ažuriranje: <datum, vrijeme> · Trenutna faza: 0 · Rok: pon 9. 11. 2026
 
 ## Dnevnik promjena
 - 1. 11. 2026. — v1.0, početna specifikacija.
+- 1. 11. 2026. — Faza 0: stvarno stanje izvora razlikuje se od §4.2 (DGU format i CRS, Census V3, JRC v3.1.1, EEA putanja, AZO oblik odgovora i ograničenje učestalosti, Landsat asseti). Vidi ADR 0001 i `docs/izvori-provjera.md`.
