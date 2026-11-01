@@ -4,6 +4,7 @@ import threading
 from collections import defaultdict
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
+from pathlib import Path
 from typing import Any, Literal
 from urllib.parse import urlsplit
 
@@ -16,6 +17,8 @@ MAX_PER_HOST = 2
 MAX_ATTEMPTS = 3
 MAX_RETRY_AFTER_S = 60.0
 RETRYABLE_STATUS = {429, 500, 502, 503, 504}
+DOWNLOAD_TIMEOUT = httpx.Timeout(30.0, read=120.0)
+CHUNK_SIZE = 1024 * 1024
 
 
 class _RetryableStatus(Exception):
@@ -110,6 +113,34 @@ class HttpClient:
             retry_error_callback=_return_last_response,
         )
         return retrying(attempt)
+
+    def download(self, url: str, path: Path) -> httpx.Response:
+        """Stream a large file to `path`; a partial file never replaces a complete one."""
+        host = urlsplit(url).netloc
+        partial = path.with_name(f"{path.name}.part")
+
+        def attempt() -> httpx.Response:
+            with (
+                self._host_slots[host],
+                self._client.stream("GET", url, timeout=DOWNLOAD_TIMEOUT) as response,
+            ):
+                if response.status_code in RETRYABLE_STATUS:
+                    raise _RetryableStatus(response)
+                response.raise_for_status()
+                with partial.open("wb") as handle:
+                    for chunk in response.iter_bytes(CHUNK_SIZE):
+                        handle.write(chunk)
+                return response
+
+        retrying = Retrying(
+            stop=stop_after_attempt(MAX_ATTEMPTS),
+            wait=_wait,
+            retry=retry_if_exception(_is_retryable),
+            reraise=True,
+        )
+        response = retrying(attempt)
+        partial.replace(path)
+        return response
 
     def get(
         self, url: str, etag: str | None = None, last_modified: str | None = None

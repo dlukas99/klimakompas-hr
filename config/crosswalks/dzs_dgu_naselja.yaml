@@ -1,0 +1,16 @@
+# Census 2021 (DZS) names that do not match the current DGU register. See ADR 0005.
+# Matching otherwise works on normalized names; anything unmatched and not listed here fails the load.
+
+jls_renames:
+  - zupanija: "Šibensko-kninska"
+    dzs: "Murter-Kornati"
+    dgu: "Murter"
+
+# Present in the census, absent from the current DGU register. These people count towards the JLS
+# total only, so the national and JLS control totals stay exact.
+settlements_without_dgu_match:
+  - { zupanija: "Zagrebačka", jls: "Vrbovec", naselje: "Martinska Ves", population: 451 }
+  - { zupanija: "Primorsko-goranska", jls: "Vrbovsko", naselje: "Međedi", population: 0 }
+  - { zupanija: "Primorsko-goranska", jls: "Vrbovsko", naselje: "Mlinari", population: 7 }
+  - { zupanija: "Primorsko-goranska", jls: "Vrbovsko", naselje: "Radočaj", population: 0 }
+  - { zupanija: "Primorsko-goranska", jls: "Vrbovsko", naselje: "Tomići", population: 12 }

@@ -26,6 +26,11 @@ services:
       - "127.0.0.1:5433:5432"
     tmpfs:
       - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kk_test -d klimakompas_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
 
   martin:
     image: ghcr.io/maplibre/martin:1.16.0

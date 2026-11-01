@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     cdsapi_url: str = "https://cds.climate.copernicus.eu/api"
     cdsapi_key: SecretStr = SecretStr("")
     log_level: str = "INFO"
+    database_url: SecretStr = SecretStr("postgresql+psycopg://kk@localhost:5432/klimakompas")
+    cors_origins: str = "http://localhost:5173"
 
 
 class CountSpec(BaseModel):
@@ -112,3 +114,7 @@ def load_thresholds() -> dict[str, Any]:
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+def load_crosswalk(name: str) -> Any:
+    return _load_yaml(f"crosswalks/{name}.yaml")

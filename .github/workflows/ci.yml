@@ -15,6 +15,20 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    services:
+      db-test:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_USER: kk_test
+          POSTGRES_PASSWORD: kk_test  # pragma: allowlist secret
+          POSTGRES_DB: klimakompas_test
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U kk_test -d klimakompas_test"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 20
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.3.3

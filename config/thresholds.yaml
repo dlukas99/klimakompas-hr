@@ -14,3 +14,15 @@ cap_levels:                  # checked 2026-11-01 against awareness_level in DHM
   yellow: 2
   orange: 3
   red: 4                     # TODO(verify) - not present in the feed on 2026-11-01
+population:
+  # Census grid age counts below this total are too unreliable for a cell share (ADR 0005).
+  min_cell_pop_for_age_shares: 10
+controls:                    # Census 2021 (DZS), checked 2026-11-01 against the settlement table
+  pop_total: 3871833
+  pop_ge65: 869239
+  pop_lt15: 552416
+  grid_tolerance: 0.01       # SPEC §3.2: grid total within ±1 % of the census
+  zupanije: 21
+  jls: 556
+  gradovi: 128
+  opcine: 428

@@ -5,14 +5,22 @@ description = "KlimaKompas HR: climate risk index for Croatia from open data"
 requires-python = ">=3.12,<3.13"
 license = "EUPL-1.2"
 dependencies = [
+    "alembic>=1.20.1",
+    "fastapi>=0.162.0",
     "httpx",
     "lxml",
+    "numpy>=2.5.4",
+    "openpyxl>=3.1.5",
+    "psycopg[binary]>=3.3.6",
     "pydantic",
     "pydantic-settings",
     "pyyaml",
+    "shapely>=2.2.0",
+    "sqlalchemy>=2.1.6",
     "structlog",
     "tenacity",
     "typer",
+    "uvicorn>=0.54.0",
 ]
 
 [project.scripts]
@@ -25,7 +33,9 @@ dev = [
     "pre-commit",
     "pytest",
     "ruff",
+    "types-openpyxl>=3.1.5.20261017",
     "types-pyyaml",
+    "types-shapely>=2.1.0.20261030",
 ]
 
 [build-system]

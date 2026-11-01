@@ -7,7 +7,7 @@ export PATH := $(HOME)/.local/bin:$(NVM_NODE_BIN):$(PATH)
 UV := uv --directory backend run
 NPM := npm --prefix frontend
 
-.PHONY: setup up down sources-verify check check-backend check-frontend licenses
+.PHONY: setup up down test-db migrate sources-verify etl etl-all tiles api web gen-api e2e check check-backend check-frontend licenses
 
 setup:
 	test -f .env || cp .env.example .env
@@ -21,12 +21,43 @@ up:
 down:
 	docker compose down
 
+test-db:
+	docker compose --profile test up -d --wait db-test
+
+migrate:
+	cd backend && uv run alembic upgrade head
+
 sources-verify:
 	$(UV) kk sources verify
 
+etl:
+	$(UV) kk etl run $(SOURCE)
+
+etl-all:
+	$(UV) kk etl run-all
+
+# Martin finds new views only at start, so it restarts after a refresh.
+tiles:
+	$(UV) kk tiles refresh
+	docker compose restart martin
+
+# No access log: the geocoder query is in the URL and must not be logged (SPEC §9.7).
+api:
+	$(UV) uvicorn klimakompas.api.app:app --reload --no-access-log --port 8000
+
+web:
+	$(NPM) run dev
+
+gen-api:
+	$(UV) python -c "import json; from klimakompas.api.app import app; print(json.dumps(app.openapi()))" > frontend/openapi.json
+	$(NPM) run gen:api
+
+e2e:
+	$(NPM) run e2e
+
 check: check-backend check-frontend
 
-check-backend:
+check-backend: test-db
 	$(UV) ruff check .
 	$(UV) ruff format --check .
 	$(UV) mypy
