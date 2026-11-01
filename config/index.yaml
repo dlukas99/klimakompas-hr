@@ -8,9 +8,12 @@ hazards:
     deep_threshold_m: 0.5
     eaf_ref: 0.10
     card_levels: { rp10: 5, rp100: 4, rp500: 3, near_rp100_m: 250, near_level: 2, else: 1 }
+    # H_flood boundaries for the cell class (ADR 0006): a whole cell only in RP500 is 3, only in RP100 is 4.
+    cell_class_breaks: [0.0, 0.03, 0.25, 0.55]
   heat:
     weights: { hot_days: 0.5, tropical_nights: 0.25, lst_delta: 0.25 }
-    reference_period: "TODO(verify) – npr. 1991-2020 ili najnovije dostupno u ECDE"
+    hot_days_stations: { neighbours: 5, max_km: 100 }   # ERA5 corrected with DHMZ stations (ADR 0006)
+    reference_period: "1991-2020"   # ECDE v2.0 has yearly values for 1940-2024
     lst: { months: [6, 7, 8], years: [2024, 2025], max_cloud: 30, rural_builtup_max: 0.05, neighbourhood_km: 15 }
   fire:
     weights: { fwi_x_fuel: 0.7, burnt_history: 0.3 }

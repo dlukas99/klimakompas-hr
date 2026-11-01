@@ -1,0 +1,24 @@
+# DHMZ climate tables (klima.hr/k1) have no coordinates, so a station takes the point of a settlement.
+# Zavižan is left out: at 1594 m its difference from the grid would not carry over to nearby cells.
+stations:
+  bjelovar: { naselje: "Bjelovar" }
+  dubrovnik: { naselje: "Dubrovnik" }
+  gospic: { naselje: "Gospić" }
+  hvar: { naselje: "Hvar" }
+  karlovac: { naselje: "Karlovac" }
+  knin: { naselje: "Knin" }
+  krizevci: { naselje: "Križevci" }
+  mali_losinj: { naselje: "Mali Lošinj" }
+  ogulin: { naselje: "Ogulin" }
+  osijek: { naselje: "Osijek" }
+  parg: { naselje: "Parg" }
+  pazin: { naselje: "Pazin" }
+  rijeka: { naselje: "Rijeka" }
+  senj: { naselje: "Senj" }
+  sisak: { naselje: "Sisak" }
+  slavonski_brod: { naselje: "Slavonski Brod" }
+  split_marjan: { naselje: "Split" }
+  sibenik: { naselje: "Šibenik" }
+  varazdin: { naselje: "Varaždin" }
+  zadar: { naselje: "Zadar" }
+  zagreb_gric: { naselje: "Zagreb" }

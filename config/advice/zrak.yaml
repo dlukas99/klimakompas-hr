@@ -1,0 +1,7 @@
+# Paraphrased from the official source; shown with the link and access date (SPEC §9.2).
+source: "Europska agencija za okoliš – European Air Quality Index"
+url: "https://airindex.eea.europa.eu/AQI/index.html"
+accessed: 2026-11-01
+items:
+  - "Kad je kvaliteta zraka loša, smanjite naporne aktivnosti na otvorenom ako osjetite tegobe poput kašlja ili grebanja u grlu."
+  - "Osobe s bolestima dišnog sustava i srca te djeca s takvim tegobama trebaju biti posebno oprezni."

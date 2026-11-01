@@ -439,11 +439,14 @@
   attribution: "Izvor: DHMZ"
   schedule: null
   robots_allowed: true
-  used_for: [drought]
-  priority: P2
+  used_for: [heat_calibration, drought]
+  priority: P0/P1
   verification:
     status: verified
     date: 2026-11-01
+    note: >-
+      Tablice k1 imaju broj vrućih dana (Tmax ≥ 30 °C) po mjesecima za 23 postaje i služe za korekciju
+      grube ERA5 mreže (ADR 0006). Nemaju koordinate pa postaja dobiva točku naselja.
   verify:
     probes:
       - url: "https://klima.hr/k1/tablice/osijek.xml"

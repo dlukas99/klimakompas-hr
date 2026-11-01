@@ -1,8 +1,20 @@
+import json
+from datetime import timedelta
 from pathlib import Path
 
 import pytest
 from lxml import etree
 
+from klimakompas.live.parsers import (
+    county_key,
+    eaqi_class,
+    parse_aq,
+    parse_cap,
+    parse_fire_index,
+    parse_heatwave,
+    parse_k1_hot_days,
+    parse_stations,
+)
 from klimakompas.sources.dgu_ad import parse_addresses, parse_settlement_names, parse_street_names
 from klimakompas.sources.dgu_au import parse_units
 from klimakompas.sources.dzs_naselja import parse_table
@@ -130,3 +142,67 @@ def test_parses_real_dzs_table() -> None:
     zagreb_counts, zagreb_kind = table.jls[("Grad Zagreb", "Grad Zagreb")]
     assert zagreb_kind == "grad"
     assert zagreb_counts.total == 767131
+
+
+def test_parses_hot_days_from_real_dhmz_table() -> None:
+    body = (FIXTURES / "dhmz_climate" / "k1_osijek.xml").read_bytes()
+    assert 10 < parse_k1_hot_days(body) < 60
+
+
+def test_parses_real_cap_keeps_croatian_blocks_only() -> None:
+    warnings = parse_cap((FIXTURES / "dhmz_cap" / "cap_hr_today.xml").read_bytes())
+    assert warnings
+    first = warnings[0]
+    assert first.level in {2, 3, 4}
+    assert first.level_name in {"yellow", "orange", "red"}
+    assert first.onset is not None and first.onset.tzinfo is not None
+    assert first.region_id is not None and first.region_id.startswith("HR")
+    assert not any("coast" in warning.area_desc for warning in warnings)
+
+
+def test_cap_without_alert_info_is_empty() -> None:
+    body = b'<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"><identifier>x</identifier></alert>'
+    assert parse_cap(body) == []
+
+
+def test_county_key_matches_register_and_cap_names() -> None:
+    assert county_key("Zagrebačka županija") == county_key("Zagrebačka")
+    assert county_key("Grad Zagreb") == "grad zagreb"
+
+
+def test_parses_real_fire_index() -> None:
+    day, stations = parse_fire_index((FIXTURES / "dhmz_fire_index" / "indeks.xml").read_bytes())
+    assert day is not None
+    assert stations[0].code == "14308"
+    assert stations[0].fwi is not None
+
+
+def test_off_season_heatwave_is_not_active() -> None:
+    body = (FIXTURES / "dhmz_heatwave" / "toplinskival_off_season.xml").read_bytes()
+    assert parse_heatwave(body) == {"active": False, "text": ""}
+
+
+def test_parses_real_azo_values_as_utc_and_drops_impossible_ones() -> None:
+    records = json.loads((FIXTURES / "azo_aq_rest" / "zagreb1_pm10_hourly.json").read_bytes())
+    observations = parse_aq(records)
+    assert observations
+    assert observations[0].ts.utcoffset() == timedelta(0)
+    assert parse_aq([{"vrijednost": -5, "vrijeme": 1, "mjernaJedinica": "x"}]) == []
+    assert parse_aq([{"vrijednost": None, "vrijeme": 1}]) == []
+
+
+def test_station_list_joins_ids_with_coordinates_by_name() -> None:
+    form = {"options": [[[160, "Osijek-1"], [999, "Nepoznata"]]]}
+    coordinates = {
+        "data": [["Mreža", "OSIJEK-1", "", "", "", "", "", "", "", "", "", "45,56", "18,68"]]
+    }
+    stations = parse_stations(form, coordinates)
+    assert (stations[0].id, stations[0].lat, stations[0].lon) == ("160", 45.56, 18.68)
+    assert stations[1].lat is None
+
+
+@pytest.mark.parametrize(
+    ("value", "klass"), [(5.4, 1), (6, 2), (15, 2), (50, 3), (140, 5), (141, 6)]
+)
+def test_eaqi_classes_follow_the_eea_table(value: float, klass: int) -> None:
+    assert eaqi_class(value, [5, 15, 50, 90, 140]) == klass

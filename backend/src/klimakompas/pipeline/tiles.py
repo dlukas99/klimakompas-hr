@@ -2,7 +2,15 @@
 
 from sqlalchemy import Connection, text
 
-VIEWS = ("tiles.jls", "tiles.grid_pop")
+VIEWS = (
+    "tiles.jls",
+    "tiles.grid_pop",
+    "tiles.grid_risk",
+    "tiles.jls_risk",
+    "tiles.zupanije",
+    "tiles.naselja",
+    "tiles.nature",
+)
 
 
 def refresh_tiles(conn: Connection) -> None:

@@ -7,8 +7,18 @@ pm25_annual_ugm3:
   eu_limit_from_2030: 10     # Directive (EU) 2024/2881 - TODO(verify)
   card_levels: [5, 10, 15, 25]     # boundaries of levels 1|2|3|4|5
 eaqi:
-  source: "TODO(verify) - official EEA European Air Quality Index page"
-  bands: {}                  # fill from the source (PM2.5, PM10, NO2, O3) with the check date
+  source: "https://airindex.eea.europa.eu/AQI/index.html"
+  checked: 2026-11-01
+  labels: ["Dobra", "Prihvatljiva", "Umjerena", "Loša", "Vrlo loša", "Izrazito loša"]
+  bands:                     # upper limit of classes 1-5 in µg/m³; above the last is class 6
+    pm25: [5, 15, 50, 90, 140]
+    pm10: [15, 45, 120, 195, 270]
+    o3: [60, 100, 120, 160, 180]
+    no2: [10, 25, 60, 100, 150]
+air_local_km: 15            # ADR 0004: a station this close counts as local
+stale_after_hours: 6         # SPEC §4.2: a station with no newer value is not "current"
+fire_index:
+  season_months: [6, 7, 8, 9]   # assumption: DHMZ still publishes outside it, so the UI labels those values
 cap_levels:                  # checked 2026-11-01 against awareness_level in DHMZ CAP
   green: 1
   yellow: 2
@@ -26,3 +36,24 @@ controls:                    # Census 2021 (DZS), checked 2026-11-01 against the
   jls: 556
   gradovi: 128
   opcine: 428
+jls_attention:               # SPEC §9.3: suggestions shown on the JLS page, never as requirements
+  - hazard: heat
+    metric: pop65
+    min: 500
+    text: "Mnogo starijih osoba živi u područjima visokog toplinskog rizika. Razmotrite plan za toplinske valove i više zelenila."
+    url: "https://civilna-zastita.gov.hr/toplinski-val/7494"
+  - hazard: flood
+    metric: pop
+    min: 500
+    text: "Mnogo stanovnika živi u područjima izloženima poplavama. Razmotrite provjeru planova evakuacije i obavještavanja."
+    url: "https://civilna-zastita.gov.hr/istaknute-teme/upute-za-gradjane-7375/upute-za-postupanje-u-opasnostima-nesrecama-i-katastrofama/poplave/7391"
+  - hazard: fire
+    metric: pop
+    min: 500
+    text: "Mnogo stanovnika živi u područjima veće opasnosti od požara. Razmotrite pregled pristupnih putova i planova zaštite."
+    url: "https://civilna-zastita.gov.hr/pozar/7492"
+  - hazard: air
+    metric: pop
+    min: 500
+    text: "Mnogo stanovnika živi u područjima s visokim prosječnim PM2,5. Razmotrite provjeru mjera za poboljšanje kvalitete zraka."
+    url: "https://airindex.eea.europa.eu/AQI/index.html"
