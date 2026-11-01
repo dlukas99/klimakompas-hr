@@ -26,7 +26,10 @@
       ATOM nudi INSPIRE GML 3.2.1 u ETRS89/LAEA (EPSG:3035), a ne SHP u EPSG:3765 kako navodi SPEC.
       Zip ima oko 209 MB. ATOM servis u polju rights navodi „ograničenje javnog pristupa prema
       članku 13 stavku 1 točki (e) INSPIRE Direktive”, a Portal Otvorenu dozvolu: mjerodavnim
-      smatramo zapis na Portalu. Nazive polja sa šiframa treba utvrditi iz podataka u Fazi 1.
+      smatramo zapis na Portalu. Provjera datoteke 1. 11.: AdministrativeUnit.gml ima 21 županijsku
+      jedinicu (nationalCode 2 znaka), 556 JLS-ova (5 znakova), 6.759 naselja (6 znakova), 13.594
+      statistička i 29.263 popisna kruga. Razinu daje nationalLevel, a nadređenu jedinicu
+      upperLevelUnit. Podatak o tome je li JLS grad ili općina nije u GML-u.
   fallback: "GISCO LAU 2021 za JLS; DZS/RGI točke s Voronoijem za naselja (ADR)"
   verify:
     probes:
@@ -60,7 +63,10 @@
   verification:
     status: verified
     date: 2026-11-01
-    note: "GML u EPSG:3035 preko ATOM-a. WFS traži authKey i ne koristimo ga."
+    note: >-
+      GML u EPSG:3035 preko ATOM-a. WFS traži authKey i ne koristimo ga. Address.gml ima 1.683.411
+      adresa (2,6 GB raspakirano); alternativeIdentifier sadrži cijelu adresu, a komponente su
+      poveznice na ThoroughfareName, PostalDescriptor i AdminUnitName.
   fallback: "pretraga naselja i JLS-ova te klik na kartu"
   verify:
     probes:
@@ -89,8 +95,11 @@
     status: partial
     date: 2026-11-01
     note: >-
-      Datoteka postoji, oko 3 MB. Zapis na Portalu i tablicu „starost i spol po naseljima” treba
-      potvrditi.
+      Oko 3 MB. List „1.” ima starost i spol po naselju, JLS-u i županiji, pa zasebna tablica ne
+      treba. Tablica nema šifre, samo nazive, a stupac B razlikuje grad i općinu. Crtica znači „nema
+      pojave”. Zbroj 6.757 naselja točno je 3.871.833; 65+ je 869.239, a mlađih od 15 je 552.416.
+      Spajanje s DGU-om po nazivima ostavlja 11 naselja (2.778 st.) za ručnu tablicu. Zapis na
+      Portalu treba potvrditi.
   verify:
     portal_query: "popis 2021 stanovništvo po naseljima"
     probes:
@@ -116,8 +125,12 @@
     date: 2026-11-01
     note: >-
       Dostupna je novija verzija V3 (izmjena 19. 6. 2026., oko 566 MB) od verzije V2.2 iz SPEC-a.
-      Koristimo V3. Stupce, oznake prikrivenih vrijednosti i oblik GRD_ID treba potvrditi na
-      podacima u Fazi 1.
+      Koristimo V3. GRD_ID je oblika CRS3035RES1000mN{y}E{x}. V3 označava povjerljivo s -8888, a
+      nedostupno s -9999; RH nema nijedno. CNTR_ID označava i zajedničke ćelije: HR 59.809
+      (T = 3.856.955), HR-SI 662 (27.623), HR-HU 400 (4.599), HR-HU-SI 2 (0), ukupno 3.889.177
+      (+0,45 % prema Popisu). Dobne skupine imaju odstupanja: u 18.708 od 24.464 naseljene ćelije
+      M + F nije T, a u 452 Y_GE65 je veći od T. Metapodaci za RH ne opisuju metodu. Uvjete ponovne
+      uporabe treba potvrditi.
   fallback: "DZS GeoSTAT ATOM za ukupno stanovništvo uz udjele 65+ na razini JLS-a"
   verify:
     probes:

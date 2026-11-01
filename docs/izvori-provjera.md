@@ -2,7 +2,7 @@
 
 Datoteku generira `make sources-verify`. Bilješke dolaze iz `config/sources.yaml`.
 
-Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
+Zadnja provjera: 01. 11. 2026. u 18:10 UTC.
 
 | Izvor | Prioritet | Stanje | Licenca |
 |---|---|---|---|
@@ -43,7 +43,7 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 - ✅ `GET https://geoportal.dgu.hr/services/inspire/au/wms?service=WMS&request=GetCapabilities`: HTTP 200 · text/xml · 9,1 kB · zapisa: 2
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?><WMS_Capabilities xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common`
 - Portal: `upravne-jedinice-inspire` · Državna geodetska uprava · licenca: Otvorena dozvola (OD) · izmjena: 2026-10-22T06:48:05.491626
-- Bilješka (01. 11. 2026.): ATOM nudi INSPIRE GML 3.2.1 u ETRS89/LAEA (EPSG:3035), a ne SHP u EPSG:3765 kako navodi SPEC. Zip ima oko 209 MB. ATOM servis u polju rights navodi „ograničenje javnog pristupa prema članku 13 stavku 1 točki (e) INSPIRE Direktive”, a Portal Otvorenu dozvolu: mjerodavnim smatramo zapis na Portalu. Nazive polja sa šiframa treba utvrditi iz podataka u Fazi 1.
+- Bilješka (01. 11. 2026.): ATOM nudi INSPIRE GML 3.2.1 u ETRS89/LAEA (EPSG:3035), a ne SHP u EPSG:3765 kako navodi SPEC. Zip ima oko 209 MB. ATOM servis u polju rights navodi „ograničenje javnog pristupa prema članku 13 stavku 1 točki (e) INSPIRE Direktive”, a Portal Otvorenu dozvolu: mjerodavnim smatramo zapis na Portalu. Provjera datoteke 1. 11.: AdministrativeUnit.gml ima 21 županijsku jedinicu (nationalCode 2 znaka), 556 JLS-ova (5 znakova), 6.759 naselja (6 znakova), 13.594 statistička i 29.263 popisna kruga. Razinu daje nationalLevel, a nadređenu jedinicu upperLevelUnit. Podatak o tome je li JLS grad ili općina nije u GML-u.
 
 ## `dgu_ad`: Adrese INSPIRE
 
@@ -54,7 +54,7 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 - ✅ `ZIP https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip`: HTTP 206 · application/zip · 90,0 MB · zapisa: 4 · Range: da
   - uzorak: `PostalDescriptor.gml, ThoroughfareName.gml, Address.gml, AdminUnitName.gml`
 - Portal: `adrese-inspire` · Državna geodetska uprava · licenca: Otvorena dozvola (OD) · izmjena: 2026-10-22T06:47:02.818231
-- Bilješka (01. 11. 2026.): GML u EPSG:3035 preko ATOM-a. WFS traži authKey i ne koristimo ga.
+- Bilješka (01. 11. 2026.): GML u EPSG:3035 preko ATOM-a. WFS traži authKey i ne koristimo ga. Address.gml ima 1.683.411 adresa (2,6 GB raspakirano); alternativeIdentifier sadrži cijelu adresu, a komponente su poveznice na ThoroughfareName, PostalDescriptor i AdminUnitName.
 
 ## `dzs_naselja_2021`: Popis 2021.: stanovništvo po naseljima
 
@@ -62,18 +62,18 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 - robots.txt `podaci.dzs.hr`: nema datoteke (404)
 - ✅ `HEAD https://podaci.dzs.hr/media/rqybclnx/popis_2021-stanovnistvo_po_naseljima.xlsx`: HTTP 200 · application/vnd.openxmlformats-officedocument.spreadsheetml.sheet · 3,1 MB · Last-Modified: Thu, 05 Jun 2025 10:56:28 GMT
 - Portal, kandidati iz pretrage: `popis-stanovni-tva-2011-stanovni-tvo-po-naseljima`, `statistika-u-nizu-popis-stanovnistva-kucanstava-i-stanova-2021`, `stanovnistvo-grada-rijeke-prema-mo-i-povrsina-mo-popis-2011`, `naselja-i-stanovni-tvo-republike-hrvatske-1857-2001`
-- Bilješka (01. 11. 2026.): Datoteka postoji, oko 3 MB. Zapis na Portalu i tablicu „starost i spol po naseljima” treba potvrditi.
+- Bilješka (01. 11. 2026.): Oko 3 MB. List „1.” ima starost i spol po naselju, JLS-u i županiji, pa zasebna tablica ne treba. Tablica nema šifre, samo nazive, a stupac B razlikuje grad i općinu. Crtica znači „nema pojave”. Zbroj 6.757 naselja točno je 3.871.833; 65+ je 869.239, a mlađih od 15 je 552.416. Spajanje s DGU-om po nazivima ostavlja 11 naselja (2.778 st.) za ručnu tablicu. Zapis na Portalu treba potvrditi.
 
 ## `estat_census_grid_2021`: Census 2021 population grid, 1 km
 
 - Izdavač: Eurostat GISCO (iz podataka DZS-a)
 - robots.txt `ec.europa.eu`: pravila pročitana
 - robots.txt `gisco-services.ec.europa.eu`: pravila pročitana
-- ✅ `GET https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids`: HTTP 200 · text/html;charset=UTF-8 · 201,0 kB
+- ✅ `GET https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids`: HTTP 200 · text/html;charset=UTF-8 · 201,2 kB
   - uzorak: `<!DOCTYPE html>`
 - ✅ `ZIP https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip`: HTTP 206 · application/zip · 566,1 MB · zapisa: 9 · Range: da · Last-Modified: Fri, 19 Jun 2026 11:29:37 GMT
   - uzorak: `Eurostat_Census-GRID_2021_V3/, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_country.csv.zip, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_LAND_SURFACE_V3.tiff, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_V3.csv`
-- Bilješka (01. 11. 2026.): Dostupna je novija verzija V3 (izmjena 19. 6. 2026., oko 566 MB) od verzije V2.2 iz SPEC-a. Koristimo V3. Stupce, oznake prikrivenih vrijednosti i oblik GRD_ID treba potvrditi na podacima u Fazi 1.
+- Bilješka (01. 11. 2026.): Dostupna je novija verzija V3 (izmjena 19. 6. 2026., oko 566 MB) od verzije V2.2 iz SPEC-a. Koristimo V3. GRD_ID je oblika CRS3035RES1000mN{y}E{x}. V3 označava povjerljivo s -8888, a nedostupno s -9999; RH nema nijedno. CNTR_ID označava i zajedničke ćelije: HR 59.809 (T = 3.856.955), HR-SI 662 (27.623), HR-HU 400 (4.599), HR-HU-SI 2 (0), ukupno 3.889.177 (+0,45 % prema Popisu). Dobne skupine imaju odstupanja: u 18.708 od 24.464 naseljene ćelije M + F nije T, a u 452 Y_GE65 je veći od T. Metapodaci za RH ne opisuju metodu. Uvjete ponovne uporabe treba potvrditi.
 
 ## `jrc_efas_flood`: River flood hazard maps for Europe and the Mediterranean Basin (v3.1.1)
 
@@ -122,11 +122,11 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 
 - Izdavač: Državni hidrometeorološki zavod
 - robots.txt `meteo.hr`: nema datoteke (404)
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_today.xml`: HTTP 200 · text/xml · 46,9 kB · zapisa: 40 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_today.xml`: HTTP 200 · text/xml · 46,9 kB · zapisa: 40 · Last-Modified: Sun, 01 Nov 2026 18:07:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_tomorrow.xml`: HTTP 200 · text/xml · 42,6 kB · zapisa: 36 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_tomorrow.xml`: HTTP 200 · text/xml · 42,6 kB · zapisa: 36 · Last-Modified: Sun, 01 Nov 2026 18:07:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml`: HTTP 200 · text/xml · 95,4 kB · zapisa: 48 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml`: HTTP 200 · text/xml · 95,4 kB · zapisa: 48 · Last-Modified: Sun, 01 Nov 2026 18:07:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
 - ✅ `HEAD https://meteo.hr/upozorenja/CroatiaRegionsCounties.tar.xz`: HTTP 200 · application/octet-stream · 4,7 MB · Last-Modified: Wed, 23 Sep 2026 12:33:36 GMT
 - ✅ `HEAD https://meteo.hr/upozorenja/Croatia_Sea_Regions.tar`: HTTP 200 · application/octet-stream · 1,1 MB · Last-Modified: Thu, 07 Nov 2019 14:28:43 GMT
@@ -156,7 +156,7 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 - robots.txt `vrijeme.hr`: nema datoteke (404)
 - ✅ `GET https://vrijeme.hr/hrvatska_n.xml`: HTTP 200 · text/xml · 19,0 kB · Last-Modified: Sun, 01 Nov 2026 17:46:02 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <Hrvatska> <DatumTermin> <Datum>01.11.2026</Datum> <Termin>18</Termin> </DatumTer`
-- ✅ `GET https://vrijeme.hr/tx.xml`: HTTP 200 · text/xml · 1,8 kB · Last-Modified: Sun, 01 Nov 2026 18:03:05 GMT
+- ✅ `GET https://vrijeme.hr/tx.xml`: HTTP 200 · text/xml · 3,1 kB · Last-Modified: Sun, 01 Nov 2026 18:10:18 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <maksimalnatemperatura>   <datumtermin>     <datum>01.11.2026</datum>     <termin`
 - ✅ `GET https://vrijeme.hr/tn.xml`: HTTP 200 · text/xml · 4,1 kB · Last-Modified: Sun, 01 Nov 2026 07:58:04 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <minimalnatemperatura>   <datumtermin>     <datum>01.11.2026</datum>     <termin>`
@@ -226,11 +226,11 @@ Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 - robots.txt `archive-api.open-meteo.com`: pravila pročitana, dohvat nije dopušten
 - robots.txt `air-quality-api.open-meteo.com`: pravila pročitana, dohvat nije dopušten
 - ✅ `GET https://api.open-meteo.com/v1/forecast?latitude=45.55&longitude=18.69&hourly=temperature_2m&forecast_days=1`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
-  - uzorak: `{"latitude":45.54481,"longitude":18.687576,"generationtime_ms":0.03731250762939453,"utc_offset_seconds":0,"timezone":"GM`
+  - uzorak: `{"latitude":45.54481,"longitude":18.687576,"generationtime_ms":0.02777576446533203,"utc_offset_seconds":0,"timezone":"GM`
 - ✅ `GET https://archive-api.open-meteo.com/v1/archive?latitude=45.55&longitude=18.69&hourly=temperature_2m&start_date=2025-07-01&end_date=2025-07-01`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
-  - uzorak: `{"latitude":45.58875,"longitude":18.679245,"generationtime_ms":1.106858253479004,"utc_offset_seconds":0,"timezone":"GMT"`
+  - uzorak: `{"latitude":45.58875,"longitude":18.679245,"generationtime_ms":0.8709430694580078,"utc_offset_seconds":0,"timezone":"GMT`
 - ✅ `GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=45.55&longitude=18.69&hourly=pm2_5&forecast_days=1`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
-  - uzorak: `{"latitude":45.5,"longitude":18.7,"generationtime_ms":0.10323524475097656,"utc_offset_seconds":0,"timezone":"GMT","timez`
+  - uzorak: `{"latitude":45.5,"longitude":18.7,"generationtime_ms":0.2473592758178711,"utc_offset_seconds":0,"timezone":"GMT","timezo`
 - Bilješka (01. 11. 2026.): robots.txt na API hostovima ima „Disallow: /”, a stranica open-meteo.com „Allow: /”. Odluka korisnika (ADR 0002): API je javno namijenjen programskom pristupu, pa ga koristimo za nekomercijalnu namjenu, unutar limita i uz atribuciju. Provjera šalje po jedan najmanji poziv na svaki host.
 
 ## `ckan`: Portal otvorenih podataka (CKAN Action API i DCAT)

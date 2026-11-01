@@ -1,5 +1,5 @@
 # PROGRESS — KlimaKompas HR
-Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 0 → 1 · Rok: pon 9. 11. 2026. 24:00 (freeze 16:00)
+Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 1 · Rok: pon 9. 11. 2026. 24:00 (freeze 16:00)
 
 ## Faze
 - [x] F0 Bootstrap i provjera izvora (ned 1. 11.)
@@ -13,7 +13,8 @@ Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 0 → 1 · Rok: pon 9. 11. 20
 - [ ] F8 Freeze i predaja (pon 9. 11.)
 
 ## Trenutni zadaci
-- [ ] F1: DGU AU i Census grid V3 → `ref.*`, `pop.*`; prvo potvrditi polja i šifre na stvarnim podacima.
+- [x] F1 priprema: polja, šifre i kontrolni zbrojevi potvrđeni na stvarnim datotekama (`config/sources.yaml`).
+- [ ] F1: plan predan korisniku; čeka potvrdu jer mijenja shemu baze.
 - [ ] F2 priprema: složiti ECDE zahtjev iz javnog opisa CDS procesa, čim token bude u `.env`.
 
 ## Čeka korisnika
@@ -25,6 +26,7 @@ Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 0 → 1 · Rok: pon 9. 11. 20
 | 4 | Poslati dopis Hrvatskim vodama (`docs/dopisi/hrvatske-vode.md`) | vektori i potvrda za WMS (P1) | pon 2. 11. | otvoreno |
 | 5 | Poslati upit o licenci JRC-u (`docs/dopisi/jrc-licenca.md`) | odgovor određuje licencu izvedenog sloja poplava; bez odgovora ostaje ODbL (ADR 0003) | pon 2. 11. | otvoreno |
 | 6 | Odluka: hosting i domena | potrebno za P0.7 | uto 3. 11. | otvoreno |
+| 7 | Potvrda plana Faze 1 i praga za udjele 65+ | plan mijenja shemu baze i odstupa od SPEC §5.4 | pon 2. 11. | otvoreno |
 
 ## Odluke (ADR)
 - [0001](docs/odluke/0001-korekcije-izvora-nakon-verifikacije.md) Korekcije izvora nakon verifikacije.
