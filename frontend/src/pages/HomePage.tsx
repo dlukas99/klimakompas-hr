@@ -4,6 +4,13 @@ import { cardLink } from "../features/map/mapLink";
 import hr from "../i18n/hr.json";
 import { useSources, useWarnings } from "../lib/api/hooks";
 
+// Public places only (SPEC §9.9); positions come from the DGU address register.
+const EXAMPLES = [
+  { label: "Osijek – središte", lat: 45.56098, lon: 18.67755 },
+  { label: "Slavonski Brod – središte", lat: 45.15347, lon: 18.01166 },
+  { label: "Split – Riva", lat: 43.50783, lon: 16.43885 },
+];
+
 const USED_SOURCE_STATES = new Set(["ok", "stale", "static", "browser"]);
 
 function WarningsStrip() {
@@ -43,6 +50,17 @@ export function HomePage() {
           navigate(cardLink(result.lat, result.lon, result.label))
         }
       />
+      <nav aria-label={hr.home.examples} className="flex flex-wrap gap-2">
+        {EXAMPLES.map((example) => (
+          <Link
+            key={example.label}
+            to={cardLink(example.lat, example.lon, example.label)}
+            className="rounded-full border border-slate-400 px-3 py-1 text-sm hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-slate-900"
+          >
+            {example.label}
+          </Link>
+        ))}
+      </nav>
       <Link
         to="/karta"
         className="self-start rounded-lg bg-slate-900 px-4 py-2 font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"

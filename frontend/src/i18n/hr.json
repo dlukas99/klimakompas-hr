@@ -238,7 +238,8 @@
     "noIndex": "bez indeksa",
     "underTen": "< 10",
     "source": "Stanovništvo: DZS, Popis 2021. Rizik: izračun KlimaKompas HR, verzija {version}.",
-    "openMap": "Prikaži na karti"
+    "openMap": "Prikaži na karti",
+    "profileHazard": "Opasnost"
   },
   "data": {
     "title": "Podaci",

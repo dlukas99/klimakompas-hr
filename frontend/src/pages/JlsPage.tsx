@@ -60,7 +60,9 @@ function Profile({ detail }: { detail: JlsDetail }) {
         <caption className="sr-only">{hr.jls.profileTitle}</caption>
         <thead>
           <tr className="border-b border-slate-300 text-left">
-            <th scope="col" className="px-2 py-1" />
+            <th scope="col" className="px-2 py-1">
+              {hr.jls.profileHazard}
+            </th>
             <th scope="col" className="px-2 py-1">
               {hr.jls.profileJls}
             </th>
@@ -150,7 +152,12 @@ function Naselja({ code, name }: { code: string; name: string }) {
                   {hr.jls.exportNaselja}
                 </button>
               </div>
-              <div className="mt-2 max-h-96 overflow-auto print:max-h-none">
+              <div
+                className="mt-2 max-h-96 overflow-auto print:max-h-none"
+                tabIndex={0}
+                role="region"
+                aria-label={hr.jls.naseljaTitle}
+              >
                 <table className="w-full text-sm">
                   <thead className="sticky top-0 border-b border-slate-300 bg-white text-left">
                     <tr>

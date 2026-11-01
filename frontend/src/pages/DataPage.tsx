@@ -106,7 +106,12 @@ export function DataPage() {
             rows.length === 0 ? (
               <p className="mt-2">{hr.data.noQuality}</p>
             ) : (
-              <div className="mt-2 max-h-96 overflow-auto">
+              <div
+                className="mt-2 max-h-96 overflow-auto"
+                tabIndex={0}
+                role="region"
+                aria-label={hr.data.qualityTitle}
+              >
                 <table className="w-full text-sm">
                   <thead className="sticky top-0 border-b border-slate-300 bg-white text-left">
                     <tr>
