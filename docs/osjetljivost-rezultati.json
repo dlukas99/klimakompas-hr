@@ -1,0 +1,14 @@
+{
+  "samples": 1000,
+  "median_spearman": 0.9117441531272046,
+  "p05_spearman": 0.6864422996029882,
+  "top_n": 20,
+  "stable_in_top": 4,
+  "stable_share_of_top": 0.2,
+  "stable_names": [
+    "Kula Norinska",
+    "Metković",
+    "Opuzen",
+    "Zažablje"
+  ]
+}

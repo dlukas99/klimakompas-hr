@@ -55,6 +55,329 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/card": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Card */
+        get: operations["card_api_v1_card_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/jls": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Jls List */
+        get: operations["jls_list_api_v1_jls_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/jls/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Jls One */
+        get: operations["jls_one_api_v1_jls__code__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/jls/{code}/naselja": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Jls Settlements */
+        get: operations["jls_settlements_api_v1_jls__code__naselja_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/jls/{code}/cells": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Jls Grid */
+        get: operations["jls_grid_api_v1_jls__code__cells_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/rankings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Rankings */
+        get: operations["rankings_api_v1_rankings_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/warnings/active": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Warnings Active */
+        get: operations["warnings_active_api_v1_warnings_active_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/air/stations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Air Stations */
+        get: operations["air_stations_api_v1_air_stations_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/air/stations/{station_id}/series": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Air Series */
+        get: operations["air_series_api_v1_air_stations__station_id__series_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/air/stations/{station_id}/forecast": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Air Forecast */
+        get: operations["air_forecast_api_v1_air_stations__station_id__forecast_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/nature/nearby": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Nature */
+        get: operations["nature_api_v1_nature_nearby_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/agent/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Agent Status */
+        get: operations["agent_status_api_v1_agent_status_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/agent/quick": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Agent Quick */
+        get: operations["agent_quick_api_v1_agent_quick_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/agent/chat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Agent Chat */
+        post: operations["agent_chat_api_v1_agent_chat_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/quality": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Quality */
+        get: operations["quality_api_v1_quality_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/export/{filename}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Export File */
+        get: operations["export_file_api_v1_export__filename__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Exports */
+        get: operations["exports_api_v1_exports_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog.ttl": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Catalog Ttl */
+        get: operations["catalog_ttl_api_v1_catalog_ttl_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog.jsonld": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Catalog Jsonld */
+        get: operations["catalog_jsonld_api_v1_catalog_jsonld_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/sources": {
         parameters: {
             query?: never;
@@ -76,6 +399,266 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AdviceBlock */
+        AdviceBlock: {
+            /** Source */
+            source: string;
+            /** Url */
+            url: string;
+            /**
+             * Accessed
+             * Format: date
+             */
+            accessed: string;
+            /** Items */
+            items: string[];
+        };
+        /** AgentStatus */
+        AgentStatus: {
+            /** Llm Available */
+            llm_available: boolean;
+        };
+        /** AirNow */
+        AirNow: {
+            station: components["schemas"]["StationRef"];
+            /**
+             * Pollutant
+             * @enum {string}
+             */
+            pollutant: "pm25" | "pm10";
+            /**
+             * Substitution
+             * @enum {string}
+             */
+            substitution: "local" | "local_pm10" | "nearest_pm25";
+            value: components["schemas"]["PollutantValue"];
+            /** Values */
+            values: {
+                [key: string]: components["schemas"]["PollutantValue"];
+            };
+            /**
+             * Observed At
+             * Format: date-time
+             */
+            observed_at: string;
+        };
+        /** AirStation */
+        AirStation: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Network */
+            network: string | null;
+            /** Lat */
+            lat: number | null;
+            /** Lon */
+            lon: number | null;
+            /** Values */
+            values: {
+                [key: string]: components["schemas"]["PollutantValue"];
+            };
+            /** Eaqi Class */
+            eaqi_class: number | null;
+            /** Eaqi Label */
+            eaqi_label: string | null;
+            /** Observed At */
+            observed_at: string | null;
+            /** Stale */
+            stale: boolean;
+        };
+        /** Attention */
+        Attention: {
+            /** Hazard */
+            hazard: string;
+            /** Text */
+            text: string;
+            /** Value */
+            value: number;
+            /** Url */
+            url: string | null;
+        };
+        /** CardHazards */
+        CardHazards: {
+            flood: components["schemas"]["HazardBlock"];
+            heat: components["schemas"]["HazardBlock"];
+            fire: components["schemas"]["HazardBlock"];
+            air: components["schemas"]["HazardBlock"];
+        };
+        /** CardIkr */
+        CardIkr: {
+            /** Value */
+            value: number | null;
+            /** Level */
+            level: number | null;
+            /** Label */
+            label: string | null;
+            /** Percentile */
+            percentile: number | null;
+            /** Index Version */
+            index_version: string | null;
+            /** Populated */
+            populated: boolean;
+        };
+        /** CardLive */
+        CardLive: {
+            /** Warnings */
+            warnings: components["schemas"]["Warning"][];
+            /** Warnings Checked At */
+            warnings_checked_at: string | null;
+            air_now: components["schemas"]["AirNow"] | null;
+            /** Air Forecast */
+            air_forecast: components["schemas"]["ForecastPoint"][];
+            fire_index: components["schemas"]["FireIndex"] | null;
+            heatwave: components["schemas"]["Heatwave"] | null;
+            /** Nature Nearby */
+            nature_nearby: components["schemas"]["NatureArea"][];
+        };
+        /** CardLocation */
+        CardLocation: {
+            /** Lat */
+            lat: number;
+            /** Lon */
+            lon: number;
+            /** Label */
+            label: string;
+            naselje: components["schemas"]["CodeName"];
+            jls: components["schemas"]["JlsRef"];
+            zupanija: components["schemas"]["CodeName"];
+            /** Cell Id */
+            cell_id: string;
+        };
+        /** CardPopulation */
+        CardPopulation: {
+            /** Total Rounded */
+            total_rounded: number | null;
+            /** Below Threshold */
+            below_threshold: boolean;
+            /** Share 65Plus */
+            share_65plus: number | null;
+            /** Share Under15 */
+            share_under15: number | null;
+            /** Age Share Source */
+            age_share_source: string | null;
+            /** Suppressed */
+            suppressed: boolean;
+        };
+        /** CardResponse */
+        CardResponse: {
+            location: components["schemas"]["CardLocation"];
+            ikr: components["schemas"]["CardIkr"];
+            hazards: components["schemas"]["CardHazards"];
+            population: components["schemas"]["CardPopulation"];
+            live: components["schemas"]["CardLive"];
+            /** Advice */
+            advice: {
+                [key: string]: components["schemas"]["AdviceBlock"];
+            };
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Partial */
+            partial: boolean;
+            /** Degraded Sources */
+            degraded_sources: string[];
+        };
+        /** ChatRequest */
+        ChatRequest: {
+            /** Message */
+            message: string;
+        };
+        /** Citation */
+        Citation: {
+            /** N */
+            n: number;
+            /** Id */
+            id: string;
+            /** Title */
+            title: string;
+            /** Publisher */
+            publisher: string;
+            /** Url */
+            url: string | null;
+            /** Last Modified */
+            last_modified: string | null;
+        };
+        /** CodeName */
+        CodeName: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+        };
+        /** ExportFile */
+        ExportFile: {
+            /** Id */
+            id: string;
+            /** Title */
+            title: string;
+            /** Description */
+            description: string;
+            /** License */
+            license: string;
+            /** Files */
+            files: string[];
+        };
+        /** Exposed */
+        Exposed: {
+            /** Pop */
+            pop: number;
+            /** Pop65 */
+            pop65: number;
+            /** Share */
+            share: number;
+        };
+        /** Factor */
+        Factor: {
+            /**
+             * Factor
+             * @enum {string}
+             */
+            factor: "hazard" | "vulnerability" | "risk";
+            /** Value */
+            value: number;
+        };
+        /** FireIndex */
+        FireIndex: {
+            /** Station Name */
+            station_name: string | null;
+            /** Fwi */
+            fwi: number | null;
+            /** Category */
+            category: string | null;
+            /** Index Date */
+            index_date: string | null;
+            /** In Season */
+            in_season: boolean;
+            /**
+             * Fetched At
+             * Format: date-time
+             */
+            fetched_at: string;
+            /** Distance Km */
+            distance_km: number | null;
+        };
+        /** ForecastPoint */
+        ForecastPoint: {
+            /**
+             * Target Time
+             * Format: date-time
+             */
+            target_time: string;
+            /** Pm25 */
+            pm25: number;
+            /** Lo */
+            lo: number | null;
+            /** Hi */
+            hi: number | null;
+            /** Model Version */
+            model_version: string;
+        };
         /** GeocodeResponse */
         GeocodeResponse: {
             /** Results */
@@ -115,6 +698,25 @@ export interface components {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
         };
+        /** HazardBlock */
+        HazardBlock: {
+            /** Level */
+            level: number | null;
+            /** Label */
+            label: string | null;
+            /** H */
+            h: number | null;
+            /** R */
+            r: number | null;
+            /** Key Value */
+            key_value: {
+                [key: string]: number | boolean | null;
+            };
+            /** Explanation */
+            explanation: components["schemas"]["Factor"][];
+            /** Source Ids */
+            source_ids: string[];
+        };
         /** Health */
         Health: {
             /**
@@ -122,6 +724,231 @@ export interface components {
              * @constant
              */
             status: "ok";
+        };
+        /** Heatwave */
+        Heatwave: {
+            /** Level */
+            level: string | null;
+            /**
+             * Fetched At
+             * Format: date-time
+             */
+            fetched_at: string;
+        };
+        /** JlsCell */
+        JlsCell: {
+            /** Cell Id */
+            cell_id: string;
+            /** Pop Total */
+            pop_total: number | null;
+            /** Ikr */
+            ikr: number | null;
+            /** Ikr Class */
+            ikr_class: number | null;
+            /** Class Flood */
+            class_flood: number | null;
+            /** Class Heat */
+            class_heat: number | null;
+            /** Class Fire */
+            class_fire: number | null;
+            /** Class Air */
+            class_air: number | null;
+            /** Naselje */
+            naselje: string;
+        };
+        /** JlsDetail */
+        JlsDetail: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Kind */
+            kind: string | null;
+            zupanija: components["schemas"]["CodeName"];
+            /** Pop */
+            pop: number | null;
+            /** Pop65 */
+            pop65: number | null;
+            /** Ikr */
+            ikr: number | null;
+            /** Ikr Class */
+            ikr_class: number | null;
+            /** Ikr Label */
+            ikr_label: string | null;
+            /** Rank Hr */
+            rank_hr: number | null;
+            /** Rank Zup */
+            rank_zup: number | null;
+            /** Total Hr */
+            total_hr: number;
+            /** Total Zup */
+            total_zup: number;
+            /** Exposed */
+            exposed: {
+                [key: string]: components["schemas"]["Exposed"];
+            };
+            /** Lat */
+            lat: number;
+            /** Lon */
+            lon: number;
+            /** Bbox */
+            bbox: [
+                number,
+                number,
+                number,
+                number
+            ];
+            profile: components["schemas"]["JlsProfiles"];
+            /** Attention */
+            attention: components["schemas"]["Attention"][];
+            /** Index Version */
+            index_version: string | null;
+        };
+        /** JlsListItem */
+        JlsListItem: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Kind */
+            kind: string | null;
+            /** Zupanija Name */
+            zupanija_name: string;
+            /** Pop */
+            pop: number | null;
+            /** Ikr Popw */
+            ikr_popw: number | null;
+            /** Ikr Class */
+            ikr_class: number | null;
+            /** Rank Hr */
+            rank_hr: number | null;
+        };
+        /** JlsNaselje */
+        JlsNaselje: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Pop */
+            pop: number | null;
+            /** Ikr */
+            ikr: number | null;
+            /** Ikr Class */
+            ikr_class: number | null;
+            /** Exposed */
+            exposed: {
+                [key: string]: components["schemas"]["Exposed"];
+            } | null;
+        };
+        /** JlsProfiles */
+        JlsProfiles: {
+            jls: components["schemas"]["Profile"];
+            zupanija: components["schemas"]["Profile"];
+            hr: components["schemas"]["Profile"];
+        };
+        /** JlsRef */
+        JlsRef: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Kind */
+            kind: string | null;
+        };
+        /** NatureArea */
+        NatureArea: {
+            /** Layer */
+            layer: string;
+            /** Name */
+            name: string | null;
+            /** Category */
+            category: string | null;
+            /** Distance M */
+            distance_m: number;
+        };
+        /** PollutantValue */
+        PollutantValue: {
+            /** Value */
+            value: number;
+            /** Unit */
+            unit: string | null;
+            /**
+             * Observed At
+             * Format: date-time
+             */
+            observed_at: string;
+            /** Stale */
+            stale: boolean;
+            /** Eaqi Class */
+            eaqi_class: number;
+            /** Eaqi Label */
+            eaqi_label: string;
+        };
+        /** Profile */
+        Profile: {
+            /** Flood */
+            flood: number | null;
+            /** Heat */
+            heat: number | null;
+            /** Fire */
+            fire: number | null;
+            /** Air */
+            air: number | null;
+        };
+        /** QualityRow */
+        QualityRow: {
+            /** Source Id */
+            source_id: string;
+            /** Check Id */
+            check_id: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "pass" | "fail";
+            /** Value */
+            value: number | null;
+            /** Details */
+            details: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Checked At
+             * Format: date-time
+             */
+            checked_at: string;
+        };
+        /** QuickAnswer */
+        QuickAnswer: {
+            /** Text */
+            text: string;
+            /** Citations */
+            citations: components["schemas"]["Citation"][];
+            /** As Of */
+            as_of: string | null;
+        };
+        /** RankingItem */
+        RankingItem: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Kind */
+            kind: string | null;
+            /** Zupanija Name */
+            zupanija_name: string;
+            /** Pop */
+            pop: number | null;
+            /** Ikr */
+            ikr: number | null;
+            /** Ikr Class */
+            ikr_class: number | null;
+            /** Rank Hr */
+            rank_hr: number | null;
+            /** Rank Zup */
+            rank_zup: number | null;
+            /** Value */
+            value: number | null;
         };
         /** Ready */
         Ready: {
@@ -134,6 +961,18 @@ export interface components {
             database: boolean;
             /** Last Etl At */
             last_etl_at: string | null;
+        };
+        /** SeriesPoint */
+        SeriesPoint: {
+            /**
+             * Ts
+             * Format: date-time
+             */
+            ts: string;
+            /** Value */
+            value: number;
+            /** Unit */
+            unit: string | null;
         };
         /** SourceInfo */
         SourceInfo: {
@@ -156,10 +995,36 @@ export interface components {
              * Format: date
              */
             verified_on: string;
+            /** Used For */
+            used_for: string[];
+            /** Schedule */
+            schedule: string | null;
+            /** Stale After */
+            stale_after: string | null;
             /** Last Success At */
             last_success_at: string | null;
             /** Last Status */
             last_status: string | null;
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "ok" | "stale" | "failed" | "static" | "browser" | "unused";
+            /** Portal Title */
+            portal_title: string | null;
+            /** Portal License */
+            portal_license: string | null;
+            /** Portal Modified */
+            portal_modified: string | null;
+        };
+        /** StationRef */
+        StationRef: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Distance Km */
+            distance_km: number;
         };
         /** ValidationError */
         ValidationError: {
@@ -173,6 +1038,45 @@ export interface components {
             input?: unknown;
             /** Context */
             ctx?: Record<string, never>;
+        };
+        /** Warning */
+        Warning: {
+            /** Id */
+            id: string;
+            /** Event */
+            event: string | null;
+            /** Awareness Type */
+            awareness_type: string | null;
+            /** Level */
+            level: number | null;
+            /** Level Name */
+            level_name: string | null;
+            /** Severity */
+            severity: string | null;
+            /** Onset */
+            onset: string | null;
+            /** Expires */
+            expires: string | null;
+            /** Area Desc */
+            area_desc: string | null;
+            /** Zupanija Code */
+            zupanija_code: string | null;
+            /** Description */
+            description: string | null;
+            /** Instruction */
+            instruction: string | null;
+            /**
+             * Fetched At
+             * Format: date-time
+             */
+            fetched_at: string;
+        };
+        /** WarningsResponse */
+        WarningsResponse: {
+            /** Warnings */
+            warnings: components["schemas"]["Warning"][];
+            /** Checked At */
+            checked_at: string | null;
         };
     };
     responses: never;
@@ -251,6 +1155,535 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    card_api_v1_card_get: {
+        parameters: {
+            query: {
+                lat: number;
+                lon: number;
+                label?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CardResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    jls_list_api_v1_jls_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JlsListItem"][];
+                };
+            };
+        };
+    };
+    jls_one_api_v1_jls__code__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JlsDetail"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    jls_settlements_api_v1_jls__code__naselja_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JlsNaselje"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    jls_grid_api_v1_jls__code__cells_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JlsCell"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    rankings_api_v1_rankings_get: {
+        parameters: {
+            query?: {
+                metric?: "ikr" | "exposed" | "exposed_share";
+                hazard?: ("flood" | "heat" | "fire" | "air") | null;
+                zupanija?: string | null;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RankingItem"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    warnings_active_api_v1_warnings_active_get: {
+        parameters: {
+            query?: {
+                lat?: number | null;
+                lon?: number | null;
+                region?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WarningsResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    air_stations_api_v1_air_stations_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AirStation"][];
+                };
+            };
+        };
+    };
+    air_series_api_v1_air_stations__station_id__series_get: {
+        parameters: {
+            query?: {
+                pollutant?: "pm25" | "pm10" | "no2" | "o3";
+                hours?: number;
+            };
+            header?: never;
+            path: {
+                station_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SeriesPoint"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    air_forecast_api_v1_air_stations__station_id__forecast_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                station_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ForecastPoint"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    nature_api_v1_nature_nearby_get: {
+        parameters: {
+            query: {
+                lat: number;
+                lon: number;
+                radius_m?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NatureArea"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    agent_status_api_v1_agent_status_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgentStatus"];
+                };
+            };
+        };
+    };
+    agent_quick_api_v1_agent_quick_get: {
+        parameters: {
+            query: {
+                question: "older_exposed" | "hottest" | "air_near" | "warnings" | "flood_data";
+                jls?: string | null;
+                lat?: number | null;
+                lon?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuickAnswer"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    agent_chat_api_v1_agent_chat_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChatRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    quality_api_v1_quality_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QualityRow"][];
+                };
+            };
+        };
+    };
+    export_file_api_v1_export__filename__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                filename: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    exports_api_v1_exports_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportFile"][];
+                };
+            };
+        };
+    };
+    catalog_ttl_api_v1_catalog_ttl_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    catalog_jsonld_api_v1_catalog_jsonld_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
         };

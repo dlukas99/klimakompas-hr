@@ -1,18 +1,23 @@
-import { useCallback, useMemo, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useCallback, useMemo } from "react";
+import { Link, useSearchParams } from "react-router";
 import { ErrorBoundary } from "../components/ErrorBoundary";
+import { QueryState } from "../components/QueryState";
 import { SearchBox } from "../components/SearchBox";
-import hr from "../i18n/hr.json";
-import type { GeocodeResult } from "../lib/api/client";
-import { searchResultParams } from "../features/map/mapLink";
+import { CardView } from "../features/card/CardView";
+import { useCard } from "../features/card/useCard";
+import { cardLink, searchResultParams } from "../features/map/mapLink";
 import { MapPanel } from "../features/map/MapPanel";
-import { MapView, type MapSelection } from "../features/map/MapView";
+import { MapView } from "../features/map/MapView";
 import {
   parseMapUrl,
   serializeMapUrl,
-  type LayerId,
+  type Overlay,
+  type RiskLayer,
 } from "../features/map/urlState";
-import { useSources } from "../features/map/useSources";
+import hr from "../i18n/hr.json";
+import { ApiError, fetchStations, type GeocodeResult } from "../lib/api/client";
+import { useSources } from "../lib/api/hooks";
 
 // The basemap style brings its own OpenStreetMap attribution.
 const ATTRIBUTION_SOURCES = [
@@ -21,11 +26,31 @@ const ATTRIBUTION_SOURCES = [
   "estat_census_grid_2021",
 ];
 
+function currentState() {
+  return parseMapUrl(new URLSearchParams(window.location.search));
+}
+
+function cardError(error: unknown): string {
+  return error instanceof ApiError && error.status === 404
+    ? hr.card.outside
+    : hr.card.error;
+}
+
 export function MapPage() {
   const [params, setParams] = useSearchParams();
   const state = useMemo(() => parseMapUrl(params), [params]);
-  const [selection, setSelection] = useState<MapSelection[]>([]);
   const { data: sources } = useSources();
+  const stationsQuery = useQuery({
+    queryKey: ["stations"],
+    queryFn: ({ signal }) => fetchStations(signal),
+    enabled: state.overlays.includes("stations"),
+    staleTime: 5 * 60 * 1000,
+  });
+  const card = useCard(
+    state.pin?.lat ?? null,
+    state.pin?.lon ?? null,
+    state.label,
+  );
 
   const attribution = useMemo(
     () =>
@@ -38,38 +63,57 @@ export function MapPage() {
 
   const onViewChange = useCallback(
     (view: { lat: number; lon: number; zoom: number }) => {
-      // The URL is read directly, so a late moveend cannot undo a layer change not yet rendered.
-      const current = parseMapUrl(new URLSearchParams(window.location.search));
-      setParams(serializeMapUrl({ ...current, view, bbox: null }), {
+      // The URL is read directly, so a late moveend cannot undo a change not yet rendered.
+      setParams(serializeMapUrl({ ...currentState(), view, bbox: null }), {
         replace: true,
       });
     },
     [setParams],
   );
 
-  function toggleLayer(layer: LayerId) {
-    const current = parseMapUrl(new URLSearchParams(window.location.search));
-    const layers = current.layers.includes(layer)
-      ? current.layers.filter((item) => item !== layer)
-      : [...current.layers, layer];
-    setParams(serializeMapUrl({ ...current, layers }), { replace: true });
+  const onPick = useCallback(
+    (point: { lat: number; lon: number }) => {
+      setParams(
+        serializeMapUrl({ ...currentState(), pin: point, label: null }),
+      );
+    },
+    [setParams],
+  );
+
+  function onLayer(layer: RiskLayer) {
+    setParams(serializeMapUrl({ ...currentState(), layer }), { replace: true });
+  }
+
+  function onToggleOverlay(overlay: Overlay) {
+    const current = currentState();
+    const overlays = current.overlays.includes(overlay)
+      ? current.overlays.filter((item) => item !== overlay)
+      : [...current.overlays, overlay];
+    setParams(serializeMapUrl({ ...current, overlays }), { replace: true });
   }
 
   function onSearch(result: GeocodeResult) {
     setParams(searchResultParams(result, params));
   }
 
+  function closeCard() {
+    setParams(serializeMapUrl({ ...currentState(), pin: null, label: null }));
+  }
+
   return (
     <div className="absolute inset-0">
+      <h1 className="sr-only">{hr.map.label}</h1>
       <ErrorBoundary message={hr.map.unavailable}>
         <MapView
-          layers={state.layers}
+          layer={state.layer}
+          overlays={state.overlays}
           view={state.view}
           bbox={state.bbox}
           pin={state.pin}
           attribution={attribution}
+          stations={stationsQuery.data}
           onViewChange={onViewChange}
-          onSelect={setSelection}
+          onPick={onPick}
         />
       </ErrorBoundary>
       <div className="pointer-events-none absolute inset-x-3 top-3 z-20 flex justify-end">
@@ -78,11 +122,37 @@ export function MapPage() {
         </div>
       </div>
       <MapPanel
-        layers={state.layers}
-        onToggle={toggleLayer}
-        selection={selection}
-        onClearSelection={() => setSelection([])}
+        layer={state.layer}
+        overlays={state.overlays}
+        onLayer={onLayer}
+        onToggleOverlay={onToggleOverlay}
       />
+      {state.pin && (
+        <aside
+          aria-label={hr.card.title}
+          className="absolute inset-x-0 bottom-0 z-30 max-h-[65%] overflow-y-auto rounded-t-xl bg-white p-4 shadow-2xl md:inset-x-auto md:top-16 md:right-3 md:bottom-3 md:max-h-none md:w-[26rem] md:rounded-xl"
+          data-testid="card-panel"
+        >
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+            <Link
+              to={cardLink(state.pin.lat, state.pin.lon, state.label)}
+              className="text-sm underline"
+            >
+              {hr.map.fullCard}
+            </Link>
+            <button
+              type="button"
+              onClick={closeCard}
+              className="text-sm underline"
+            >
+              {hr.map.closeCard}
+            </button>
+          </div>
+          <QueryState query={card} loading={hr.card.loading} error={cardError}>
+            {(data) => <CardView card={data} compact />}
+          </QueryState>
+        </aside>
+      )}
     </div>
   );
 }

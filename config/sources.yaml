@@ -502,7 +502,7 @@
     process: "https://cds.climate.copernicus.eu/api/retrieve/v1/processes/sis-ecde-climate-indicators"
   format: netcdf
   license: "CC BY 4.0 (CDS katalog)"
-  attribution: "Generated using Copernicus Climate Change Service information [godina]"
+  attribution: "Generated using Copernicus Climate Change Service information 2026"
   schedule: null
   robots_allowed: true
   used_for: [heat_hazard, fire_hazard]

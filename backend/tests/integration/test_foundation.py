@@ -239,8 +239,76 @@ def test_sources_list_has_attribution_and_status(client: TestClient) -> None:
     sources = {item["id"]: item for item in client.get("/api/v1/sources").json()}
     assert sources["dgu_au"]["attribution"] == "Izvor: Geoportal Državne geodetske uprave"
     assert sources["dgu_au"]["verified_on"] == "2026-11-01"
+    assert sources["hv_flood_wms"]["state"] == "browser"
 
 
 def test_health(client: TestClient) -> None:
     assert client.get("/api/v1/health").json() == {"status": "ok"}
     assert client.get("/api/v1/ready").json()["database"] is True
+
+
+def test_card_outside_croatia_is_a_404_problem(client: TestClient) -> None:
+    response = client.get("/api/v1/card", params={"lat": 42.5, "lon": 13.5})
+    assert response.status_code == 404
+    assert response.headers["content-type"] == "application/problem+json"
+
+
+def test_card_of_an_unpopulated_cell_has_no_index_but_keeps_the_location(
+    client: TestClient, seeded: Connection
+) -> None:
+    build_grid(seeded)
+    centroid = seeded.execute(
+        text(
+            "SELECT ST_Y(ST_Transform(centroid, 4326)) AS lat, "
+            "ST_X(ST_Transform(centroid, 4326)) AS lon FROM ref.grid_1km LIMIT 1"
+        )
+    ).one()
+    body = client.get("/api/v1/card", params={"lat": centroid.lat, "lon": centroid.lon}).json()
+    assert body["ikr"]["value"] is None
+    assert body["ikr"]["populated"] is False
+    assert body["location"]["zupanija"]["code"] == LOCATION["zupanija"]
+    assert body["advice"]["poplave"]["items"]
+    assert "azo_aq_rest" in body["degraded_sources"]
+
+
+def test_unknown_jls_is_a_404(client: TestClient) -> None:
+    assert client.get("/api/v1/jls/99999").status_code == 404
+
+
+def test_jls_list_and_detail(client: TestClient) -> None:
+    items = client.get("/api/v1/jls").json()
+    assert {item["name"] for item in items} == {"Osijek", "Šodolovci"}
+    detail = client.get(f"/api/v1/jls/{LOCATION['west_jls']}").json()
+    assert detail["name"] == "Osijek"
+    assert detail["zupanija"]["code"] == LOCATION["zupanija"]
+    west, south, east, north = detail["bbox"]
+    assert west < east and south < north
+
+
+def test_rankings_need_a_hazard_for_exposure(client: TestClient) -> None:
+    assert client.get("/api/v1/rankings", params={"metric": "exposed"}).status_code == 422
+
+
+def test_warnings_outside_croatia_are_a_404(client: TestClient) -> None:
+    response = client.get("/api/v1/warnings/active", params={"lat": 42.5, "lon": 13.5})
+    assert response.status_code == 404
+
+
+def test_active_warnings_filter_by_county_and_expiry(
+    client: TestClient, seeded: Connection
+) -> None:
+    for identifier, zupanija, hours in (
+        ("now", LOCATION["zupanija"], 2),
+        ("old", LOCATION["zupanija"], -2),
+    ):
+        seeded.execute(
+            text(
+                "INSERT INTO live.warnings (id, source_id, event, level, zupanija_code, expires, "
+                "fetched_at) VALUES (:id, 'dhmz_cap', 'Vjetar', 2, :zupanija, "
+                "now() + make_interval(hours => :hours), now())"
+            ),
+            {"id": identifier, "zupanija": zupanija, "hours": hours},
+        )
+    body = client.get("/api/v1/warnings/active", params={"region": LOCATION["zupanija"]}).json()
+    assert [item["id"] for item in body["warnings"]] == ["now"]
+    assert client.get("/api/v1/warnings/active", params={"region": "01"}).json()["warnings"] == []

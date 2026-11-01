@@ -2,14 +2,17 @@ import * as maplibregl from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { useEffect, useRef, useState } from "react";
 import hr from "../../i18n/hr.json";
+import type { AirStation } from "../../lib/api/client";
 import {
   BASEMAP_STYLE,
-  CLICKABLE_LAYERS,
   CROATIA_BOUNDS,
+  EAQI_COLORS,
   MAP_LAYERS,
   dataSources,
+  riskColor,
+  riskFilter,
 } from "./layers";
-import type { Bbox, LayerId } from "./urlState";
+import type { Bbox, Overlay, RiskLayer } from "./urlState";
 
 // The published worker imports a shared chunk, so Vite has to bundle it into one file.
 maplibregl.setWorkerUrl(workerUrl);
@@ -28,53 +31,91 @@ const FALLBACK_STYLE: maplibregl.StyleSpecification = {
   ],
 };
 
-export interface MapSelection {
-  kind: "jls" | "cell";
-  properties: Record<string, unknown>;
-}
-
 interface Props {
-  layers: LayerId[];
+  layer: RiskLayer;
+  overlays: Overlay[];
   view: { lat: number; lon: number; zoom: number } | null;
   bbox: Bbox | null;
   pin: { lat: number; lon: number } | null;
   attribution: string;
-  onViewChange: (view: { lat: number; lon: number; zoom: number }) => void;
-  onSelect: (selection: MapSelection[]) => void;
+  stations?: AirStation[];
+  interactive?: boolean;
+  onViewChange?: (view: { lat: number; lon: number; zoom: number }) => void;
+  onPick?: (point: { lat: number; lon: number }) => void;
 }
 
-function addDataLayers(map: maplibregl.Map, visible: LayerId[]): void {
+function stationFeatures(stations: AirStation[]): GeoJSON.FeatureCollection {
+  return {
+    type: "FeatureCollection",
+    features: stations
+      .filter(
+        (station) =>
+          station.lat != null && station.lon != null && !station.stale,
+      )
+      .map((station) => ({
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [station.lon as number, station.lat as number],
+        },
+        properties: {
+          name: station.name,
+          color: station.eaqi_class
+            ? EAQI_COLORS[station.eaqi_class - 1]
+            : null,
+        },
+      })),
+  };
+}
+
+function addDataLayers(
+  map: maplibregl.Map,
+  overlays: Overlay[],
+  layer: RiskLayer,
+): void {
   for (const [id, source] of Object.entries(dataSources())) {
     if (!map.getSource(id)) map.addSource(id, source);
   }
-  for (const { group, ...layer } of MAP_LAYERS) {
-    if (!map.getLayer(layer.id)) {
-      map.addLayer({
-        ...layer,
-        layout: {
-          ...layer.layout,
-          visibility: visible.includes(group) ? "visible" : "none",
-        },
-      } as maplibregl.LayerSpecification);
-    }
+  for (const { overlay, ...spec } of MAP_LAYERS) {
+    if (map.getLayer(spec.id)) continue;
+    const visible = !overlay || overlays.includes(overlay);
+    map.addLayer({
+      ...spec,
+      layout: { ...spec.layout, visibility: visible ? "visible" : "none" },
+    } as maplibregl.LayerSpecification);
   }
+  applyRiskLayer(map, layer);
+}
+
+function applyRiskLayer(map: maplibregl.Map, layer: RiskLayer): void {
+  if (!map.getLayer("risk-fill")) return;
+  map.setPaintProperty("risk-fill", "fill-color", riskColor(layer));
+  map.setFilter("risk-fill", riskFilter(layer));
+  map.setLayoutProperty(
+    "risk-jls-fill",
+    "visibility",
+    layer === "ikr" ? "visible" : "none",
+  );
 }
 
 export function MapView({
-  layers,
+  layer,
+  overlays,
   view,
   bbox,
   pin,
   attribution,
+  stations,
+  interactive = true,
   onViewChange,
-  onSelect,
+  onPick,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markerRef = useRef<maplibregl.Marker | null>(null);
   const attributionRef = useRef<maplibregl.AttributionControl | null>(null);
-  const latest = useRef({ layers, onViewChange, onSelect });
-  latest.current = { layers, onViewChange, onSelect };
+  const latest = useRef({ layer, overlays, onViewChange, onPick, stations });
+  latest.current = { layer, overlays, onViewChange, onPick, stations };
   const [notice, setNotice] = useState<string | null>(null);
 
   useEffect(() => {
@@ -82,25 +123,35 @@ export function MapView({
     const map = new maplibregl.Map({
       container: container.current,
       style: BASEMAP_STYLE,
-      bounds: view ? undefined : CROATIA_BOUNDS,
+      bounds: view ? undefined : (bbox ?? CROATIA_BOUNDS),
       center: view ? [view.lon, view.lat] : undefined,
       zoom: view?.zoom,
       fitBoundsOptions: { padding: 24 },
       attributionControl: false,
       dragRotate: false,
+      interactive,
     });
     map.touchZoomRotate.disableRotation();
-    map.addControl(
-      new maplibregl.NavigationControl({ showCompass: false }),
-      "bottom-right",
-    );
+    if (interactive) {
+      map.addControl(
+        new maplibregl.NavigationControl({ showCompass: false }),
+        "bottom-right",
+      );
+    }
     mapRef.current = map;
 
     let usingFallback = false;
-    map.on("style.load", () => addDataLayers(map, latest.current.layers));
+    map.on("style.load", () => {
+      addDataLayers(map, latest.current.overlays, latest.current.layer);
+      const source = map.getSource("stations") as
+        maplibregl.GeoJSONSource | undefined;
+      if (source && latest.current.stations) {
+        source.setData(stationFeatures(latest.current.stations));
+      }
+    });
     map.on("error", (event) => {
       const message = String(event.error?.message ?? "");
-      if (message.includes("/tiles/")) {
+      if (message.includes("/tiles/") && !message.includes("openfreemap")) {
         setNotice(hr.map.tilesError);
       } else if (!map.isStyleLoaded() && !usingFallback) {
         // The demo must not stay empty when the basemap host is unreachable.
@@ -111,32 +162,15 @@ export function MapView({
     });
     map.on("moveend", () => {
       const center = map.getCenter();
-      latest.current.onViewChange({
+      latest.current.onViewChange?.({
         lat: center.lat,
         lon: center.lng,
         zoom: map.getZoom(),
       });
     });
     map.on("click", (event) => {
-      const active = CLICKABLE_LAYERS.filter((id) => map.getLayer(id));
-      const features = map.queryRenderedFeatures(event.point, {
-        layers: active,
-      });
-      latest.current.onSelect(
-        features.map((feature) => ({
-          kind: feature.layer.id === "jls-hit" ? "jls" : "cell",
-          properties: feature.properties,
-        })),
-      );
+      latest.current.onPick?.({ lat: event.lngLat.lat, lon: event.lngLat.lng });
     });
-    for (const id of CLICKABLE_LAYERS) {
-      map.on(
-        "mouseenter",
-        id,
-        () => (map.getCanvas().style.cursor = "pointer"),
-      );
-      map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
-    }
     return () => {
       map.remove();
       mapRef.current = null;
@@ -162,19 +196,26 @@ export function MapView({
     const map = mapRef.current;
     if (!map) return;
     const apply = () => {
-      for (const { id, group } of MAP_LAYERS) {
-        if (map.getLayer(id)) {
+      for (const { id, overlay } of MAP_LAYERS) {
+        if (overlay && map.getLayer(id)) {
           map.setLayoutProperty(
             id,
             "visibility",
-            layers.includes(group) ? "visible" : "none",
+            overlays.includes(overlay) ? "visible" : "none",
           );
         }
       }
+      applyRiskLayer(map, layer);
     };
-    if (map.isStyleLoaded()) apply();
-    else map.once("idle", apply);
-  }, [layers]);
+    if (map.getLayer("risk-fill")) apply();
+    else map.once("style.load", apply);
+  }, [layer, overlays]);
+
+  useEffect(() => {
+    const source = mapRef.current?.getSource("stations") as
+      maplibregl.GeoJSONSource | undefined;
+    if (source && stations) source.setData(stationFeatures(stations));
+  }, [stations]);
 
   useEffect(() => {
     if (bbox) {
@@ -192,16 +233,11 @@ export function MapView({
     markerRef.current?.remove();
     markerRef.current = null;
     if (pin) {
-      const marker = new maplibregl.Marker({ color: "#b91c1c" })
+      const marker = new maplibregl.Marker({ color: "#0f172a" })
         .setLngLat([pin.lon, pin.lat])
         .addTo(map);
       marker.getElement().setAttribute("aria-label", hr.map.selected);
       markerRef.current = marker;
-      map.flyTo({
-        center: [pin.lon, pin.lat],
-        zoom: Math.max(map.getZoom(), 15),
-        duration: 600,
-      });
     }
   }, [pin]);
 
@@ -218,7 +254,7 @@ export function MapView({
       {notice && (
         <p
           role="status"
-          className="absolute top-3 left-1/2 z-10 w-[min(90%,28rem)] -translate-x-1/2 rounded bg-amber-100 px-3 py-2 text-sm text-amber-950 shadow"
+          className="absolute bottom-20 left-1/2 z-10 w-[min(90%,28rem)] -translate-x-1/2 rounded bg-amber-100 px-3 py-2 text-sm text-amber-950 shadow"
         >
           {notice}
         </p>

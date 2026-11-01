@@ -1,8 +1,18 @@
 import { NavLink, Outlet } from "react-router";
 import hr from "../i18n/hr.json";
 
+const FOCUS = "focus-visible:outline-2 focus-visible:outline-slate-900";
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `rounded px-2 py-1 focus-visible:outline-2 focus-visible:outline-slate-900 ${isActive ? "font-semibold underline" : ""}`;
+  `rounded px-2 py-1 ${FOCUS} ${isActive ? "font-semibold underline" : ""}`;
+
+const LINKS = [
+  { to: "/", label: hr.app.nav.home, end: true },
+  { to: "/karta", label: hr.app.nav.map },
+  { to: "/opcine", label: hr.app.nav.jls },
+  { to: "/asistent", label: hr.app.nav.assistant },
+  { to: "/podaci", label: hr.app.nav.data },
+  { to: "/o-projektu", label: hr.app.nav.about },
+];
 
 export function Layout() {
   return (
@@ -13,23 +23,27 @@ export function Layout() {
       >
         {hr.app.skipToContent}
       </a>
-      <header className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 px-4 py-2">
-        <NavLink
-          to="/"
-          className="font-bold focus-visible:outline-2 focus-visible:outline-slate-900"
-        >
+      <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-slate-200 px-4 py-2 print:hidden">
+        <NavLink to="/" className={`font-bold ${FOCUS}`}>
           {hr.app.name}
         </NavLink>
-        <nav aria-label={hr.app.navLabel} className="flex gap-1 text-sm">
-          <NavLink to="/" end className={linkClass}>
-            {hr.app.navHome}
-          </NavLink>
-          <NavLink to="/karta" className={linkClass}>
-            {hr.app.navMap}
-          </NavLink>
+        <nav
+          aria-label={hr.app.navLabel}
+          className="flex flex-wrap gap-x-1 text-sm"
+        >
+          {LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={linkClass}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
       </header>
-      <main id="sadrzaj" className="relative min-h-0 flex-1">
+      <main id="sadrzaj" className="relative min-h-0 flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>

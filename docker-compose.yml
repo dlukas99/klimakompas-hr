@@ -45,5 +45,15 @@ services:
       db:
         condition: service_healthy
 
+  ollama:
+    image: ollama/ollama:0.40.13
+    profiles: [llm]
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    gpus: all
+
 volumes:
   db-data:
+  ollama-data:

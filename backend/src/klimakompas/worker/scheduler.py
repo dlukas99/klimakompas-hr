@@ -15,6 +15,8 @@ log = structlog.get_logger()
 
 TIME_ZONE = "Europe/Zagreb"
 MISFIRE_GRACE_S = 600
+# After the hourly AZO refresh at :20, which itself takes a few minutes.
+FORECAST_CRON = "45 * * * *"
 
 
 def _job(connector: Connector, source: Source) -> Callable[[], None]:
@@ -31,6 +33,17 @@ def _job(connector: Connector, source: Source) -> Callable[[], None]:
     return run
 
 
+def _forecast() -> None:
+    try:
+        # Imported here: a missing native LightGBM library must not stop the other live sources.
+        from klimakompas.ml.nowcast import predict
+
+        with HttpClient(get_settings().kk_user_agent) as client:
+            log.info("forecast written", rows=predict(get_engine(), client))
+    except Exception as error:
+        log.warning("forecast failed", error=type(error).__name__)
+
+
 def run_worker(connectors: dict[str, Connector]) -> None:
     scheduler = BlockingScheduler(timezone=TIME_ZONE)
     for source in load_sources():
@@ -44,4 +57,12 @@ def run_worker(connectors: dict[str, Connector]) -> None:
                 misfire_grace_time=MISFIRE_GRACE_S,
             )
             log.info("scheduled", source=source.id, cron=source.schedule)
+    scheduler.add_job(
+        _forecast,
+        CronTrigger.from_crontab(FORECAST_CRON, timezone=TIME_ZONE),
+        id="pm25_forecast",
+        max_instances=1,
+        coalesce=True,
+        misfire_grace_time=MISFIRE_GRACE_S,
+    )
     scheduler.start()

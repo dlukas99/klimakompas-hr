@@ -12,7 +12,7 @@ from pyproj import Transformer
 from rasterio.windows import Window
 from sqlalchemy import Connection, text
 
-from klimakompas.core.config import ROOT, load_index_config, load_thresholds
+from klimakompas.core.config import ROOT, load_index_config, load_sources, load_thresholds
 from klimakompas.live.parsers import eaqi_class
 from klimakompas.pipeline.hazards import air_card_level, flood_card_level
 from klimakompas.pipeline.static_layers import flood_paths
@@ -467,7 +467,7 @@ def build_card(
         },
         "ikr": {
             "value": _round(row.ikr, 3),
-            "class": row.ikr_class,
+            "level": row.ikr_class,
             "label": _level_label(row.ikr_class),
             "percentile": _percentile(conn, row.ikr),
             "index_version": row.index_version,
@@ -510,10 +510,13 @@ SELECT j.code, j.name, j.kind, z.code AS zupanija_code, z.name AS zupanija_name,
         WHERE j2.zupanija_code = j.zupanija_code) AS total_zup,
        ST_Y(ST_Transform(ST_PointOnSurface(j.geom), 4326)) AS lat,
        ST_X(ST_Transform(ST_PointOnSurface(j.geom), 4326)) AS lon,
-       ST_AsGeoJSON(ST_Envelope(ST_Transform(j.geom, 4326))) AS envelope
+       ST_XMin(b.box) AS west, ST_YMin(b.box) AS south, ST_XMax(b.box) AS east,
+       ST_YMax(b.box) AS north,
+       (SELECT index_version FROM idx.runs ORDER BY run_id DESC LIMIT 1) AS index_version
 FROM ref.jls j
 JOIN ref.zupanije z ON z.code = j.zupanija_code
 LEFT JOIN idx.current_risk_jls r ON r.jls_code = j.code
+CROSS JOIN LATERAL (SELECT ST_Envelope(ST_Transform(j.geom, 4326)) AS box) b
 """
 
 
@@ -598,7 +601,8 @@ def jls_detail(conn: Connection, code: str) -> dict[str, Any] | None:
         "exposed": row.exposed or {},
         "lat": row.lat,
         "lon": row.lon,
-        "envelope": row.envelope,
+        "bbox": (row.west, row.south, row.east, row.north),
+        "index_version": row.index_version,
         "profile": {
             "jls": _hazard_profile(conn, "c.jls_code = :code", {"code": code}),
             "zupanija": _hazard_profile(
@@ -696,3 +700,68 @@ def station_series(
         {"id": station_id, "pollutant": POLLUTANTS[pollutant], "hours": hours},
     ).mappings()
     return [dict(row) for row in rows]
+
+
+def _source_state(source: Any, row: Any, now: datetime) -> str:
+    """Green, yellow or red for /podaci. Browser-only sources are never called by the server."""
+    if source.access.get("type") in {"wms_browser_only", "browser_style"}:
+        return "browser"
+    if row is None or row.last_status is None:
+        return "unused"
+    if row.last_status != "success":
+        return "failed"
+    if not source.stale_after:
+        return "static"
+    if row.last_success_at and now - row.last_success_at > _iso_duration(source.stale_after):
+        return "stale"
+    return "ok"
+
+
+def _iso_duration(value: str) -> timedelta:
+    """The only forms used in sources.yaml: PT6H and P3D."""
+    number = int(value.strip("PTHD"))
+    return timedelta(hours=number) if value.endswith("H") else timedelta(days=number)
+
+
+def list_sources(conn: Connection) -> list[dict[str, Any]]:
+    status = {
+        row.source_id: row
+        for row in conn.execute(
+            text("SELECT source_id, last_success_at, last_status FROM meta.sources")
+        )
+    }
+    portal = {
+        row.source_id: row
+        for row in conn.execute(
+            text(
+                "SELECT source_id, title, license_title, metadata_modified FROM meta.ckan_metadata"
+            )
+        )
+    }
+    now = datetime.now(UTC)
+    result = []
+    for source in load_sources():
+        row = status.get(source.id)
+        record = portal.get(source.id)
+        result.append(
+            {
+                "id": source.id,
+                "name": source.name,
+                "publisher": source.publisher,
+                "license": source.license,
+                "attribution": source.attribution,
+                "landing_url": source.landing_url,
+                "priority": source.priority,
+                "verified_on": source.verification.date,
+                "used_for": source.used_for,
+                "schedule": source.schedule,
+                "stale_after": source.stale_after,
+                "last_success_at": row.last_success_at if row else None,
+                "last_status": row.last_status if row else None,
+                "state": _source_state(source, row, now),
+                "portal_title": record.title if record else None,
+                "portal_license": record.license_title if record else None,
+                "portal_modified": record.metadata_modified if record else None,
+            }
+        )
+    return result

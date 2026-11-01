@@ -1,5 +1,6 @@
 """The `kk` command line."""
 
+from datetime import UTC, datetime
 from typing import Annotated
 
 import structlog
@@ -18,7 +19,10 @@ from klimakompas.live.connectors import (
     HeatwaveConnector,
 )
 from klimakompas.pipeline.compute_index import compute_index
+from klimakompas.pipeline.sensitivity import run_sensitivity
 from klimakompas.pipeline.tiles import refresh_tiles
+from klimakompas.quality.exports import write_catalog, write_exports
+from klimakompas.quality.report import run_quality
 from klimakompas.sources.base import Connector, RunContext, run_connector
 from klimakompas.sources.dgu_ad import DguAdConnector
 from klimakompas.sources.dgu_au import DguAuConnector
@@ -44,6 +48,12 @@ tiles_app = typer.Typer(no_args_is_help=True)
 app.add_typer(tiles_app, name="tiles")
 index_app = typer.Typer(no_args_is_help=True)
 app.add_typer(index_app, name="index")
+ml_app = typer.Typer(no_args_is_help=True)
+app.add_typer(ml_app, name="ml")
+quality_app = typer.Typer(no_args_is_help=True)
+app.add_typer(quality_app, name="quality")
+export_app = typer.Typer(no_args_is_help=True)
+app.add_typer(export_app, name="export")
 
 # Order matters: DZS matches against the register, the census grid needs the grid and DZS totals.
 CONNECTORS: dict[str, Connector] = {
@@ -171,3 +181,75 @@ def index_compute() -> None:
     with get_engine().begin() as conn:
         compute_index(conn)
         refresh_tiles(conn)
+
+
+@ml_app.command("backfill")
+def ml_backfill() -> None:
+    """Fetch two years of hourly PM2.5 for stations that currently report it."""
+    from klimakompas.ml.nowcast import backfill_station, stations_with_pm25
+
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    log = structlog.get_logger()
+    engine = get_engine()
+    today = datetime.now(UTC).date()
+    with engine.connect() as conn:
+        stations = stations_with_pm25(conn)
+    with HttpClient(settings.kk_user_agent) as client:
+        for station in stations:
+            rows = backfill_station(client, engine, station.station_id, today)
+            log.info("backfilled", station=station.name, rows=rows)
+
+
+@ml_app.command("train")
+def ml_train() -> None:
+    """Train the nowcast, validate it on rolling windows and write docs/ml-rezultati.json."""
+    from klimakompas.ml.nowcast import train
+
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    with HttpClient(settings.kk_user_agent) as client:
+        metrics = train(get_engine(), client)
+    structlog.get_logger().info("trained", overall=metrics["overall"])
+
+
+@ml_app.command("predict")
+def ml_predict() -> None:
+    """Write the next forecast for stations with fresh values."""
+    from klimakompas.ml.nowcast import predict
+
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    with HttpClient(settings.kk_user_agent) as client:
+        rows = predict(get_engine(), client)
+    structlog.get_logger().info("forecast written", rows=rows)
+
+
+@index_app.command("sensitivity")
+def index_sensitivity() -> None:
+    """Rank stability under random hazard weights; writes docs/osjetljivost-rezultati.json."""
+    configure_logging(get_settings().log_level)
+    with get_engine().connect() as conn:
+        result = run_sensitivity(conn)
+    structlog.get_logger().info("sensitivity", median=result["median_spearman"])
+
+
+@quality_app.command("report")
+def quality_report() -> None:
+    """Run the data quality checks and store them in meta.dq_checks."""
+    configure_logging(get_settings().log_level)
+    with get_engine().begin() as conn:
+        checks = run_quality(conn)
+    structlog.get_logger().info(
+        "quality", total=len(checks), failed=[c.check_id for c in checks if not c.passed]
+    )
+
+
+@export_app.command("all")
+def export_all() -> None:
+    """Write the derived datasets and the DCAT-AP catalogue to data/export."""
+    settings = get_settings()
+    configure_logging(settings.log_level)
+    counts = write_exports(get_engine())
+    write_catalog(settings.public_base_url)
+    structlog.get_logger().info("exported", **counts)

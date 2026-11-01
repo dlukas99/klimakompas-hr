@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { searchResultParams } from "../../src/features/map/mapLink";
+import { cardLink, searchResultParams } from "../../src/features/map/mapLink";
 import { parseMapUrl, serializeMapUrl } from "../../src/features/map/urlState";
 import type { GeocodeResult } from "../../src/lib/api/client";
 
@@ -15,20 +15,25 @@ const AREA: GeocodeResult = {
 };
 
 describe("map URL state", () => {
-  it("shows all layers by default", () => {
-    expect(parseMapUrl(new URLSearchParams()).layers).toEqual([
-      "jls",
-      "stanovnistvo",
-    ]);
+  it("shows the index and JLS boundaries by default", () => {
+    const state = parseMapUrl(new URLSearchParams());
+    expect(state.layer).toBe("ikr");
+    expect(state.overlays).toEqual(["jls"]);
   });
 
-  it("reads a chosen layer list and ignores unknown names", () => {
-    const state = parseMapUrl(new URLSearchParams("slojevi=jls,nepoznato"));
-    expect(state.layers).toEqual(["jls"]);
+  it("reads a layer and ignores unknown names", () => {
+    expect(parseMapUrl(new URLSearchParams("sloj=flood")).layer).toBe("flood");
+    expect(parseMapUrl(new URLSearchParams("sloj=nepoznato")).layer).toBe(
+      "ikr",
+    );
+    const state = parseMapUrl(new URLSearchParams("slojevi=hv,nepoznato"));
+    expect(state.overlays).toEqual(["hv"]);
   });
 
-  it("keeps an empty layer list empty", () => {
-    expect(parseMapUrl(new URLSearchParams("slojevi=")).layers).toEqual([]);
+  it("keeps an empty overlay list empty", () => {
+    const state = parseMapUrl(new URLSearchParams("slojevi="));
+    expect(state.overlays).toEqual([]);
+    expect(serializeMapUrl(state).get("slojevi")).toBe("");
   });
 
   it("round-trips the view", () => {
@@ -40,26 +45,29 @@ describe("map URL state", () => {
   });
 
   it("ignores malformed coordinates", () => {
-    expect(
-      parseMapUrl(new URLSearchParams("pogled=a,b,c&okvir=1,2")).view,
-    ).toBeNull();
+    expect(parseMapUrl(new URLSearchParams("pogled=a,b,c")).view).toBeNull();
     expect(parseMapUrl(new URLSearchParams("okvir=1,2")).bbox).toBeNull();
   });
 });
 
-describe("search result link", () => {
-  it("fits an area to its bounding box without a pin", () => {
+describe("links", () => {
+  it("fits an area and opens its card", () => {
     const state = parseMapUrl(searchResultParams(AREA, new URLSearchParams()));
     expect(state.bbox).toEqual([18.5, 45.4, 18.9, 45.6]);
-    expect(state.pin).toBeNull();
+    expect(state.pin).toEqual({ lat: 45.5, lon: 18.7 });
+    expect(state.label).toBe("Osijek");
   });
 
-  it("pins an address and keeps the chosen layers", () => {
-    const address = { ...AREA, kind: "address" as const, bbox: null };
+  it("keeps the chosen layer when searching", () => {
     const state = parseMapUrl(
-      searchResultParams(address, new URLSearchParams("slojevi=jls")),
+      searchResultParams(AREA, new URLSearchParams("sloj=heat")),
     );
-    expect(state.pin).toEqual({ lat: 45.5, lon: 18.7 });
-    expect(state.layers).toEqual(["jls"]);
+    expect(state.layer).toBe("heat");
+  });
+
+  it("builds a card link", () => {
+    expect(cardLink(45.5, 18.7, "Osijek")).toBe(
+      "/iskaznica?lat=45.5&lon=18.7&naziv=Osijek",
+    );
   });
 });

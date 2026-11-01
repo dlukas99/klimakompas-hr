@@ -22,6 +22,10 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     database_url: SecretStr = SecretStr("postgresql+psycopg://kk@localhost:5432/klimakompas")
     cors_origins: str = "http://localhost:5173"
+    public_base_url: str = "http://localhost:8080"
+    llm_base_url: str = ""
+    llm_model: str = ""
+    llm_api_key: SecretStr = SecretStr("")
 
 
 class CountSpec(BaseModel):
