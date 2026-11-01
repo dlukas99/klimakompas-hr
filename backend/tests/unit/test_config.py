@@ -35,10 +35,15 @@ def test_registry_covers_the_catalog_once() -> None:
 
 def test_sources_without_automated_access_have_no_probes() -> None:
     sources = {source.id: source for source in load_sources()}
-    for source_id in ("hv_flood_wms", "open_meteo"):
-        assert sources[source_id].verify.policy == "robots_only"
-        assert sources[source_id].verify.probes == []
-        assert sources[source_id].robots_allowed is False
+    assert sources["hv_flood_wms"].verify.policy == "robots_only"
+    assert sources["hv_flood_wms"].verify.probes == []
+    assert sources["hv_flood_wms"].robots_allowed is False
+
+
+def test_open_meteo_runs_under_its_api_terms() -> None:
+    source = {source.id: source for source in load_sources()}["open_meteo"]
+    assert source.verify.policy == "api_terms"
+    assert source.access["limits"]["calls_per_hour"] == 5000
 
 
 def test_index_weights_sum_to_one() -> None:

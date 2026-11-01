@@ -119,6 +119,21 @@ def test_robots_only_policy_never_requests_the_service(tmp_path: Path) -> None:
     assert set(requested) == {"/robots.txt"}
 
 
+def test_api_terms_policy_reports_robots_but_runs_probes(tmp_path: Path) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nDisallow: /")
+        return httpx.Response(200, json={"a": 1})
+
+    source = make_source(
+        verify={"policy": "api_terms", "probes": [{"url": "https://a.test/v1/data"}]}
+    )
+    with HttpClient(UA, transport=httpx.MockTransport(handler)) as client:
+        result = verify_sources([source], client, tmp_path, today=date(2026, 11, 1))[0]
+    assert result.probes[0].ok
+    assert "dohvat nije dopušten" in result.robots["a.test"]
+
+
 def test_stores_raw_response_with_metadata(tmp_path: Path) -> None:
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.path == "/robots.txt":

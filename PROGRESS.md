@@ -23,18 +23,19 @@ Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 0 → 1 · Rok: pon 9. 11. 20
 | 2 | Dodati Fabija kao suradnika na GitHubu | §21; suradnik je trenutno samo `dlukas99` | pon 2. 11. | otvoreno |
 | 3 | Mentor: tko šalje predaju, pitanja organizatoru (`docs/dopisi/organizator-pitanja.md`), postoji li FERIT poslužitelj ili GPU | §21 | pon 2. 11. | otvoreno |
 | 4 | Poslati dopis Hrvatskim vodama (`docs/dopisi/hrvatske-vode.md`) | vektori i potvrda za WMS (P1) | pon 2. 11. | otvoreno |
-| 5 | Poslati upit o licenci JRC-u (`docs/dopisi/jrc-licenca.md`) | karte poplava imaju proturječnu licencu, CC BY 4.0 ili ODbL | pon 2. 11. | otvoreno |
+| 5 | Poslati upit o licenci JRC-u (`docs/dopisi/jrc-licenca.md`) | odgovor određuje licencu izvedenog sloja poplava; bez odgovora ostaje ODbL (ADR 0003) | pon 2. 11. | otvoreno |
 | 6 | Odluka: hosting i domena | potrebno za P0.7 | uto 3. 11. | otvoreno |
-| 7 | Odluka: Open-Meteo unatoč `Disallow: /` u robots.txt? | P1 i rezerva za ECDE i AZO; predlažem da se ne koristi bez potvrde Open-Meteo-a | uto 3. 11. | otvoreno |
 
 ## Odluke (ADR)
 - [0001](docs/odluke/0001-korekcije-izvora-nakon-verifikacije.md) Korekcije izvora nakon verifikacije.
+- [0002](docs/odluke/0002-open-meteo-prema-uvjetima-api-ja.md) Open-Meteo prema uvjetima API-ja.
+- [0003](docs/odluke/0003-licenca-izvedenog-sloja-poplava.md) Licenca izvedenog sloja poplava.
+- [0004](docs/odluke/0004-zamjena-za-nedostajuci-pm25.md) Zamjena kad lokalna postaja nema PM2,5.
 
 ## Problemi / bilješke
 - F0 gotova: `make up` diže PostGIS i Martin, `make check` prolazi, verifikacija je u `docs/izvori-provjera.md`.
-- AZO vraća HTTP 429 kod brzih poziva, pa worker u F4 mora razmaknuti zahtjeve. Osijek u provjerenom razdoblju nema trenutni PM2,5.
+- AZO vraća HTTP 429 kod brzih poziva, pa worker u F4 mora razmaknuti zahtjeve. Osijek u provjerenom razdoblju nema trenutni PM2,5, pa F4 provodi ADR 0004.
 - Toplinski val izvan sezone nema strukture aktivnog upozorenja, pa parser aktivnog stanja ostaje `TODO(verify)`.
-- Open-Meteo je trenutno blokiran robots.txt-om. Dok se to ne riješi, rezerve za ECDE i nowcast nisu dostupne.
 - Licence s oznakom `TODO(verify)` u `config/sources.yaml` treba potvrditi prije objave izvedenih skupova.
 
 ## Izrezano (lista rezanja)

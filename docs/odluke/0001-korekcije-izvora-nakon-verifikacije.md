@@ -24,5 +24,5 @@ Dokazi su u `docs/izvori-provjera.md` i u fiksturama `backend/tests/fixtures/`.
 
 Nazivi polja i šifri u GML-u i Census mreži potvrđuju se na podacima u Fazi 1.
 
-Licenca `jrc_efas_flood` i korištenje `open_meteo` ostaju otvoreni i vode se u `PROGRESS.md`, jer
-te odluke nisu tehničke.
+Licenca `jrc_efas_flood` i korištenje `open_meteo` nisu tehnička pitanja. Riješeni su u ADR-ovima
+[0003](0003-licenca-izvedenog-sloja-poplava.md) i [0002](0002-open-meteo-prema-uvjetima-api-ja.md).

@@ -2,7 +2,7 @@
 
 Datoteku generira `make sources-verify`. Bilješke dolaze iz `config/sources.yaml`.
 
-Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
+Zadnja provjera: 01. 11. 2026. u 18:05 UTC.
 
 | Izvor | Prioritet | Stanje | Licenca |
 |---|---|---|---|
@@ -10,7 +10,7 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 | `dgu_ad` | P0 | ✅ radi | Otvorena dozvola (zapis na Portalu) |
 | `dzs_naselja_2021` | P0 | ✅ radi | Otvorena dozvola prema SPEC-u; TODO(verify) točan zapis na Portalu |
 | `estat_census_grid_2021` | P0 | ✅ radi | TODO(verify) - ponovna uporaba uz navođenje izvora (Eurostat) |
-| `jrc_efas_flood` | P0 | ✅ radi | TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0 |
+| `jrc_efas_flood` | P0 | ✅ radi | TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0; dok JRC ne odgovori, izvedeni sloj nosi ODbL 1.0 (ADR 0003) |
 | `hv_flood_wms` | P1 | ➖ bez automatskog dohvata | TODO(verify) - NIPP: izrađeno za Plan upravljanja rizicima od poplava, korištenje na vlastitu odgovornost |
 | `eea_pm25_1km` | P0 | ✅ radi | TODO(verify) - EEA ponovna uporaba uz navođenje |
 | `azo_aq_rest` | P0 | ✅ radi | TODO(verify) |
@@ -24,7 +24,7 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 | `landsat_lst` | P0/P1 | ✅ radi | Javna domena (USGS) prema SPEC-u; STAC navodi „proprietary”: TODO(verify) |
 | `esa_worldcover` | P0 | ✅ radi | CC BY 4.0 |
 | `burnt_areas` | P1 | ✅ radi | TODO(verify) - STAC navodi „other” |
-| `open_meteo` | P1 | ➖ bez automatskog dohvata | CC BY 4.0, uz navođenje; besplatno za nekomercijalnu uporabu |
+| `open_meteo` | P1 | ✅ radi | CC BY 4.0, uz navođenje; besplatno za nekomercijalnu uporabu |
 | `ckan` | P0 | ✅ radi | TODO(verify) |
 | `dgu_dof` | P2 | ✅ radi | TODO(verify) |
 | `basemap` | P0 | ✅ radi | ODbL, samo za prikaz; OSM ne ulazi u izvedene skupove |
@@ -69,7 +69,7 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 - Izdavač: Eurostat GISCO (iz podataka DZS-a)
 - robots.txt `ec.europa.eu`: pravila pročitana
 - robots.txt `gisco-services.ec.europa.eu`: pravila pročitana
-- ✅ `GET https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids`: HTTP 200 · text/html;charset=UTF-8 · 201,2 kB
+- ✅ `GET https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids`: HTTP 200 · text/html;charset=UTF-8 · 201,0 kB
   - uzorak: `<!DOCTYPE html>`
 - ✅ `ZIP https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip`: HTTP 206 · application/zip · 566,1 MB · zapisa: 9 · Range: da · Last-Modified: Fri, 19 Jun 2026 11:29:37 GMT
   - uzorak: `Eurostat_Census-GRID_2021_V3/, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_country.csv.zip, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_LAND_SURFACE_V3.tiff, Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_V3.csv`
@@ -86,7 +86,7 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 - ✅ `RANGE https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP10_filled_depth.tif`: HTTP 206 · image/tiff · 272,3 MB · Range: da · Last-Modified: Tue, 03 Mar 2026 15:45:13 GMT
 - ✅ `RANGE https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP100_filled_depth.tif`: HTTP 206 · image/tiff · 323,1 MB · Range: da · Last-Modified: Thu, 05 Mar 2026 09:29:28 GMT
 - ✅ `RANGE https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP500_filled_depth.tif`: HTTP 206 · image/tiff · 349,9 MB · Range: da · Last-Modified: Thu, 05 Mar 2026 10:06:04 GMT
-- Bilješka (01. 11. 2026.): Trenutna verzija je 3.1.1, a rezolucija 3 lučne sekunde (oko 90 m) u WGS84. Datoteke imaju 272–350 MB i podržavaju HTTP Range, pa je prozorsko čitanje izvedivo. Licenca je proturječna i treba je razjasniti prije objave izvedenih skupova (dopis u docs/dopisi/).
+- Bilješka (01. 11. 2026.): Trenutna verzija je 3.1.1, a rezolucija 3 lučne sekunde (oko 90 m) u WGS84. Datoteke imaju 272–350 MB i podržavaju HTTP Range, pa je prozorsko čitanje izvedivo. Licenca je proturječna: koristimo je za izračun, a licencu izvedenog sloja određuje konačni odgovor JRC-a (ADR 0003, dopis u docs/dopisi/).
 
 ## `hv_flood_wms`: Karte opasnosti od poplava 2019. i karte rizika
 
@@ -116,17 +116,17 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 - ✅ `GET https://iszz.azo.hr/iskzl/status.htm`: HTTP 200 · text/html;charset=UTF-8 · 9,2 kB
   - uzorak: `<!DOCTYPE html> <html> <head> <title>Kvaliteta zraka u Republici Hrvatskoj </title> <meta http-equiv="X-UA-Compatibl`
 - Portal, kandidati iz pretrage: `kvaliteta-zraka-u-republici-hrvatskoj-inspire`, `indeks-kvalitete-zraka-u-republici-hrvatskoj-inspire`
-- Bilješka (01. 11. 2026.): tipPodatka=0 vraća satne vrijednosti (do 48 zapisa za 2 dana), a tipPodatka=4 dnevne (2 zapisa za 2 dana). Vrijednosti 1, 2, 3 i 5 na testiranoj postaji vraćaju prazan popis. Stvarni oblik zapisa je ravan: {vrijednost, mjernaJedinica, vrijeme}, a vrijeme je Unix epoha u milisekundama, a ne ugniježđeni objekt s ISO vremenom iz SPEC-a. Servis ograničava učestalost: uz razmak od 0,5 s svaki drugi zahtjev dobiva HTTP 429 bez Retry-After, a uz razmak od 4 s svih 15 zahtjeva je prošlo. Worker zato mora razmaknuti pozive; točnu donju granicu još treba utvrditi. PM2,5 za 29.–31. 10. 2026. vratile su postaje 155, 156, 157, 159, 161, 162, 165, 255 i 275, a prazno su vratile 160 (Osijek-1), 168, 277, 278, 286 i 300 (Osijek – PPI), pa Osijek u tom razdoblju nema trenutni PM2,5. Validiranost podataka još nije utvrđena: TODO(verify).
+- Bilješka (01. 11. 2026.): tipPodatka=0 vraća satne vrijednosti (do 48 zapisa za 2 dana), a tipPodatka=4 dnevne (2 zapisa za 2 dana). Vrijednosti 1, 2, 3 i 5 na testiranoj postaji vraćaju prazan popis. Stvarni oblik zapisa je ravan: {vrijednost, mjernaJedinica, vrijeme}, a vrijeme je Unix epoha u milisekundama, a ne ugniježđeni objekt s ISO vremenom iz SPEC-a. Servis ograničava učestalost: uz razmak od 0,5 s svaki drugi zahtjev dobiva HTTP 429 bez Retry-After, a uz razmak od 4 s svih 15 zahtjeva je prošlo. Worker zato mora razmaknuti pozive; točnu donju granicu još treba utvrditi. PM2,5 za 29.–31. 10. 2026. vratile su postaje 155, 156, 157, 159, 161, 162, 165, 255 i 275, a prazno su vratile 160 (Osijek-1), 168, 277, 278, 286 i 300 (Osijek – PPI), pa Osijek u tom razdoblju nema trenutni PM2,5. Provjera 1. 11.: postaja 160 ima satni PM10 (polutant 5), a postaja 300 nema ni PM10 ni PM2,5; pravilo prikaza je u ADR 0004. Validiranost podataka još nije utvrđena: TODO(verify).
 
 ## `dhmz_cap`: Upozorenja DHMZ-a (CAP 1.2) i poligoni regija
 
 - Izdavač: Državni hidrometeorološki zavod
 - robots.txt `meteo.hr`: nema datoteke (404)
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_today.xml`: HTTP 200 · text/xml · 46,9 kB · zapisa: 40 · Last-Modified: Sun, 01 Nov 2026 16:32:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_today.xml`: HTTP 200 · text/xml · 46,9 kB · zapisa: 40 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_tomorrow.xml`: HTTP 200 · text/xml · 42,6 kB · zapisa: 36 · Last-Modified: Sun, 01 Nov 2026 16:32:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_tomorrow.xml`: HTTP 200 · text/xml · 42,6 kB · zapisa: 36 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
-- ✅ `GET https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml`: HTTP 200 · text/xml · 95,4 kB · zapisa: 48 · Last-Modified: Sun, 01 Nov 2026 16:32:33 GMT
+- ✅ `GET https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml`: HTTP 200 · text/xml · 95,4 kB · zapisa: 48 · Last-Modified: Sun, 01 Nov 2026 17:57:33 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2"> 	<identifier>2.49.0.0.191.0.`
 - ✅ `HEAD https://meteo.hr/upozorenja/CroatiaRegionsCounties.tar.xz`: HTTP 200 · application/octet-stream · 4,7 MB · Last-Modified: Wed, 23 Sep 2026 12:33:36 GMT
 - ✅ `HEAD https://meteo.hr/upozorenja/Croatia_Sea_Regions.tar`: HTTP 200 · application/octet-stream · 1,1 MB · Last-Modified: Thu, 07 Nov 2019 14:28:43 GMT
@@ -154,16 +154,16 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 
 - Izdavač: Državni hidrometeorološki zavod
 - robots.txt `vrijeme.hr`: nema datoteke (404)
-- ✅ `GET https://vrijeme.hr/hrvatska_n.xml`: HTTP 200 · text/xml · 19,0 kB · Last-Modified: Sun, 01 Nov 2026 16:26:01 GMT
-  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <Hrvatska> <DatumTermin> <Datum>01.11.2026</Datum> <Termin>17</Termin> </DatumTer`
-- ✅ `GET https://vrijeme.hr/tx.xml`: HTTP 200 · text/xml · 4,9 kB · Last-Modified: Sun, 01 Nov 2026 07:58:07 GMT
-  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <maksimalnatemperatura>   <datumtermin>     <datum>31.10.2026</datum>     <termin`
+- ✅ `GET https://vrijeme.hr/hrvatska_n.xml`: HTTP 200 · text/xml · 19,0 kB · Last-Modified: Sun, 01 Nov 2026 17:46:02 GMT
+  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <Hrvatska> <DatumTermin> <Datum>01.11.2026</Datum> <Termin>18</Termin> </DatumTer`
+- ✅ `GET https://vrijeme.hr/tx.xml`: HTTP 200 · text/xml · 1,8 kB · Last-Modified: Sun, 01 Nov 2026 18:03:05 GMT
+  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <maksimalnatemperatura>   <datumtermin>     <datum>01.11.2026</datum>     <termin`
 - ✅ `GET https://vrijeme.hr/tn.xml`: HTTP 200 · text/xml · 4,1 kB · Last-Modified: Sun, 01 Nov 2026 07:58:04 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <minimalnatemperatura>   <datumtermin>     <datum>01.11.2026</datum>     <termin>`
 - ✅ `GET https://vrijeme.hr/oborina.xml`: HTTP 200 · text/xml · 2,4 kB · Last-Modified: Sun, 01 Nov 2026 07:58:01 GMT
   - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <dnevna_oborina> 	<datumtermin> 		<datum>01.11.2026.</datum> 		<termin>7</termin>`
-- ✅ `GET https://vrijeme.hr/temp_vode.xml`: HTTP 200 · text/xml · 59,9 kB · Last-Modified: Sun, 01 Nov 2026 16:10:40 GMT
-  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <kitsxml version="1.1" creator="KiIOSys/KiTS-XML-Exporter" date="2026-11-01T16:1`
+- ✅ `GET https://vrijeme.hr/temp_vode.xml`: HTTP 200 · text/xml · 59,8 kB · Last-Modified: Sun, 01 Nov 2026 17:10:40 GMT
+  - uzorak: `<?xml version="1.0" encoding="UTF-8"?> <kitsxml version="1.1" creator="KiIOSys/KiTS-XML-Exporter" date="2026-11-01T17:1`
 
 ## `dhmz_climate`: Srednje mjesečne vrijednosti i mjesečne oborine
 
@@ -225,7 +225,13 @@ Zadnja provjera: 01. 11. 2026. u 16:35 UTC.
 - robots.txt `api.open-meteo.com`: pravila pročitana, dohvat nije dopušten
 - robots.txt `archive-api.open-meteo.com`: pravila pročitana, dohvat nije dopušten
 - robots.txt `air-quality-api.open-meteo.com`: pravila pročitana, dohvat nije dopušten
-- Bilješka (01. 11. 2026.): robots.txt na sva tri API hosta ima „Disallow: /”, iako je API javno dokumentiran s ograničenjima poziva. Sva tri servisa odgovorila su na po jedan probni poziv prije nego što je ovo uočeno. Verifikacija ih više ne poziva dok se ne odluči smije li se koristiti.
+- ✅ `GET https://api.open-meteo.com/v1/forecast?latitude=45.55&longitude=18.69&hourly=temperature_2m&forecast_days=1`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
+  - uzorak: `{"latitude":45.54481,"longitude":18.687576,"generationtime_ms":0.03731250762939453,"utc_offset_seconds":0,"timezone":"GM`
+- ✅ `GET https://archive-api.open-meteo.com/v1/archive?latitude=45.55&longitude=18.69&hourly=temperature_2m&start_date=2025-07-01&end_date=2025-07-01`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
+  - uzorak: `{"latitude":45.58875,"longitude":18.679245,"generationtime_ms":1.106858253479004,"utc_offset_seconds":0,"timezone":"GMT"`
+- ✅ `GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=45.55&longitude=18.69&hourly=pm2_5&forecast_days=1`: HTTP 200 · application/json; charset=utf-8 · 0,8 kB
+  - uzorak: `{"latitude":45.5,"longitude":18.7,"generationtime_ms":0.10323524475097656,"utc_offset_seconds":0,"timezone":"GMT","timez`
+- Bilješka (01. 11. 2026.): robots.txt na API hostovima ima „Disallow: /”, a stranica open-meteo.com „Allow: /”. Odluka korisnika (ADR 0002): API je javno namijenjen programskom pristupu, pa ga koristimo za nekomercijalnu namjenu, unutar limita i uz atribuciju. Provjera šalje po jedan najmanji poziv na svaki host.
 
 ## `ckan`: Portal otvorenih podataka (CKAN Action API i DCAT)
 

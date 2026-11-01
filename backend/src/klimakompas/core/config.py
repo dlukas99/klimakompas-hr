@@ -50,7 +50,9 @@ class VerifyPlan(BaseModel):
     # auto: probes run when robots.txt allows them.
     # robots_only: only robots.txt is fetched; the source must not be requested by the server.
     # manual: needs a human step or a browser, so only robots.txt is fetched.
-    policy: Literal["auto", "robots_only", "manual"] = "auto"
+    # api_terms: documented API used under its own terms, as recorded in an ADR. robots.txt is
+    # reported but does not block probes.
+    policy: Literal["auto", "robots_only", "manual", "api_terms"] = "auto"
     robots_hosts: list[str] = Field(default_factory=list)
     portal_query: str | None = None
     probes: list[Probe] = Field(default_factory=list)

@@ -139,7 +139,7 @@
       - "Europe_RP100_filled_depth.tif"
       - "Europe_RP500_filled_depth.tif"
   format: geotiff
-  license: "TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0"
+  license: "TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0; dok JRC ne odgovori, izvedeni sloj nosi ODbL 1.0 (ADR 0003)"
   citation: >-
     Baugh, C.; Colonese, J.; D'Angelo, C.; Dottori, F.; Neal, J.; Prudhomme, C.; Salamon, P. (2024).
     An updated dataset of global and European flood hazard maps. Manuscript under preparation.
@@ -153,8 +153,9 @@
     date: 2026-11-01
     note: >-
       Trenutna verzija je 3.1.1, a rezolucija 3 lučne sekunde (oko 90 m) u WGS84. Datoteke imaju
-      272–350 MB i podržavaju HTTP Range, pa je prozorsko čitanje izvedivo. Licenca je proturječna
-      i treba je razjasniti prije objave izvedenih skupova (dopis u docs/dopisi/).
+      272–350 MB i podržavaju HTTP Range, pa je prozorsko čitanje izvedivo. Licenca je proturječna:
+      koristimo je za izračun, a licencu izvedenog sloja određuje konačni odgovor JRC-a (ADR 0003,
+      dopis u docs/dopisi/).
   fallback: "vektori Hrvatskih voda (ADR); JRC GloFAS v2.1"
   verify:
     probes:
@@ -260,8 +261,9 @@
       od 4 s svih 15 zahtjeva je prošlo. Worker zato mora razmaknuti pozive; točnu donju granicu još
       treba utvrditi. PM2,5 za 29.–31. 10. 2026. vratile su postaje 155, 156, 157, 159, 161, 162,
       165, 255 i 275, a prazno su vratile 160 (Osijek-1), 168, 277, 278, 286 i 300 (Osijek – PPI),
-      pa Osijek u tom razdoblju nema trenutni PM2,5. Validiranost podataka još nije utvrđena:
-      TODO(verify).
+      pa Osijek u tom razdoblju nema trenutni PM2,5. Provjera 1. 11.: postaja 160 ima satni PM10
+      (polutant 5), a postaja 300 nema ni PM10 ni PM2,5; pravilo prikaza je u ADR 0004. Validiranost
+      podataka još nije utvrđena: TODO(verify).
   fallback: open_meteo
   verify:
     portal_query: "kvaliteta zraka republika hrvatska"
@@ -497,7 +499,7 @@
       fire_weather_index, origin reanalysis i projections, temporal_aggregation te
       spatial_aggregation gridded. Stvarno preuzimanje traži token; točan zahtjev se slaže u Fazi 2
       iz opisa procesa, bez pogađanja.
-  fallback: "Open-Meteo archive (ERA5), ako se riješi pitanje robots.txt"
+  fallback: "Open-Meteo archive (ERA5), ADR 0002"
   verify:
     probes:
       - url: "https://cds.climate.copernicus.eu/api/catalogue/v1/collections/sis-ecde-climate-indicators"
@@ -583,11 +585,20 @@
   name: "Open-Meteo: prognoza, povijesni ERA5 i CAMS kvaliteta zraka"
   publisher: "Open-Meteo"
   landing_url: "https://open-meteo.com"
+  docs_url: "https://open-meteo.com/en/terms"
   access:
     type: rest
     forecast: "https://api.open-meteo.com/v1/forecast"
     archive: "https://archive-api.open-meteo.com/v1/archive"
     air_quality: "https://air-quality-api.open-meteo.com/v1/air-quality"
+    usage: non_commercial
+    limits:   # free API, https://open-meteo.com/en/terms, checked 2026-11-01
+      calls_per_minute: 600
+      calls_per_hour: 5000
+      calls_per_day: 10000
+      calls_per_month: 300000
+    max_locations_per_request: 1000
+    weight_formula: "locations * (days / 14) * (variables / 10)"
   format: json
   license: "CC BY 4.0, uz navođenje; besplatno za nekomercijalnu uporabu"
   attribution: "Weather data by Open-Meteo.com (CC BY 4.0)"
@@ -596,18 +607,22 @@
   used_for: [nowcast_features, cams_fallback, ecde_fallback]
   priority: P1
   verification:
-    status: blocked
+    status: verified
     date: 2026-11-01
     note: >-
-      robots.txt na sva tri API hosta ima „Disallow: /”, iako je API javno dokumentiran s
-      ograničenjima poziva. Sva tri servisa odgovorila su na po jedan probni poziv prije nego što je
-      ovo uočeno. Verifikacija ih više ne poziva dok se ne odluči smije li se koristiti.
+      robots.txt na API hostovima ima „Disallow: /”, a stranica open-meteo.com „Allow: /”. Odluka
+      korisnika (ADR 0002): API je javno namijenjen programskom pristupu, pa ga koristimo za
+      nekomercijalnu namjenu, unutar limita i uz atribuciju. Provjera šalje po jedan najmanji poziv
+      na svaki host.
   verify:
-    policy: robots_only
-    robots_hosts:
-      - api.open-meteo.com
-      - archive-api.open-meteo.com
-      - air-quality-api.open-meteo.com
+    policy: api_terms
+    probes:
+      - url: "https://api.open-meteo.com/v1/forecast?latitude=45.55&longitude=18.69&hourly=temperature_2m&forecast_days=1"
+        fixture: forecast.json
+      - url: "https://archive-api.open-meteo.com/v1/archive?latitude=45.55&longitude=18.69&hourly=temperature_2m&start_date=2025-07-01&end_date=2025-07-01"
+        fixture: archive.json
+      - url: "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=45.55&longitude=18.69&hourly=pm2_5&forecast_days=1"
+        fixture: air_quality.json
 
 - id: ckan
   name: "Portal otvorenih podataka (CKAN Action API i DCAT)"

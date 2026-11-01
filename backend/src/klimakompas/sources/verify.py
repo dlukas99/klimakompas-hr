@@ -43,6 +43,9 @@ class RobotsRules:
         return self._parser is None or self._parser.can_fetch(user_agent, url)
 
 
+PROBING_POLICIES = ("auto", "api_terms")
+
+
 def fetch_robots(client: HttpClient, host: str) -> RobotsRules:
     try:
         response = client.request("GET", f"https://{host}/robots.txt")
@@ -270,13 +273,13 @@ def verify_source(
         allowed = rules.allows(user_agent, f"https://{host}/")
         result.robots[host] = rules.state + ("" if allowed else ", dohvat nije dopušten")
 
-    if plan.policy != "auto":
+    if plan.policy not in PROBING_POLICIES:
         result.portal = _portal_info(client, source)
         return result
 
     for probe, url in zip(plan.probes, urls, strict=True):
         rules = robots_cache[urlsplit(url).netloc]
-        if not rules.allows(user_agent, url):
+        if plan.policy == "auto" and not rules.allows(user_agent, url):
             log.warning("robots.txt disallows probe", source=source.id, url=url)
             result.probes.append(ProbeResult(url=url, method=probe.method, robots_allowed=False))
             continue
@@ -328,7 +331,7 @@ def has_p0_failure(results: list[SourceResult]) -> bool:
 
 
 def _is_autochecked(result: SourceResult) -> bool:
-    return result.source.verify.policy == "auto"
+    return result.source.verify.policy in PROBING_POLICIES
 
 
 def _number(value: int) -> str:
@@ -344,7 +347,7 @@ def _size(value: int | None) -> str:
 
 
 def _status_label(result: SourceResult) -> str:
-    if result.source.verify.policy != "auto":
+    if not _is_autochecked(result):
         return "➖ bez automatskog dohvata"
     if not result.probes:
         return "➖ nema provjere"
