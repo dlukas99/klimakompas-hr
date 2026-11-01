@@ -1,0 +1,2052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<godisnja_oborina>
+  <godina>2025</godina>
+<postaja>
+  <ime_postaje>Bakar</ime_postaje>
+  <sijecanj>203,6</sijecanj>
+  <veljaca>141,0</veljaca>
+  <ozujak>154,8</ozujak>
+  <travanj>163,6</travanj>
+  <svibanj>162,6</svibanj>
+  <lipanj>15,2</lipanj>
+  <srpanj>131,3</srpanj>
+  <kolovoz>104,7</kolovoz>
+  <rujan>271,1</rujan>
+  <listopad>331,0</listopad>
+  <studeni>183,9</studeni>
+  <prosinac>38,5</prosinac>
+  <ukupno>1.901,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bednja</ime_postaje>
+  <sijecanj>48,4</sijecanj>
+  <veljaca>58,3</veljaca>
+  <ozujak>128,0</ozujak>
+  <travanj>61,6</travanj>
+  <svibanj>99,9</svibanj>
+  <lipanj>15,6</lipanj>
+  <srpanj>91,4</srpanj>
+  <kolovoz>49,5</kolovoz>
+  <rujan>78,4</rujan>
+  <listopad>66,3</listopad>
+  <studeni>115,6</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Beli Manastir</ime_postaje>
+  <sijecanj>32,9</sijecanj>
+  <veljaca>37,2</veljaca>
+  <ozujak>74,6</ozujak>
+  <travanj>22,9</travanj>
+  <svibanj>71,9</svibanj>
+  <lipanj>12,2</lipanj>
+  <srpanj>38,1</srpanj>
+  <kolovoz>36,9</kolovoz>
+  <rujan>20,4</rujan>
+  <listopad>51,2</listopad>
+  <studeni>60,1</studeni>
+  <prosinac>15,6</prosinac>
+  <ukupno>474,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Benkovac</ime_postaje>
+  <sijecanj>46,4</sijecanj>
+  <veljaca>167,7</veljaca>
+  <ozujak>57,6</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bilogora</ime_postaje>
+  <sijecanj>51,4</sijecanj>
+  <veljaca>31,5</veljaca>
+  <ozujak>108,7</ozujak>
+  <travanj>68,4</travanj>
+  <svibanj>65,6</svibanj>
+  <lipanj>2,9</lipanj>
+  <srpanj>67,3</srpanj>
+  <kolovoz>37,5</kolovoz>
+  <rujan>29,5</rujan>
+  <listopad>68,4</listopad>
+  <studeni>111,6</studeni>
+  <prosinac>41,8</prosinac>
+  <ukupno>684,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bilje</ime_postaje>
+  <sijecanj>29,6</sijecanj>
+  <veljaca>45,0</veljaca>
+  <ozujak>86,8</ozujak>
+  <travanj>97,7</travanj>
+  <svibanj>97,6</svibanj>
+  <lipanj>11,5</lipanj>
+  <srpanj>31,0</srpanj>
+  <kolovoz>75,5</kolovoz>
+  <rujan>24,1</rujan>
+  <listopad>43,0</listopad>
+  <studeni>66,0</studeni>
+  <prosinac>18,1</prosinac>
+  <ukupno>625,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bjelovar</ime_postaje>
+  <sijecanj>51,5</sijecanj>
+  <veljaca>35,0</veljaca>
+  <ozujak>103,2</ozujak>
+  <travanj>46,8</travanj>
+  <svibanj>58,7</svibanj>
+  <lipanj>3,3</lipanj>
+  <srpanj>92,8</srpanj>
+  <kolovoz>73,3</kolovoz>
+  <rujan>17,4</rujan>
+  <listopad>100,4</listopad>
+  <studeni>109,3</studeni>
+  <prosinac>34,0</prosinac>
+  <ukupno>725,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bol</ime_postaje>
+  <sijecanj>36,7</sijecanj>
+  <veljaca>93,1</veljaca>
+  <ozujak>154,3</ozujak>
+  <travanj>45,9</travanj>
+  <svibanj>24,7</svibanj>
+  <lipanj>11,5</lipanj>
+  <srpanj>18,1</srpanj>
+  <kolovoz>51,9</kolovoz>
+  <rujan>29,5</rujan>
+  <listopad>18,5</listopad>
+  <studeni>188,5</studeni>
+  <prosinac>71,5</prosinac>
+  <ukupno>744,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Bosiljevo</ime_postaje>
+  <sijecanj>74,4</sijecanj>
+  <veljaca>93,6</veljaca>
+  <ozujak>165,0</ozujak>
+  <travanj>70,5</travanj>
+  <svibanj>185,5</svibanj>
+  <lipanj>0,4</lipanj>
+  <srpanj>153,8</srpanj>
+  <kolovoz>90,1</kolovoz>
+  <rujan>65,8</rujan>
+  <listopad>110,4</listopad>
+  <studeni>124,6</studeni>
+  <prosinac>46,9</prosinac>
+  <ukupno>1.181,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Botonega</ime_postaje>
+  <sijecanj>81,2</sijecanj>
+  <veljaca>54,0</veljaca>
+  <ozujak>162,1</ozujak>
+  <travanj>113,2</travanj>
+  <svibanj>86,2</svibanj>
+  <lipanj>20,4</lipanj>
+  <srpanj>87,0</srpanj>
+  <kolovoz>85,3</kolovoz>
+  <rujan>156,8</rujan>
+  <listopad>172,6</listopad>
+  <studeni>98,9</studeni>
+  <prosinac>16,9</prosinac>
+  <ukupno>1.134,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Božava</ime_postaje>
+  <sijecanj>32,1</sijecanj>
+  <veljaca>75,6</veljaca>
+  <ozujak>86,5</ozujak>
+  <travanj>19,2</travanj>
+  <svibanj>69,6</svibanj>
+  <lipanj>7,3</lipanj>
+  <srpanj>35,0</srpanj>
+  <kolovoz>48,8</kolovoz>
+  <rujan>100,5</rujan>
+  <listopad>35,7</listopad>
+  <studeni>81,1</studeni>
+  <prosinac>60,4</prosinac>
+  <ukupno>651,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Brestovac Belje</ime_postaje>
+  <sijecanj>30,4</sijecanj>
+  <veljaca>39,9</veljaca>
+  <ozujak>96,0</ozujak>
+  <travanj>33,6</travanj>
+  <svibanj>82,0</svibanj>
+  <lipanj>17,5</lipanj>
+  <srpanj>23,8</srpanj>
+  <kolovoz>68,6</kolovoz>
+  <rujan>21,9</rujan>
+  <listopad>54,5</listopad>
+  <studeni>60,5</studeni>
+  <prosinac>17,5</prosinac>
+  <ukupno>546,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Brinje</ime_postaje>
+  <sijecanj>87,6</sijecanj>
+  <veljaca>49,3</veljaca>
+  <ozujak>188,6</ozujak>
+  <travanj>50,6</travanj>
+  <svibanj>166,8</svibanj>
+  <lipanj>24,2</lipanj>
+  <srpanj>104,7</srpanj>
+  <kolovoz>86,9</kolovoz>
+  <rujan>93,7</rujan>
+  <listopad>182,2</listopad>
+  <studeni>146,5</studeni>
+  <prosinac>40,3</prosinac>
+  <ukupno>1.221,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Crikvenica</ime_postaje>
+  <sijecanj>85,4</sijecanj>
+  <veljaca>135,0</veljaca>
+  <ozujak>94,2</ozujak>
+  <travanj>99,2</travanj>
+  <svibanj>119,6</svibanj>
+  <lipanj>26,1</lipanj>
+  <srpanj>91,4</srpanj>
+  <kolovoz>158,4</kolovoz>
+  <rujan>107,1</rujan>
+  <listopad>209,4</listopad>
+  <studeni>143,8</studeni>
+  <prosinac>28,1</prosinac>
+  <ukupno>1.297,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Crni Lug - NP Risnjak</ime_postaje>
+  <sijecanj>561,2</sijecanj>
+  <veljaca>172,5</veljaca>
+  <ozujak>462,7</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Čazma</ime_postaje>
+  <sijecanj>51,0</sijecanj>
+  <veljaca>53,1</veljaca>
+  <ozujak>113,0</ozujak>
+  <travanj>49,3</travanj>
+  <svibanj>63,5</svibanj>
+  <lipanj>1,4</lipanj>
+  <srpanj>78,1</srpanj>
+  <kolovoz>66,6</kolovoz>
+  <rujan>26,9</rujan>
+  <listopad>92,2</listopad>
+  <studeni>145,7</studeni>
+  <prosinac>45,0</prosinac>
+  <ukupno>785,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Čepić</ime_postaje>
+  <sijecanj>84,1</sijecanj>
+  <veljaca>51,3</veljaca>
+  <ozujak>179,2</ozujak>
+  <travanj>81,4</travanj>
+  <svibanj>75,0</svibanj>
+  <lipanj>44,0</lipanj>
+  <srpanj>117,7</srpanj>
+  <kolovoz>81,8</kolovoz>
+  <rujan>246,1</rujan>
+  <listopad>278,8</listopad>
+  <studeni>106,2</studeni>
+  <prosinac>23,0</prosinac>
+  <ukupno>1.368,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Daruvar</ime_postaje>
+  <sijecanj>60,1</sijecanj>
+  <veljaca>44,0</veljaca>
+  <ozujak>108,6</ozujak>
+  <travanj>40,6</travanj>
+  <svibanj>72,2</svibanj>
+  <lipanj>5,6</lipanj>
+  <srpanj>60,7</srpanj>
+  <kolovoz>40,5</kolovoz>
+  <rujan>36,4</rujan>
+  <listopad>75,2</listopad>
+  <studeni>136,8</studeni>
+  <prosinac>18,5</prosinac>
+  <ukupno>699,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Delnice</ime_postaje>
+  <sijecanj>323,9</sijecanj>
+  <veljaca>114,9</veljaca>
+  <ozujak>354,9</ozujak>
+  <travanj>171,9</travanj>
+  <svibanj>193,2</svibanj>
+  <lipanj>7,4</lipanj>
+  <srpanj>243,1</srpanj>
+  <kolovoz>117,7</kolovoz>
+  <rujan>166,3</rujan>
+  <listopad>313,3</listopad>
+  <studeni>304,9</studeni>
+  <prosinac>65,4</prosinac>
+  <ukupno>2.376,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Donji Lapac</ime_postaje>
+  <sijecanj>103,9</sijecanj>
+  <veljaca>70,5</veljaca>
+  <ozujak>150,0</ozujak>
+  <travanj>37,2</travanj>
+  <svibanj>172,0</svibanj>
+  <lipanj>19,6</lipanj>
+  <srpanj>108,3</srpanj>
+  <kolovoz>94,6</kolovoz>
+  <rujan>104,8</rujan>
+  <listopad>105,4</listopad>
+  <studeni>208,3</studeni>
+  <prosinac>79,4</prosinac>
+  <ukupno>1.254,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Donji Miholjac</ime_postaje>
+  <sijecanj>43,1</sijecanj>
+  <veljaca>36,1</veljaca>
+  <ozujak>81,1</ozujak>
+  <travanj>49,2</travanj>
+  <svibanj>80,0</svibanj>
+  <lipanj>1,4</lipanj>
+  <srpanj>44,5</srpanj>
+  <kolovoz>50,0</kolovoz>
+  <rujan>16,9</rujan>
+  <listopad>40,9</listopad>
+  <studeni>67,0</studeni>
+  <prosinac>25,3</prosinac>
+  <ukupno>535,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Dubrovnik</ime_postaje>
+  <sijecanj>95,7</sijecanj>
+  <veljaca>172,9</veljaca>
+  <ozujak>252,1</ozujak>
+  <travanj>88,4</travanj>
+  <svibanj>35,3</svibanj>
+  <lipanj>3,3</lipanj>
+  <srpanj>26,4</srpanj>
+  <kolovoz>80,2</kolovoz>
+  <rujan>89,0</rujan>
+  <listopad>76,5</listopad>
+  <studeni>190,0</studeni>
+  <prosinac>68,9</prosinac>
+  <ukupno>1.178,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Dubrovnik - aerodrom</ime_postaje>
+  <sijecanj>86,0</sijecanj>
+  <veljaca>156,8</veljaca>
+  <ozujak>236,7</ozujak>
+  <travanj>59,8</travanj>
+  <svibanj>68,0</svibanj>
+  <lipanj>5,6</lipanj>
+  <srpanj>72,9</srpanj>
+  <kolovoz>130,5</kolovoz>
+  <rujan>54,4</rujan>
+  <listopad>109,5</listopad>
+  <studeni>245,0</studeni>
+  <prosinac>73,8</prosinac>
+  <ukupno>1.299,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Đakovo</ime_postaje>
+  <sijecanj>31,7</sijecanj>
+  <veljaca>34,0</veljaca>
+  <ozujak>129,6</ozujak>
+  <travanj>60,9</travanj>
+  <svibanj>92,2</svibanj>
+  <lipanj>6,0</lipanj>
+  <srpanj>56,9</srpanj>
+  <kolovoz>69,0</kolovoz>
+  <rujan>22,4</rujan>
+  <listopad>56,0</listopad>
+  <studeni>80,2</studeni>
+  <prosinac>30,2</prosinac>
+  <ukupno>669,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Đurđevac</ime_postaje>
+  <sijecanj>57,7</sijecanj>
+  <veljaca>37,5</veljaca>
+  <ozujak>122,6</ozujak>
+  <travanj>52,7</travanj>
+  <svibanj>69,4</svibanj>
+  <lipanj>8,3</lipanj>
+  <srpanj>104,9</srpanj>
+  <kolovoz>114,9</kolovoz>
+  <rujan>14,0</rujan>
+  <listopad>59,9</listopad>
+  <studeni>114,5</studeni>
+  <prosinac>43,1</prosinac>
+  <ukupno>799,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Gorice</ime_postaje>
+  <sijecanj>47,6</sijecanj>
+  <veljaca>44,1</veljaca>
+  <ozujak>123,2</ozujak>
+  <travanj>111,0</travanj>
+  <svibanj>124,6</svibanj>
+  <lipanj>1,1</lipanj>
+  <srpanj>67,5</srpanj>
+  <kolovoz>86,0</kolovoz>
+  <rujan>22,6</rujan>
+  <listopad>88,1</listopad>
+  <studeni>99,8</studeni>
+  <prosinac>33,4</prosinac>
+  <ukupno>849,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Gospić</ime_postaje>
+  <sijecanj>86,7</sijecanj>
+  <veljaca>83,2</veljaca>
+  <ozujak>120,9</ozujak>
+  <travanj>55,5</travanj>
+  <svibanj>127,2</svibanj>
+  <lipanj>25,2</lipanj>
+  <srpanj>108,4</srpanj>
+  <kolovoz>61,9</kolovoz>
+  <rujan>98,0</rujan>
+  <listopad>135,1</listopad>
+  <studeni>159,6</studeni>
+  <prosinac>59,3</prosinac>
+  <ukupno>1.121,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Goveđari klim.</ime_postaje>
+  <sijecanj>44,8</sijecanj>
+  <veljaca>213,8</veljaca>
+  <ozujak>147,6</ozujak>
+  <travanj>52,7</travanj>
+  <svibanj>24,5</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>69,6</srpanj>
+  <kolovoz>37,9</kolovoz>
+  <rujan>98,4</rujan>
+  <listopad>74,1</listopad>
+  <studeni>334,6</studeni>
+  <prosinac>99,7</prosinac>
+  <ukupno>1.197,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Gračac</ime_postaje>
+  <sijecanj>118,3</sijecanj>
+  <veljaca>184,8</veljaca>
+  <ozujak>213,9</ozujak>
+  <travanj>84,0</travanj>
+  <svibanj>133,9</svibanj>
+  <lipanj>33,4</lipanj>
+  <srpanj>85,8</srpanj>
+  <kolovoz>67,6</kolovoz>
+  <rujan>119,2</rujan>
+  <listopad>184,9</listopad>
+  <studeni>303,4</studeni>
+  <prosinac>116,7</prosinac>
+  <ukupno>1.645,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Gradište</ime_postaje>
+  <sijecanj>24,6</sijecanj>
+  <veljaca>34,9</veljaca>
+  <ozujak>121,4</ozujak>
+  <travanj>38,8</travanj>
+  <svibanj>101,9</svibanj>
+  <lipanj>6,7</lipanj>
+  <srpanj>43,9</srpanj>
+  <kolovoz>35,0</kolovoz>
+  <rujan>16,0</rujan>
+  <listopad>57,3</listopad>
+  <studeni>78,9</studeni>
+  <prosinac>19,1</prosinac>
+  <ukupno>578,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Hrvatska Kostajnica</ime_postaje>
+  <sijecanj>58,6</sijecanj>
+  <veljaca>65,8</veljaca>
+  <ozujak>154,3</ozujak>
+  <travanj>36,6</travanj>
+  <svibanj>149,8</svibanj>
+  <lipanj>0,8</lipanj>
+  <srpanj>92,7</srpanj>
+  <kolovoz>64,1</kolovoz>
+  <rujan>37,5</rujan>
+  <listopad>84,2</listopad>
+  <studeni>134,0</studeni>
+  <prosinac>48,9</prosinac>
+  <ukupno>927,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Hvar</ime_postaje>
+  <sijecanj>23,2</sijecanj>
+  <veljaca>114,8</veljaca>
+  <ozujak>108,3</ozujak>
+  <travanj>25,2</travanj>
+  <svibanj>32,8</svibanj>
+  <lipanj>2,7</lipanj>
+  <srpanj>62,7</srpanj>
+  <kolovoz>56,2</kolovoz>
+  <rujan>10,9</rujan>
+  <listopad>10,6</listopad>
+  <studeni>148,9</studeni>
+  <prosinac>66,8</prosinac>
+  <ukupno>663,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ilok</ime_postaje>
+  <sijecanj>18,6</sijecanj>
+  <veljaca>26,9</veljaca>
+  <ozujak>86,6</ozujak>
+  <travanj>103,9</travanj>
+  <svibanj>70,2</svibanj>
+  <lipanj>11,0</lipanj>
+  <srpanj>45,8</srpanj>
+  <kolovoz>23,4</kolovoz>
+  <rujan>34,5</rujan>
+  <listopad>38,2</listopad>
+  <studeni>65,6</studeni>
+  <prosinac>9,8</prosinac>
+  <ukupno>534,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Imotski</ime_postaje>
+  <sijecanj>65,2</sijecanj>
+  <veljaca>41,7</veljaca>
+  <ozujak>168,7</ozujak>
+  <travanj>84,7</travanj>
+  <svibanj>68,8</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>92,6</srpanj>
+  <kolovoz>230,1</kolovoz>
+  <rujan>106,8</rujan>
+  <listopad>48,5</listopad>
+  <studeni>185,5</studeni>
+  <prosinac>108,8</prosinac>
+  <ukupno>1.201,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Jelsa</ime_postaje>
+  <sijecanj>34,8</sijecanj>
+  <veljaca>115,2</veljaca>
+  <ozujak>141,5</ozujak>
+  <travanj>41,2</travanj>
+  <svibanj>20,6</svibanj>
+  <lipanj>1,1</lipanj>
+  <srpanj>39,3</srpanj>
+  <kolovoz>43,2</kolovoz>
+  <rujan>22,4</rujan>
+  <listopad>30,7</listopad>
+  <studeni>191,1</studeni>
+  <prosinac>104,3</prosinac>
+  <ukupno>785,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Karlovac</ime_postaje>
+  <sijecanj>56,1</sijecanj>
+  <veljaca>78,5</veljaca>
+  <ozujak>130,8</ozujak>
+  <travanj>76,1</travanj>
+  <svibanj>160,9</svibanj>
+  <lipanj>0,8</lipanj>
+  <srpanj>149,0</srpanj>
+  <kolovoz>74,4</kolovoz>
+  <rujan>62,0</rujan>
+  <listopad>98,5</listopad>
+  <studeni>114,4</studeni>
+  <prosinac>44,4</prosinac>
+  <ukupno>1.045,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Knin</ime_postaje>
+  <sijecanj>51,9</sijecanj>
+  <veljaca>76,3</veljaca>
+  <ozujak>118,7</ozujak>
+  <travanj>49,5</travanj>
+  <svibanj>115,6</svibanj>
+  <lipanj>13,2</lipanj>
+  <srpanj>34,8</srpanj>
+  <kolovoz>64,7</kolovoz>
+  <rujan>89,6</rujan>
+  <listopad>59,2</listopad>
+  <studeni>117,7</studeni>
+  <prosinac>34,8</prosinac>
+  <ukupno>826,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Komiža</ime_postaje>
+  <sijecanj>24,4</sijecanj>
+  <veljaca>54,3</veljaca>
+  <ozujak>81,0</ozujak>
+  <travanj>18,1</travanj>
+  <svibanj>47,2</svibanj>
+  <lipanj>10,8</lipanj>
+  <srpanj>71,0</srpanj>
+  <kolovoz>19,6</kolovoz>
+  <rujan>79,4</rujan>
+  <listopad>19,8</listopad>
+  <studeni>96,2</studeni>
+  <prosinac>188,6</prosinac>
+  <ukupno>710,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Koprivnica</ime_postaje>
+  <sijecanj>58,7</sijecanj>
+  <veljaca>53,5</veljaca>
+  <ozujak>103,0</ozujak>
+  <travanj>58,8</travanj>
+  <svibanj>34,0</svibanj>
+  <lipanj>14,5</lipanj>
+  <srpanj>55,5</srpanj>
+  <kolovoz>51,5</kolovoz>
+  <rujan>38,0</rujan>
+  <listopad>65,0</listopad>
+  <studeni>92,5</studeni>
+  <prosinac>51,0</prosinac>
+  <ukupno>676,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Korenica</ime_postaje>
+  <sijecanj>**</sijecanj>
+  <veljaca>**</veljaca>
+  <ozujak>**</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Krapina</ime_postaje>
+  <sijecanj>51,4</sijecanj>
+  <veljaca>36,6</veljaca>
+  <ozujak>90,3</ozujak>
+  <travanj>51,1</travanj>
+  <svibanj>87,3</svibanj>
+  <lipanj>8,5</lipanj>
+  <srpanj>79,8</srpanj>
+  <kolovoz>49,1</kolovoz>
+  <rujan>87,8</rujan>
+  <listopad>83,4</listopad>
+  <studeni>91,3</studeni>
+  <prosinac>29,0</prosinac>
+  <ukupno>745,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Križevci</ime_postaje>
+  <sijecanj>60,4</sijecanj>
+  <veljaca>53,5</veljaca>
+  <ozujak>81,3</ozujak>
+  <travanj>46,8</travanj>
+  <svibanj>61,3</svibanj>
+  <lipanj>5,7</lipanj>
+  <srpanj>80,2</srpanj>
+  <kolovoz>44,9</kolovoz>
+  <rujan>28,9</rujan>
+  <listopad>85,6</listopad>
+  <studeni>95,9</studeni>
+  <prosinac>48,2</prosinac>
+  <ukupno>692,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Kukuljanovo</ime_postaje>
+  <sijecanj>252,3</sijecanj>
+  <veljaca>122,6</veljaca>
+  <ozujak>181,0</ozujak>
+  <travanj>189,8</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>11,2</lipanj>
+  <srpanj>105,3</srpanj>
+  <kolovoz>146,1</kolovoz>
+  <rujan>245,8</rujan>
+  <listopad>397,8</listopad>
+  <studeni>198,9</studeni>
+  <prosinac>31,4</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Kuna</ime_postaje>
+  <sijecanj>65,2</sijecanj>
+  <veljaca>**</veljaca>
+  <ozujak>**</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Kutina</ime_postaje>
+  <sijecanj>54,5</sijecanj>
+  <veljaca>48,2</veljaca>
+  <ozujak>122,4</ozujak>
+  <travanj>23,9</travanj>
+  <svibanj>81,6</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Kutjevo - Vidim</ime_postaje>
+  <sijecanj>54,4</sijecanj>
+  <veljaca>32,0</veljaca>
+  <ozujak>155,4</ozujak>
+  <travanj>50,6</travanj>
+  <svibanj>117,4</svibanj>
+  <lipanj>1,2</lipanj>
+  <srpanj>41,6</srpanj>
+  <kolovoz>95,8</kolovoz>
+  <rujan>18,6</rujan>
+  <listopad>73,7</listopad>
+  <studeni>74,4</studeni>
+  <prosinac>24,7</prosinac>
+  <ukupno>739,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Lastovo</ime_postaje>
+  <sijecanj>29,9</sijecanj>
+  <veljaca>152,9</veljaca>
+  <ozujak>114,4</ozujak>
+  <travanj>18,0</travanj>
+  <svibanj>13,6</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>27,3</srpanj>
+  <kolovoz>48,9</kolovoz>
+  <rujan>35,1</rujan>
+  <listopad>36,6</listopad>
+  <studeni>156,9</studeni>
+  <prosinac>102,3</prosinac>
+  <ukupno>735,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Lekenik</ime_postaje>
+  <sijecanj>62,8</sijecanj>
+  <veljaca>60,3</veljaca>
+  <ozujak>161,1</ozujak>
+  <travanj>57,4</travanj>
+  <svibanj>91,9</svibanj>
+  <lipanj>0,6</lipanj>
+  <srpanj>133,5</srpanj>
+  <kolovoz>30,7</kolovoz>
+  <rujan>29,8</rujan>
+  <listopad>88,8</listopad>
+  <studeni>155,3</studeni>
+  <prosinac>49,4</prosinac>
+  <ukupno>921,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Letaj - Brana</ime_postaje>
+  <sijecanj>110,3</sijecanj>
+  <veljaca>49,9</veljaca>
+  <ozujak>210,3</ozujak>
+  <travanj>93,8</travanj>
+  <svibanj>89,2</svibanj>
+  <lipanj>35,7</lipanj>
+  <srpanj>102,2</srpanj>
+  <kolovoz>82,6</kolovoz>
+  <rujan>161,4</rujan>
+  <listopad>299,5</listopad>
+  <studeni>118,5</studeni>
+  <prosinac>18,6</prosinac>
+  <ukupno>1.372,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ličko Lešće</ime_postaje>
+  <sijecanj>67,9</sijecanj>
+  <veljaca>53,7</veljaca>
+  <ozujak>178,3</ozujak>
+  <travanj>57,5</travanj>
+  <svibanj>167,5</svibanj>
+  <lipanj>13,5</lipanj>
+  <srpanj>53,3</srpanj>
+  <kolovoz>64,8</kolovoz>
+  <rujan>72,8</rujan>
+  <listopad>99,2</listopad>
+  <studeni>154,2</studeni>
+  <prosinac>30,9</prosinac>
+  <ukupno>1.013,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Lipik</ime_postaje>
+  <sijecanj>37,6</sijecanj>
+  <veljaca>48,0</veljaca>
+  <ozujak>88,1</ozujak>
+  <travanj>38,6</travanj>
+  <svibanj>84,3</svibanj>
+  <lipanj>1,2</lipanj>
+  <srpanj>83,4</srpanj>
+  <kolovoz>35,9</kolovoz>
+  <rujan>27,3</rujan>
+  <listopad>98,1</listopad>
+  <studeni>98,8</studeni>
+  <prosinac>26,3</prosinac>
+  <ukupno>667,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Lovinac</ime_postaje>
+  <sijecanj>141,1</sijecanj>
+  <veljaca>104,4</veljaca>
+  <ozujak>158,5</ozujak>
+  <travanj>59,6</travanj>
+  <svibanj>164,3</svibanj>
+  <lipanj>26,5</lipanj>
+  <srpanj>98,9</srpanj>
+  <kolovoz>67,1</kolovoz>
+  <rujan>78,5</rujan>
+  <listopad>148,2</listopad>
+  <studeni>220,4</studeni>
+  <prosinac>93,0</prosinac>
+  <ukupno>1.360,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ludbreg - Hrastovsko</ime_postaje>
+  <sijecanj>51,6</sijecanj>
+  <veljaca>66,5</veljaca>
+  <ozujak>132,2</ozujak>
+  <travanj>57,2</travanj>
+  <svibanj>53,5</svibanj>
+  <lipanj>12,2</lipanj>
+  <srpanj>51,2</srpanj>
+  <kolovoz>54,2</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Makarska</ime_postaje>
+  <sijecanj>58,8</sijecanj>
+  <veljaca>38,9</veljaca>
+  <ozujak>145,8</ozujak>
+  <travanj>30,1</travanj>
+  <svibanj>42,0</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>45,2</srpanj>
+  <kolovoz>83,6</kolovoz>
+  <rujan>96,9</rujan>
+  <listopad>76,7</listopad>
+  <studeni>201,1</studeni>
+  <prosinac>83,2</prosinac>
+  <ukupno>902,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Mali Lošinj</ime_postaje>
+  <sijecanj>57,1</sijecanj>
+  <veljaca>141,8</veljaca>
+  <ozujak>74,8</ozujak>
+  <travanj>43,7</travanj>
+  <svibanj>56,9</svibanj>
+  <lipanj>7,6</lipanj>
+  <srpanj>37,3</srpanj>
+  <kolovoz>51,9</kolovoz>
+  <rujan>69,6</rujan>
+  <listopad>39,6</listopad>
+  <studeni>84,0</studeni>
+  <prosinac>51,7</prosinac>
+  <ukupno>716,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Metković</ime_postaje>
+  <sijecanj>58,5</sijecanj>
+  <veljaca>56,7</veljaca>
+  <ozujak>224,7</ozujak>
+  <travanj>72,4</travanj>
+  <svibanj>97,0</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>127,3</srpanj>
+  <kolovoz>211,2</kolovoz>
+  <rujan>177,8</rujan>
+  <listopad>94,8</listopad>
+  <studeni>241,0</studeni>
+  <prosinac>77,6</prosinac>
+  <ukupno>1.439,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Našice</ime_postaje>
+  <sijecanj>43,2</sijecanj>
+  <veljaca>56,3</veljaca>
+  <ozujak>120,7</ozujak>
+  <travanj>37,0</travanj>
+  <svibanj>158,3</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>81,5</srpanj>
+  <kolovoz>51,8</kolovoz>
+  <rujan>35,5</rujan>
+  <listopad>53,1</listopad>
+  <studeni>75,2</studeni>
+  <prosinac>33,5</prosinac>
+  <ukupno>746,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Nova Gradiška - Cernik</ime_postaje>
+  <sijecanj>59,4</sijecanj>
+  <veljaca>39,4</veljaca>
+  <ozujak>112,4</ozujak>
+  <travanj>42,3</travanj>
+  <svibanj>112,4</svibanj>
+  <lipanj>1,0</lipanj>
+  <srpanj>53,7</srpanj>
+  <kolovoz>78,3</kolovoz>
+  <rujan>29,9</rujan>
+  <listopad>102,4</listopad>
+  <studeni>84,5</studeni>
+  <prosinac>28,3</prosinac>
+  <ukupno>744,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Novigrad</ime_postaje>
+  <sijecanj>37,1</sijecanj>
+  <veljaca>84,7</veljaca>
+  <ozujak>91,5</ozujak>
+  <travanj>19,2</travanj>
+  <svibanj>74,1</svibanj>
+  <lipanj>13,7</lipanj>
+  <srpanj>27,4</srpanj>
+  <kolovoz>59,4</kolovoz>
+  <rujan>93,9</rujan>
+  <listopad>66,0</listopad>
+  <studeni>119,9</studeni>
+  <prosinac>30,5</prosinac>
+  <ukupno>717,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Novigrad Istra</ime_postaje>
+  <sijecanj>69,4</sijecanj>
+  <veljaca>80,5</veljaca>
+  <ozujak>168,8</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Novi Marof</ime_postaje>
+  <sijecanj>65,4</sijecanj>
+  <veljaca>59,9</veljaca>
+  <ozujak>107,6</ozujak>
+  <travanj>47,6</travanj>
+  <svibanj>89,7</svibanj>
+  <lipanj>3,4</lipanj>
+  <srpanj>113,4</srpanj>
+  <kolovoz>39,4</kolovoz>
+  <rujan>96,4</rujan>
+  <listopad>78,6</listopad>
+  <studeni>123,1</studeni>
+  <prosinac>57,3</prosinac>
+  <ukupno>881,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Novska</ime_postaje>
+  <sijecanj>55,0</sijecanj>
+  <veljaca>47,8</veljaca>
+  <ozujak>121,7</ozujak>
+  <travanj>20,5</travanj>
+  <svibanj>114,4</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>91,0</srpanj>
+  <kolovoz>47,3</kolovoz>
+  <rujan>23,2</rujan>
+  <listopad>96,2</listopad>
+  <studeni>96,0</studeni>
+  <prosinac>35,5</prosinac>
+  <ukupno>748,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Oborovo</ime_postaje>
+  <sijecanj>44,4</sijecanj>
+  <veljaca>53,9</veljaca>
+  <ozujak>130,0</ozujak>
+  <travanj>48,6</travanj>
+  <svibanj>71,9</svibanj>
+  <lipanj>3,0</lipanj>
+  <srpanj>89,1</srpanj>
+  <kolovoz>106,4</kolovoz>
+  <rujan>36,4</rujan>
+  <listopad>78,6</listopad>
+  <studeni>141,3</studeni>
+  <prosinac>38,9</prosinac>
+  <ukupno>842,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ogulin</ime_postaje>
+  <sijecanj>128,7</sijecanj>
+  <veljaca>88,5</veljaca>
+  <ozujak>236,9</ozujak>
+  <travanj>85,2</travanj>
+  <svibanj>185,0</svibanj>
+  <lipanj>6,3</lipanj>
+  <srpanj>147,9</srpanj>
+  <kolovoz>103,1</kolovoz>
+  <rujan>76,0</rujan>
+  <listopad>226,4</listopad>
+  <studeni>162,3</studeni>
+  <prosinac>65,3</prosinac>
+  <ukupno>1.511,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Opuzen</ime_postaje>
+  <sijecanj>60,2</sijecanj>
+  <veljaca>75,8</veljaca>
+  <ozujak>226,0</ozujak>
+  <travanj>88,9</travanj>
+  <svibanj>73,5</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>173,4</srpanj>
+  <kolovoz>162,8</kolovoz>
+  <rujan>175,4</rujan>
+  <listopad>97,2</listopad>
+  <studeni>238,1</studeni>
+  <prosinac>81,1</prosinac>
+  <ukupno>1.452,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Osijek</ime_postaje>
+  <sijecanj>30,6</sijecanj>
+  <veljaca>38,6</veljaca>
+  <ozujak>87,7</ozujak>
+  <travanj>54,4</travanj>
+  <svibanj>95,1</svibanj>
+  <lipanj>1,0</lipanj>
+  <srpanj>73,9</srpanj>
+  <kolovoz>74,7</kolovoz>
+  <rujan>19,1</rujan>
+  <listopad>45,2</listopad>
+  <studeni>62,2</studeni>
+  <prosinac>19,2</prosinac>
+  <ukupno>601,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Osijek - Klisa aerodrom</ime_postaje>
+  <sijecanj>29,2</sijecanj>
+  <veljaca>36,6</veljaca>
+  <ozujak>82,6</ozujak>
+  <travanj>43,1</travanj>
+  <svibanj>71,5</svibanj>
+  <lipanj>2,0</lipanj>
+  <srpanj>42,6</srpanj>
+  <kolovoz>50,0</kolovoz>
+  <rujan>7,0</rujan>
+  <listopad>53,4</listopad>
+  <studeni>67,7</studeni>
+  <prosinac>14,9</prosinac>
+  <ukupno>500,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Osijek - Tvrđavica</ime_postaje>
+  <sijecanj>38,4</sijecanj>
+  <veljaca>42,7</veljaca>
+  <ozujak>89,2</ozujak>
+  <travanj>51,0</travanj>
+  <svibanj>91,7</svibanj>
+  <lipanj>2,2</lipanj>
+  <srpanj>49,4</srpanj>
+  <kolovoz>101,3</kolovoz>
+  <rujan>18,7</rujan>
+  <listopad>55,6</listopad>
+  <studeni>67,2</studeni>
+  <prosinac>23,3</prosinac>
+  <ukupno>630,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Otočac</ime_postaje>
+  <sijecanj>71,0</sijecanj>
+  <veljaca>48,1</veljaca>
+  <ozujak>152,2</ozujak>
+  <travanj>55,1</travanj>
+  <svibanj>165,7</svibanj>
+  <lipanj>14,6</lipanj>
+  <srpanj>63,4</srpanj>
+  <kolovoz>70,8</kolovoz>
+  <rujan>50,8</rujan>
+  <listopad>99,2</listopad>
+  <studeni>109,3</studeni>
+  <prosinac>37,4</prosinac>
+  <ukupno>937,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pag</ime_postaje>
+  <sijecanj>53,2</sijecanj>
+  <veljaca>111,0</veljaca>
+  <ozujak>96,7</ozujak>
+  <travanj>24,0</travanj>
+  <svibanj>67,5</svibanj>
+  <lipanj>19,9</lipanj>
+  <srpanj>68,3</srpanj>
+  <kolovoz>74,3</kolovoz>
+  <rujan>119,7</rujan>
+  <listopad>74,0</listopad>
+  <studeni>106,7</studeni>
+  <prosinac>75,2</prosinac>
+  <ukupno>890,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Palagruža</ime_postaje>
+  <sijecanj>18,3</sijecanj>
+  <veljaca>40,6</veljaca>
+  <ozujak>36,4</ozujak>
+  <travanj>5,0</travanj>
+  <svibanj>3,5</svibanj>
+  <lipanj>7,2</lipanj>
+  <srpanj>14,4</srpanj>
+  <kolovoz>25,7</kolovoz>
+  <rujan>18,1</rujan>
+  <listopad>38,3</listopad>
+  <studeni>34,5</studeni>
+  <prosinac>34,0</prosinac>
+  <ukupno>276,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Parg</ime_postaje>
+  <sijecanj>215,9</sijecanj>
+  <veljaca>102,1</veljaca>
+  <ozujak>356,3</ozujak>
+  <travanj>109,5</travanj>
+  <svibanj>207,1</svibanj>
+  <lipanj>11,9</lipanj>
+  <srpanj>188,1</srpanj>
+  <kolovoz>91,2</kolovoz>
+  <rujan>165,8</rujan>
+  <listopad>220,4</listopad>
+  <studeni>282,8</studeni>
+  <prosinac>43,7</prosinac>
+  <ukupno>1.994,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pazin</ime_postaje>
+  <sijecanj>95,6</sijecanj>
+  <veljaca>52,6</veljaca>
+  <ozujak>182,5</ozujak>
+  <travanj>102,2</travanj>
+  <svibanj>109,0</svibanj>
+  <lipanj>33,0</lipanj>
+  <srpanj>104,1</srpanj>
+  <kolovoz>103,6</kolovoz>
+  <rujan>132,3</rujan>
+  <listopad>229,7</listopad>
+  <studeni>79,9</studeni>
+  <prosinac>16,4</prosinac>
+  <ukupno>1.240,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Petrinja</ime_postaje>
+  <sijecanj>59,1</sijecanj>
+  <veljaca>62,1</veljaca>
+  <ozujak>172,5</ozujak>
+  <travanj>44,7</travanj>
+  <svibanj>139,8</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>79,8</srpanj>
+  <kolovoz>33,4</kolovoz>
+  <rujan>31,3</rujan>
+  <listopad>99,7</listopad>
+  <studeni>156,4</studeni>
+  <prosinac>45,2</prosinac>
+  <ukupno>924,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pisarovina</ime_postaje>
+  <sijecanj>60,5</sijecanj>
+  <veljaca>58,2</veljaca>
+  <ozujak>141,0</ozujak>
+  <travanj>55,9</travanj>
+  <svibanj>86,9</svibanj>
+  <lipanj>0,2</lipanj>
+  <srpanj>92,9</srpanj>
+  <kolovoz>78,5</kolovoz>
+  <rujan>53,9</rujan>
+  <listopad>84,8</listopad>
+  <studeni>126,3</studeni>
+  <prosinac>40,4</prosinac>
+  <ukupno>879,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Plaški</ime_postaje>
+  <sijecanj>87,2</sijecanj>
+  <veljaca>74,3</veljaca>
+  <ozujak>279,7</ozujak>
+  <travanj>63,0</travanj>
+  <svibanj>209,5</svibanj>
+  <lipanj>20,5</lipanj>
+  <srpanj>90,4</srpanj>
+  <kolovoz>107,1</kolovoz>
+  <rujan>42,1</rujan>
+  <listopad>148,3</listopad>
+  <studeni>179,0</studeni>
+  <prosinac>68,7</prosinac>
+  <ukupno>1.369,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ploče</ime_postaje>
+  <sijecanj>41,3</sijecanj>
+  <veljaca>107,2</veljaca>
+  <ozujak>181,6</ozujak>
+  <travanj>78,6</travanj>
+  <svibanj>31,7</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>143,9</srpanj>
+  <kolovoz>138,7</kolovoz>
+  <rujan>212,4</rujan>
+  <listopad>109,8</listopad>
+  <studeni>177,1</studeni>
+  <prosinac>93,9</prosinac>
+  <ukupno>1.316,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Poreč</ime_postaje>
+  <sijecanj>60,5</sijecanj>
+  <veljaca>77,4</veljaca>
+  <ozujak>141,1</ozujak>
+  <travanj>72,5</travanj>
+  <svibanj>92,0</svibanj>
+  <lipanj>63,3</lipanj>
+  <srpanj>78,3</srpanj>
+  <kolovoz>164,1</kolovoz>
+  <rujan>102,9</rujan>
+  <listopad>169,9</listopad>
+  <studeni>71,9</studeni>
+  <prosinac>18,0</prosinac>
+  <ukupno>1.111,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Požega</ime_postaje>
+  <sijecanj>34,2</sijecanj>
+  <veljaca>43,3</veljaca>
+  <ozujak>126,1</ozujak>
+  <travanj>45,0</travanj>
+  <svibanj>117,3</svibanj>
+  <lipanj>0,8</lipanj>
+  <srpanj>55,4</srpanj>
+  <kolovoz>105,6</kolovoz>
+  <rujan>46,2</rujan>
+  <listopad>93,8</listopad>
+  <studeni>78,3</studeni>
+  <prosinac>30,7</prosinac>
+  <ukupno>776,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pregrada</ime_postaje>
+  <sijecanj>60,3</sijecanj>
+  <veljaca>49,3</veljaca>
+  <ozujak>93,5</ozujak>
+  <travanj>67,2</travanj>
+  <svibanj>95,6</svibanj>
+  <lipanj>13,1</lipanj>
+  <srpanj>142,6</srpanj>
+  <kolovoz>76,0</kolovoz>
+  <rujan>97,5</rujan>
+  <listopad>93,1</listopad>
+  <studeni>111,4</studeni>
+  <prosinac>39,6</prosinac>
+  <ukupno>939,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pula</ime_postaje>
+  <sijecanj>43,0</sijecanj>
+  <veljaca>39,9</veljaca>
+  <ozujak>99,9</ozujak>
+  <travanj>86,8</travanj>
+  <svibanj>100,7</svibanj>
+  <lipanj>21,3</lipanj>
+  <srpanj>114,2</srpanj>
+  <kolovoz>35,6</kolovoz>
+  <rujan>84,4</rujan>
+  <listopad>89,5</listopad>
+  <studeni>67,4</studeni>
+  <prosinac>26,7</prosinac>
+  <ukupno>809,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Pula - aerodrom</ime_postaje>
+  <sijecanj>53,6</sijecanj>
+  <veljaca>34,1</veljaca>
+  <ozujak>94,3</ozujak>
+  <travanj>77,0</travanj>
+  <svibanj>90,0</svibanj>
+  <lipanj>39,8</lipanj>
+  <srpanj>121,8</srpanj>
+  <kolovoz>37,5</kolovoz>
+  <rujan>120,0</rujan>
+  <listopad>106,1</listopad>
+  <studeni>67,9</studeni>
+  <prosinac>25,4</prosinac>
+  <ukupno>867,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Puntijarka</ime_postaje>
+  <sijecanj>51,6</sijecanj>
+  <veljaca>64,8</veljaca>
+  <ozujak>141,5</ozujak>
+  <travanj>90,9</travanj>
+  <svibanj>82,9</svibanj>
+  <lipanj>13,2</lipanj>
+  <srpanj>154,5</srpanj>
+  <kolovoz>50,3</kolovoz>
+  <rujan>79,7</rujan>
+  <listopad>118,1</listopad>
+  <studeni>109,6</studeni>
+  <prosinac>53,0</prosinac>
+  <ukupno>1.010,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Rab</ime_postaje>
+  <sijecanj>50,7</sijecanj>
+  <veljaca>111,6</veljaca>
+  <ozujak>154,1</ozujak>
+  <travanj>57,8</travanj>
+  <svibanj>86,9</svibanj>
+  <lipanj>15,9</lipanj>
+  <srpanj>92,4</srpanj>
+  <kolovoz>55,7</kolovoz>
+  <rujan>113,0</rujan>
+  <listopad>55,6</listopad>
+  <studeni>107,0</studeni>
+  <prosinac>86,0</prosinac>
+  <ukupno>986,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Račinovci Kl</ime_postaje>
+  <sijecanj>15,8</sijecanj>
+  <veljaca>23,9</veljaca>
+  <ozujak>100,6</ozujak>
+  <travanj>66,7</travanj>
+  <svibanj>78,4</svibanj>
+  <lipanj>1,2</lipanj>
+  <srpanj>74,9</srpanj>
+  <kolovoz>46,7</kolovoz>
+  <rujan>40,0</rujan>
+  <listopad>46,6</listopad>
+  <studeni>85,6</studeni>
+  <prosinac>17,6</prosinac>
+  <ukupno>598,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ričice - Brana</ime_postaje>
+  <sijecanj>65,7</sijecanj>
+  <veljaca>49,1</veljaca>
+  <ozujak>269,5</ozujak>
+  <travanj>76,6</travanj>
+  <svibanj>72,5</svibanj>
+  <lipanj>2,8</lipanj>
+  <srpanj>50,7</srpanj>
+  <kolovoz>147,1</kolovoz>
+  <rujan>66,0</rujan>
+  <listopad>77,3</listopad>
+  <studeni>192,7</studeni>
+  <prosinac>95,7</prosinac>
+  <ukupno>1.165,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Rijeka</ime_postaje>
+  <sijecanj>246,1</sijecanj>
+  <veljaca>142,9</veljaca>
+  <ozujak>165,0</ozujak>
+  <travanj>185,1</travanj>
+  <svibanj>112,4</svibanj>
+  <lipanj>20,5</lipanj>
+  <srpanj>122,8</srpanj>
+  <kolovoz>123,0</kolovoz>
+  <rujan>204,8</rujan>
+  <listopad>416,8</listopad>
+  <studeni>206,0</studeni>
+  <prosinac>24,5</prosinac>
+  <ukupno>1.969,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Rijeka - aerodrom</ime_postaje>
+  <sijecanj>96,5</sijecanj>
+  <veljaca>132,9</veljaca>
+  <ozujak>123,5</ozujak>
+  <travanj>117,3</travanj>
+  <svibanj>126,8</svibanj>
+  <lipanj>27,7</lipanj>
+  <srpanj>81,6</srpanj>
+  <kolovoz>75,1</kolovoz>
+  <rujan>222,5</rujan>
+  <listopad>260,7</listopad>
+  <studeni>131,1</studeni>
+  <prosinac>27,6</prosinac>
+  <ukupno>1.423,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Rovinj</ime_postaje>
+  <sijecanj>53,2</sijecanj>
+  <veljaca>46,3</veljaca>
+  <ozujak>127,2</ozujak>
+  <travanj>88,8</travanj>
+  <svibanj>84,7</svibanj>
+  <lipanj>56,9</lipanj>
+  <srpanj>63,4</srpanj>
+  <kolovoz>78,5</kolovoz>
+  <rujan>95,1</rujan>
+  <listopad>240,0</listopad>
+  <studeni>53,7</studeni>
+  <prosinac>10,8</prosinac>
+  <ukupno>998,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Samobor</ime_postaje>
+  <sijecanj>72,6</sijecanj>
+  <veljaca>82,0</veljaca>
+  <ozujak>142,3</ozujak>
+  <travanj>95,8</travanj>
+  <svibanj>96,6</svibanj>
+  <lipanj>10,2</lipanj>
+  <srpanj>113,6</srpanj>
+  <kolovoz>92,4</kolovoz>
+  <rujan>70,1</rujan>
+  <listopad>115,0</listopad>
+  <studeni>109,9</studeni>
+  <prosinac>79,9</prosinac>
+  <ukupno>1.080,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Senj</ime_postaje>
+  <sijecanj>101,2</sijecanj>
+  <veljaca>114,9</veljaca>
+  <ozujak>105,7</ozujak>
+  <travanj>67,6</travanj>
+  <svibanj>121,1</svibanj>
+  <lipanj>17,0</lipanj>
+  <srpanj>180,0</srpanj>
+  <kolovoz>81,6</kolovoz>
+  <rujan>157,0</rujan>
+  <listopad>198,6</listopad>
+  <studeni>143,0</studeni>
+  <prosinac>58,0</prosinac>
+  <ukupno>1.345,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sestrice Vele</ime_postaje>
+  <sijecanj>20,1</sijecanj>
+  <veljaca>91,1</veljaca>
+  <ozujak>62,8</ozujak>
+  <travanj>8,7</travanj>
+  <svibanj>104,2</svibanj>
+  <lipanj>18,5</lipanj>
+  <srpanj>43,2</srpanj>
+  <kolovoz>9,9</kolovoz>
+  <rujan>33,2</rujan>
+  <listopad>30,1</listopad>
+  <studeni>43,6</studeni>
+  <prosinac>89,2</prosinac>
+  <ukupno>554,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Silba</ime_postaje>
+  <sijecanj>47,1</sijecanj>
+  <veljaca>101,6</veljaca>
+  <ozujak>68,1</ozujak>
+  <travanj>24,5</travanj>
+  <svibanj>71,3</svibanj>
+  <lipanj>26,4</lipanj>
+  <srpanj>27,9</srpanj>
+  <kolovoz>23,1</kolovoz>
+  <rujan>156,9</rujan>
+  <listopad>50,8</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sinj</ime_postaje>
+  <sijecanj>59,9</sijecanj>
+  <veljaca>58,9</veljaca>
+  <ozujak>121,8</ozujak>
+  <travanj>98,6</travanj>
+  <svibanj>145,5</svibanj>
+  <lipanj>9,1</lipanj>
+  <srpanj>91,7</srpanj>
+  <kolovoz>121,5</kolovoz>
+  <rujan>71,9</rujan>
+  <listopad>72,0</listopad>
+  <studeni>214,4</studeni>
+  <prosinac>48,4</prosinac>
+  <ukupno>1.113,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sisak</ime_postaje>
+  <sijecanj>54,3</sijecanj>
+  <veljaca>48,3</veljaca>
+  <ozujak>147,9</ozujak>
+  <travanj>44,4</travanj>
+  <svibanj>103,6</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>110,2</srpanj>
+  <kolovoz>31,2</kolovoz>
+  <rujan>26,0</rujan>
+  <listopad>84,7</listopad>
+  <studeni>142,4</studeni>
+  <prosinac>35,9</prosinac>
+  <ukupno>828,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Slatina - Medinci</ime_postaje>
+  <sijecanj>46,8</sijecanj>
+  <veljaca>33,9</veljaca>
+  <ozujak>104,5</ozujak>
+  <travanj>28,5</travanj>
+  <svibanj>81,0</svibanj>
+  <lipanj>2,5</lipanj>
+  <srpanj>54,2</srpanj>
+  <kolovoz>68,6</kolovoz>
+  <rujan>35,0</rujan>
+  <listopad>47,7</listopad>
+  <studeni>82,4</studeni>
+  <prosinac>32,3</prosinac>
+  <ukupno>617,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Slavonski Brod</ime_postaje>
+  <sijecanj>34,4</sijecanj>
+  <veljaca>32,3</veljaca>
+  <ozujak>109,3</ozujak>
+  <travanj>46,3</travanj>
+  <svibanj>113,1</svibanj>
+  <lipanj>11,7</lipanj>
+  <srpanj>74,0</srpanj>
+  <kolovoz>76,5</kolovoz>
+  <rujan>19,1</rujan>
+  <listopad>57,6</listopad>
+  <studeni>82,2</studeni>
+  <prosinac>24,7</prosinac>
+  <ukupno>681,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Slunj</ime_postaje>
+  <sijecanj>73,4</sijecanj>
+  <veljaca>69,8</veljaca>
+  <ozujak>226,1</ozujak>
+  <travanj>62,0</travanj>
+  <svibanj>168,2</svibanj>
+  <lipanj>17,5</lipanj>
+  <srpanj>93,5</srpanj>
+  <kolovoz>92,6</kolovoz>
+  <rujan>44,0</rujan>
+  <listopad>131,3</listopad>
+  <studeni>150,5</studeni>
+  <prosinac>55,8</prosinac>
+  <ukupno>1.184,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sošice</ime_postaje>
+  <sijecanj>91,5</sijecanj>
+  <veljaca>87,5</veljaca>
+  <ozujak>152,9</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Split - aerodrom</ime_postaje>
+  <sijecanj>69,5</sijecanj>
+  <veljaca>111,7</veljaca>
+  <ozujak>97,4</ozujak>
+  <travanj>33,5</travanj>
+  <svibanj>76,7</svibanj>
+  <lipanj>1,0</lipanj>
+  <srpanj>34,7</srpanj>
+  <kolovoz>28,3</kolovoz>
+  <rujan>81,4</rujan>
+  <listopad>82,8</listopad>
+  <studeni>185,2</studeni>
+  <prosinac>97,7</prosinac>
+  <ukupno>899,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Split - Marjan</ime_postaje>
+  <sijecanj>44,5</sijecanj>
+  <veljaca>44,8</veljaca>
+  <ozujak>78,8</ozujak>
+  <travanj>24,2</travanj>
+  <svibanj>63,1</svibanj>
+  <lipanj>23,3</lipanj>
+  <srpanj>66,0</srpanj>
+  <kolovoz>54,9</kolovoz>
+  <rujan>29,3</rujan>
+  <listopad>100,7</listopad>
+  <studeni>157,9</studeni>
+  <prosinac>39,8</prosinac>
+  <ukupno>727,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Ston</ime_postaje>
+  <sijecanj>75,4</sijecanj>
+  <veljaca>103,7</veljaca>
+  <ozujak>328,9</ozujak>
+  <travanj>41,5</travanj>
+  <svibanj>33,5</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>32,6</srpanj>
+  <kolovoz>115,0</kolovoz>
+  <rujan>211,2</rujan>
+  <listopad>135,1</listopad>
+  <studeni>310,4</studeni>
+  <prosinac>145,0</prosinac>
+  <ukupno>1.532,3</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Stružec</ime_postaje>
+  <sijecanj>47,6</sijecanj>
+  <veljaca>48,1</veljaca>
+  <ozujak>102,4</ozujak>
+  <travanj>29,8</travanj>
+  <svibanj>95,2</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>80,3</srpanj>
+  <kolovoz>69,2</kolovoz>
+  <rujan>32,0</rujan>
+  <listopad>88,1</listopad>
+  <studeni>113,6</studeni>
+  <prosinac>35,8</prosinac>
+  <ukupno>742,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Stubičke Toplice</ime_postaje>
+  <sijecanj>58,1</sijecanj>
+  <veljaca>58,5</veljaca>
+  <ozujak>130,7</ozujak>
+  <travanj>66,8</travanj>
+  <svibanj>88,4</svibanj>
+  <lipanj>3,3</lipanj>
+  <srpanj>92,6</srpanj>
+  <kolovoz>50,4</kolovoz>
+  <rujan>61,6</rujan>
+  <listopad>111,7</listopad>
+  <studeni>112,5</studeni>
+  <prosinac>70,5</prosinac>
+  <ukupno>905,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sumartin</ime_postaje>
+  <sijecanj>34,3</sijecanj>
+  <veljaca>64,3</veljaca>
+  <ozujak>219,7</ozujak>
+  <travanj>26,5</travanj>
+  <svibanj>34,7</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>55,8</srpanj>
+  <kolovoz>45,0</kolovoz>
+  <rujan>30,4</rujan>
+  <listopad>51,0</listopad>
+  <studeni>174,0</studeni>
+  <prosinac>85,8</prosinac>
+  <ukupno>821,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sunja</ime_postaje>
+  <sijecanj>45,8</sijecanj>
+  <veljaca>52,7</veljaca>
+  <ozujak>142,7</ozujak>
+  <travanj>30,0</travanj>
+  <svibanj>122,5</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>115,3</srpanj>
+  <kolovoz>48,9</kolovoz>
+  <rujan>46,5</rujan>
+  <listopad>82,9</listopad>
+  <studeni>130,4</studeni>
+  <prosinac>42,0</prosinac>
+  <ukupno>859,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sutivan</ime_postaje>
+  <sijecanj>37,7</sijecanj>
+  <veljaca>52,2</veljaca>
+  <ozujak>79,8</ozujak>
+  <travanj>**</travanj>
+  <svibanj>**</svibanj>
+  <lipanj>**</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>**</kolovoz>
+  <rujan>**</rujan>
+  <listopad>**</listopad>
+  <studeni>**</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sv. Ivan na Pučini</ime_postaje>
+  <sijecanj>44,9</sijecanj>
+  <veljaca>43,9</veljaca>
+  <ozujak>95,7</ozujak>
+  <travanj>71,4</travanj>
+  <svibanj>89,7</svibanj>
+  <lipanj>54,3</lipanj>
+  <srpanj>26,6</srpanj>
+  <kolovoz>46,1</kolovoz>
+  <rujan>77,8</rujan>
+  <listopad>147,8</listopad>
+  <studeni>49,8</studeni>
+  <prosinac>12,2</prosinac>
+  <ukupno>760,2</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Sv. Ivan Zelina</ime_postaje>
+  <sijecanj>56,7</sijecanj>
+  <veljaca>66,0</veljaca>
+  <ozujak>105,3</ozujak>
+  <travanj>53,6</travanj>
+  <svibanj>60,2</svibanj>
+  <lipanj>3,5</lipanj>
+  <srpanj>**</srpanj>
+  <kolovoz>59,0</kolovoz>
+  <rujan>67,4</rujan>
+  <listopad>119,5</listopad>
+  <studeni>98,4</studeni>
+  <prosinac>**</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Šestanovac</ime_postaje>
+  <sijecanj>**</sijecanj>
+  <veljaca>**</veljaca>
+  <ozujak>**</ozujak>
+  <travanj>51,0</travanj>
+  <svibanj>103,7</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>57,8</srpanj>
+  <kolovoz>112,9</kolovoz>
+  <rujan>128,4</rujan>
+  <listopad>91,3</listopad>
+  <studeni>328,3</studeni>
+  <prosinac>102,1</prosinac>
+  <ukupno>**</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Šibenik</ime_postaje>
+  <sijecanj>26,0</sijecanj>
+  <veljaca>43,2</veljaca>
+  <ozujak>138,7</ozujak>
+  <travanj>10,4</travanj>
+  <svibanj>45,2</svibanj>
+  <lipanj>10,6</lipanj>
+  <srpanj>56,4</srpanj>
+  <kolovoz>22,8</kolovoz>
+  <rujan>130,1</rujan>
+  <listopad>29,1</listopad>
+  <studeni>82,9</studeni>
+  <prosinac>73,3</prosinac>
+  <ukupno>668,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Šibice</ime_postaje>
+  <sijecanj>60,7</sijecanj>
+  <veljaca>57,7</veljaca>
+  <ozujak>116,5</ozujak>
+  <travanj>50,1</travanj>
+  <svibanj>70,3</svibanj>
+  <lipanj>3,9</lipanj>
+  <srpanj>95,0</srpanj>
+  <kolovoz>68,9</kolovoz>
+  <rujan>65,7</rujan>
+  <listopad>93,7</listopad>
+  <studeni>112,1</studeni>
+  <prosinac>43,8</prosinac>
+  <ukupno>838,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Valpovo - Tiborjanci</ime_postaje>
+  <sijecanj>35,7</sijecanj>
+  <veljaca>43,8</veljaca>
+  <ozujak>82,0</ozujak>
+  <travanj>30,1</travanj>
+  <svibanj>79,0</svibanj>
+  <lipanj>0,2</lipanj>
+  <srpanj>36,8</srpanj>
+  <kolovoz>57,8</kolovoz>
+  <rujan>19,8</rujan>
+  <listopad>42,9</listopad>
+  <studeni>65,2</studeni>
+  <prosinac>29,8</prosinac>
+  <ukupno>523,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Varaždin</ime_postaje>
+  <sijecanj>51,3</sijecanj>
+  <veljaca>52,8</veljaca>
+  <ozujak>104,5</ozujak>
+  <travanj>49,7</travanj>
+  <svibanj>59,0</svibanj>
+  <lipanj>21,4</lipanj>
+  <srpanj>80,4</srpanj>
+  <kolovoz>40,1</kolovoz>
+  <rujan>85,7</rujan>
+  <listopad>60,3</listopad>
+  <studeni>101,8</studeni>
+  <prosinac>59,4</prosinac>
+  <ukupno>766,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Vela Luka</ime_postaje>
+  <sijecanj>36,9</sijecanj>
+  <veljaca>106,5</veljaca>
+  <ozujak>179,1</ozujak>
+  <travanj>26,3</travanj>
+  <svibanj>34,6</svibanj>
+  <lipanj>0,5</lipanj>
+  <srpanj>25,7</srpanj>
+  <kolovoz>112,1</kolovoz>
+  <rujan>36,7</rujan>
+  <listopad>38,3</listopad>
+  <studeni>186,8</studeni>
+  <prosinac>108,0</prosinac>
+  <ukupno>891,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Voćin</ime_postaje>
+  <sijecanj>69,0</sijecanj>
+  <veljaca>39,6</veljaca>
+  <ozujak>169,6</ozujak>
+  <travanj>55,7</travanj>
+  <svibanj>109,8</svibanj>
+  <lipanj>2,7</lipanj>
+  <srpanj>102,6</srpanj>
+  <kolovoz>69,7</kolovoz>
+  <rujan>27,9</rujan>
+  <listopad>64,1</listopad>
+  <studeni>107,6</studeni>
+  <prosinac>44,2</prosinac>
+  <ukupno>862,5</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Vrelo Ličanke</ime_postaje>
+  <sijecanj>412,6</sijecanj>
+  <veljaca>186,6</veljaca>
+  <ozujak>441,6</ozujak>
+  <travanj>298,3</travanj>
+  <svibanj>201,8</svibanj>
+  <lipanj>14,5</lipanj>
+  <srpanj>197,0</srpanj>
+  <kolovoz>112,1</kolovoz>
+  <rujan>271,4</rujan>
+  <listopad>474,3</listopad>
+  <studeni>379,0</studeni>
+  <prosinac>58,9</prosinac>
+  <ukupno>3.048,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Vrgorac</ime_postaje>
+  <sijecanj>92,4</sijecanj>
+  <veljaca>91,1</veljaca>
+  <ozujak>321,6</ozujak>
+  <travanj>82,4</travanj>
+  <svibanj>89,9</svibanj>
+  <lipanj>0,0</lipanj>
+  <srpanj>80,9</srpanj>
+  <kolovoz>131,5</kolovoz>
+  <rujan>139,2</rujan>
+  <listopad>91,9</listopad>
+  <studeni>323,2</studeni>
+  <prosinac>128,7</prosinac>
+  <ukupno>1.572,8</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Vukovar</ime_postaje>
+  <sijecanj>23,8</sijecanj>
+  <veljaca>37,1</veljaca>
+  <ozujak>103,6</ozujak>
+  <travanj>40,7</travanj>
+  <svibanj>83,9</svibanj>
+  <lipanj>1,5</lipanj>
+  <srpanj>41,5</srpanj>
+  <kolovoz>36,4</kolovoz>
+  <rujan>12,2</rujan>
+  <listopad>40,9</listopad>
+  <studeni>69,0</studeni>
+  <prosinac>12,3</prosinac>
+  <ukupno>502,9</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zadar</ime_postaje>
+  <sijecanj>30,7</sijecanj>
+  <veljaca>107,6</veljaca>
+  <ozujak>44,9</ozujak>
+  <travanj>23,0</travanj>
+  <svibanj>71,9</svibanj>
+  <lipanj>8,3</lipanj>
+  <srpanj>46,2</srpanj>
+  <kolovoz>44,4</kolovoz>
+  <rujan>65,7</rujan>
+  <listopad>31,4</listopad>
+  <studeni>82,4</studeni>
+  <prosinac>54,5</prosinac>
+  <ukupno>611,0</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zadar - aerodrom</ime_postaje>
+  <sijecanj>56,6</sijecanj>
+  <veljaca>128,5</veljaca>
+  <ozujak>54,3</ozujak>
+  <travanj>54,0</travanj>
+  <svibanj>96,1</svibanj>
+  <lipanj>6,4</lipanj>
+  <srpanj>58,2</srpanj>
+  <kolovoz>89,1</kolovoz>
+  <rujan>69,1</rujan>
+  <listopad>30,0</listopad>
+  <studeni>126,7</studeni>
+  <prosinac>68,6</prosinac>
+  <ukupno>837,6</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zagreb - Grič</ime_postaje>
+  <sijecanj>51,4</sijecanj>
+  <veljaca>56,5</veljaca>
+  <ozujak>87,7</ozujak>
+  <travanj>45,0</travanj>
+  <svibanj>61,5</svibanj>
+  <lipanj>15,3</lipanj>
+  <srpanj>102,7</srpanj>
+  <kolovoz>79,1</kolovoz>
+  <rujan>49,3</rujan>
+  <listopad>96,7</listopad>
+  <studeni>91,1</studeni>
+  <prosinac>46,4</prosinac>
+  <ukupno>782,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zagreb - Maksimir</ime_postaje>
+  <sijecanj>56,9</sijecanj>
+  <veljaca>57,6</veljaca>
+  <ozujak>92,9</ozujak>
+  <travanj>46,8</travanj>
+  <svibanj>57,3</svibanj>
+  <lipanj>9,9</lipanj>
+  <srpanj>104,0</srpanj>
+  <kolovoz>72,7</kolovoz>
+  <rujan>51,0</rujan>
+  <listopad>104,8</listopad>
+  <studeni>99,5</studeni>
+  <prosinac>46,0</prosinac>
+  <ukupno>799,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zagreb - Pleso aerodrom</ime_postaje>
+  <sijecanj>62,3</sijecanj>
+  <veljaca>55,7</veljaca>
+  <ozujak>117,1</ozujak>
+  <travanj>42,3</travanj>
+  <svibanj>61,4</svibanj>
+  <lipanj>6,6</lipanj>
+  <srpanj>105,7</srpanj>
+  <kolovoz>60,9</kolovoz>
+  <rujan>33,1</rujan>
+  <listopad>85,6</listopad>
+  <studeni>118,8</studeni>
+  <prosinac>42,9</prosinac>
+  <ukupno>792,4</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zagreb - Rim</ime_postaje>
+  <sijecanj>55,9</sijecanj>
+  <veljaca>61,8</veljaca>
+  <ozujak>86,3</ozujak>
+  <travanj>46,9</travanj>
+  <svibanj>60,9</svibanj>
+  <lipanj>16,5</lipanj>
+  <srpanj>130,9</srpanj>
+  <kolovoz>90,6</kolovoz>
+  <rujan>57,8</rujan>
+  <listopad>91,6</listopad>
+  <studeni>90,8</studeni>
+  <prosinac>52,7</prosinac>
+  <ukupno>842,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zavižan</ime_postaje>
+  <sijecanj>80,5</sijecanj>
+  <veljaca>124,7</veljaca>
+  <ozujak>270,6</ozujak>
+  <travanj>134,0</travanj>
+  <svibanj>178,3</svibanj>
+  <lipanj>71,8</lipanj>
+  <srpanj>155,7</srpanj>
+  <kolovoz>211,7</kolovoz>
+  <rujan>115,1</rujan>
+  <listopad>118,2</listopad>
+  <studeni>227,4</studeni>
+  <prosinac>84,7</prosinac>
+  <ukupno>1.772,7</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Zvečevo</ime_postaje>
+  <sijecanj>74,8</sijecanj>
+  <veljaca>36,0</veljaca>
+  <ozujak>198,4</ozujak>
+  <travanj>57,4</travanj>
+  <svibanj>95,1</svibanj>
+  <lipanj>2,5</lipanj>
+  <srpanj>91,5</srpanj>
+  <kolovoz>73,0</kolovoz>
+  <rujan>36,5</rujan>
+  <listopad>84,2</listopad>
+  <studeni>105,7</studeni>
+  <prosinac>29,0</prosinac>
+  <ukupno>884,1</ukupno>
+</postaja>
+<postaja>
+  <ime_postaje>Županja</ime_postaje>
+  <sijecanj>25,8</sijecanj>
+  <veljaca>35,8</veljaca>
+  <ozujak>110,7</ozujak>
+  <travanj>49,7</travanj>
+  <svibanj>84,3</svibanj>
+  <lipanj>17,5</lipanj>
+  <srpanj>46,4</srpanj>
+  <kolovoz>41,0</kolovoz>
+  <rujan>23,3</rujan>
+  <listopad>60,9</listopad>
+  <studeni>94,0</studeni>
+  <prosinac>19,9</prosinac>
+  <ukupno>609,3</ukupno>
+</postaja>
+</godisnja_oborina>

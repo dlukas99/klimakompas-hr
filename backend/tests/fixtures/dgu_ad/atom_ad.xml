@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xml:lang="hr">
+    <title>Adrese</title>
+    <subtitle>Izvor koji uključuje podatke o sljedećim prostornim jedinicama: kućni broj, zgrada, ulica, naselje.</subtitle>
+    <link href="http://inspire.ec.europa.eu/featureconcept/Address" rel="describedby" type="text/html"/>
+    <link href="https://geoportal.dgu.hr/services/atom/ad/xml" rel="self" type="application/atom+xml" hreflang="hr" title="Ovaj dokument"/>
+    <link href="https://geoportal.dgu.hr/services/atom/ad/en.xml" rel="alternate" type="application/atom+xml" hreflang="en" title="Ovaj dokument na engleskom jeziku"/>
+    <link href="https://geoportal.dgu.hr/services/atom/xml" rel="up" type="application/atom+xml" hreflang="hr" title="Dokument usluge preuzimanja"/>
+    <id>https://geoportal.dgu.hr/services/atom/ad/xml</id>
+    <rights>ograničenje javnog pristupa prema članku 13 stavku 1 točki (e) INSPIRE Direktive</rights>
+    <updated>2026-11-01T06:25:30.000000+01:00</updated>
+    <author>
+        <name>Državna geodetska uprava</name>
+        <email>removed@example.invalid</email>
+    </author>
+    <entry>
+        <title>Adrese u INSPIRE GML 3.2.1 formatu u ETRS89/LAEA projekciji u komprimiranoj zip datoteci</title>
+        <link href="https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip" rel="alternate" type="application/x-gmz" hreflang="hr" title="Adrese na području cijele Republike Hrvatske u INSPIRE GML 3.2.1 formatu u ETRS89/LAEA projekciji u komprimiranoj zip datoteci. Sadržaj skupa podataka je na hrvatskom jeziku." length="84406413"/>
+        <id>https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip</id>
+        <updated>2026-11-01T06:25:30.000000+01:00</updated>
+        <polygon>42.4 13.505 46.536 13.505 46.536 19.425 42.4 19.425 42.4 13.505</polygon>
+        <category term="http://www.opengis.net/def/crs/EPSG/0/3035" label="ETRS89/LAEA"/>
+    </entry>
+</feed>

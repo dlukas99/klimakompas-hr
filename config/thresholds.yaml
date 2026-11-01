@@ -1,0 +1,16 @@
+pm25_annual_ugm3:
+  who_aqg_2021: 5            # WHO air quality guidelines (2021)
+  who_it4: 10
+  who_it3: 15
+  who_it2: 25
+  eu_limit_until_2030: 25    # Directive 2008/50/EC - TODO(verify)
+  eu_limit_from_2030: 10     # Directive (EU) 2024/2881 - TODO(verify)
+  card_levels: [5, 10, 15, 25]     # boundaries of levels 1|2|3|4|5
+eaqi:
+  source: "TODO(verify) - official EEA European Air Quality Index page"
+  bands: {}                  # fill from the source (PM2.5, PM10, NO2, O3) with the check date
+cap_levels:                  # checked 2026-11-01 against awareness_level in DHMZ CAP
+  green: 1
+  yellow: 2
+  orange: 3
+  red: 4                     # TODO(verify) - not present in the feed on 2026-11-01

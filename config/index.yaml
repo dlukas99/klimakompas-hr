@@ -1,0 +1,38 @@
+version: "1.0.0"
+populated_min_pop: 1
+normalization: { method: robust_minmax, lower_pct: 5, upper_pct: 95 }   # nad naseljenim ćelijama
+hazards:
+  flood:
+    return_periods: [10, 100, 500]
+    depth_threshold_m: 0.0
+    deep_threshold_m: 0.5
+    eaf_ref: 0.10
+    card_levels: { rp10: 5, rp100: 4, rp500: 3, near_rp100_m: 250, near_level: 2, else: 1 }
+  heat:
+    weights: { hot_days: 0.5, tropical_nights: 0.25, lst_delta: 0.25 }
+    reference_period: "TODO(verify) – npr. 1991-2020 ili najnovije dostupno u ECDE"
+    lst: { months: [6, 7, 8], years: [2024, 2025], max_cloud: 30, rural_builtup_max: 0.05, neighbourhood_km: 15 }
+  fire:
+    weights: { fwi_x_fuel: 0.7, burnt_history: 0.3 }
+    fuel_classes: [10, 20, 30]
+    fuel_ring_km: 1
+    fuel_floor: 0.3
+    burnt: { buffer_km: 2, years: [2001, 2025] }
+  air:
+    pollutant: pm25
+    zero_at_ugm3: 5.0
+    one_at_ugm3: 25.0
+  drought:
+    enabled: false
+vulnerability:
+  general: { share_65plus: 0.7, share_under15: 0.3 }
+  heat: { general: 0.6, tree_deficit: 0.4 }
+risk:
+  base: 0.5            # R = H * (base + (1 - base) * V)
+ikr:
+  weights: { flood: 0.25, heat: 0.25, fire: 0.25, air: 0.25, drought: 0.0 }
+  classes: quintiles
+  labels: ["Vrlo nizak", "Nizak", "Umjeren", "Visok", "Vrlo visok"]
+exposure:
+  high_class_min: 4
+sensitivity: { samples: 1000, dirichlet_alpha: 1.0, top_n: 20 }

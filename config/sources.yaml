@@ -1,0 +1,705 @@
+# One entry per source (SPEC §4.2, Appendix A). `kk sources verify` runs the `verify` plan.
+# Findings in `verification.note` were observed on the real services on 2026-11-01.
+
+- id: dgu_au
+  name: "Upravne jedinice INSPIRE"
+  publisher: "Državna geodetska uprava"
+  data_gov_hr_id: "upravne-jedinice-inspire"
+  landing_url: "https://geoportal.dgu.hr/services/atom/au/xml"
+  access:
+    type: atom
+    service_feed: "https://geoportal.dgu.hr/services/atom/xml"
+    dataset_feed: "https://geoportal.dgu.hr/services/atom/au/xml"
+    file: "https://geoportal.dgu.hr/services/atom/INSPIRE_Administrative_Units_(AU).zip"
+    wms: "https://geoportal.dgu.hr/services/inspire/au/wms"
+  format: inspire_gml_3.2.1_zip
+  license: "Otvorena dozvola (zapis na Portalu)"
+  attribution: "Izvor: Geoportal Državne geodetske uprave"
+  schedule: null
+  robots_allowed: true
+  used_for: [boundaries, jls_codes, settlement_codes, cell_assignment]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: >-
+      ATOM nudi INSPIRE GML 3.2.1 u ETRS89/LAEA (EPSG:3035), a ne SHP u EPSG:3765 kako navodi SPEC.
+      Zip ima oko 209 MB. ATOM servis u polju rights navodi „ograničenje javnog pristupa prema
+      članku 13 stavku 1 točki (e) INSPIRE Direktive”, a Portal Otvorenu dozvolu: mjerodavnim
+      smatramo zapis na Portalu. Nazive polja sa šiframa treba utvrditi iz podataka u Fazi 1.
+  fallback: "GISCO LAU 2021 za JLS; DZS/RGI točke s Voronoijem za naselja (ADR)"
+  verify:
+    probes:
+      - url: "https://geoportal.dgu.hr/services/atom/xml"
+        count: { kind: xml_tag, tag: entry }
+      - url: "https://geoportal.dgu.hr/services/atom/au/xml"
+        count: { kind: xml_tag, tag: entry }
+        fixture: atom_au.xml
+      - url: "https://geoportal.dgu.hr/services/atom/INSPIRE_Administrative_Units_(AU).zip"
+        method: ZIP
+        count: { kind: zip_entries }
+      - url: "https://geoportal.dgu.hr/services/inspire/au/wms?service=WMS&request=GetCapabilities"
+        count: { kind: xml_tag, tag: Layer }
+
+- id: dgu_ad
+  name: "Adrese INSPIRE"
+  publisher: "Državna geodetska uprava"
+  data_gov_hr_id: "adrese-inspire"
+  landing_url: "https://geoportal.dgu.hr/services/atom/ad/xml"
+  access:
+    type: atom
+    dataset_feed: "https://geoportal.dgu.hr/services/atom/ad/xml"
+    file: "https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip"
+  format: inspire_gml_3.2.1_zip
+  license: "Otvorena dozvola (zapis na Portalu)"
+  attribution: "Izvor: Geoportal Državne geodetske uprave"
+  schedule: null
+  robots_allowed: true
+  used_for: [geocoder]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: "GML u EPSG:3035 preko ATOM-a. WFS traži authKey i ne koristimo ga."
+  fallback: "pretraga naselja i JLS-ova te klik na kartu"
+  verify:
+    probes:
+      - url: "https://geoportal.dgu.hr/services/atom/ad/xml"
+        count: { kind: xml_tag, tag: entry }
+        fixture: atom_ad.xml
+      - url: "https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip"
+        method: ZIP
+        count: { kind: zip_entries }
+
+- id: dzs_naselja_2021
+  name: "Popis 2021.: stanovništvo po naseljima"
+  publisher: "Državni zavod za statistiku"
+  landing_url: "https://podaci.dzs.hr"
+  access:
+    type: files
+    urls: ["https://podaci.dzs.hr/media/rqybclnx/popis_2021-stanovnistvo_po_naseljima.xlsx"]
+  format: xlsx
+  license: "Otvorena dozvola prema SPEC-u; TODO(verify) točan zapis na Portalu"
+  attribution: "Izvor: Državni zavod za statistiku, Popis stanovništva, kućanstava i stanova 2021."
+  schedule: null
+  robots_allowed: true
+  used_for: [settlement_population, control_totals]
+  priority: P0
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Datoteka postoji, oko 3 MB. Zapis na Portalu i tablicu „starost i spol po naseljima” treba
+      potvrditi.
+  verify:
+    portal_query: "popis 2021 stanovništvo po naseljima"
+    probes:
+      - url: "https://podaci.dzs.hr/media/rqybclnx/popis_2021-stanovnistvo_po_naseljima.xlsx"
+        method: HEAD
+
+- id: estat_census_grid_2021
+  name: "Census 2021 population grid, 1 km"
+  publisher: "Eurostat GISCO (iz podataka DZS-a)"
+  landing_url: "https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids"
+  access:
+    type: files
+    urls: ["https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip"]
+  format: zip_csv_gpkg_raster
+  license: "TODO(verify) - ponovna uporaba uz navođenje izvora (Eurostat)"
+  attribution: "© European Union, Eurostat – Census 2021 population grid"
+  schedule: null
+  robots_allowed: true
+  used_for: [population_grid, population_65plus, population_under15]
+  priority: P0
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Dostupna je novija verzija V3 (izmjena 19. 6. 2026., oko 566 MB) od verzije V2.2 iz SPEC-a.
+      Koristimo V3. Stupce, oznake prikrivenih vrijednosti i oblik GRD_ID treba potvrditi na
+      podacima u Fazi 1.
+  fallback: "DZS GeoSTAT ATOM za ukupno stanovništvo uz udjele 65+ na razini JLS-a"
+  verify:
+    probes:
+      - url: "https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids"
+      - url: "https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip"
+        method: ZIP
+        count: { kind: zip_entries }
+
+- id: jrc_efas_flood
+  name: "River flood hazard maps for Europe and the Mediterranean Basin (v3.1.1)"
+  publisher: "European Commission, Joint Research Centre (CEMS-EFAS)"
+  landing_url: "https://data.jrc.ec.europa.eu/dataset/1d128b6c-a4ee-4858-9e34-6210707f3c81"
+  docs_url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/README.txt"
+  access:
+    type: files
+    base_url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/"
+    files:
+      - "Europe_RP10_filled_depth.tif"
+      - "Europe_RP100_filled_depth.tif"
+      - "Europe_RP500_filled_depth.tif"
+  format: geotiff
+  license: "TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0"
+  citation: >-
+    Baugh, C.; Colonese, J.; D'Angelo, C.; Dottori, F.; Neal, J.; Prudhomme, C.; Salamon, P. (2024).
+    An updated dataset of global and European flood hazard maps. Manuscript under preparation.
+  attribution: "JRC / Copernicus EMS – EFAS river flood hazard maps (Baugh et al., 2024)"
+  schedule: null
+  robots_allowed: true
+  used_for: [flood_hazard, card_point_flood]
+  priority: P0
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Trenutna verzija je 3.1.1, a rezolucija 3 lučne sekunde (oko 90 m) u WGS84. Datoteke imaju
+      272–350 MB i podržavaju HTTP Range, pa je prozorsko čitanje izvedivo. Licenca je proturječna
+      i treba je razjasniti prije objave izvedenih skupova (dopis u docs/dopisi/).
+  fallback: "vektori Hrvatskih voda (ADR); JRC GloFAS v2.1"
+  verify:
+    probes:
+      - url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/README.txt"
+        fixture: README.txt
+      - url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/copyright.txt"
+        fixture: copyright.txt
+      - url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP10_filled_depth.tif"
+        method: RANGE
+      - url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP100_filled_depth.tif"
+        method: RANGE
+      - url: "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/CEMS-EFAS/flood_hazard/Europe_RP500_filled_depth.tif"
+        method: RANGE
+
+- id: hv_flood_wms
+  name: "Karte opasnosti od poplava 2019. i karte rizika"
+  publisher: "Hrvatske vode"
+  landing_url: "https://korp.voda.hr"
+  access:
+    type: wms_browser_only
+    url: "https://servisi.voda.hr/wms"
+    layers:
+      - "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-velika-vjerojatnost_2019"
+      - "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-srednja-vjerojatnost_2019"
+      - "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-mala-vjerojatnost_2019"
+  format: wms
+  license: >-
+    TODO(verify) - NIPP: izrađeno za Plan upravljanja rizicima od poplava, korištenje na vlastitu
+    odgovornost
+  attribution: "Izvor: Hrvatske vode – Karte opasnosti od poplava 2019."
+  schedule: null
+  robots_allowed: false
+  used_for: [flood_official_display]
+  priority: P1
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Bez harvesta i serverskog proxyja. Jednokratni ručni GetCapabilities (HTTP 200, WMS 1.3.0)
+      potvrdio je nazive slojeva, podršku za EPSG:3857 i zaglavlje Access-Control-Allow-Origin: *,
+      pa su prikaz i GetFeatureInfo iz preglednika izvedivi. Na robots.txt je server tog dana vratio
+      HTTP 503, što tretiramo kao zabranu automatiziranog dohvata.
+  fallback: "samo JRC sloj i poveznica na preglednik HV-a"
+  verify:
+    policy: robots_only
+    robots_hosts: [servisi.voda.hr]
+
+- id: eea_pm25_1km
+  name: "EEA interpolirani PM2,5, godišnji prosjek, 1 km (2023.)"
+  publisher: "European Environment Agency"
+  landing_url: "https://sdi.eea.europa.eu/catalogue/srv/api/records/57807f24-25dc-4df3-9468-dcff8cee5468"
+  access:
+    type: files
+    urls:
+      - "https://sdi.eea.europa.eu/datastore/public/eea_r_3035_1_km_aq-interpolated-pm25_p_2023_v01_r00/pm25_avg_23.tif"
+  format: geotiff
+  license: "TODO(verify) - EEA ponovna uporaba uz navođenje"
+  attribution: "© European Environment Agency (EEA)"
+  schedule: null
+  robots_allowed: true
+  used_for: [air_chronic]
+  priority: P0
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Datoteka je pm25_avg_23.tif, oko 82 MB, pa je preuzimanje jednostavno. Stara putanja /webdav/
+      preusmjerava na /datastore/public/. Licencu treba potvrditi u zapisu kataloga.
+  fallback: "godišnji prosjeci postaja AZO s IDW interpolacijom (gruba procjena)"
+  verify:
+    probes:
+      - url: "https://sdi.eea.europa.eu/datastore/public/eea_r_3035_1_km_aq-interpolated-pm25_p_2023_v01_r00/pm25_avg_23.tif"
+        method: RANGE
+
+- id: azo_aq_rest
+  name: "Kvaliteta zraka u RH – RESTful servis"
+  publisher: "Ministarstvo zaštite okoliša i zelene tranzicije"
+  landing_url: "https://iszz.azo.hr/iskzl/exc.htm"
+  docs_url: "https://iszz.azo.hr/iskzl/doc/servis_uputa.pdf"
+  access:
+    type: rest
+    url_template: "https://iszz.azo.hr/iskzl/rs/podatak/export/json?postaja={station}&polutant={pollutant}&tipPodatka={dtype}&vrijemeOd={date_from}&vrijemeDo={date_to}"
+    date_format: "%d.%m.%Y"
+    dtype_hourly: 0
+    dtype_daily: 4
+  format: json
+  license: "TODO(verify)"
+  attribution: "Izvor: Ministarstvo zaštite okoliša i zelene tranzicije – Kvaliteta zraka u RH (iszz.azo.hr)"
+  schedule: "20 * * * *"
+  stale_after: "PT6H"
+  robots_allowed: true
+  used_for: [air_live, nowcast]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: >-
+      tipPodatka=0 vraća satne vrijednosti (do 48 zapisa za 2 dana), a tipPodatka=4 dnevne
+      (2 zapisa za 2 dana). Vrijednosti 1, 2, 3 i 5 na testiranoj postaji vraćaju prazan popis.
+      Stvarni oblik zapisa je ravan: {vrijednost, mjernaJedinica, vrijeme}, a vrijeme je Unix epoha
+      u milisekundama, a ne ugniježđeni objekt s ISO vremenom iz SPEC-a. Servis ograničava
+      učestalost: uz razmak od 0,5 s svaki drugi zahtjev dobiva HTTP 429 bez Retry-After, a uz razmak
+      od 4 s svih 15 zahtjeva je prošlo. Worker zato mora razmaknuti pozive; točnu donju granicu još
+      treba utvrditi. PM2,5 za 29.–31. 10. 2026. vratile su postaje 155, 156, 157, 159, 161, 162,
+      165, 255 i 275, a prazno su vratile 160 (Osijek-1), 168, 277, 278, 286 i 300 (Osijek – PPI),
+      pa Osijek u tom razdoblju nema trenutni PM2,5. Validiranost podataka još nije utvrđena:
+      TODO(verify).
+  fallback: open_meteo
+  verify:
+    portal_query: "kvaliteta zraka republika hrvatska"
+    probes:
+      - url: "https://iszz.azo.hr/iskzl/rs/podatak/export/json?postaja=155&polutant=5&tipPodatka=0&vrijemeOd={date_from}&vrijemeDo={date_to}"
+        count: { kind: json_list }
+        fixture: zagreb1_pm10_hourly.json
+      - url: "https://iszz.azo.hr/iskzl/rs/podatak/export/json?postaja=155&polutant=5&tipPodatka=4&vrijemeOd={date_from}&vrijemeDo={date_to}"
+        count: { kind: json_list }
+        fixture: zagreb1_pm10_daily.json
+      - url: "https://iszz.azo.hr/iskzl/rs/podatak/export/json?postaja=300&polutant=28&tipPodatka=0&vrijemeOd={date_from}&vrijemeDo={date_to}"
+        count: { kind: json_list }
+        expect_empty_ok: true
+      - url: "https://iszz.azo.hr/iskzl/koordinate.htm"
+      - url: "https://iszz.azo.hr/iskzl/status.htm"
+
+- id: dhmz_cap
+  name: "Upozorenja DHMZ-a (CAP 1.2) i poligoni regija"
+  publisher: "Državni hidrometeorološki zavod"
+  landing_url: "https://meteo.hr/proizvodi.php?section=podaci&param=xml_korisnici"
+  access:
+    type: files
+    urls:
+      - "https://meteo.hr/upozorenja/cap_hr_today.xml"
+      - "https://meteo.hr/upozorenja/cap_hr_tomorrow.xml"
+      - "https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml"
+    regions: "https://meteo.hr/upozorenja/CroatiaRegionsCounties.tar.xz"
+    sea_regions: "https://meteo.hr/upozorenja/Croatia_Sea_Regions.tar"
+    regions_list: "https://meteo.hr/upozorenja/Croatia_MA_regions.pdf"
+  format: cap_xml
+  license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
+  attribution: "Izvor: DHMZ"
+  schedule: "*/30 * * * *"
+  stale_after: "PT2H"
+  robots_allowed: true
+  used_for: [warnings]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: >-
+      Svako upozorenje ima dva info bloka, hrvatski i engleski. Razina je u parametru
+      awareness_level (npr. „2; yellow; Moderate”), a vrsta u awareness_type. Područje ima geokodove
+      EMMA_ID i NUTS3. onset i expires imaju razmak umjesto slova T, pa ih parser mora prihvatiti.
+  verify:
+    portal_query: "DHMZ meteorološki"
+    probes:
+      - url: "https://meteo.hr/upozorenja/cap_hr_today.xml"
+        count: { kind: xml_tag, tag: info }
+        fixture: cap_hr_today.xml
+        expect_empty_ok: true
+      - url: "https://meteo.hr/upozorenja/cap_hr_tomorrow.xml"
+        count: { kind: xml_tag, tag: info }
+        fixture: cap_hr_tomorrow.xml
+        expect_empty_ok: true
+      - url: "https://meteo.hr/upozorenja/cap_hr_day_after_tomorrow.xml"
+        count: { kind: xml_tag, tag: info }
+        expect_empty_ok: true
+      - url: "https://meteo.hr/upozorenja/CroatiaRegionsCounties.tar.xz"
+        method: HEAD
+      - url: "https://meteo.hr/upozorenja/Croatia_Sea_Regions.tar"
+        method: HEAD
+      - url: "https://meteo.hr/upozorenja/Croatia_MA_regions.pdf"
+        method: HEAD
+
+- id: dhmz_heatwave
+  name: "Upozorenje na toplinske valove"
+  publisher: "Državni hidrometeorološki zavod"
+  access:
+    type: files
+    urls: ["https://prognoza.hr/toplinskival_5.xml"]
+  format: xml
+  license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
+  attribution: "Izvor: DHMZ"
+  schedule: "0 * * * *"
+  stale_after: "P1D"
+  robots_allowed: true
+  used_for: [warnings_heat]
+  priority: P0
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Izvan sezone datoteka ima kodiranje ISO-8859-1, korijen TriVis i prazan element section, a
+      zadnja izmjena je od 13. 9. 2026. Strukturu aktivnog upozorenja nije moguće vidjeti do sezone,
+      pa je parser za to stanje TODO(verify).
+  verify:
+    probes:
+      - url: "https://prognoza.hr/toplinskival_5.xml"
+        count: { kind: xml_tag, tag: section }
+        fixture: toplinskival_off_season.xml
+
+- id: dhmz_fire_index
+  name: "Indeks opasnosti od šumskih požara"
+  publisher: "Državni hidrometeorološki zavod"
+  access:
+    type: files
+    urls: ["https://vrijeme.hr/indeks.xml"]
+  format: xml
+  license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
+  attribution: "Izvor: DHMZ"
+  schedule: "0 * * * *"
+  stale_after: "P1D"
+  robots_allowed: true
+  used_for: [fire_live]
+  priority: P1
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: >-
+      Datoteka se 1. 11. još osvježava (35 postaja s kodom, FWI i kategorijom), pa ne vraća stanje
+      „izvan sezone” sama od sebe. UI mora sezonu odrediti po datumu ili po vwdatum: TODO(verify).
+  verify:
+    probes:
+      - url: "https://vrijeme.hr/indeks.xml"
+        count: { kind: xml_tag, tag: postaja }
+        fixture: indeks.xml
+
+- id: dhmz_weather
+  name: "Vrijeme u Hrvatskoj: Tmax, Tmin, oborina, temperatura rijeka"
+  publisher: "Državni hidrometeorološki zavod"
+  access:
+    type: files
+    urls:
+      - "https://vrijeme.hr/hrvatska_n.xml"
+      - "https://vrijeme.hr/tx.xml"
+      - "https://vrijeme.hr/tn.xml"
+      - "https://vrijeme.hr/oborina.xml"
+      - "https://vrijeme.hr/temp_vode.xml"
+  format: xml
+  license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
+  attribution: "Izvor: DHMZ"
+  schedule: "10 * * * *"
+  stale_after: "P1D"
+  robots_allowed: true
+  used_for: [context, nowcast_features]
+  priority: P1
+  verification:
+    status: verified
+    date: 2026-11-01
+  verify:
+    probes:
+      - url: "https://vrijeme.hr/hrvatska_n.xml"
+        fixture: hrvatska_n.xml
+      - url: "https://vrijeme.hr/tx.xml"
+        fixture: tx.xml
+      - url: "https://vrijeme.hr/tn.xml"
+      - url: "https://vrijeme.hr/oborina.xml"
+      - url: "https://vrijeme.hr/temp_vode.xml"
+
+- id: dhmz_climate
+  name: "Srednje mjesečne vrijednosti i mjesečne oborine"
+  publisher: "Državni hidrometeorološki zavod"
+  access:
+    type: url_pattern
+    stations: "https://klima.hr/k1/tablice/{station}.xml"
+    precipitation: "https://klima.hr/k2/{year}/oborina_{year}.xml"
+  format: xml
+  license: "Otvorena dozvola; obavezno navesti DHMZ kao izvor"
+  attribution: "Izvor: DHMZ"
+  schedule: null
+  robots_allowed: true
+  used_for: [drought]
+  priority: P2
+  verification:
+    status: verified
+    date: 2026-11-01
+  verify:
+    probes:
+      - url: "https://klima.hr/k1/tablice/osijek.xml"
+        fixture: k1_osijek.xml
+      - url: "https://klima.hr/k2/2025/oborina_2025.xml"
+        fixture: k2_oborina_2025.xml
+
+- id: bioportal_wfs
+  name: "Zaštićena područja, Natura 2000, staništa (Bioportal)"
+  publisher: "Ministarstvo zaštite okoliša i zelene tranzicije"
+  data_gov_hr_id: "ekolo-ka-mre-a-natura-2000"
+  landing_url: "https://services.bioportal.hr/wfs"
+  access:
+    type: wfs
+    capabilities: "https://services.bioportal.hr/wfs?service=WFS&request=GetCapabilities"
+    endpoint: "https://services.bioportal.hr/dzzpnpis/wfs"
+    layers:
+      - "dzzpnpis:zasticeno_podrucje_poligoni"
+      - "dzzpnpis:zasticeno_podrucje_tocke"
+      - "dzzpnpis:n2krh2023stanista"
+      - "dzzpnpis:n2krh2023ptice"
+      - "dzzpnpis:ramsar"
+      - "dzzpnpis:kopnena_stanista_2016"
+    output_format: "application/json"
+    srs: "EPSG:4326"
+  format: wfs_geojson
+  license: "Javno dostupno (AccessConstraints) – TODO(verify) licenca"
+  attribution: "Izvor: Bioportal – Ministarstvo zaštite okoliša i zelene tranzicije"
+  schedule: "0 3 * * *"
+  stale_after: "P3D"
+  robots_allowed: true
+  used_for: [nature_context]
+  priority: P1
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: "Zapis za Naturu 2000 na Portalu nema licencu: nalaz za izvješće o kvaliteti."
+  verify:
+    probes:
+      - url: "https://services.bioportal.hr/wfs?service=WFS&request=GetCapabilities"
+        count: { kind: xml_tag, tag: FeatureType }
+      - url: "https://services.bioportal.hr/dzzpnpis/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=dzzpnpis:ramsar&outputFormat=application/json&count=1&srsName=EPSG:4326"
+        count: { kind: json_list, path: features }
+        fixture: ramsar_one.json
+
+- id: ecde
+  name: "ECDE klimatski indikatori (Copernicus C3S)"
+  publisher: "Copernicus Climate Change Service (ECMWF)"
+  landing_url: "https://cds.climate.copernicus.eu/datasets/sis-ecde-climate-indicators"
+  access:
+    type: cds
+    dataset: "sis-ecde-climate-indicators"
+    process: "https://cds.climate.copernicus.eu/api/retrieve/v1/processes/sis-ecde-climate-indicators"
+  format: netcdf
+  license: "CC BY 4.0 (CDS katalog)"
+  attribution: "Generated using Copernicus Climate Change Service information [godina]"
+  schedule: null
+  robots_allowed: true
+  used_for: [heat_hazard, fire_hazard]
+  priority: P0/P1
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: >-
+      Javni opis procesa potvrđuje varijable hot_days, tropical_nights, days_with_high_fire_danger i
+      fire_weather_index, origin reanalysis i projections, temporal_aggregation te
+      spatial_aggregation gridded. Stvarno preuzimanje traži token; točan zahtjev se slaže u Fazi 2
+      iz opisa procesa, bez pogađanja.
+  fallback: "Open-Meteo archive (ERA5), ako se riješi pitanje robots.txt"
+  verify:
+    probes:
+      - url: "https://cds.climate.copernicus.eu/api/catalogue/v1/collections/sis-ecde-climate-indicators"
+      - url: "https://cds.climate.copernicus.eu/api/retrieve/v1/processes/sis-ecde-climate-indicators"
+        fixture: process.json
+
+- id: landsat_lst
+  name: "Landsat 8/9 Collection 2 Level-2, površinska temperatura"
+  publisher: "USGS (preko Microsoft Planetary Computera)"
+  landing_url: "https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2"
+  access:
+    type: stac
+    url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+    collection: "landsat-c2-l2"
+    assets: [lwir11, qa_pixel]
+  format: cog
+  license: "Javna domena (USGS) prema SPEC-u; STAC navodi „proprietary”: TODO(verify)"
+  attribution: "Landsat-8/9 courtesy of the U.S. Geological Survey"
+  schedule: null
+  robots_allowed: true
+  used_for: [heat_lst]
+  priority: P0/P1
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: "Asseti lwir11 i qa_pixel postoje; asset ST_B10 ne postoji. Skaliranje se čita iz metapodataka."
+  fallback: "Sentinel-3 SLSTR LST; inače ΔLST otpada (ADR)"
+  verify:
+    probes:
+      - url: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2"
+
+- id: esa_worldcover
+  name: "ESA WorldCover 2021, 10 m"
+  publisher: "European Space Agency"
+  landing_url: "https://planetarycomputer.microsoft.com/dataset/esa-worldcover"
+  access:
+    type: stac
+    url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+    collection: "esa-worldcover"
+    assets: [map]
+  format: cog
+  license: "CC BY 4.0"
+  attribution: "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium"
+  schedule: null
+  robots_allowed: true
+  used_for: [greenery, fuel, rural_reference]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: "STAC kolekcija navodi CC-BY-4.0 i asset map."
+  verify:
+    probes:
+      - url: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/esa-worldcover"
+
+- id: burnt_areas
+  name: "Povijest opožarenih površina (MODIS MCD64A1)"
+  publisher: "NASA LP DAAC (preko Microsoft Planetary Computera)"
+  landing_url: "https://planetarycomputer.microsoft.com/dataset/modis-64A1-061"
+  access:
+    type: stac
+    url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+    collection: "modis-64A1-061"
+    assets: [Burn_Date]
+    alternative: "EFFIS burnt areas (JRC) - TODO(verify) stranica i uvjeti"
+  format: cog
+  license: "TODO(verify) - STAC navodi „other”"
+  attribution: "TODO(verify)"
+  schedule: null
+  robots_allowed: true
+  used_for: [fire_history]
+  priority: P1
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: "Kolekcija i asset Burn_Date postoje. EFFIS još nije provjeren."
+  fallback: "izostavi komponentu; ponder ide na FWI × gorivo (ADR)"
+  verify:
+    probes:
+      - url: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-64A1-061"
+
+- id: open_meteo
+  name: "Open-Meteo: prognoza, povijesni ERA5 i CAMS kvaliteta zraka"
+  publisher: "Open-Meteo"
+  landing_url: "https://open-meteo.com"
+  access:
+    type: rest
+    forecast: "https://api.open-meteo.com/v1/forecast"
+    archive: "https://archive-api.open-meteo.com/v1/archive"
+    air_quality: "https://air-quality-api.open-meteo.com/v1/air-quality"
+  format: json
+  license: "CC BY 4.0, uz navođenje; besplatno za nekomercijalnu uporabu"
+  attribution: "Weather data by Open-Meteo.com (CC BY 4.0)"
+  schedule: null
+  robots_allowed: false
+  used_for: [nowcast_features, cams_fallback, ecde_fallback]
+  priority: P1
+  verification:
+    status: blocked
+    date: 2026-11-01
+    note: >-
+      robots.txt na sva tri API hosta ima „Disallow: /”, iako je API javno dokumentiran s
+      ograničenjima poziva. Sva tri servisa odgovorila su na po jedan probni poziv prije nego što je
+      ovo uočeno. Verifikacija ih više ne poziva dok se ne odluči smije li se koristiti.
+  verify:
+    policy: robots_only
+    robots_hosts:
+      - api.open-meteo.com
+      - archive-api.open-meteo.com
+      - air-quality-api.open-meteo.com
+
+- id: ckan
+  name: "Portal otvorenih podataka (CKAN Action API i DCAT)"
+  publisher: "Ministarstvo pravosuđa, uprave i digitalne transformacije"
+  landing_url: "https://data.gov.hr"
+  access:
+    type: rest
+    package_search: "https://data.gov.hr/ckan/api/3/action/package_search"
+    package_show: "https://data.gov.hr/ckan/api/3/action/package_show"
+    dcat: "https://data.gov.hr/ckan/catalog.xml"
+  format: json
+  license: "TODO(verify)"
+  attribution: "Izvor: Portal otvorenih podataka (data.gov.hr)"
+  schedule: "30 4 * * *"
+  stale_after: "P3D"
+  robots_allowed: true
+  used_for: [source_metadata, quality_report, assistant_search]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: "API i DCAT rade. API je povremeno spor: jedan poziv istekao je nakon 25 s."
+  verify:
+    probes:
+      - url: "https://data.gov.hr/ckan/api/3/action/package_search?q=upravne+jedinice&rows=2"
+        count: { kind: json_value, path: result.count }
+        fixture: package_search.json
+      - url: "https://data.gov.hr/ckan/catalog.xml"
+        count: { kind: xml_tag, tag: Dataset }
+
+- id: dgu_dof
+  name: "DOF 2020 WMS"
+  publisher: "Državna geodetska uprava"
+  access:
+    type: wms
+    url: "https://geoportal.dgu.hr/services/inspire/orthophoto_2020/wms"
+  format: wms
+  license: "TODO(verify)"
+  attribution: "Izvor: Geoportal Državne geodetske uprave"
+  schedule: null
+  robots_allowed: true
+  used_for: [optional_basemap]
+  priority: P2
+  verification:
+    status: unverified
+    date: 2026-11-01
+  verify:
+    probes:
+      - url: "https://geoportal.dgu.hr/services/inspire/orthophoto_2020/wms?service=WMS&request=GetCapabilities"
+        count: { kind: xml_tag, tag: Layer }
+
+- id: basemap
+  name: "Vektorska podloga (OpenFreeMap, podaci OpenStreetMap)"
+  publisher: "OpenFreeMap / OpenStreetMap contributors"
+  landing_url: "https://openfreemap.org"
+  access:
+    type: browser_style
+    url: "https://tiles.openfreemap.org/styles/positron"
+  format: maplibre_style
+  license: "ODbL, samo za prikaz; OSM ne ulazi u izvedene skupove"
+  attribution: "© OpenStreetMap contributors, OpenFreeMap"
+  schedule: null
+  robots_allowed: true
+  used_for: [basemap_display]
+  priority: P0
+  verification:
+    status: verified
+    date: 2026-11-01
+    note: "Stil radi. OpenFreeMap navodi da javna instanca nema ograničenja, registracije ni kolačića."
+  fallback: "vlastiti Protomaps PMTiles izrezak RH (P2)"
+  verify:
+    probes:
+      - url: "https://tiles.openfreemap.org/styles/positron"
+
+- id: jrc_flood_events
+  name: "Katalog satelitski detektiranih poplava u Europi 2015.–2024."
+  publisher: "European Commission, Joint Research Centre"
+  landing_url: "https://data.jrc.ec.europa.eu/collection/id-0054"
+  access:
+    type: landing_page
+    url: "https://data.jrc.ec.europa.eu/collection/id-0054"
+  format: "TODO(verify)"
+  license: "TODO(verify)"
+  attribution: "TODO(verify)"
+  schedule: null
+  robots_allowed: true
+  used_for: [flood_validation]
+  priority: P2
+  verification:
+    status: partial
+    date: 2026-11-01
+    note: "Stranica kolekcije postoji; datoteke i licenca nisu provjerene (P2)."
+  verify:
+    probes:
+      - url: "https://data.jrc.ec.europa.eu/collection/id-0054"

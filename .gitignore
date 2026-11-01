@@ -1,0 +1,27 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Data is reproducible from config/sources.yaml and never committed
+/data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+
+# Node
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Tools and OS
+.claude/settings.local.json
+.DS_Store
+.vscode/
+.idea/

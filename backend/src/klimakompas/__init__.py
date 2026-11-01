@@ -1,0 +1,1 @@
+"""KlimaKompas HR backend."""

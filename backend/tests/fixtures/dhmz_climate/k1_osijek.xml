@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srednjaci>
+  <postaja>Osijek</postaja>
+  <interval>1899-2024</interval>
+  <podaci>
+    <el> </el>
+    <mj>siječanj</mj>
+    <mj>veljača</mj>
+    <mj>ožujak</mj>
+    <mj>travanj</mj>
+    <mj>svibanj</mj>
+    <mj>lipanj</mj>
+    <mj>srpanj</mj>
+    <mj>kolovoz</mj>
+    <mj>rujan</mj>
+    <mj>listopad</mj>
+    <mj>studeni</mj>
+    <mj>prosinac</mj>
+  </podaci>
+  <podaci>
+    <el>Srednja [°C]</el>
+    <mj> -0.5</mj>
+    <mj>  1.5</mj>
+    <mj>  6.4</mj>
+    <mj> 11.6</mj>
+    <mj> 16.6</mj>
+    <mj> 20.0</mj>
+    <mj> 21.8</mj>
+    <mj> 21.1</mj>
+    <mj> 16.8</mj>
+    <mj> 11.4</mj>
+    <mj>  5.9</mj>
+    <mj>  1.5</mj>
+  </podaci>
+  <podaci>
+    <el>Aps. maksimum [°C]</el>
+    <mj> 19.0</mj>
+    <mj> 23.0</mj>
+    <mj> 28.5</mj>
+    <mj> 31.2</mj>
+    <mj> 36.0</mj>
+    <mj> 39.6</mj>
+    <mj> 40.3</mj>
+    <mj> 40.3</mj>
+    <mj> 37.4</mj>
+    <mj> 30.6</mj>
+    <mj> 25.8</mj>
+    <mj> 21.3</mj>
+  </podaci>
+  <podaci>
+    <el>Datum(dan/godina)</el>
+    <mj>11/1903</mj>
+    <mj>23/1903</mj>
+    <mj>31/2024</mj>
+    <mj>15/2024</mj>
+    <mj>12/1968</mj>
+    <mj>20/1908</mj>
+    <mj> 1/1950</mj>
+    <mj>24/2012</mj>
+    <mj>17/2015</mj>
+    <mj> 3/2020</mj>
+    <mj>16/1963</mj>
+    <mj>25/2009</mj>
+  </podaci>
+  <podaci>
+    <el>Aps. minimum [°C]</el>
+    <mj>-27.1</mj>
+    <mj>-26.4</mj>
+    <mj>-21.0</mj>
+    <mj> -6.8</mj>
+    <mj> -3.0</mj>
+    <mj>  1.0</mj>
+    <mj>  4.7</mj>
+    <mj>  5.1</mj>
+    <mj> -1.2</mj>
+    <mj> -8.6</mj>
+    <mj>-15.7</mj>
+    <mj>-23.2</mj>
+  </podaci>
+  <podaci>
+    <el>Datum(dan/godina)</el>
+    <mj>31/1987</mj>
+    <mj>12/1935</mj>
+    <mj> 4/1987</mj>
+    <mj> 9/2003</mj>
+    <mj> 3/1935</mj>
+    <mj> 9/1962</mj>
+    <mj>10/1948</mj>
+    <mj>29/1981</mj>
+    <mj>28/1906</mj>
+    <mj>30/1920</mj>
+    <mj>24/1988</mj>
+    <mj>18/1963</mj>
+  </podaci>
+  <podaci>
+    <el>Suma [sati]</el>
+    <mj> 62.4</mj>
+    <mj> 90.5</mj>
+    <mj>145.6</mj>
+    <mj>185.5</mj>
+    <mj>226.4</mj>
+    <mj>251.4</mj>
+    <mj>280.6</mj>
+    <mj>265.0</mj>
+    <mj>194.1</mj>
+    <mj>152.6</mj>
+    <mj> 75.0</mj>
+    <mj> 53.1</mj>
+  </podaci>
+  <podaci>
+    <el>Količina [mm]</el>
+    <mj> 45.3</mj>
+    <mj> 42.3</mj>
+    <mj> 44.7</mj>
+    <mj> 57.7</mj>
+    <mj> 71.3</mj>
+    <mj> 82.1</mj>
+    <mj> 61.0</mj>
+    <mj> 58.7</mj>
+    <mj> 56.3</mj>
+    <mj> 58.9</mj>
+    <mj> 60.2</mj>
+    <mj> 54.2</mj>
+  </podaci>
+  <podaci>
+    <el>Maks. vis. snijega [cm]</el>
+    <mj> 52</mj>
+    <mj> 93</mj>
+    <mj> 49</mj>
+    <mj> 22</mj>
+    <mj>  -</mj>
+    <mj>  -</mj>
+    <mj>  -</mj>
+    <mj>  -</mj>
+    <mj>  -</mj>
+    <mj>  -</mj>
+    <mj> 40</mj>
+    <mj> 60</mj>
+  </podaci>
+  <podaci>
+    <el>Datum(dan/godina)</el>
+    <mj>14/1918</mj>
+    <mj>12/1922</mj>
+    <mj>13/1932</mj>
+    <mj> 1/1942</mj>
+    <mj>- / -  </mj>
+    <mj>- / -  </mj>
+    <mj>- / -  </mj>
+    <mj>- / -  </mj>
+    <mj>- / -  </mj>
+    <mj>- / -  </mj>
+    <mj>11/1921</mj>
+    <mj>28/1917</mj>
+  </podaci>
+  <podaci>
+    <el>vedrih</el>
+    <mj> 3</mj>
+    <mj> 4</mj>
+    <mj> 5</mj>
+    <mj> 5</mj>
+    <mj> 5</mj>
+    <mj> 6</mj>
+    <mj> 9</mj>
+    <mj>11</mj>
+    <mj> 9</mj>
+    <mj> 7</mj>
+    <mj> 3</mj>
+    <mj> 2</mj>
+  </podaci>
+  <podaci>
+    <el>s maglom</el>
+    <mj> 6</mj>
+    <mj> 4</mj>
+    <mj> 2</mj>
+    <mj> 1</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 1</mj>
+    <mj> 1</mj>
+    <mj> 2</mj>
+    <mj> 5</mj>
+    <mj> 6</mj>
+    <mj> 7</mj>
+  </podaci>
+  <podaci>
+    <el>s kišom</el>
+    <mj> 8</mj>
+    <mj> 7</mj>
+    <mj>10</mj>
+    <mj>12</mj>
+    <mj>13</mj>
+    <mj>12</mj>
+    <mj>10</mj>
+    <mj> 9</mj>
+    <mj> 9</mj>
+    <mj>10</mj>
+    <mj>11</mj>
+    <mj>10</mj>
+  </podaci>
+  <podaci>
+    <el>s mrazom</el>
+    <mj> 7</mj>
+    <mj> 7</mj>
+    <mj> 7</mj>
+    <mj> 2</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 3</mj>
+    <mj> 6</mj>
+    <mj> 8</mj>
+  </podaci>
+  <podaci>
+    <el>sa snijegom</el>
+    <mj> 6</mj>
+    <mj> 5</mj>
+    <mj> 3</mj>
+    <mj> 1</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 2</mj>
+    <mj> 5</mj>
+  </podaci>
+  <podaci>
+    <el><![CDATA[ledenih (tmin &#8804; -10&#176;C)]]></el>
+    <mj> 4</mj>
+    <mj> 3</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 1</mj>
+  </podaci>
+  <podaci>
+    <el><![CDATA[studenih (tmax &#60; 0&#176;C)]]></el>
+    <mj> 9</mj>
+    <mj> 4</mj>
+    <mj> 1</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 1</mj>
+    <mj> 6</mj>
+  </podaci>
+  <podaci>
+    <el><![CDATA[hladnih (tmin &#60; 0&#176;C)]]></el>
+    <mj>23</mj>
+    <mj>18</mj>
+    <mj>11</mj>
+    <mj> 2</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 2</mj>
+    <mj> 8</mj>
+    <mj>18</mj>
+  </podaci>
+  <podaci>
+    <el><![CDATA[toplih (tmax &#8805; 25&#176;C)]]></el>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 3</mj>
+    <mj>11</mj>
+    <mj>18</mj>
+    <mj>24</mj>
+    <mj>23</mj>
+    <mj>13</mj>
+    <mj> 3</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+  </podaci>
+  <podaci>
+    <el><![CDATA[vru&#263;ih (tmax &#8805; 30&#176;C)]]></el>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 2</mj>
+    <mj> 6</mj>
+    <mj>11</mj>
+    <mj>11</mj>
+    <mj> 3</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+    <mj> 0</mj>
+  </podaci>
+</srednjaci>

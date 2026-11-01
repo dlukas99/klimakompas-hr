@@ -1,0 +1,1339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+	<identifier>2.49.0.0.191.0.HR.261101071410.LDZM</identifier>
+	<sender>https://meteo.hr</sender>
+	<sent>2026-11-01T07:14:10+01:00</sent>
+	<status>Actual</status>
+	<msgType>Alert</msgType>
+	<scope>Public</scope>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice jak vjetar.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Grad Zagreb</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR031</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR050</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice jak vjetar.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zagrebačka</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR011</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR065</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice jak vjetar.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Krapinsko-zagorska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR012</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR064</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice jak vjetar.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Varaždinska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR015</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR062</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jak vjetar s olujnim udarima u predjelima iznad 500 mnv.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Karlovačka</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR014</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR027</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Primorsko-goranska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR018</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR031</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Narančasto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura.</description>
+		<instruction>  BUDITE SPREMNI na poremećaje, oštećenja konstrukcija i rizik od ozljeda zbog iščupanih stabala, polomljenih grana te letećih krhotina.  Moguć je prekid prometa i prekid opskrbe električnom energijom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Primorsko-goranska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR018</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR031</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka bura s olujnim udarima.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Istarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR028</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR036</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura duž obale i na otocima.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Ličko-senjska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR019</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR032</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Narančasto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura duž obale i na otocima.</description>
+		<instruction>  BUDITE SPREMNI na poremećaje, oštećenja konstrukcija i rizik od ozljeda zbog iščupanih stabala, polomljenih grana te letećih krhotina.  Moguć je prekid prometa i prekid opskrbe električnom energijom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Ličko-senjska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR019</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR032</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zadarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR023</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR033</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Narančasto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka i olujna bura.</description>
+		<instruction>  BUDITE SPREMNI na poremećaje, oštećenja konstrukcija i rizik od ozljeda zbog iščupanih stabala, polomljenih grana te letećih krhotina.  Moguć je prekid prometa i prekid opskrbe električnom energijom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zadarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR023</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR033</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka bura s olujnim udarima.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Šibensko-kninska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR025</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR034</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka bura s olujnim udarima.</description>
+		<instruction>  BUDITE NA OPREZU zbog krhotina koje lete nošene jakim vjetrom. Mogući su lokalizirani prekidi u aktivnostima na otvorenom.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Splitsko-dalmatinska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR027</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR035</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong wind locally.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Grad Zagreb</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR031</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR050</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong wind locally.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zagrebačka</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR011</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR065</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong wind locally.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Krapinsko-zagorska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR012</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR064</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 20:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong wind locally.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Varaždinska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR015</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR062</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong wind with gale force gusts above 500 m ASL.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Karlovačka</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR014</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR027</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Primorsko-goranska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR018</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR031</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Orange wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts.</description>
+		<instruction>  BE PREPARED for disruptions, building damage and risk of injury caused by uprooted trees, broken branches and flying debris.  Traffic interruptions and power outages are possible.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Primorsko-goranska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR018</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR031</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong bura (NE wind) with gale force gusts.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Istarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR028</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR036</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts along the coast and on the islands.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Ličko-senjska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR019</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR032</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Orange wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts along the coast and on the islands.</description>
+		<instruction>  BE PREPARED for disruptions, building damage and risk of injury caused by uprooted trees, broken branches and flying debris.  Traffic interruptions and power outages are possible.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Ličko-senjska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR019</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR032</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 15:00:00+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zadarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR023</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR033</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Orange wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong and gale force bura (NE wind) with severe gusts.</description>
+		<instruction>  BE PREPARED for disruptions, building damage and risk of injury caused by uprooted trees, broken branches and flying debris.  Traffic interruptions and power outages are possible.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zadarska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR023</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR033</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 10:15:43+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong bura (NE wind) with gale force gusts.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Šibensko-kninska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR025</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR034</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 15:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong bura (NE wind) with gale force gusts.</description>
+		<instruction>  STAY ALERT for debris carried by strong winds. Debris and tree branches carried by the wind may cause localised interruptions in outdoor activities.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Splitsko-dalmatinska</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR027</value>
+			</geocode>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>HR035</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Pojačana, mjestimice jaka i vrlo jaka bura. Najjači udari vjetra 35-55 čvorova  (65-100 km/h)</description>
+		<instruction>  
+UTJECAJ: Iako su uobičajene i česte u ovoj regiji, očekuje se lokalno ili potencijalno opasne brzine vjetra koje uzrokuju valove rizične za manja plovila.
+Neiskusni pomorci, posebno oni koji upravljaju manjim brodovima, trebali bi izbjegavati plovidbu u tim uvjetima i obratiti pozornost na pomorsku prognozu te pri planiranju razmotriti vjetar i uvjete na moru. Moguće je da neki katamarani neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Zapadna obala Istre</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR801</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Jaka, mjestimice vrlo jaka bura. Najjači udari vjetra 35-60 čvorova  (65-110 km/h)</description>
+		<instruction>  
+UTJECAJ: Iako su uobičajene i česte u ovoj regiji, očekuje se lokalno ili potencijalno opasne brzine vjetra koje uzrokuju valove rizične za manja plovila.
+Neiskusni pomorci, posebno oni koji upravljaju manjim brodovima, trebali bi izbjegavati plovidbu u tim uvjetima i obratiti pozornost na pomorsku prognozu te pri planiranju razmotriti vjetar i uvjete na moru. Moguće je da neki katamarani neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Kvarner i Kvarnerić</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR802</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Narančasto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice vrlo jaka i olujna bura. Najjači udari vjetra 35-75 čvorova  (65-140 km/h)</description>
+		<instruction>  
+UTJECAJ: Očekujte i budite pripravni za olujne brzine vjetra u kombinaciji s lokalno visokim valovima koji su se već ili će se tek generirati. Upravljanje plovilom u tim uvjetima zahtijeva veliko iskustvo te adekvatno opremljena plovila.
+Preporučljivo je da pomorci bez odgovarajućeg iskustva potraže  sigurnu luku prije početka potencijalno opasnog vjetra i valova. Vjerojatno je da mnogi katamarani i trajekti neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Velebitski kanal</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR803</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Pojačana, mjestimice jaka bura. Najjači udari vjetra 35-50 čvorova  (65-95 km/h)</description>
+		<instruction>  
+UTJECAJ: Iako su uobičajene i česte u ovoj regiji, očekuje se lokalno ili potencijalno opasne brzine vjetra koje uzrokuju valove rizične za manja plovila.
+Neiskusni pomorci, posebno oni koji upravljaju manjim brodovima, trebali bi izbjegavati plovidbu u tim uvjetima i obratiti pozornost na pomorsku prognozu te pri planiranju razmotriti vjetar i uvjete na moru. Moguće je da neki katamarani neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Sjeverna Dalmacija</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR804</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice pojačana, navečer i jaka  bura. Najjači udari vjetra 35-50 čvorova  (65-95 km/h)</description>
+		<instruction>  
+UTJECAJ: Iako su uobičajene i česte u ovoj regiji, očekuje se lokalno ili potencijalno opasne brzine vjetra koje uzrokuju valove rizične za manja plovila.
+Neiskusni pomorci, posebno oni koji upravljaju manjim brodovima, trebali bi izbjegavati plovidbu u tim uvjetima i obratiti pozornost na pomorsku prognozu te pri planiranju razmotriti vjetar i uvjete na moru. Moguće je da neki katamarani neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Srednja Dalmacija</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR805</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>hr</language>
+		<category>Met</category>
+		<event>Žuto upozorenje za vjetar</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Mjestimice pojačana bura. Najjači udari vjetra 35-40 čvorova  (65-75 km/h)</description>
+		<instruction>  
+UTJECAJ: Iako su uobičajene i česte u ovoj regiji, očekuje se lokalno ili potencijalno opasne brzine vjetra koje uzrokuju valove rizične za manja plovila.
+Neiskusni pomorci, posebno oni koji upravljaju manjim brodovima, trebali bi izbjegavati plovidbu u tim uvjetima i obratiti pozornost na pomorsku prognozu te pri planiranju razmotriti vjetar i uvjete na moru. Moguće je da neki katamarani neće ploviti pa ako putujete, pratite informacije o prometu.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Južna Dalmacija</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR806</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Fresh, locally strong and near gale NE wind. Maximum wind gusts 35-55 knot (65-100 km/h)</description>
+		<instruction>  IMPACT: Although rather usual in this region, locally or potentially dangerous wind speeds are expected to produce dangerous wave conditions to small crafts. Inexperienced mariners, especially those operating smaller vessels, should avoid navigating in these conditions.
+Mariners should pay close attention to the marine forecast  and consider wind and sea conditions in planning. It is possible that some ferry lines will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>West Istrian coast</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR801</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Strong, locally near gale NE wind. Maximum wind gusts 35-60 knot (65-110 km/h)</description>
+		<instruction>  IMPACT: Although rather usual in this region, locally or potentially dangerous wind speeds are expected to produce dangerous wave conditions to small crafts. Inexperienced mariners, especially those operating smaller vessels, should avoid navigating in these conditions.
+Mariners should pay close attention to the marine forecast  and consider wind and sea conditions in planning. It is possible that some ferry lines will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Kvarner i Kvarneric</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR802</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Orange wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Locally near gale and gale NE wind. Maximum wind gusts 35-75 knot (65-140 km/h)</description>
+		<instruction>  IMPACT: Be prepared for gale and strong gale wind speeds combined with locally high waves that are imminent or occurring. Operating a vessel in these conditions requires experience and properly equipped vessels.
+It is highly recommended that mariners without the proper experience seek safe harbor prior to onset of potentially dangerous wind and wave conditions. It is likely that many ferries will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Velebit channel</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR803</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Fresh, locally strong NE wind. Maximum wind gusts 35-50 knot (65-95 km/h)</description>
+		<instruction>  IMPACT: Although rather usual in this region, locally or potentially dangerous wind speeds are expected to produce dangerous wave conditions to small crafts. Inexperienced mariners, especially those operating smaller vessels, should avoid navigating in these conditions.
+Mariners should pay close attention to the marine forecast  and consider wind and sea conditions in planning. It is possible that some ferry lines will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>North Dalmatia region</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR804</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Locally fresh, in the evening strong NE wind. Maximum wind gusts 35-50 knot (65-95 km/h)</description>
+		<instruction>  IMPACT: Although rather usual in this region, locally or potentially dangerous wind speeds are expected to produce dangerous wave conditions to small crafts. Inexperienced mariners, especially those operating smaller vessels, should avoid navigating in these conditions.
+Mariners should pay close attention to the marine forecast  and consider wind and sea conditions in planning. It is possible that some ferry lines will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Middle Dalmatia region</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR805</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en</language>
+		<category>Met</category>
+		<event>Yellow wind warning</event>
+		<responseType>None</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<onset>2026-11-01 00:00:00+01:00</onset>
+		<expires>2026-11-01 23:59:59+01:00</expires>
+		<senderName>DHMZ Državni hidrometeorološki zavod</senderName>
+		<description>Locally fresh NE breeze. Maximum wind gusts 35-40 knot (65-75 km/h)</description>
+		<instruction>  IMPACT: Although rather usual in this region, locally or potentially dangerous wind speeds are expected to produce dangerous wave conditions to small crafts. Inexperienced mariners, especially those operating smaller vessels, should avoid navigating in these conditions.
+Mariners should pay close attention to the marine forecast  and consider wind and sea conditions in planning. It is possible that some ferry lines will not operate so follow traffic information if travelling.
+		</instruction>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>South Dalmatia region</areaDesc>
+			<geocode>
+				<valueName>EMMA_ID</valueName>
+				<value>HR806</value>
+			</geocode>
+		</area>
+	</info>
+</alert>
