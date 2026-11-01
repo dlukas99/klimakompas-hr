@@ -1,6 +1,58 @@
 {
   "app": {
     "name": "KlimaKompas HR",
-    "placeholder": "KlimaKompas HR je u izradi."
+    "tagline": "Klimatski rizik za svako mjesto u Hrvatskoj, iz otvorenih podataka",
+    "skipToContent": "Preskoči na sadržaj",
+    "navHome": "Početna",
+    "navMap": "Karta",
+    "navLabel": "Glavna navigacija",
+    "disclaimer": "KlimaKompas HR informativni je alat izrađen na Datathonu Portala otvorenih podataka 2026. Procjene se temelje na otvorenim podacima i modelima. One nisu službena procjena rizika niti zamjena za upozorenja DHMZ-a, Hrvatskih voda i civilne zaštite. U hitnoj situaciji nazovite 112."
+  },
+  "home": {
+    "title": "Koliko je vaše mjesto izloženo klimatskim rizicima?",
+    "subtitle": "Karta granica i stanovništva već je dostupna. Procjene poplava, topline, požara i onečišćenja zraka slijede.",
+    "openMap": "Otvori kartu"
+  },
+  "search": {
+    "label": "Pretraži adresu, naselje ili općinu",
+    "placeholder": "Adresa, naselje ili općina",
+    "results": "Rezultati pretrage",
+    "loading": "Tražim…",
+    "empty": "Nema rezultata. Provjerite upis ili odaberite mjesto na karti.",
+    "error": "Pretraga trenutno nije dostupna. Odaberite mjesto na karti.",
+    "addressesUnavailable": "Pretraga adresa trenutno nije dostupna, prikazana su samo naselja i općine.",
+    "minLength": "Upišite barem dva znaka.",
+    "kind": {
+      "address": "Adresa",
+      "settlement": "Naselje",
+      "municipality": "Općina ili grad"
+    }
+  },
+  "map": {
+    "label": "Karta Hrvatske sa slojevima granica i stanovništva",
+    "panelTitle": "Slojevi i legenda",
+    "layers": "Slojevi",
+    "layerJls": "Granice općina i gradova",
+    "layerPopulation": "Stanovništvo po ćeliji od 1 km²",
+    "legendPopulation": "Stanovnika u ćeliji (Popis 2021.)",
+    "zoomHint": "Ćelije se vide kad približite kartu.",
+    "basemapError": "Podloga karte nije dostupna. Granice i ćelije i dalje se prikazuju.",
+    "tilesError": "Dio slojeva trenutno se ne može učitati. Pokušajte ponovno za nekoliko minuta.",
+    "selected": "Odabrana lokacija",
+    "clickHint": "Odaberite općinu ili ćeliju na karti da vidite detalje.",
+    "sources": "Izvori",
+    "sourcesLoading": "Učitavam izvore…",
+    "sourcesError": "Popis izvora trenutno nije dostupan.",
+    "refreshed": "osvježeno",
+    "unavailable": "Karta se ne može prikazati u ovom pregledniku. Pretraga i ostale stranice i dalje rade."
+  },
+  "info": {
+    "title": "Odabrano područje",
+    "close": "Zatvori detalje",
+    "grad": "Grad",
+    "opcina": "Općina",
+    "population": "Stanovnika",
+    "cell": "Ćelija od 1 km²",
+    "cellPopulation": "Stanovnika u ćeliji"
   }
 }

@@ -1,6 +1,6 @@
 # Alati i licence
 
-Kod rješenja objavljen je pod licencom EUPL-1.2, a izvedeni podaci pod CC BY 4.0.
+Kod rješenja objavljen je pod licencom EUPL-1.2, a izvedeni podaci pod CC BY 4.0. Licenca skupova izvedenih iz poplavnog sloja ovisi o odgovoru JRC-a (ADR 0003).
 
 ## Infrastruktura
 
@@ -24,58 +24,89 @@ Popis u nastavku generira `make licenses`.
 
 ### Python
 
-| Name              | Version         | License                              |
-|-------------------|-----------------|--------------------------------------|
-| tenacity          | 9.2.1           | Apache-2.0                           |
-| types-PyYAML      | 6.0.12.20261030 | Apache-2.0                           |
-| packaging         | 26.3            | Apache-2.0 OR BSD-2-Clause           |
-| httpx             | 0.28.1          | BSD License                          |
-| nodeenv           | 1.12.0          | BSD License                          |
-| Pygments          | 2.21.0          | BSD-2-Clause                         |
-| httpcore          | 1.0.9           | BSD-3-Clause                         |
-| idna              | 3.20            | BSD-3-Clause                         |
-| lxml              | 6.1.3           | BSD-3-Clause                         |
-| python-dotenv     | 1.2.4           | BSD-3-Clause                         |
-| klimakompas       | 0.1.0           | EUPL-1.2                             |
-| shellingham       | 1.5.4           | ISC License (ISCL)                   |
-| annotated-doc     | 0.0.5           | MIT                                  |
-| annotated-types   | 0.8.0           | MIT                                  |
-| anyio             | 4.16.0          | MIT                                  |
-| ast_serialize     | 0.13.1          | MIT                                  |
-| cfgv              | 3.5.0           | MIT                                  |
-| filelock          | 4.2.6           | MIT                                  |
-| identify          | 2.6.20          | MIT                                  |
-| iniconfig         | 2.3.1           | MIT                                  |
-| librt             | 0.16.0          | MIT                                  |
-| mypy              | 2.4.1           | MIT                                  |
-| mypy_extensions   | 1.1.0           | MIT                                  |
-| platformdirs      | 4.14.2          | MIT                                  |
-| pre_commit        | 4.7.0           | MIT                                  |
-| pydantic          | 2.14.2          | MIT                                  |
-| pydantic-settings | 2.16.2          | MIT                                  |
-| pydantic_core     | 2.50.2          | MIT                                  |
-| pytest            | 9.2.0           | MIT                                  |
-| python-discovery  | 1.9.0           | MIT                                  |
-| ruff              | 0.17.3          | MIT                                  |
-| typer             | 0.27.3          | MIT                                  |
-| typing-inspection | 0.4.4           | MIT                                  |
-| virtualenv        | 21.15.2         | MIT                                  |
-| PyYAML            | 6.0.3           | MIT License                          |
-| h11               | 0.16.0          | MIT License                          |
-| markdown-it-py    | 4.2.0           | MIT License                          |
-| mdurl             | 0.1.2           | MIT License                          |
-| pluggy            | 1.7.0           | MIT License                          |
-| rich              | 15.0.0          | MIT License                          |
-| structlog         | 26.1.0          | MIT OR Apache-2.0                    |
-| certifi           | 2026.10.23      | Mozilla Public License 2.0 (MPL 2.0) |
-| pathspec          | 1.1.1           | Mozilla Public License 2.0 (MPL 2.0) |
-| typing_extensions | 4.16.0          | PSF-2.0                              |
-| distlib           | 0.4.4           | Python Software Foundation License   |
+| Name              | Version         | License                                            |
+|-------------------|-----------------|----------------------------------------------------|
+| opentelemetry-api | 1.45.2          | Apache-2.0                                         |
+| tenacity          | 9.2.1           | Apache-2.0                                         |
+| types-PyYAML      | 6.0.12.20261030 | Apache-2.0                                         |
+| types-openpyxl    | 3.1.5.20261017  | Apache-2.0                                         |
+| types-shapely     | 2.1.0.20261030  | Apache-2.0                                         |
+| packaging         | 26.3            | Apache-2.0 OR BSD-2-Clause                         |
+| httpx             | 0.28.1          | BSD License                                        |
+| nodeenv           | 1.12.0          | BSD License                                        |
+| Pygments          | 2.21.0          | BSD-2-Clause                                       |
+| MarkupSafe        | 3.0.4           | BSD-3-Clause                                       |
+| click             | 8.5.0           | BSD-3-Clause                                       |
+| httpcore          | 1.0.9           | BSD-3-Clause                                       |
+| idna              | 3.20            | BSD-3-Clause                                       |
+| lxml              | 6.1.3           | BSD-3-Clause                                       |
+| python-dotenv     | 1.2.4           | BSD-3-Clause                                       |
+| shapely           | 2.2.0           | BSD-3-Clause                                       |
+| starlette         | 1.10.0          | BSD-3-Clause                                       |
+| uvicorn           | 0.54.0          | BSD-3-Clause                                       |
+| numpy             | 2.5.4           | BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 |
+| klimakompas       | 0.1.0           | EUPL-1.2                                           |
+| shellingham       | 1.5.4           | ISC License (ISCL)                                 |
+| psycopg           | 3.3.6           | LGPL-3.0-only                                      |
+| psycopg-binary    | 3.3.6           | LGPL-3.0-only                                      |
+| Mako              | 1.4.3           | MIT                                                |
+| SQLAlchemy        | 2.1.6           | MIT                                                |
+| alembic           | 1.20.1          | MIT                                                |
+| annotated-doc     | 0.0.5           | MIT                                                |
+| annotated-types   | 0.8.0           | MIT                                                |
+| anyio             | 4.16.0          | MIT                                                |
+| ast_serialize     | 0.13.1          | MIT                                                |
+| cfgv              | 3.5.0           | MIT                                                |
+| fastapi           | 0.162.0         | MIT                                                |
+| filelock          | 4.2.6           | MIT                                                |
+| identify          | 2.6.20          | MIT                                                |
+| iniconfig         | 2.3.1           | MIT                                                |
+| librt             | 0.16.0          | MIT                                                |
+| mypy              | 2.4.1           | MIT                                                |
+| mypy_extensions   | 1.1.0           | MIT                                                |
+| platformdirs      | 4.14.2          | MIT                                                |
+| pre_commit        | 4.7.0           | MIT                                                |
+| pydantic          | 2.14.2          | MIT                                                |
+| pydantic-settings | 2.16.2          | MIT                                                |
+| pydantic_core     | 2.50.2          | MIT                                                |
+| pytest            | 9.2.0           | MIT                                                |
+| python-discovery  | 1.9.0           | MIT                                                |
+| ruff              | 0.17.3          | MIT                                                |
+| typer             | 0.27.3          | MIT                                                |
+| typing-inspection | 0.4.4           | MIT                                                |
+| virtualenv        | 21.15.2         | MIT                                                |
+| PyYAML            | 6.0.3           | MIT License                                        |
+| et_xmlfile        | 2.0.0           | MIT License                                        |
+| h11               | 0.16.0          | MIT License                                        |
+| markdown-it-py    | 4.2.0           | MIT License                                        |
+| mdurl             | 0.1.2           | MIT License                                        |
+| openpyxl          | 3.1.5           | MIT License                                        |
+| pluggy            | 1.7.0           | MIT License                                        |
+| rich              | 15.0.0          | MIT License                                        |
+| structlog         | 26.1.0          | MIT OR Apache-2.0                                  |
+| certifi           | 2026.10.23      | Mozilla Public License 2.0 (MPL 2.0)               |
+| pathspec          | 1.1.1           | Mozilla Public License 2.0 (MPL 2.0)               |
+| typing_extensions | 4.16.0          | PSF-2.0                                            |
+| distlib           | 0.4.4           | Python Software Foundation License                 |
 
 ### Node
 
+- [@adobe/css-tools@4.5.0](https://github.com/adobe/css-tools) - MIT
+- [@asamuzakjp/css-color@7.1.9](https://github.com/asamuzaK/cssColor) - MIT
+- [@asamuzakjp/dom-selector@10.0.5](https://github.com/asamuzaK/domSelector) - MIT
+- [@axe-core/playwright@4.14.0](https://github.com/dequelabs/axe-core-npm) - MPL-2.0
+- [@babel/code-frame@7.29.7](https://github.com/babel/babel) - MIT
+- [@babel/helper-validator-identifier@7.29.7](https://github.com/babel/babel) - MIT
+- [@babel/runtime@7.29.10](https://github.com/babel/babel) - MIT
+- [@bramus/specificity@2.4.3](https://github.com/bramus/specificity) - MIT
 - [@cacheable/memory@2.2.0](https://github.com/jaredwray/cacheable) - MIT
 - [@cacheable/utils@2.5.0](https://github.com/jaredwray/cacheable) - MIT
+- [@csstools/color-helpers@6.1.2](https://github.com/csstools/postcss-plugins) - MIT-0
+- [@csstools/css-calc@3.4.3](https://github.com/csstools/postcss-plugins) - MIT
+- [@csstools/css-color-parser@4.2.7](https://github.com/csstools/postcss-plugins) - MIT
+- [@csstools/css-parser-algorithms@4.0.2](https://github.com/csstools/postcss-plugins) - MIT
+- [@csstools/css-syntax-patches-for-csstree@1.1.16](https://github.com/csstools/postcss-plugins) - MIT-0
+- [@csstools/css-tokenizer@4.0.2](https://github.com/csstools/postcss-plugins) - MIT
 - [@eslint-community/eslint-utils@4.10.1](https://github.com/eslint-community/eslint-utils) - MIT
 - [@eslint-community/regexpp@4.12.2](https://github.com/eslint-community/regexpp) - MIT
 - [@eslint/config-array@0.23.5](https://github.com/eslint/rewrite) - Apache-2.0
@@ -84,6 +115,8 @@ Popis u nastavku generira `make licenses`.
 - [@eslint/js@10.0.1](https://github.com/eslint/eslint) - MIT
 - [@eslint/object-schema@3.0.5](https://github.com/eslint/rewrite) - Apache-2.0
 - [@eslint/plugin-kit@0.7.3](https://github.com/eslint/rewrite) - Apache-2.0
+- [@exodus/bytes@1.16.0](https://github.com/ExodusOSS/bytes) - MIT
+- [@fontsource-variable/inter@5.3.0](https://github.com/fontsource/font-files) - OFL-1.1
 - [@gar/promise-retry@1.0.3](https://github.com/wraithgar/node-promise-retry) - MIT
 - [@humanfs/core@0.19.2](https://github.com/humanwhocodes/humanfs) - Apache-2.0
 - [@humanfs/node@0.16.8](https://github.com/humanwhocodes/humanfs) - Apache-2.0
@@ -92,11 +125,22 @@ Popis u nastavku generira `make licenses`.
 - [@humanwhocodes/retry@0.4.3](https://github.com/humanwhocodes/retry) - Apache-2.0
 - [@isaacs/fs-minipass@4.0.1](https://github.com/npm/fs-minipass) - ISC
 - [@isaacs/string-locale-compare@1.1.0](https://github.com/isaacs/string-locale-compare) - ISC
+- [@jridgewell/gen-mapping@0.3.13](https://github.com/jridgewell/sourcemaps) - MIT
+- [@jridgewell/remapping@2.3.5](https://github.com/jridgewell/sourcemaps) - MIT
 - [@jridgewell/resolve-uri@3.1.2](https://github.com/jridgewell/resolve-uri) - MIT
 - [@jridgewell/sourcemap-codec@1.6.0](https://github.com/jridgewell/sourcemaps) - MIT
 - [@jridgewell/trace-mapping@0.3.31](https://github.com/jridgewell/sourcemaps) - MIT
 - [@keyv/bigmap@1.3.1](https://github.com/jaredwray/keyv) - MIT
 - [@keyv/serialize@1.1.1](https://github.com/jaredwray/keyv) - MIT
+- [@mapbox/jsonlint-lines-primitives@2.0.3](https://github.com/mapbox/jsonlint) - MIT
+- [@mapbox/point-geometry@1.1.0](https://github.com/mapbox/point-geometry) - ISC
+- [@mapbox/tiny-sdf@2.3.0](https://github.com/mapbox/tiny-sdf) - BSD-2-Clause
+- [@mapbox/unitbezier@1.0.0](https://github.com/mapbox/unitbezier) - BSD-2-Clause
+- [@mapbox/vector-tile@3.0.0](https://github.com/mapbox/vector-tile-js) - BSD-3-Clause
+- [@maplibre/geojson-vt@6.3.0](https://github.com/maplibre/geojson-vt) - ISC
+- [@maplibre/maplibre-gl-style-spec@26.5.1](https://github.com/maplibre/maplibre-style-spec) - ISC
+- [@maplibre/mlt@1.3.0](https://github.com/maplibre/maplibre-tile-spec) - (MIT OR Apache-2.0)
+- [@maplibre/vt-pbf@4.3.3](https://github.com/maplibre/vt-pbf) - MIT
 - [@npmcli/agent@4.0.2](https://github.com/npm/agent) - ISC
 - [@npmcli/arborist@9.6.0](https://github.com/npm/cli) - ISC
 - [@npmcli/fs@5.0.0](https://github.com/npm/fs) - ISC
@@ -112,6 +156,11 @@ Popis u nastavku generira `make licenses`.
 - [@npmcli/redact@4.0.0](https://github.com/npm/redact) - ISC
 - [@npmcli/run-script@10.0.4](https://github.com/npm/run-script) - ISC
 - [@oxc-project/types@0.156.0](https://github.com/oxc-project/oxc) - MIT
+- [@playwright/test@1.64.1](https://github.com/microsoft/playwright) - Apache-2.0
+- [@redocly/ajv@8.11.2](https://github.com/ajv-validator/ajv) - MIT
+- [@redocly/config@0.22.0](undefined) - MIT
+- [@redocly/openapi-core@1.34.22](https://github.com/Redocly/redocly-cli) - MIT
+- [@remix-run/route-pattern@0.22.1](https://github.com/remix-run/remix) - MIT
 - [@rolldown/binding-linux-x64-gnu@1.2.16](https://github.com/rolldown/rolldown) - MIT
 - [@rolldown/pluginutils@1.0.1](https://github.com/rolldown/plugins) - MIT
 - [@sigstore/bundle@4.0.0](https://github.com/sigstore/sigstore-js) - Apache-2.0
@@ -120,13 +169,27 @@ Popis u nastavku generira `make licenses`.
 - [@sigstore/sign@4.1.1](https://github.com/sigstore/sigstore-js) - Apache-2.0
 - [@sigstore/tuf@4.0.2](https://github.com/sigstore/sigstore-js) - Apache-2.0
 - [@sigstore/verify@3.1.1](https://github.com/sigstore/sigstore-js) - Apache-2.0
+- [@tailwindcss/node@4.3.3](https://github.com/tailwindlabs/tailwindcss) - MIT
+- [@tailwindcss/oxide-linux-x64-gnu@4.3.3](https://github.com/tailwindlabs/tailwindcss) - MIT
+- [@tailwindcss/oxide@4.3.3](https://github.com/tailwindlabs/tailwindcss) - MIT
+- [@tailwindcss/vite@4.3.3](https://github.com/tailwindlabs/tailwindcss) - MIT
+- [@tanstack/query-core@5.105.1](https://github.com/TanStack/query) - MIT
+- [@tanstack/react-query@5.105.1](https://github.com/TanStack/query) - MIT
+- [@testing-library/dom@10.4.2](https://github.com/testing-library/dom-testing-library) - MIT
+- [@testing-library/jest-dom@7.0.1](https://github.com/testing-library/jest-dom) - MIT
+- [@testing-library/react@16.3.3](https://github.com/testing-library/react-testing-library) - MIT
+- [@testing-library/user-event@14.6.8](https://github.com/testing-library/user-event) - MIT
 - [@tufjs/canonical-json@2.0.0](https://github.com/theupdateframework/tuf-js) - MIT
 - [@tufjs/models@4.1.0](https://github.com/theupdateframework/tuf-js) - MIT
+- [@types/aria-query@5.0.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/chai@5.2.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/deep-eql@4.0.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/esrecurse@4.3.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/estree@1.0.10](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/geojson@7946.0.16](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/json-schema@7.0.15](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react-dom@19.3.0](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@19.3.0](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@typescript-eslint/eslint-plugin@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
 - [@typescript-eslint/parser@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
 - [@typescript-eslint/project-service@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
@@ -137,6 +200,7 @@ Popis u nastavku generira `make licenses`.
 - [@typescript-eslint/typescript-estree@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
 - [@typescript-eslint/utils@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
 - [@typescript-eslint/visitor-keys@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
+- [@vitejs/plugin-react@6.1.2](https://github.com/vitejs/vite-plugin-react) - MIT
 - [@vitest/mocker@5.0.5](https://github.com/vitest-dev/vitest) - MIT
 - [@vitest/spy@5.0.5](https://github.com/vitest-dev/vitest) - MIT
 - [abbrev@2.0.0](https://github.com/npm/abbrev-js) - ISC
@@ -145,27 +209,50 @@ Popis u nastavku generira `make licenses`.
 - [acorn@8.19.0](https://github.com/acornjs/acorn) - MIT
 - [agent-base@7.1.4](https://github.com/TooTallNate/proxy-agents) - MIT
 - [ajv@6.15.0](https://github.com/ajv-validator/ajv) - MIT
+- [ansi-colors@4.1.3](https://github.com/doowb/ansi-colors) - MIT
+- [ansi-regex@5.0.1](https://github.com/chalk/ansi-regex) - MIT
 - [ansi-styles@4.3.0](https://github.com/chalk/ansi-styles) - MIT
+- [ansi-styles@5.2.0](https://github.com/chalk/ansi-styles) - MIT
+- [argparse@2.0.1](https://github.com/nodeca/argparse) - Python-2.0
+- [aria-query@5.3.0](https://github.com/A11yance/aria-query) - Apache-2.0
 - [array-find-index@1.0.2](https://github.com/sindresorhus/array-find-index) - MIT
 - [assertion-error@2.0.1](https://github.com/chaijs/assertion-error) - MIT
+- [axe-core@4.14.0](https://github.com/dequelabs/axe-core) - MPL-2.0
+- [balanced-match@1.0.2](https://github.com/juliangruber/balanced-match) - MIT
 - [balanced-match@4.0.4](https://github.com/juliangruber/balanced-match) - MIT
+- [bidi-js@1.1.0](https://github.com/lojjic/bidi-js) - MIT
 - [bin-links@6.0.3](https://github.com/npm/bin-links) - ISC
+- [brace-expansion@2.1.7](https://github.com/juliangruber/brace-expansion) - MIT
 - [brace-expansion@5.0.12](https://github.com/juliangruber/brace-expansion) - MIT
 - [cacache@20.0.4](https://github.com/npm/cacache) - ISC
 - [cacheable@2.5.0](https://github.com/jaredwray/cacheable) - MIT
 - [chai@6.3.0](https://github.com/chaijs/chai) - MIT
 - [chalk@4.1.2](https://github.com/chalk/chalk) - MIT
+- [change-case@5.4.4](https://github.com/blakeembrey/change-case) - MIT
 - [chownr@3.0.0](https://github.com/isaacs/chownr) - BlueOak-1.0.0
 - [cmd-shim@8.0.0](https://github.com/npm/cmd-shim) - ISC
 - [color-convert@2.0.1](https://github.com/Qix-/color-convert) - MIT
 - [color-name@1.1.4](https://github.com/colorjs/color-name) - MIT
+- [colorette@1.4.0](https://github.com/jorgebucaran/colorette) - MIT
 - [common-ancestor-path@2.0.0](https://github.com/isaacs/common-ancestor-path) - BlueOak-1.0.0
 - [content-type@2.1.0](https://github.com/jshttp/content-type) - MIT
+- [cookie-es@3.1.1](https://github.com/unjs/cookie-es) - MIT
 - [cross-spawn@7.0.6](https://github.com/moxystudio/node-cross-spawn) - MIT
+- [css-tree@3.2.1](https://github.com/csstree/csstree) - MIT
+- [css.escape@1.5.1](https://github.com/mathiasbynens/CSS.escape) - MIT
 - [cssesc@3.0.0](https://github.com/mathiasbynens/cssesc) - MIT
+- [csstype@3.2.3](https://github.com/frenic/csstype) - MIT
+- [data-urls@8.0.0](https://github.com/jsdom/data-urls) - MIT
 - [debug@4.4.3](https://github.com/debug-js/debug) - MIT
+- [decimal.js@10.6.0](https://github.com/MikeMcl/decimal.js) - MIT
 - [deep-is@0.1.4](https://github.com/thlorenz/deep-is) - MIT
+- [dequal@2.0.3](https://github.com/lukeed/dequal) - MIT
 - [detect-libc@2.1.2](https://github.com/lovell/detect-libc) - Apache-2.0
+- [dom-accessibility-api@0.5.16](https://github.com/eps1lon/dom-accessibility-api) - MIT
+- [dom-accessibility-api@0.6.3](https://github.com/eps1lon/dom-accessibility-api) - MIT
+- [earcut@3.2.4](https://github.com/mapbox/earcut) - ISC
+- [enhanced-resolve@5.26.0](https://github.com/webpack/enhanced-resolve) - MIT
+- [entities@9.0.0](https://github.com/fb55/entities) - BSD-2-Clause
 - [env-paths@2.2.1](https://github.com/sindresorhus/env-paths) - MIT
 - [es-module-lexer@2.3.2](https://github.com/guybedford/es-module-lexer) - MIT
 - [escape-string-regexp@4.0.0](https://github.com/sindresorhus/escape-string-regexp) - MIT
@@ -190,6 +277,7 @@ Popis u nastavku generira `make licenses`.
 - [flat-cache@6.1.23](https://github.com/jaredwray/cacheable) - MIT
 - [flatted@3.4.4](https://github.com/WebReflection/flatted) - ISC
 - [fs-minipass@3.0.3](https://github.com/npm/fs-minipass) - ISC
+- [gl-matrix@3.4.4](https://github.com/toji/gl-matrix) - MIT
 - [glob-parent@6.0.2](https://github.com/gulpjs/glob-parent) - ISC
 - [glob@13.0.6](https://github.com/isaacs/node-glob) - BlueOak-1.0.0
 - [graceful-fs@4.2.11](https://github.com/isaacs/node-graceful-fs) - ISC
@@ -198,6 +286,7 @@ Popis u nastavku generira `make licenses`.
 - [hookified@1.15.1](https://github.com/jaredwray/hookified) - MIT
 - [hookified@2.2.0](https://github.com/jaredwray/hookified) - MIT
 - [hosted-git-info@9.0.3](https://github.com/npm/hosted-git-info) - ISC
+- [html-encoding-sniffer@7.0.0](https://github.com/jsdom/html-encoding-sniffer) - MIT
 - [http-cache-semantics@4.3.0](https://github.com/kornelski/http-cache-semantics) - BSD-2-Clause
 - [http-proxy-agent@7.0.2](https://github.com/TooTallNate/proxy-agents) - MIT
 - [https-proxy-agent@7.0.6](https://github.com/TooTallNate/proxy-agents) - MIT
@@ -206,30 +295,50 @@ Popis u nastavku generira `make licenses`.
 - [ignore@5.3.2](https://github.com/kaelzhang/node-ignore) - MIT
 - [ignore@7.0.14](https://github.com/kaelzhang/node-ignore) - MIT
 - [imurmurhash@0.1.4](https://github.com/jensyt/imurmurhash-js) - MIT
+- [indent-string@4.0.0](https://github.com/sindresorhus/indent-string) - MIT
+- [index-to-position@1.2.0](https://github.com/sindresorhus/index-to-position) - MIT
 - [ini@6.0.0](https://github.com/npm/ini) - ISC
 - [ip-address@10.7.5](https://github.com/beaugunderson/ip-address) - MIT
 - [is-extglob@2.1.1](https://github.com/jonschlinkert/is-extglob) - MIT
 - [is-glob@4.0.3](https://github.com/micromatch/is-glob) - MIT
+- [is-potential-custom-element-name@1.0.1](https://github.com/mathiasbynens/is-potential-custom-element-name) - MIT
 - [isexe@2.0.0](https://github.com/isaacs/isexe) - ISC
 - [isexe@4.0.0](https://github.com/isaacs/isexe) - BlueOak-1.0.0
+- [jiti@2.7.0](https://github.com/unjs/jiti) - MIT
+- [js-levenshtein@1.1.6](https://github.com/gustf/js-levenshtein) - MIT
+- [js-tokens@4.0.0](https://github.com/lydell/js-tokens) - MIT
+- [js-yaml@4.3.2](https://github.com/nodeca/js-yaml) - MIT
+- [jsdom@30.1.3](https://github.com/jsdom/jsdom) - MIT
 - [json-parse-even-better-errors@5.0.0](https://github.com/npm/json-parse-even-better-errors) - MIT
 - [json-schema-traverse@0.4.1](https://github.com/epoberezkin/json-schema-traverse) - MIT
+- [json-schema-traverse@1.0.0](https://github.com/epoberezkin/json-schema-traverse) - MIT
 - [json-stable-stringify-without-jsonify@1.0.1](https://github.com/samn/json-stable-stringify) - MIT
 - [json-stringify-nice@1.1.4](https://github.com/isaacs/json-stringify-nice) - ISC
+- [json-stringify-pretty-compact@4.0.0](https://github.com/lydell/json-stringify-pretty-compact) - MIT
 - [jsonparse@1.3.1](https://github.com/creationix/jsonparse) - MIT
 - [just-diff-apply@5.5.0](https://github.com/angus-c/just) - MIT
 - [just-diff@6.0.2](https://github.com/angus-c/just) - MIT
+- [kdbush@4.1.0](https://github.com/mourner/kdbush) - ISC
 - [keyv@5.6.0](https://github.com/jaredwray/keyv) - MIT
 - [levn@0.4.1](https://github.com/gkz/levn) - MIT
 - [license-checker-rseidelsohn@5.0.1](https://github.com/RSeidelsohn/license-checker-rseidelsohn) - BSD-3-Clause
+- [lightningcss-linux-x64-gnu@1.32.0](https://github.com/parcel-bundler/lightningcss) - MPL-2.0
 - [lightningcss-linux-x64-gnu@1.33.0](https://github.com/parcel-bundler/lightningcss) - MPL-2.0
+- [lightningcss@1.32.0](https://github.com/parcel-bundler/lightningcss) - MPL-2.0
 - [lightningcss@1.33.0](https://github.com/parcel-bundler/lightningcss) - MPL-2.0
 - [locate-path@6.0.0](https://github.com/sindresorhus/locate-path) - MIT
 - [lodash.clonedeep@4.5.0](https://github.com/lodash/lodash) - MIT
 - [lru-cache@11.5.3](https://github.com/isaacs/node-lru-cache) - BlueOak-1.0.0
+- [lz-string@1.5.0](https://github.com/pieroxy/lz-string) - MIT
+- [magic-string@0.30.21](https://github.com/Rich-Harris/magic-string) - MIT
 - [magic-string@1.4.5](https://github.com/Rich-Harris/magic-string) - MIT
 - [make-fetch-happen@15.0.6](https://github.com/npm/make-fetch-happen) - ISC
+- [maplibre-gl@6.16.0](https://github.com/maplibre/maplibre-gl-js) - BSD-3-Clause
+- [mdn-data@2.27.1](https://github.com/mdn/data) - CC0-1.0
+- [min-indent@1.0.1](https://github.com/thejameskyle/min-indent) - MIT
 - [minimatch@10.2.6](https://github.com/isaacs/minimatch) - BlueOak-1.0.0
+- [minimatch@5.1.9](https://github.com/isaacs/minimatch) - ISC
+- [minimist@1.2.8](https://github.com/minimistjs/minimist) - MIT
 - [minipass-collect@2.0.1](https://github.com/isaacs/minipass-collect) - ISC
 - [minipass-fetch@5.0.2](https://github.com/npm/minipass-fetch) - MIT
 - [minipass-flush@1.0.7](https://github.com/isaacs/minipass-flush) - BlueOak-1.0.0
@@ -240,6 +349,7 @@ Popis u nastavku generira `make licenses`.
 - [minizlib@3.1.0](https://github.com/isaacs/minizlib) - MIT
 - [mkdirp@1.0.4](https://github.com/isaacs/node-mkdirp) - MIT
 - [ms@2.1.3](https://github.com/vercel/ms) - MIT
+- [murmurhash-js@1.0.0](https://github.com/mikolalysenko/murmurhash-js) - MIT
 - [nanoid@3.3.20](https://github.com/ai/nanoid) - MIT
 - [natural-compare@1.4.0](https://github.com/litejs/natural-compare-lite) - MIT
 - [negotiator@1.1.0](https://github.com/jshttp/negotiator) - MIT
@@ -254,30 +364,50 @@ Popis u nastavku generira `make licenses`.
 - [npm-pick-manifest@11.0.3](https://github.com/npm/npm-pick-manifest) - ISC
 - [npm-registry-fetch@19.1.1](https://github.com/npm/npm-registry-fetch) - ISC
 - [obug@3.0.0](https://github.com/sxzz/obug) - MIT
+- [openapi-typescript@7.13.0](https://github.com/openapi-ts/openapi-typescript) - MIT
 - [optionator@0.9.4](https://github.com/gkz/optionator) - MIT
 - [p-limit@3.1.0](https://github.com/sindresorhus/p-limit) - MIT
 - [p-locate@5.0.0](https://github.com/sindresorhus/p-locate) - MIT
 - [p-map@7.1.1](https://github.com/sindresorhus/p-map) - MIT
 - [pacote@21.5.2](https://github.com/npm/pacote) - ISC
 - [parse-conflict-json@5.0.1](https://github.com/npm/parse-conflict-json) - ISC
+- [parse-json@8.3.0](https://github.com/sindresorhus/parse-json) - MIT
+- [parse5@8.1.0](https://github.com/inikulin/parse5) - MIT
 - [path-exists@4.0.0](https://github.com/sindresorhus/path-exists) - MIT
 - [path-key@3.1.1](https://github.com/sindresorhus/path-key) - MIT
 - [path-scurry@2.0.2](https://github.com/isaacs/path-scurry) - BlueOak-1.0.0
+- [pbf@5.1.2](https://github.com/mapbox/pbf) - BSD-3-Clause
 - [picocolors@1.1.1](https://github.com/alexeyraspopov/picocolors) - ISC
 - [picomatch@4.0.7](https://github.com/micromatch/picomatch) - MIT
+- [playwright-core@1.64.1](https://github.com/microsoft/playwright) - Apache-2.0
+- [playwright@1.64.1](https://github.com/microsoft/playwright) - Apache-2.0
+- [pluralize@8.0.0](https://github.com/blakeembrey/pluralize) - MIT
 - [postcss-selector-parser@7.1.7](https://github.com/postcss/postcss-selector-parser) - MIT
 - [postcss@8.5.32](https://github.com/postcss/postcss) - MIT
+- [potpack@2.1.0](https://github.com/mapbox/potpack) - ISC
 - [prelude-ls@1.2.1](https://github.com/gkz/prelude-ls) - MIT
 - [prettier@3.9.10](https://github.com/prettier/prettier) - MIT
+- [pretty-format@27.5.1](https://github.com/facebook/jest) - MIT
 - [proc-log@6.1.0](https://github.com/npm/proc-log) - ISC
 - [proggy@4.0.0](https://github.com/npm/proggy) - ISC
 - [promise-all-reject-late@1.0.1](undefined) - ISC
 - [promise-call-limit@3.0.2](https://github.com/isaacs/promise-call-limit) - ISC
+- [protocol-buffers-schema@3.6.1](https://github.com/mafintosh/protocol-buffers-schema) - MIT
 - [punycode@2.3.1](https://github.com/mathiasbynens/punycode.js) - MIT
 - [qified@0.10.1](https://github.com/jaredwray/qified) - MIT
+- [quickselect@3.0.0](https://github.com/mourner/quickselect) - ISC
+- [react-dom@19.3.1](https://github.com/react/react) - MIT
+- [react-is@17.0.2](https://github.com/facebook/react) - MIT
+- [react-router@8.5.1](https://github.com/remix-run/react-router) - MIT
+- [react@19.3.1](https://github.com/react/react) - MIT
 - [read-cmd-shim@6.0.0](https://github.com/npm/read-cmd-shim) - ISC
+- [redent@3.0.0](https://github.com/sindresorhus/redent) - MIT
+- [require-from-string@2.0.2](https://github.com/floatdrop/require-from-string) - MIT
+- [resolve-protobuf-schema@2.1.0](https://github.com/mafintosh/resolve-protobuf-schema) - MIT
 - [rolldown@1.2.16](https://github.com/rolldown/rolldown) - MIT
 - [safer-buffer@2.1.2](https://github.com/ChALkeR/safer-buffer) - MIT
+- [saxes@6.0.0](https://github.com/lddubeau/saxes) - ISC
+- [scheduler@0.28.0](https://github.com/react/react) - MIT
 - [semver@7.8.5](https://github.com/npm/node-semver) - ISC
 - [shebang-command@2.0.0](https://github.com/kevva/shebang-command) - MIT
 - [shebang-regex@3.0.0](https://github.com/sindresorhus/shebang-regex) - MIT
@@ -297,30 +427,50 @@ Popis u nastavku generira `make licenses`.
 - [spdx-satisfies@6.0.0](https://github.com/kemitchell/spdx-satisfies.js) - MIT
 - [ssri@13.0.1](https://github.com/npm/ssri) - ISC
 - [std-env@4.3.0](https://github.com/unjs/std-env) - MIT
+- [strip-indent@3.0.0](https://github.com/sindresorhus/strip-indent) - MIT
+- [supports-color@10.2.2](https://github.com/chalk/supports-color) - MIT
 - [supports-color@7.2.0](https://github.com/chalk/supports-color) - MIT
+- [tailwindcss@4.3.3](https://github.com/tailwindlabs/tailwindcss) - MIT
+- [tapable@2.3.3](https://github.com/webpack/tapable) - MIT
 - [tar@7.5.22](https://github.com/isaacs/node-tar) - BlueOak-1.0.0
 - [tinybench@6.2.3](https://github.com/tinylibs/tinybench) - MIT
 - [tinyexec@1.3.1](https://github.com/tinylibs/tinyexec) - MIT
 - [tinyglobby@0.2.17](https://github.com/SuperchupuDev/tinyglobby) - MIT
+- [tinyqueue@3.0.0](https://github.com/mourner/tinyqueue) - ISC
+- [tldts-core@7.4.20](https://github.com/remusao/tldts) - MIT
+- [tldts@7.4.19](https://github.com/remusao/tldts) - MIT
+- [tough-cookie@6.0.2](https://github.com/salesforce/tough-cookie) - BSD-3-Clause
+- [tr46@7.0.0](https://github.com/jsdom/tr46) - MIT
 - [treeify@1.1.0](https://github.com/notatestuser/treeify) - MIT
 - [treeverse@3.0.0](https://github.com/npm/treeverse) - ISC
 - [ts-api-utils@2.5.0](https://github.com/JoshuaKGoldberg/ts-api-utils) - MIT
 - [tuf-js@4.1.0](https://github.com/theupdateframework/tuf-js) - MIT
 - [type-check@0.4.0](https://github.com/gkz/type-check) - MIT
+- [type-fest@4.41.0](https://github.com/sindresorhus/type-fest) - (MIT OR CC0-1.0)
 - [typescript-eslint@8.72.1](https://github.com/typescript-eslint/typescript-eslint) - MIT
 - [typescript@6.0.3](https://github.com/microsoft/TypeScript) - Apache-2.0
 - [undici@6.29.1](https://github.com/nodejs/undici) - MIT
+- [undici@8.12.3](https://github.com/nodejs/undici) - MIT
+- [uri-js-replace@1.0.2](https://github.com/andreinwald/uri-js-replace) - MIT
 - [uri-js@4.4.1](https://github.com/garycourt/uri-js) - BSD-2-Clause
 - [util-deprecate@1.0.2](https://github.com/TooTallNate/util-deprecate) - MIT
 - [validate-npm-package-name@7.0.2](https://github.com/npm/validate-npm-package-name) - ISC
 - [vite@8.3.5](https://github.com/vitejs/vite) - MIT
 - [vitest@5.0.5](https://github.com/vitest-dev/vitest) - MIT
+- [w3c-xmlserializer@6.0.0](https://github.com/jsdom/w3c-xmlserializer) - MIT
 - [walk-up-path@4.0.0](https://github.com/isaacs/walk-up-path) - ISC
+- [webidl-conversions@8.0.1](https://github.com/jsdom/webidl-conversions) - BSD-2-Clause
+- [whatwg-mimetype@5.0.0](https://github.com/jsdom/whatwg-mimetype) - MIT
+- [whatwg-url@17.3.0](https://github.com/jsdom/whatwg-url) - MIT
 - [which@2.0.2](https://github.com/isaacs/node-which) - ISC
 - [which@6.0.1](https://github.com/npm/node-which) - ISC
 - [why-is-node-running@3.2.1](https://github.com/mafintosh/why-is-node-running) - MIT
 - [word-wrap@1.2.5](https://github.com/jonschlinkert/word-wrap) - MIT
 - [write-file-atomic@7.0.1](https://github.com/npm/write-file-atomic) - ISC
+- [xml-name-validator@5.0.0](https://github.com/jsdom/xml-name-validator) - Apache-2.0
+- [xmlchars@2.2.0](https://github.com/lddubeau/xmlchars) - MIT
 - [yallist@4.0.0](https://github.com/isaacs/yallist) - ISC
 - [yallist@5.0.0](https://github.com/isaacs/yallist) - BlueOak-1.0.0
+- [yaml-ast-parser@0.0.43](https://github.com/mulesoft-labs/yaml-ast-parser) - Apache-2.0
+- [yargs-parser@21.1.1](https://github.com/yargs/yargs-parser) - ISC
 - [yocto-queue@0.1.0](https://github.com/sindresorhus/yocto-queue) - MIT

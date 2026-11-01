@@ -98,8 +98,8 @@
       Oko 3 MB. List „1.” ima starost i spol po naselju, JLS-u i županiji, pa zasebna tablica ne
       treba. Tablica nema šifre, samo nazive, a stupac B razlikuje grad i općinu. Crtica znači „nema
       pojave”. Zbroj 6.757 naselja točno je 3.871.833; 65+ je 869.239, a mlađih od 15 je 552.416.
-      Spajanje s DGU-om po nazivima ostavlja 11 naselja (2.778 st.) za ručnu tablicu. Zapis na
-      Portalu treba potvrditi.
+      Spajanje s DGU-om radi po nazivima, a 7 iznimaka je u config/crosswalks/dzs_dgu_naselja.yaml
+      (ADR 0005). Zapis na Portalu treba potvrditi.
   verify:
     portal_query: "popis 2021 stanovništvo po naseljima"
     probes:

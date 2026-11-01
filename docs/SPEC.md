@@ -1771,3 +1771,4 @@ Zadnje ažuriranje: <datum, vrijeme> · Trenutna faza: 0 · Rok: pon 9. 11. 2026
 - 1. 11. 2026. — v1.0, početna specifikacija.
 - 1. 11. 2026. — Faza 0: stvarno stanje izvora razlikuje se od §4.2 (DGU format i CRS, Census V3, JRC v3.1.1, EEA putanja, AZO oblik odgovora i ograničenje učestalosti, Landsat asseti). Vidi ADR 0001 i `docs/izvori-provjera.md`.
 - 1. 11. 2026. — Odluke korisnika: Open-Meteo prema uvjetima API-ja, mjesečni limit 300.000 poziva (ADR 0002); licenca izvedenog sloja poplava (ADR 0003); zamjena za nedostajući PM2,5 (ADR 0004).
+- 1. 11. 2026. — Faza 1: dobni udjeli po ćeliji, spajanje DZS-a i DGU-a te zbrojevi iz DZS-a (ADR 0005). `DATABASE_URL` u `.env` pokazuje na `localhost`, jer `kk` i API u razvoju rade izvan Dockera; Compose servisima sam slaže adresu.

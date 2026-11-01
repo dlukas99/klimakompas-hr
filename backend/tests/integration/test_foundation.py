@@ -6,6 +6,7 @@ from shapely.geometry import MultiPolygon, box
 from sqlalchemy import Connection, text
 
 from klimakompas.api.app import create_app, get_connection
+from klimakompas.api.geocode import geocode
 from klimakompas.core.db import upsert_rows
 from klimakompas.pipeline.grid import add_populated_cells_outside, build_grid
 from klimakompas.pipeline.tiles import refresh_tiles
@@ -194,6 +195,25 @@ def test_geocode_finds_address_with_house_number(client: TestClient) -> None:
     assert body["results"][0]["kind"] == "address"
     assert body["results"][0]["label"] == "Trg slobode 7 Osijek 31000 Osijek"
     assert body["results"][0]["detail"] == "Osijek"
+
+
+def test_geocode_house_number_matches_whole_number_first(seeded: Connection) -> None:
+    for identifier, label, number in (
+        ("KB.2", "Ilica 143/1 Zagreb 10000 Zagreb", "143/1"),
+        ("KB.3", "Ilica 21 Zagreb 10000 Zagreb", "21"),
+        ("KB.4", "Ilica 1 Zagreb 10000 Zagreb", "1"),
+    ):
+        seeded.execute(
+            text(
+                "INSERT INTO ref.addresses (id, label, house_number, search_text, geom) "
+                "VALUES (:id, :label, :number, ref.normalize_search(:label), "
+                "ST_SetSRID(ST_MakePoint(4800100, 2500100), 3035))"
+            ),
+            {"id": identifier, "label": label, "number": number},
+        )
+    labels = [item.label for item in geocode(seeded, "ilica 1 zagreb", 5).results]
+    assert labels[0] == "Ilica 1 Zagreb 10000 Zagreb"
+    assert "Ilica 21 Zagreb 10000 Zagreb" not in labels
 
 
 def test_geocode_treats_like_wildcards_literally(client: TestClient) -> None:
