@@ -1,7 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useId, useState, type KeyboardEvent } from "react";
 import hr from "../i18n/hr.json";
-import { fetchGeocode, type GeocodeResult } from "../lib/api/client";
+import {
+  fetchGeocode,
+  type GeocodeOptions,
+  type GeocodeResult,
+} from "../lib/api/client";
 import { formatNumber } from "../lib/format/number";
 
 const DEBOUNCE_MS = 250;
@@ -9,9 +13,22 @@ const MIN_LENGTH = 2;
 
 interface Props {
   onSelect: (result: GeocodeResult) => void;
+  label?: string;
+  placeholder?: string;
+  options?: GeocodeOptions;
+  disabled?: boolean;
+  /** Forms show the label above the field; the header search keeps it for screen readers only. */
+  visibleLabel?: boolean;
 }
 
-export function SearchBox({ onSelect }: Props) {
+export function SearchBox({
+  onSelect,
+  label = hr.search.label,
+  placeholder = hr.search.placeholder,
+  options = {},
+  disabled = false,
+  visibleLabel = false,
+}: Props) {
   const id = useId();
   const listId = `${id}-list`;
   const statusId = `${id}-status`;
@@ -27,8 +44,8 @@ export function SearchBox({ onSelect }: Props) {
 
   const enabled = query.length >= MIN_LENGTH;
   const { data, isFetching, isError } = useQuery({
-    queryKey: ["geocode", query],
-    queryFn: ({ signal }) => fetchGeocode(query, signal),
+    queryKey: ["geocode", query, options.kinds?.join(","), options.jls],
+    queryFn: ({ signal }) => fetchGeocode(query, signal, options),
     enabled,
     retry: false,
     staleTime: 60 * 1000,
@@ -74,8 +91,11 @@ export function SearchBox({ onSelect }: Props) {
 
   return (
     <div className="relative w-full">
-      <label htmlFor={id} className="sr-only">
-        {hr.search.label}
+      <label
+        htmlFor={id}
+        className={visibleLabel ? "mb-1 block text-sm font-medium" : "sr-only"}
+      >
+        {label}
       </label>
       <input
         id={id}
@@ -89,7 +109,8 @@ export function SearchBox({ onSelect }: Props) {
         }
         aria-describedby={statusId}
         autoComplete="off"
-        placeholder={hr.search.placeholder}
+        placeholder={placeholder}
+        disabled={disabled}
         value={input}
         onChange={(event) => {
           setInput(event.target.value);

@@ -160,7 +160,10 @@ export function MapView({
         map.setStyle(FALLBACK_STYLE);
       }
     });
+    let disposed = false;
     map.on("moveend", () => {
+      // map.remove() fires a last moveend; reporting it would navigate away from a new page.
+      if (disposed) return;
       const center = map.getCenter();
       latest.current.onViewChange?.({
         lat: center.lat,
@@ -172,6 +175,7 @@ export function MapView({
       latest.current.onPick?.({ lat: event.lngLat.lat, lon: event.lngLat.lng });
     });
     return () => {
+      disposed = true;
       map.remove();
       mapRef.current = null;
       markerRef.current = null;

@@ -1,5 +1,5 @@
 # PROGRESS — KlimaKompas HR
-Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 7 · Rok: pon 9. 11. 2026. 24:00 (freeze 16:00)
+Zadnje ažuriranje: 2. 11. 2026. · Trenutna faza: 7 · Rok: pon 9. 11. 2026. 24:00 (freeze 16:00)
 
 ## Faze
 - [x] F0 Bootstrap i provjera izvora (ned 1. 11.)
@@ -40,6 +40,14 @@ Zadnje ažuriranje: 1. 11. 2026. · Trenutna faza: 7 · Rok: pon 9. 11. 2026. 24
 - [0008](docs/odluke/0008-asistent-model-razumije-pitanje.md) Mali model samo razumije pitanje.
 
 ## Problemi / bilješke
+- 2. 11. popravci nakon korisničkog testa:
+  - Asistent: adrese se nude samo iz odabrane općine. Slobodna pitanja rade i bez modela, pomoću pravila.
+  - Gumb „Otvori punu iskaznicu” više ne vraća na kartu, jer zadnji `moveend` karte više ne mijenja URL.
+  - Pretraga smješta naselje i općinu u naseljenu ćeliju. Iskaznica uvijek prikazuje stanovništvo i rizik naselja i općine.
+  - Poruka o živim podacima navodi koji izvor kasni.
+  - Klizači težina objašnjeni su jednostavnim riječima.
+  - Napomena o ograničenju MODIS-a za manje požare.
+  - E2e: 48 scenarija.
 - F1 gotova: 21 županija, 556 JLS-ova (128 + 428), 6.759 naselja, 60.968 ćelija, 24.464 naseljene, 1.683.411 adresa. Sve naseljene ćelije imaju JLS. Zbroj mreže 3.889.177 (+0,45 %), zbroj DZS-a točno 3.871.833.
 - Puni ETL traje oko 9 minuta; adrese 3,5 minute, pa fallback na geokoder bez adresa nije bio potreban.
 - E2e (Playwright i axe) prolazi na 1280 px i 360 px, ali se zasad pokreće samo lokalno, ne u CI-ju, jer traži učitane podatke. Radix/shadcn još nisu uvedeni: dosadašnji UI koristi nativne pristupačne elemente.

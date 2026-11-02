@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { SearchBox } from "../components/SearchBox";
-import { cardLink } from "../features/map/mapLink";
+import { cardLink, scopeOf } from "../features/map/mapLink";
 import hr from "../i18n/hr.json";
 import { useSources, useWarnings } from "../lib/api/hooks";
 
@@ -47,7 +47,9 @@ export function HomePage() {
       </div>
       <SearchBox
         onSelect={(result) =>
-          navigate(cardLink(result.lat, result.lon, result.label))
+          navigate(
+            cardLink(result.lat, result.lon, result.label, scopeOf(result)),
+          )
         }
       />
       <nav aria-label={hr.home.examples} className="flex flex-wrap gap-2">

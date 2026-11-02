@@ -3,8 +3,10 @@ import { Link } from "react-router";
 import { LevelBadge } from "../../components/LevelBadge";
 import hr from "../../i18n/hr.json";
 import type {
+  AreaSummary,
   CardResponse,
   HazardBlock,
+  LiveStatus,
   WarningItem,
 } from "../../lib/api/client";
 import { useSources } from "../../lib/api/hooks";
@@ -115,6 +117,7 @@ function hazardLines(name: HazardName, card: CardResponse): string[] {
       );
     }
     lines.push(fill(hr.card.fire.burnt, { value: num(key.burnt_years_2km) }));
+    lines.push(hr.card.fire.burntNote);
     const index = card.live.fire_index;
     if (index) {
       lines.push(
@@ -296,6 +299,112 @@ function Actions({ card }: { card: CardResponse }) {
   );
 }
 
+function jlsKind(card: CardResponse): string {
+  return card.location.jls.kind === "grad"
+    ? hr.card.kindGrad
+    : hr.card.kindOpcina;
+}
+
+function AreaRow({ title, area }: { title: string; area: AreaSummary }) {
+  return (
+    <li className="flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <p className="font-medium">{title}</p>
+        {area.pop != null && (
+          <p className="text-sm text-slate-800">
+            {fill(hr.card.areaPop, {
+              pop: formatNumber(area.pop),
+              pop65: formatNumber(area.pop65 ?? 0),
+            })}
+          </p>
+        )}
+        {area.rank_hr != null && area.total_hr != null && (
+          <p className="text-sm text-slate-700">
+            {fill(hr.card.areaRank, {
+              rank: formatNumber(area.rank_hr),
+              total: formatNumber(area.total_hr),
+            })}
+          </p>
+        )}
+      </div>
+      {area.ikr_level ? (
+        <LevelBadge level={area.ikr_level} />
+      ) : (
+        <span className="text-sm text-slate-700">{hr.card.areaNoIndex}</span>
+      )}
+    </li>
+  );
+}
+
+function AreaBlock({ card }: { card: CardResponse }) {
+  const { naselje, jls } = card.areas;
+  return (
+    <section
+      className="mt-3 rounded-lg bg-slate-100 p-3"
+      data-testid="card-areas"
+    >
+      <h2 className="font-semibold">{hr.card.areaTitle}</h2>
+      <p className="text-sm text-slate-700">{hr.card.areaHelp}</p>
+      <ul className="mt-2 space-y-2">
+        <AreaRow
+          title={fill(hr.card.areaNaselje, { name: naselje.name })}
+          area={naselje}
+        />
+        <AreaRow
+          title={fill(hr.card.areaJls, {
+            kind: jlsKind(card),
+            name: jls.name,
+          })}
+          area={jls}
+        />
+      </ul>
+    </section>
+  );
+}
+
+const LIVE_PROBLEMS = ["stale", "missing"];
+
+function LiveNotice({ items }: { items: LiveStatus[] }) {
+  const problems = items.filter((item) => LIVE_PROBLEMS.includes(item.state));
+  if (problems.length === 0) return null;
+  return (
+    <div
+      role="status"
+      className="mt-2 rounded bg-amber-100 p-2 text-sm text-amber-950"
+      data-testid="live-notice"
+    >
+      <p className="font-medium">{hr.card.liveTitle}</p>
+      <ul className="list-disc pl-5">
+        {problems.map((item) => {
+          const state =
+            item.state === "stale" && item.checked_at ? "stale" : "missing";
+          return (
+            <li key={item.source}>
+              {fill(hr.card.live[item.source][state], {
+                time: item.checked_at ? formatAgo(item.checked_at) : "",
+              })}
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-1">{hr.card.liveNote}</p>
+    </div>
+  );
+}
+
+function PopulationLine({ card }: { card: CardResponse }) {
+  const { population } = card;
+  if (population.total_rounded === 0) return <>{hr.card.populationCellNone}</>;
+  if (population.below_threshold) return <>{hr.card.populationCellSmall}</>;
+  return (
+    <>
+      {fill(hr.card.populationCell, {
+        value: formatNumber(population.total_rounded ?? 0),
+      })}
+    </>
+  );
+}
+
 export function CardView({
   card,
   compact = false,
@@ -318,17 +427,15 @@ export function CardView({
         </p>
       </header>
 
-      {card.partial && (
-        <p
-          role="status"
-          className="mt-2 rounded bg-amber-100 p-2 text-sm text-amber-950"
-        >
-          {hr.card.partial}
-        </p>
-      )}
+      <LiveNotice items={card.live_status} />
+
+      {card.scope !== "point" && <AreaBlock card={card} />}
 
       <section className="mt-3 rounded-lg bg-slate-100 p-3">
-        <h2 className="font-semibold">{hr.card.ikrTitle}</h2>
+        <h2 className="font-semibold">
+          {card.scope === "point" ? hr.card.ikrTitle : hr.card.pointTitle}
+        </h2>
+        <p className="text-sm text-slate-700">{hr.card.pointHelp}</p>
         {ikr.populated ? (
           <>
             <div className="mt-1">
@@ -348,6 +455,8 @@ export function CardView({
           <p className="mt-1">{hr.card.ikrUnpopulated}</p>
         )}
       </section>
+
+      {card.scope === "point" && <AreaBlock card={card} />}
 
       <Section title={hr.card.warningsTitle}>
         {warningsChecked == null ? (
@@ -384,15 +493,26 @@ export function CardView({
       </div>
 
       <Section title={hr.card.populationTitle}>
-        <ul className="text-sm">
+        <ul className="text-sm" data-testid="card-population">
+          {card.areas.naselje.pop != null && (
+            <li>
+              {fill(hr.card.populationNaselje, {
+                name: card.areas.naselje.name,
+                value: formatNumber(card.areas.naselje.pop),
+              })}
+            </li>
+          )}
+          {card.areas.jls.pop != null && (
+            <li>
+              {fill(hr.card.populationJls, {
+                kind: jlsKind(card),
+                name: card.areas.jls.name,
+                value: formatNumber(card.areas.jls.pop),
+              })}
+            </li>
+          )}
           <li>
-            {population.total_rounded === 0
-              ? hr.card.populationNone
-              : population.below_threshold
-                ? hr.card.populationSmall
-                : fill(hr.card.populationTotal, {
-                    value: formatNumber(population.total_rounded ?? 0),
-                  })}
+            <PopulationLine card={card} />
           </li>
           {population.total_rounded !== 0 && (
             <>

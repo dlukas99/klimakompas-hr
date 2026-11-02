@@ -36,7 +36,7 @@ H_heat = 0,5 · rn(vrući dani) + 0,25 · rn(tropske noći) + 0,25 · rn(ΔLST)
 H_fire = 0,7 · rn(dani FWI > 30) · (0,3 + 0,7 · F) + 0,3 · rn(godine s požarom u krugu 2 km)
 ```
 
-F je udio drveća, grmlja i travnjaka u ćeliji i prstenu od 1 km (WorldCover). Povijest požara je MODIS MCD64A1, 2001.–2025.
+F je udio drveća, grmlja i travnjaka u ćeliji i prstenu od 1 km (WorldCover). Povijest požara je MODIS MCD64A1, 2001.–2025. Taj proizvod ima piksele od 500 m i bilježi samo veće opožarene površine, pa manji požari (trave, jednog polja ili okućnice) u njemu ne postoje. Nula na iskaznici zato znači „satelit nije zabilježio veći požar”, a ne „ovdje nije bilo požara”.
 
 **Zrak.** `H_air = clamp((PM2,5 − 5) / 20, 0, 1)` iz EEA rastera od 1 km za 2023. Vrijednost 5 µg/m³ je smjernica SZO-a (2021.), a 25 µg/m³ dosadašnja granica EU-a. Od 1. 1. 2030. granica EU-a je 10 µg/m³ (Direktiva 2024/2881).
 
@@ -86,4 +86,6 @@ Na 1.000 slučajnih vektora težina (Dirichlet, α = 1) medijan Spearmanova ρ r
 - Stanovništvo je iz Popisa 2021., a registar naselja iz 2026.
 - Ćelije uz granicu sa Slovenijom i Mađarskom uključuju i stanovnike susjedne zemlje.
 - Izloženi stanovnici su gornja granica.
+- Iskaznica za točku opisuje kvadrat od 1 km oko nje. Pretraga zato smješta naselje u njegovu najnaseljeniju ćeliju, a općinu ili grad u najnaseljeniju ćeliju najvećeg naselja. Uz točku iskaznica uvijek prikazuje i broj stanovnika te razred rizika cijelog naselja i općine iz Popisa 2021.
+- Povijest požara vidi samo veće požare (MODIS, 500 m). Podaci o intervencijama vatrogasaca po naseljima nisu objavljeni kao otvoreni podaci.
 - Klimatologija nije prognoza. Razredi su relativni. Indeks nije službena procjena rizika.

@@ -56,6 +56,7 @@ export function MapPage() {
     state.pin?.lat ?? null,
     state.pin?.lon ?? null,
     state.label,
+    state.scope,
   );
 
   const attribution = useMemo(
@@ -70,6 +71,7 @@ export function MapPage() {
   const onViewChange = useCallback(
     (view: { lat: number; lon: number; zoom: number }) => {
       // The URL is read directly, so a late moveend cannot undo a change not yet rendered.
+      if (!window.location.pathname.startsWith("/karta")) return;
       setParams(serializeMapUrl({ ...currentState(), view, bbox: null }), {
         replace: true,
       });
@@ -80,7 +82,12 @@ export function MapPage() {
   const onPick = useCallback(
     (point: { lat: number; lon: number }) => {
       setParams(
-        serializeMapUrl({ ...currentState(), pin: point, label: null }),
+        serializeMapUrl({
+          ...currentState(),
+          pin: point,
+          label: null,
+          scope: "point",
+        }),
       );
     },
     [setParams],
@@ -103,7 +110,14 @@ export function MapPage() {
   }
 
   function closeCard() {
-    setParams(serializeMapUrl({ ...currentState(), pin: null, label: null }));
+    setParams(
+      serializeMapUrl({
+        ...currentState(),
+        pin: null,
+        label: null,
+        scope: "point",
+      }),
+    );
   }
 
   return (
@@ -143,7 +157,12 @@ export function MapPage() {
         >
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
             <Link
-              to={cardLink(state.pin.lat, state.pin.lon, state.label)}
+              to={cardLink(
+                state.pin.lat,
+                state.pin.lon,
+                state.label,
+                state.scope,
+              )}
               className="text-sm underline"
             >
               {hr.map.fullCard}

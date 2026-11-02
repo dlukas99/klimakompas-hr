@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router";
 import { QueryState } from "../components/QueryState";
 import { CardView } from "../features/card/CardView";
 import { useCard } from "../features/card/useCard";
+import { parseMapUrl } from "../features/map/urlState";
 import hr from "../i18n/hr.json";
 import { ApiError } from "../lib/api/client";
 
@@ -16,7 +17,8 @@ export function CardPage() {
   const lat = coordinate(params.get("lat"));
   const lon = coordinate(params.get("lon"));
   const label = params.get("naziv");
-  const card = useCard(lat, lon, label);
+  const scope = parseMapUrl(params).scope;
+  const card = useCard(lat, lon, label, scope);
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
       {lat === null || lon === null ? (

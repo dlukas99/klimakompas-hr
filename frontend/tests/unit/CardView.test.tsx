@@ -83,6 +83,35 @@ function card(overrides: Partial<CardResponse> = {}): CardResponse {
     generated_at: new Date().toISOString(),
     partial: false,
     degraded_sources: [],
+    areas: {
+      naselje: {
+        code: "1",
+        name: "Čaglin",
+        pop: 478,
+        pop65: 120,
+        ikr_level: 3,
+        ikr_label: "Srednji",
+      },
+      jls: {
+        code: "00582",
+        name: "Čaglin",
+        pop: 2111,
+        pop65: 510,
+        ikr_level: 4,
+        ikr_label: "Visok",
+        rank_hr: 120,
+        total_hr: 556,
+      },
+    },
+    scope: "point",
+    live_status: [
+      { source: "dhmz_cap", state: "ok", checked_at: new Date().toISOString() },
+      {
+        source: "azo_aq_rest",
+        state: "ok",
+        checked_at: new Date().toISOString(),
+      },
+    ],
     ...overrides,
   };
 }
@@ -175,7 +204,51 @@ describe("CardView", () => {
       }),
     );
     expect(screen.getByText(hr.card.ikrUnpopulated)).toBeInTheDocument();
-    expect(screen.getByText(hr.card.populationNone)).toBeInTheDocument();
+    expect(screen.getByText(hr.card.populationCellNone)).toBeInTheDocument();
+  });
+
+  it("always shows settlement and municipality population, even for an empty cell", () => {
+    show(
+      card({
+        scope: "jls",
+        population: { ...card().population, total_rounded: 0 },
+      }),
+    );
+    const population = within(screen.getByTestId("card-population"));
+    expect(
+      population.getByText(/Naselje Čaglin: 478 stanovnika/),
+    ).toBeInTheDocument();
+    expect(
+      population.getByText(/Grad Čaglin: 2\.111 stanovnika/),
+    ).toBeInTheDocument();
+    const areas = within(screen.getByTestId("card-areas"));
+    expect(areas.getByText(/120\. od 556/)).toBeInTheDocument();
+  });
+
+  it("names which live source is missing and that the risk is unaffected", () => {
+    show(
+      card({
+        live_status: [
+          {
+            source: "dhmz_cap",
+            state: "stale",
+            checked_at: new Date(Date.now() - 18 * 3600 * 1000).toISOString(),
+          },
+          { source: "azo_aq_rest", state: "none_nearby", checked_at: null },
+        ],
+      }),
+    );
+    const notice = within(screen.getByTestId("live-notice"));
+    expect(
+      notice.getByText(/Upozorenja DHMZ-a zadnji su put/),
+    ).toBeInTheDocument();
+    expect(notice.getByText(hr.card.liveNote)).toBeInTheDocument();
+    expect(notice.queryByText(/kvalitete zraka/)).not.toBeInTheDocument();
+  });
+
+  it("shows no live notice when everything is fresh", () => {
+    show(card());
+    expect(screen.queryByTestId("live-notice")).not.toBeInTheDocument();
   });
 
   it("never prints the exact count of a very small cell", () => {
@@ -188,7 +261,7 @@ describe("CardView", () => {
         },
       }),
     );
-    expect(screen.getByText(hr.card.populationSmall)).toBeInTheDocument();
+    expect(screen.getByText(hr.card.populationCellSmall)).toBeInTheDocument();
   });
 
   it("always carries the disclaimer", () => {

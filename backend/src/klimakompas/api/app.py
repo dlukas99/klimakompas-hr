@@ -23,7 +23,7 @@ from klimakompas.agent.runner import (
 )
 from klimakompas.agent.structured import run_structured
 from klimakompas.api import data
-from klimakompas.api.geocode import geocode
+from klimakompas.api.geocode import ALL_KINDS, geocode
 from klimakompas.api.schemas import (
     AgentStatus,
     AirStation,
@@ -103,12 +103,16 @@ def _sse(event: str, payload: dict[str, Any]) -> str:
 
 def _chat_events(message: str) -> Iterator[str]:
     """The conversation is not stored; only this stream carries it."""
+    settings = get_settings()
     try:
         with get_engine().connect() as conn:
-            settings = get_settings()
-            llm = OpenAiCompatibleClient(settings)
-            run = run_agent if settings.llm_mode == "tools" else run_structured
-            for item in run(conn, llm, message):
+            if settings.llm_mode == "tools" and settings.llm_base_url:
+                events = run_agent(conn, OpenAiCompatibleClient(settings), message)
+            else:
+                # Works without a model: the rules read the question when none is configured.
+                llm = OpenAiCompatibleClient(settings) if settings.llm_base_url else None
+                events = run_structured(conn, llm, message)
+            for item in events:
                 if item["event"] == "tool":
                     yield _sse("tool", {"name": item["name"]})
                 else:
@@ -163,8 +167,12 @@ def create_app() -> FastAPI:
         conn: Db,
         q: Annotated[str, Query(min_length=2, max_length=120)],
         limit: Annotated[int, Query(ge=1, le=20)] = 8,
+        kinds: Annotated[
+            list[Literal["address", "settlement", "municipality"]] | None, Query()
+        ] = None,
+        jls: Annotated[str | None, Query(max_length=10)] = None,
     ) -> GeocodeResponse:
-        return geocode(conn, q, limit)
+        return geocode(conn, q, limit, tuple(kinds) if kinds else ALL_KINDS, jls)
 
     @app.get(f"{API_PREFIX}/card")
     def card(
@@ -172,8 +180,9 @@ def create_app() -> FastAPI:
         lat: Annotated[float, Query(ge=42.0, le=47.0)],
         lon: Annotated[float, Query(ge=13.0, le=20.0)],
         label: Annotated[str | None, Query(max_length=200)] = None,
+        scope: Literal["point", "naselje", "jls"] = "point",
     ) -> CardResponse:
-        result = data.build_card(conn, lat, lon, label=label)
+        result = data.build_card(conn, lat, lon, label=label, scope=scope)
         if result is None:
             raise HTTPException(status_code=404, detail="Lokacija je izvan područja Hrvatske.")
         return CardResponse.model_validate(result)

@@ -111,10 +111,10 @@
     "ikrTitle": "Ukupni klimatski rizik",
     "ikrHigherThan": "Veći je od {value} % naseljenih područja u Hrvatskoj.",
     "ikrRelative": "Razredi su u odnosu na ostatak Hrvatske.",
-    "ikrUnpopulated": "Ovo područje nema stanovnika, pa se indeks ne računa. Prikazane su samo opasnosti.",
-    "weightsTitle": "Prilagodite važnost opasnosti",
-    "weightsHelp": "Rezultat se računa samo u vašem pregledniku. Razred ostaje prema zadanim težinama.",
-    "weightedValue": "Rizik s vašim težinama:",
+    "ikrUnpopulated": "U kvadratu od 1 km oko ove točke nema stanovnika, pa se rizik za stanovnike ovdje ne računa. Ispod su opasnosti za to područje, a rizik naselja i općine je gore.",
+    "weightsTitle": "Što ako vam je neka opasnost važnija?",
+    "weightsHelp": "Ukupni rizik je prosjek četiriju opasnosti s jednakom težinom. Ovdje možete vidjeti kako bi se broj promijenio da neku opasnost smatrate važnijom, npr. ako imate dijete s astmom. Razred na iskaznici ostaje isti, a ništa se ne šalje i ne sprema.",
+    "weightedValue": "Rizik s vašim težinama (0 je najniži, 1 najviši):",
     "weightsReset": "Vrati zadano",
     "warningsTitle": "Upozorenja DHMZ-a za županiju",
     "warningsNone": "Trenutno nema upozorenja",
@@ -154,9 +154,10 @@
     "fire": {
       "days": "Dana visoke opasnosti od požara godišnje: {value}",
       "fuel": "Udio vegetacije u okolici: {value} %",
-      "burnt": "Godina s požarima u krugu 2 km od 2001.: {value}",
+      "burnt": "Godina s većim požarom u krugu 2 km od 2001., prema satelitu: {value}",
       "index": "DHMZ indeks opasnosti ({station}): {category}, FWI {fwi}",
-      "indexOff": "Izvan požarne sezone. Zadnji DHMZ indeks ({station}): {category}"
+      "indexOff": "Izvan požarne sezone. Zadnji DHMZ indeks ({station}): {category}",
+      "burntNote": "Satelit MODIS vidi samo veće opožarene površine (pikseli od 500 m), pa manji požari, npr. trave ili jednog polja, ovdje nisu zabilježeni."
     },
     "air": {
       "annual": "Godišnji prosjek PM2,5 ({year}.): {value} µg/m³ (smjernica SZO-a: {who} µg/m³)",
@@ -169,16 +170,13 @@
       "forecastModel": "Model {model}. Raspon pokazuje očekivanu nesigurnost.",
       "forecastNone": "Prognoza za ovu postaju nije dostupna."
     },
-    "populationTitle": "Stanovništvo ćelije",
-    "populationTotal": "Stanovnika, zaokruženo: {value}",
-    "populationSmall": "Stanovnika: manje od 10",
-    "populationNone": "Prema Popisu 2021. ovdje nema stanovnika.",
+    "populationTitle": "Stanovništvo (Popis 2021.)",
     "share65": "Udio 65 i više: {value} %",
     "shareUnder15": "Udio mlađih od 15: {value} %",
     "shareSource": {
-      "cell": "Udjeli se odnose na ovu ćeliju.",
-      "naselje": "Udjeli su za cijelo naselje, jer ćelija ima premalo stanovnika.",
-      "jls": "Udjeli su za cijelu općinu ili grad, jer ćelija ima premalo stanovnika."
+      "cell": "Udjeli se odnose na kvadrat od 1 km oko točke.",
+      "naselje": "Udjeli su za cijelo naselje, jer kvadrat oko točke ima premalo stanovnika.",
+      "jls": "Udjeli su za cijelu općinu ili grad, jer kvadrat oko točke ima premalo stanovnika."
     },
     "shareUnavailable": "nije dostupno",
     "natureTitle": "Priroda u krugu 1 km",
@@ -196,7 +194,35 @@
     "copyAction": "Kopiraj poveznicu",
     "copied": "Poveznica je kopirana.",
     "jlsAction": "Otvori općinu ili grad",
-    "partial": "Neki živi podaci trenutno nisu dostupni, pa je iskaznica djelomična."
+    "populationNaselje": "Naselje {name}: {value} stanovnika",
+    "populationJls": "{kind} {name}: {value} stanovnika",
+    "populationCell": "U kvadratu od 1 km oko odabrane točke: oko {value}",
+    "populationCellSmall": "U kvadratu od 1 km oko odabrane točke: manje od 10",
+    "populationCellNone": "U kvadratu od 1 km oko odabrane točke nema stanovnika.",
+    "areaTitle": "Rizik naselja i općine",
+    "areaNaselje": "Naselje {name}",
+    "areaJls": "{kind} {name}",
+    "areaRank": "{rank}. od {total} u Hrvatskoj",
+    "areaNoIndex": "bez indeksa",
+    "pointTitle": "Na odabranoj točki",
+    "pointHelp": "Procjena za kvadrat od 1 km oko točke.",
+    "kindGrad": "Grad",
+    "kindOpcina": "Općina",
+    "liveTitle": "Trenutni podaci nisu potpuni",
+    "liveNote": "To ne mijenja procjenu rizika, koja se temelji na višegodišnjim podacima. Odnosi se samo na trenutna upozorenja i mjerenja.",
+    "live": {
+      "dhmz_cap": {
+        "stale": "Upozorenja DHMZ-a zadnji su put osvježena {time}. Za aktualno stanje provjerite meteo.hr.",
+        "missing": "Upozorenja DHMZ-a trenutno nisu dostupna. Provjerite meteo.hr."
+      },
+      "azo_aq_rest": {
+        "stale": "Mjerenja kvalitete zraka zadnji su put osvježena {time}.",
+        "missing": "Mjerenja kvalitete zraka trenutno nisu dostupna.",
+        "none_nearby": "U krugu od 15 km nema postaje kvalitete zraka sa svježim mjerenjem."
+      }
+    },
+    "areaPop": "{pop} stanovnika, od toga {pop65} u dobi 65 i više",
+    "areaHelp": "Razred rizika za cijelo naselje i cijelu općinu ili grad, u odnosu na ostatak Hrvatske."
   },
   "jls": {
     "listTitle": "Općine i gradovi",
@@ -357,9 +383,9 @@
   },
   "assistant": {
     "title": "Asistent",
-    "intro": "Pitajte o klimatskim rizicima za konkretno mjesto. Svaka brojka dolazi iz naših podataka i ima izvor. Razgovori se ne spremaju.",
-    "quickTitle": "Brza pitanja",
-    "quickIntro": "Ova pitanja rade uvijek, bez AI modela.",
+    "intro": "Pitajte o klimatskim rizicima za mjesto u Hrvatskoj. Odgovor sastavljamo isključivo iz naših podataka, uz izvor. Razgovori se ne spremaju.",
+    "quickTitle": "Brza pitanja za vaše mjesto",
+    "quickIntro": "Odaberite općinu ili grad, a za pitanje o zraku po želji i adresu ili naselje.",
     "quick": {
       "older_exposed": "Koja naselja u mojoj općini imaju najviše starijih osoba u zonama visokog rizika?",
       "hottest": "Gdje je ljeti najtoplije u mojoj općini?",
@@ -367,11 +393,10 @@
       "warnings": "Ima li danas upozorenja DHMZ-a?",
       "flood_data": "Koji otvoreni podaci o poplavama postoje na Portalu?"
     },
-    "jlsLabel": "Moja općina ili grad",
-    "placeLabel": "Mjesto za pitanja o zraku",
-    "pickPlace": "Odaberite mjesto pretragom.",
-    "pickJls": "Upišite naziv općine ili grada.",
-    "chatTitle": "Slobodno pitanje",
+    "jlsLabel": "Općina ili grad",
+    "placeLabel": "Adresa ili naselje u odabranoj općini (neobavezno)",
+    "pickJls": "Najprije odaberite općinu ili grad.",
+    "chatTitle": "Vaše pitanje",
     "chatLabel": "Vaše pitanje",
     "chatPlaceholder": "Npr. Kakav je rizik od poplava u Slavonskom Brodu?",
     "send": "Pošalji",
@@ -388,12 +413,16 @@
     },
     "you": "Vi",
     "assistant": "Asistent",
-    "unavailable": "AI model trenutno nije dostupan. Brza pitanja i dalje rade.",
     "rateLimited": "Previše zahtjeva. Pokušajte ponovno za minutu.",
-    "offline": "AI model trenutno nije uključen, pa rade samo brza pitanja.",
     "sources": "Izvori",
     "notGrounded": "Dio odgovora uklonjen je jer ga nije bilo moguće potvrditi podacima.",
     "showOnMap": "Prikaži na karti",
-    "notice": "Asistent može pogriješiti. U hitnoj situaciji nazovite 112."
+    "notice": "Asistent može pogriješiti. U hitnoj situaciji nazovite 112.",
+    "chatHelp": "Npr. „Je li Gunja u zoni poplave?”, „Koliko stanovnika ima Požega?” ili „Ima li danas upozorenja?”.",
+    "noModel": "Pitanja čitaju jednostavna pravila. Ako vas asistent ne razumije, navedite mjesto i opasnost.",
+    "jlsPlaceholder": "Npr. Čaglin",
+    "placePlaceholder": "Npr. ulica i kućni broj",
+    "placeDisabled": "Najprije odaberite općinu ili grad.",
+    "unavailable": "Asistent trenutno ne može odgovoriti. Pokušajte ponovno za nekoliko minuta."
   }
 }

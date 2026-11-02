@@ -106,19 +106,86 @@ test("U4: quick questions answer without an AI model", async ({ page }) => {
     route.fulfill({ json: { llm_available: false } }),
   );
   await page.goto("/asistent");
-  await expect(page.getByText(/rade samo brza pitanja/)).toBeVisible();
   await page.getByRole("button", { name: /upozorenja DHMZ/ }).click();
   await expect(page.getByTestId("quick-answer")).toContainText(/upozorenja/);
   await expect(
     page.getByTestId("quick-answer").getByRole("link").first(),
   ).toBeVisible();
   await page.getByRole("button", { name: /najtoplije/ }).click();
-  await expect(page.getByText("Upišite naziv općine ili grada.")).toBeVisible();
-  await page.getByLabel("Moja općina ili grad").fill("Požega");
+  await expect(
+    page.getByText("Najprije odaberite općinu ili grad.").first(),
+  ).toBeVisible();
+  await page.getByLabel("Općina ili grad", { exact: true }).fill("Požega");
+  await page
+    .getByRole("option", { name: /Požega/ })
+    .first()
+    .click();
   await page.getByRole("button", { name: /najtoplije/ }).click();
   await expect(page.getByTestId("quick-answer")).toContainText(
     /toplinskim rizikom/,
   );
+});
+
+test("assistant suggests addresses only from the chosen municipality", async ({
+  page,
+}) => {
+  await page.goto("/asistent");
+  const place = page.getByLabel(/Adresa ili naselje/);
+  await expect(place).toBeDisabled();
+  await page.getByLabel("Općina ili grad", { exact: true }).fill("Čaglin");
+  await page
+    .getByRole("option", { name: /Čaglin/ })
+    .first()
+    .click();
+  await expect(place).toBeEnabled();
+  await place.fill("Jasik");
+  const options = page.getByRole("option");
+  await expect(options.first()).toBeVisible();
+  for (const text of await options.allTextContents()) {
+    expect(text).toMatch(/Čaglin/);
+  }
+});
+
+test("free questions work without an AI model", async ({ page }) => {
+  await page.route("**/api/v1/agent/status", (route) =>
+    route.fulfill({ json: { llm_available: false } }),
+  );
+  await page.goto("/asistent");
+  await expect(page.getByTestId("no-model")).toBeVisible();
+  await page.getByLabel("Vaše pitanje").fill("Koliko stanovnika ima Požega?");
+  await page.getByRole("button", { name: "Pošalji" }).click();
+  // A local model may take several seconds on a shared CPU.
+  await expect(page.getByTestId("chat-answer")).toContainText(/22\.294/, {
+    timeout: 30_000,
+  });
+});
+
+test("map panel opens the full card", async ({ page }) => {
+  await page.goto(
+    "/karta?oznaka=45.35085,17.98695&naziv=%C4%8Caglin&razina=naselje",
+  );
+  await expect(page.getByTestId("card-panel")).toBeVisible();
+  await page.getByRole("link", { name: "Otvori punu iskaznicu" }).click();
+  await expect(page).toHaveURL(/\/iskaznica\?.*razina=naselje/);
+  await expect(page.getByTestId("card-areas")).toContainText("478");
+  // The map's last moveend must not bring the user back to the map.
+  await page.waitForTimeout(1000);
+  await expect(page).toHaveURL(/\/iskaznica/);
+});
+
+test("a searched municipality never says it has no residents", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("combobox").fill("Čaglin");
+  await page
+    .getByRole("option", { name: /Općina/ })
+    .first()
+    .click();
+  await expect(page.getByTestId("card-population")).toContainText(
+    "2.111 stanovnika",
+  );
+  await expect(page.getByText(/nema stanovnika/)).toHaveCount(0);
 });
 
 test("an unknown municipality shows a clear message", async ({ page }) => {

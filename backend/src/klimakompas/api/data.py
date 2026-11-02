@@ -435,6 +435,7 @@ def build_card(
     lon: float,
     flood_folder: Path = FLOOD_DIR,
     label: str | None = None,
+    scope: str = "point",
 ) -> dict[str, Any] | None:
     """The climate card for a point. Live parts that fail only mark the card as partial."""
     config = load_index_config()
@@ -445,14 +446,27 @@ def build_card(
         return None
 
     sampled = sample_flood_depths(lat, lon, flood_folder)
-    degraded: list[str] = []
+    now = datetime.now(UTC)
     warnings_status = source_status(conn, "dhmz_cap")
-    if warnings_status is None or warnings_status.last_status != "success":
-        degraded.append("dhmz_cap")
     stations = station_latest(conn)
     air_now = choose_air_now(stations, lat, lon, float(thresholds.get("air_local_km", 15)))
-    if air_now is None:
-        degraded.append("azo_aq_rest")
+    air_status = source_status(conn, "azo_aq_rest")
+    live_status = [
+        {
+            "source": "dhmz_cap",
+            "state": _freshness(warnings_status, "dhmz_cap", now),
+            "checked_at": warnings_status.last_success_at if warnings_status else None,
+        },
+        {
+            "source": "azo_aq_rest",
+            "state": "none_nearby"
+            if air_now is None and _freshness(air_status, "azo_aq_rest", now) == "ok"
+            else _freshness(air_status, "azo_aq_rest", now),
+            "checked_at": air_status.last_success_at if air_status else None,
+        },
+    ]
+    # No station nearby is a fact about the place, not a failing source.
+    degraded = [item["source"] for item in live_status if item["state"] in ("stale", "missing")]
 
     forecast = latest_forecast(conn, air_now["station"]["id"]) if air_now else []
     return {
@@ -479,6 +493,8 @@ def build_card(
             "fire": _fire_block(row),
             "air": _air_block(row, thresholds["pm25_annual_ugm3"]["card_levels"]),
         },
+        "areas": _areas(conn, row.naselje_code, row.jls_code),
+        "scope": scope,
         "population": {
             **_rounded_population(row.pop_total),
             "share_65plus": _round(row.share_ge65, 3),
@@ -499,7 +515,59 @@ def build_card(
         "generated_at": datetime.now(UTC),
         "partial": bool(degraded),
         "degraded_sources": degraded,
+        "live_status": live_status,
     }
+
+
+def _freshness(status: Any, source_id: str, now: datetime) -> str:
+    if status is None or status.last_status != "success" or status.last_success_at is None:
+        return "missing"
+    source = next(item for item in load_sources() if item.id == source_id)
+    limit = _iso_duration(source.stale_after) if source.stale_after else None
+    if limit is not None and now - status.last_success_at > limit:
+        return "stale"
+    return "ok"
+
+
+def _areas(conn: Connection, naselje_code: str, jls_code: str) -> dict[str, Any]:
+    naselje = conn.execute(
+        text(
+            """
+            SELECT n.code, n.name, p.pop_total AS pop, p.pop_ge65 AS pop65, r.ikr_class
+            FROM ref.naselja n
+            LEFT JOIN pop.naselja_2021 p ON p.naselje_code = n.code
+            LEFT JOIN idx.current_risk_naselja r ON r.naselje_code = n.code
+            WHERE n.code = :code
+            """
+        ),
+        {"code": naselje_code},
+    ).one()
+    jls = conn.execute(
+        text(
+            """
+            SELECT j.code, j.name, r.pop, r.pop65, r.ikr_class, r.rank_hr,
+                   (SELECT count(*) FROM idx.current_risk_jls) AS total_hr
+            FROM ref.jls j LEFT JOIN idx.current_risk_jls r ON r.jls_code = j.code
+            WHERE j.code = :code
+            """
+        ),
+        {"code": jls_code},
+    ).one()
+
+    def summary(row: Any, ranked: bool) -> dict[str, Any]:
+        result = {
+            "code": row.code,
+            "name": row.name,
+            "pop": row.pop,
+            "pop65": row.pop65,
+            "ikr_level": row.ikr_class,
+            "ikr_label": _level_label(row.ikr_class),
+        }
+        if ranked:
+            result |= {"rank_hr": row.rank_hr, "total_hr": row.total_hr}
+        return result
+
+    return {"naselje": summary(naselje, False), "jls": summary(jls, True)}
 
 
 JLS_SQL = """

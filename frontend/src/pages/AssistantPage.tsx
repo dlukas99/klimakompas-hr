@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import { Link } from "react-router";
 import { SearchBox } from "../components/SearchBox";
 import { cardLink } from "../features/map/mapLink";
@@ -11,6 +11,7 @@ import {
   streamChat,
   type ChatAnswer,
   type Citation,
+  type GeocodeOptions,
   type GeocodeResult,
   type QuickAnswer,
   type QuickId,
@@ -24,7 +25,6 @@ const QUICK_IDS: QuickId[] = [
   "flood_data",
 ];
 const NEEDS_JLS: QuickId[] = ["older_exposed", "hottest"];
-const NEEDS_PLACE: QuickId[] = ["air_near"];
 
 function Citations({ items }: { items: Citation[] }) {
   if (items.length === 0) return null;
@@ -54,26 +54,37 @@ function Citations({ items }: { items: Citation[] }) {
   );
 }
 
+const JLS_ONLY: GeocodeOptions = { kinds: ["municipality"] };
+
 function QuickQuestions() {
-  const [jls, setJls] = useState("");
+  const [jls, setJls] = useState<GeocodeResult | null>(null);
   const [place, setPlace] = useState<GeocodeResult | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const placeOptions = useMemo<GeocodeOptions>(
+    () => ({ kinds: ["address", "settlement"], jls: jls?.code ?? undefined }),
+    [jls],
+  );
   const ask = useMutation<QuickAnswer, Error, QuickId>({
-    mutationFn: (question) =>
-      fetchQuick(question, {
-        jls: jls.trim() || undefined,
-        lat: place?.lat,
-        lon: place?.lon,
-      }),
+    mutationFn: (question) => {
+      // Without an address, the air question is about the chosen municipality's main settlement.
+      const point = place ?? jls;
+      return fetchQuick(question, {
+        jls: jls?.code ?? undefined,
+        lat: point?.lat,
+        lon: point?.lon,
+      });
+    },
   });
 
+  function onJls(result: GeocodeResult) {
+    setJls(result);
+    setPlace(null);
+    setNotice(null);
+  }
+
   function onAsk(question: QuickId) {
-    if (NEEDS_JLS.includes(question) && !jls.trim()) {
+    if (NEEDS_JLS.includes(question) && !jls) {
       setNotice(hr.assistant.pickJls);
-      return;
-    }
-    if (NEEDS_PLACE.includes(question) && !place) {
-      setNotice(hr.assistant.pickPlace);
       return;
     }
     setNotice(null);
@@ -85,19 +96,36 @@ function QuickQuestions() {
       <h2 className="text-xl font-semibold">{hr.assistant.quickTitle}</h2>
       <p className="text-sm text-slate-700">{hr.assistant.quickIntro}</p>
       <div className="mt-2 grid gap-3 sm:grid-cols-2">
-        <label>
-          <span className="text-sm font-medium">{hr.assistant.jlsLabel}</span>
-          <input
-            value={jls}
-            onChange={(event) => setJls(event.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-400 px-3 py-2"
-          />
-        </label>
         <div>
-          <span className="text-sm font-medium">{hr.assistant.placeLabel}</span>
-          <div className="mt-1">
-            <SearchBox onSelect={setPlace} />
-          </div>
+          <SearchBox
+            onSelect={onJls}
+            label={hr.assistant.jlsLabel}
+            placeholder={hr.assistant.jlsPlaceholder}
+            options={JLS_ONLY}
+            visibleLabel
+          />
+          {jls && (
+            <p className="mt-1 text-sm text-slate-700" data-testid="chosen-jls">
+              {jls.label}, {jls.detail}
+            </p>
+          )}
+        </div>
+        <div>
+          {/* Remounting clears a suggestion list left over from another municipality. */}
+          <SearchBox
+            key={jls?.code ?? "none"}
+            onSelect={setPlace}
+            label={hr.assistant.placeLabel}
+            placeholder={
+              jls ? hr.assistant.placePlaceholder : hr.assistant.placeDisabled
+            }
+            options={placeOptions}
+            disabled={!jls}
+            visibleLabel
+          />
+          {place && (
+            <p className="mt-1 text-sm text-slate-700">{place.label}</p>
+          )}
         </div>
       </div>
       <ul className="mt-3 space-y-1">
@@ -178,18 +206,15 @@ function Chat() {
     setTool(null);
   }
 
-  if (status.data && !status.data.llm_available) {
-    return (
-      <section>
-        <h2 className="text-xl font-semibold">{hr.assistant.chatTitle}</h2>
-        <p className="mt-1 rounded bg-slate-100 p-2">{hr.assistant.offline}</p>
-      </section>
-    );
-  }
-
   return (
     <section>
       <h2 className="text-xl font-semibold">{hr.assistant.chatTitle}</h2>
+      <p className="text-sm text-slate-700">{hr.assistant.chatHelp}</p>
+      {status.data && !status.data.llm_available && (
+        <p className="mt-1 text-sm text-slate-700" data-testid="no-model">
+          {hr.assistant.noModel}
+        </p>
+      )}
       <div aria-live="polite" className="mt-2 space-y-3">
         {turns.map((turn, index) => (
           <div key={`${index}-${turn.question}`}>

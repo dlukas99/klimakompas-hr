@@ -312,3 +312,51 @@ def test_active_warnings_filter_by_county_and_expiry(
     body = client.get("/api/v1/warnings/active", params={"region": LOCATION["zupanija"]}).json()
     assert [item["id"] for item in body["warnings"]] == ["now"]
     assert client.get("/api/v1/warnings/active", params={"region": "01"}).json()["warnings"] == []
+
+
+def test_area_is_placed_in_its_populated_cell(client: TestClient, seeded: Connection) -> None:
+    build_grid(seeded)
+    # Only the eastern cell of Osijek has people; the search must point there, not at the centroid.
+    seeded.execute(
+        text(
+            "INSERT INTO pop.grid_2021 (cell_id, cntr_id, pop_total) VALUES "
+            "('CRS3035RES1000mN2501000E4800000', 'HR', 500)"
+        )
+    )
+    result = next(
+        item
+        for item in client.get("/api/v1/geocode", params={"q": "Osijek"}).json()["results"]
+        if item["kind"] == "settlement"
+    )
+    card = client.get("/api/v1/card", params={"lat": result["lat"], "lon": result["lon"]}).json()
+    assert card["location"]["cell_id"] == "CRS3035RES1000mN2501000E4800000"
+    assert card["areas"]["naselje"]["pop"] == 75535
+    assert card["areas"]["jls"]["name"] == "Osijek"
+
+
+def test_geocode_can_be_limited_to_one_jls_and_kind(client: TestClient) -> None:
+    params = {"q": "Osijek", "jls": LOCATION["east_jls"]}
+    assert client.get("/api/v1/geocode", params=params).json()["results"] == []
+    body = client.get("/api/v1/geocode", params={"q": "Osijek", "kinds": "municipality"}).json()
+    assert {item["kind"] for item in body["results"]} == {"municipality"}
+    assert body["results"][0]["jls_code"] == LOCATION["west_jls"]
+
+
+def test_card_explains_which_live_data_is_missing(client: TestClient, seeded: Connection) -> None:
+    build_grid(seeded)
+    seeded.execute(
+        text(
+            "INSERT INTO meta.sources (source_id, last_success_at, last_status) VALUES "
+            "('dhmz_cap', now() - interval '18 hours', 'success')"
+        )
+    )
+    centroid = seeded.execute(
+        text(
+            "SELECT ST_Y(ST_Transform(centroid, 4326)) AS lat, "
+            "ST_X(ST_Transform(centroid, 4326)) AS lon FROM ref.grid_1km LIMIT 1"
+        )
+    ).one()
+    body = client.get("/api/v1/card", params={"lat": centroid.lat, "lon": centroid.lon}).json()
+    states = {item["source"]: item["state"] for item in body["live_status"]}
+    assert states == {"dhmz_cap": "stale", "azo_aq_rest": "missing"}
+    assert body["partial"] is True

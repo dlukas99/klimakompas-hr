@@ -52,6 +52,24 @@ describe("SearchBox", () => {
     expect(input).toHaveAttribute("aria-expanded", "false");
   });
 
+  it("asks only for the allowed kinds inside the chosen municipality", async () => {
+    mockFetch(Response.json({ results: [], addresses_searched: true }));
+    render(
+      <QueryClientProvider client={new QueryClient()}>
+        <SearchBox
+          onSelect={vi.fn()}
+          options={{ kinds: ["address", "settlement"], jls: "00582" }}
+        />
+      </QueryClientProvider>,
+    );
+    await userEvent.type(screen.getByRole("combobox"), "ulica");
+    await waitFor(() => expect(fetch).toHaveBeenCalled());
+    const url = String(vi.mocked(fetch).mock.calls.at(-1)?.[0]);
+    expect(url).toContain("kinds=address");
+    expect(url).toContain("kinds=settlement");
+    expect(url).toContain("jls=00582");
+  });
+
   it("shows the empty state", async () => {
     mockFetch(Response.json({ results: [], addresses_searched: true }));
     renderBox();

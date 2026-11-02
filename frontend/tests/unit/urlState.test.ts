@@ -56,6 +56,16 @@ describe("links", () => {
     expect(state.bbox).toEqual([18.5, 45.4, 18.9, 45.6]);
     expect(state.pin).toEqual({ lat: 45.5, lon: 18.7 });
     expect(state.label).toBe("Osijek");
+    expect(state.scope).toBe("jls");
+  });
+
+  it("opens a searched municipality as an area, not as one cell", () => {
+    expect(cardLink(45.5, 18.7, "Osijek", "jls")).toBe(
+      "/iskaznica?lat=45.5&lon=18.7&naziv=Osijek&razina=jls",
+    );
+    const params = new URLSearchParams("lat=45.5&lon=18.7&razina=jls");
+    expect(parseMapUrl(params).scope).toBe("jls");
+    expect(parseMapUrl(new URLSearchParams("razina=x")).scope).toBe("point");
   });
 
   it("keeps the chosen layer when searching", () => {

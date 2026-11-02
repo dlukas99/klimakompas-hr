@@ -14,6 +14,8 @@ export const RISK_LAYERS: readonly RiskLayer[] = [
 export const OVERLAYS: readonly Overlay[] = ["jls", "stations", "nature", "hv"];
 const DEFAULT_OVERLAYS: readonly Overlay[] = ["jls"];
 
+const SCOPES = ["point", "naselje", "jls"] as const;
+
 export type Bbox = [west: number, south: number, east: number, north: number];
 
 export interface MapUrlState {
@@ -23,6 +25,7 @@ export interface MapUrlState {
   bbox: Bbox | null;
   pin: { lat: number; lon: number } | null;
   label: string | null;
+  scope: "point" | "naselje" | "jls";
 }
 
 function numbers(value: string | null, count: number): number[] | null {
@@ -49,6 +52,7 @@ export function parseMapUrl(params: URLSearchParams): MapUrlState {
     bbox: bbox && (bbox as Bbox),
     pin: pin && { lat: pin[0], lon: pin[1] },
     label: params.get("naziv"),
+    scope: SCOPES.find((item) => item === params.get("razina")) ?? "point",
   };
 }
 
@@ -73,5 +77,6 @@ export function serializeMapUrl(state: MapUrlState): URLSearchParams {
       `${state.pin.lat.toFixed(6)},${state.pin.lon.toFixed(6)}`,
     );
   if (state.label) params.set("naziv", state.label);
+  if (state.scope !== "point") params.set("razina", state.scope);
   return params;
 }

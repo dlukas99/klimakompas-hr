@@ -14,6 +14,8 @@ export type JlsDetail = Schemas["JlsDetail"];
 export type JlsNaselje = Schemas["JlsNaselje"];
 export type JlsCell = Schemas["JlsCell"];
 export type RankingItem = Schemas["RankingItem"];
+export type LiveStatus = Schemas["LiveStatus"];
+export type AreaSummary = Schemas["AreaSummary"];
 
 export type QuickAnswer = Schemas["QuickAnswer"];
 export type Citation = Schemas["Citation"];
@@ -39,24 +41,40 @@ async function getJson<T>(path: string, signal?: AbortSignal): Promise<T> {
   return (await response.json()) as T;
 }
 
+export interface GeocodeOptions {
+  kinds?: GeocodeResult["kind"][];
+  jls?: string;
+}
+
 export function fetchGeocode(
   query: string,
   signal?: AbortSignal,
+  options: GeocodeOptions = {},
 ): Promise<GeocodeResponse> {
-  return getJson(`/geocode?${new URLSearchParams({ q: query })}`, signal);
+  const params = new URLSearchParams({ q: query });
+  for (const kind of options.kinds ?? []) params.append("kinds", kind);
+  if (options.jls) params.set("jls", options.jls);
+  return getJson(`/geocode?${params}`, signal);
 }
 
 export function fetchSources(signal?: AbortSignal): Promise<SourceInfo[]> {
   return getJson("/sources", signal);
 }
 
+export type CardScope = "point" | "naselje" | "jls";
+
 export function fetchCard(
   lat: number,
   lon: number,
   label: string | null,
+  scope: CardScope,
   signal?: AbortSignal,
 ): Promise<CardResponse> {
-  const params = new URLSearchParams({ lat: String(lat), lon: String(lon) });
+  const params = new URLSearchParams({
+    lat: String(lat),
+    lon: String(lon),
+    scope,
+  });
   if (label) params.set("label", label);
   return getJson(`/card?${params}`, signal);
 }

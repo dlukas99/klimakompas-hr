@@ -26,6 +26,7 @@ class GeocodeResult(BaseModel):
     # [west, south, east, north] for areas, so the map can fit them; null for addresses.
     bbox: tuple[float, float, float, float] | None
     population: int | None
+    jls_code: str | None = None
 
 
 class GeocodeResponse(BaseModel):
@@ -225,16 +226,44 @@ class AdviceBlock(BaseModel):
     items: list[str]
 
 
+class AreaSummary(BaseModel):
+    """The settlement or JLS around the point, with census totals from DZS."""
+
+    code: str
+    name: str
+    pop: int | None
+    pop65: int | None
+    ikr_level: int | None
+    ikr_label: str | None
+    rank_hr: int | None = None
+    total_hr: int | None = None
+
+
+class CardAreas(BaseModel):
+    naselje: AreaSummary
+    jls: AreaSummary
+
+
+class LiveStatus(BaseModel):
+    source: Literal["dhmz_cap", "azo_aq_rest"]
+    # ok | stale: older than expected | missing: never loaded or failed | none_nearby: no station
+    state: Literal["ok", "stale", "missing", "none_nearby"]
+    checked_at: datetime | None
+
+
 class CardResponse(BaseModel):
     location: CardLocation
     ikr: CardIkr
     hazards: CardHazards
     population: CardPopulation
+    areas: CardAreas
+    scope: Literal["point", "naselje", "jls"]
     live: CardLive
     advice: dict[str, AdviceBlock]
     generated_at: datetime
     partial: bool
     degraded_sources: list[str]
+    live_status: list[LiveStatus]
 
 
 class Exposed(BaseModel):

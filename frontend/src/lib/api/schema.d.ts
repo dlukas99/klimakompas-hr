@@ -467,6 +467,28 @@ export interface components {
             /** Stale */
             stale: boolean;
         };
+        /**
+         * AreaSummary
+         * @description The settlement or JLS around the point, with census totals from DZS.
+         */
+        AreaSummary: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Pop */
+            pop: number | null;
+            /** Pop65 */
+            pop65: number | null;
+            /** Ikr Level */
+            ikr_level: number | null;
+            /** Ikr Label */
+            ikr_label: string | null;
+            /** Rank Hr */
+            rank_hr?: number | null;
+            /** Total Hr */
+            total_hr?: number | null;
+        };
         /** Attention */
         Attention: {
             /** Hazard */
@@ -477,6 +499,11 @@ export interface components {
             value: number;
             /** Url */
             url: string | null;
+        };
+        /** CardAreas */
+        CardAreas: {
+            naselje: components["schemas"]["AreaSummary"];
+            jls: components["schemas"]["AreaSummary"];
         };
         /** CardHazards */
         CardHazards: {
@@ -549,6 +576,12 @@ export interface components {
             ikr: components["schemas"]["CardIkr"];
             hazards: components["schemas"]["CardHazards"];
             population: components["schemas"]["CardPopulation"];
+            areas: components["schemas"]["CardAreas"];
+            /**
+             * Scope
+             * @enum {string}
+             */
+            scope: "point" | "naselje" | "jls";
             live: components["schemas"]["CardLive"];
             /** Advice */
             advice: {
@@ -563,6 +596,8 @@ export interface components {
             partial: boolean;
             /** Degraded Sources */
             degraded_sources: string[];
+            /** Live Status */
+            live_status: components["schemas"]["LiveStatus"][];
         };
         /** ChatRequest */
         ChatRequest: {
@@ -692,6 +727,8 @@ export interface components {
             ] | null;
             /** Population */
             population: number | null;
+            /** Jls Code */
+            jls_code?: string | null;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -854,6 +891,21 @@ export interface components {
             name: string;
             /** Kind */
             kind: string | null;
+        };
+        /** LiveStatus */
+        LiveStatus: {
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "dhmz_cap" | "azo_aq_rest";
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "ok" | "stale" | "missing" | "none_nearby";
+            /** Checked At */
+            checked_at: string | null;
         };
         /** NatureArea */
         NatureArea: {
@@ -1132,6 +1184,8 @@ export interface operations {
             query: {
                 q: string;
                 limit?: number;
+                kinds?: ("address" | "settlement" | "municipality")[] | null;
+                jls?: string | null;
             };
             header?: never;
             path?: never;
@@ -1165,6 +1219,7 @@ export interface operations {
                 lat: number;
                 lon: number;
                 label?: string | null;
+                scope?: "point" | "naselje" | "jls";
             };
             header?: never;
             path?: never;
