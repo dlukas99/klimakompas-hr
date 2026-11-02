@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "types": ["vite/client", "geojson"]
+    "types": ["vite/client", "geojson", "node"]
   },
   "include": ["src", "tests", "vite.config.ts", "playwright.config.ts"]
 }

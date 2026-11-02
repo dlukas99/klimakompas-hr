@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, useMemo } from "react";
+import { lazy, Suspense, useCallback, useMemo } from "react";
 import { Link, useSearchParams } from "react-router";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import { QueryState } from "../components/QueryState";
@@ -8,7 +8,6 @@ import { CardView } from "../features/card/CardView";
 import { useCard } from "../features/card/useCard";
 import { cardLink, searchResultParams } from "../features/map/mapLink";
 import { MapPanel } from "../features/map/MapPanel";
-import { MapView } from "../features/map/MapView";
 import {
   parseMapUrl,
   serializeMapUrl,
@@ -18,6 +17,13 @@ import {
 import hr from "../i18n/hr.json";
 import { ApiError, fetchStations, type GeocodeResult } from "../lib/api/client";
 import { useSources } from "../lib/api/hooks";
+
+// The map library is large, so the search and the panel appear before it has loaded.
+const MapView = lazy(() =>
+  import("../features/map/MapView").then((module) => ({
+    default: module.MapView,
+  })),
+);
 
 // The basemap style brings its own OpenStreetMap attribution.
 const ATTRIBUTION_SOURCES = [
@@ -104,17 +110,19 @@ export function MapPage() {
     <div className="absolute inset-0">
       <h1 className="sr-only">{hr.map.label}</h1>
       <ErrorBoundary message={hr.map.unavailable}>
-        <MapView
-          layer={state.layer}
-          overlays={state.overlays}
-          view={state.view}
-          bbox={state.bbox}
-          pin={state.pin}
-          attribution={attribution}
-          stations={stationsQuery.data}
-          onViewChange={onViewChange}
-          onPick={onPick}
-        />
+        <Suspense fallback={null}>
+          <MapView
+            layer={state.layer}
+            overlays={state.overlays}
+            view={state.view}
+            bbox={state.bbox}
+            pin={state.pin}
+            attribution={attribution}
+            stations={stationsQuery.data}
+            onViewChange={onViewChange}
+            onPick={onPick}
+          />
+        </Suspense>
       </ErrorBoundary>
       <div className="pointer-events-none absolute inset-x-3 top-3 z-20 flex justify-end">
         <div className="pointer-events-auto w-full max-w-sm max-md:mt-11">

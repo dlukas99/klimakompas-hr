@@ -16,6 +16,16 @@ Cilj je sukladnost s WCAG 2.1 na razini AA.
 
 `make e2e` pokreće Playwright i axe-core na svim stranicama, na 1280 px i 360 px.
 
+Lighthouse (mobilni profil, 2. 11. 2026., lokalni produkcijski stack):
+
+| Stranica | Pristupačnost | Performanse |
+|---|---|---|
+| Početna | 100 | 95 |
+| Iskaznica | 100 | 93 |
+| Karta | 100 | 64–68 |
+
+Karta je ispod cilja od 80 za performanse. Mjerena je uz softverski WebGL, koji je sporiji od grafike stvarnog mobitela, a najveći dio čini biblioteka karte od oko 1 MB. Stvarni uređaj treba provjeriti nakon deploya.
+
 ## Poznata ograničenja
 
 - Sama karta je grafički prikaz: čitač zaslona ne može čitati pojedine ćelije, zato postoje iskaznica, pretraga i tablice.
