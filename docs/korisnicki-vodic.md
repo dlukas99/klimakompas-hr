@@ -9,13 +9,15 @@
 
 ## Kako čitati iskaznicu
 
-- **Ukupni klimatski rizik:** razred od 1 do 5 u odnosu na ostatak Hrvatske. Nije apsolutna vjerojatnost štete.
+- **Rizik naselja i općine:** razred od 1 do 5 za cijelo naselje i cijelu općinu ili grad, s brojem stanovnika iz Popisa 2021. i rangom općine u Hrvatskoj.
+- **Na odabranoj točki:** razred za kvadrat od 1 km oko točke, u odnosu na ostatak Hrvatske. Nije apsolutna vjerojatnost štete. Ako u kvadratu nitko ne živi, rizik za stanovnike se ne računa, ali opasnosti se i dalje prikazuju.
+- **Trenutni podaci nisu potpuni:** pojavljuje se kad upozorenja DHMZ-a ili mjerenja zraka kasne i kaže koji izvor i od kada. Procjenu rizika to ne mijenja.
 - **Upozorenja DHMZ-a:** za vašu županiju, s vremenom zadnje provjere.
 - **Četiri kartice:** poplave, toplina, požar i zrak. „Zašto?” pokazuje opasnost, ranjivost i rizik.
-- **Stanovništvo:** zaokruženo, a manje od 10 stanovnika se ne iskazuje.
+- **Stanovništvo:** naselje i općina prema Popisu 2021. te kvadrat oko točke, zaokruženo; manje od 10 stanovnika se ne iskazuje.
 - **Što mogu učiniti:** savjeti službenih izvora.
 
-Ispod ukupnog rizika možete mijenjati važnost pojedinih opasnosti. Izračun ostaje samo u vašem pregledniku.
+Pod „Što ako vam je neka opasnost važnija?” možete vidjeti kako bi se rizik promijenio da neku opasnost smatrate važnijom, npr. zrak ako imate dijete s astmom. Izračun ostaje samo u vašem pregledniku.
 
 ![Iskaznica](images/iskaznica-desktop.png)
 
@@ -33,7 +35,7 @@ Na stranici „Općine i gradovi” pretražite i sortirajte po rangu, a zatim o
 
 ## Asistent
 
-Postavite pitanje, npr. „Kakav je rizik od poplava u Slavonskom Brodu?”. Svaka brojka ima izvor. Brza pitanja rade i kad AI model nije uključen. Razgovori se ne spremaju.
+Postavite pitanje, npr. „Kakav je rizik od poplava u Slavonskom Brodu?” ili „Koliko stanovnika ima Požega?”. Svaka brojka ima izvor. Pitanja rade i kad AI model nije uključen; tada ih čitaju jednostavna pravila, pa navedite mjesto i opasnost. Za brza pitanja najprije odaberite općinu ili grad, a zatim po želji adresu ili naselje u njoj. Razgovori se ne spremaju.
 
 ![Asistent](images/asistent-desktop.png)
 

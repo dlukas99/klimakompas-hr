@@ -10,12 +10,18 @@ Klimatski rizik za svako mjesto u Hrvatskoj, iz otvorenih podataka: karta, „kl
 |---|---|---|
 | ![Karta](docs/images/karta-desktop.png) | ![Iskaznica](docs/images/iskaznica-desktop.png) | ![JLS ploča](docs/images/jls-desktop.png) |
 
+## Kome je namijenjena
+
+- **Općinama i gradovima:** koja su naša naselja najizloženija, gdje živi najviše starijih osoba u zonama rizika i kako stojimo u odnosu na županiju i Hrvatsku. Male jedinice to dobivaju bez vlastitog GIS-a i stručnjaka, kao podlogu za planiranje zaštite, zelenila i prijave projekata prilagodbe.
+- **Građanima:** što prijeti njihovoj adresi, kakav je zrak danas, ima li upozorenja i što mogu učiniti.
+- **Novinarima, udrugama i istraživačima:** rang-liste i izvedeni otvoreni podaci pod licencom CC BY 4.0.
+
 ## Što radi
 
-- **Iskaznica za adresu:** razina rizika od poplava, topline, požara i onečišćenja zraka, razlozi, živa upozorenja DHMZ-a, trenutni zrak s najbliže postaje, prognoza PM2,5, priroda u blizini i savjeti službenih izvora.
+- **Iskaznica za adresu, naselje ili općinu:** razina rizika od poplava, topline, požara i onečišćenja zraka, razlozi, broj stanovnika i rizik cijelog naselja i općine, živa upozorenja DHMZ-a, trenutni zrak s najbliže postaje, prognoza PM2,5, priroda u blizini i savjeti službenih izvora. Ako neki živi izvor kasni, iskaznica kaže koji.
 - **Karta:** 1-km mreža, slojevi opasnosti i stanovništva, postaje uživo, zaštićena područja i službene karte Hrvatskih voda.
 - **Za općine i gradove:** rang u Hrvatskoj i županiji, broj izloženih osoba, usporedba, naselja, CSV i ispis.
-- **Asistent:** odgovara samo iz rezultata svojih alata, a svaka brojka prolazi provjeru utemeljenosti. Brza pitanja rade i bez AI modela.
+- **Asistent:** odgovara na pitanja na hrvatskom samo iz rezultata svojih alata, a svaka brojka prolazi provjeru utemeljenosti i ima izvor. Mali otvoreni model samo razumije pitanje; bez modela pitanje čitaju jednostavna pravila, pa slobodna i brza pitanja rade na svakom poslužitelju. Brza pitanja vežu se uz odabranu općinu ili grad.
 - **Podaci:** status izvora uživo, provjere kvalitete, izvedeni skupovi, OpenAPI, OGC API i DCAT-AP.
 
 ## Kako radi
@@ -30,7 +36,7 @@ flowchart LR
   E --> F[Web i asistent]
 ```
 
-Za svaku ćeliju računamo četiri opasnosti i križamo ih s ranjivošću stanovništva: `R = H × (0,5 + 0,5 · V)`. Indeks je prosjek tih rizika. Detalji i ograničenja su u [metodologiji](docs/metodologija.md).
+Za svaku ćeliju od 1 km računamo četiri opasnosti i križamo ih s ranjivošću stanovništva: `R = H × (0,5 + 0,5 · V)`. Indeks je prosjek tih rizika, a razredi su relativni, u odnosu na ostatak Hrvatske. Rezultati se zbrajaju i za naselja te općine i gradove. Detalji i ograničenja, npr. da satelitska povijest požara vidi samo veće požare, su u [metodologiji](docs/metodologija.md).
 
 ## Izvori podataka
 
@@ -49,7 +55,10 @@ make index            # Indeks klimatskog rizika
 make tiles            # pločice
 make api              # API na http://localhost:8000
 make web              # web na http://localhost:5173
+make worker           # po želji: osvježavanje upozorenja i kvalitete zraka
 ```
+
+Aplikacija je tada na http://localhost:5173. Bez `make worker` upozorenja i mjerenja zraka ostaju na zadnjem dohvatu, a iskaznica to jasno navodi. AI model nije obavezan: za njega postavite `LLM_BASE_URL` i `LLM_MODEL` u `.env` (npr. lokalni Ollama).
 
 Ostale naredbe: `make check` (testovi i provjere), `make e2e` (Playwright i axe), `make worker` (živi izvori), `make ml-train` (nowcast), `make quality`, `make export`, `make screenshots`, `make docs-pdf`. Produkcija: [deploy](docs/deploy.md).
 
