@@ -71,10 +71,10 @@ smoke:
 
 screenshots:
 	mkdir -p docs/images
-	cd frontend && NODE_PATH=node_modules node ../infra/screenshots.mjs
+	cp infra/screenshots.mjs frontend/.screenshots.mjs && cd frontend && node .screenshots.mjs; rm -f frontend/.screenshots.mjs
 
 docs-pdf:
-	cd frontend && node ../infra/docs_pdf.mjs
+	cp infra/docs_pdf.mjs frontend/.docs_pdf.mjs && cd frontend && node .docs_pdf.mjs; rm -f frontend/.docs_pdf.mjs
 
 docs-sources:
 	$(UV) kk docs sources

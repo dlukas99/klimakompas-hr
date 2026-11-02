@@ -24,4 +24,4 @@ Datoteku generira `kk docs sources` iz `config/sources.yaml`.
 - **Portal otvorenih podataka (CKAN Action API i DCAT):** Izvor: Portal otvorenih podataka (data.gov.hr)
 - **DOF 2020 WMS:** Izvor: Geoportal Državne geodetske uprave
 - **Vektorska podloga (OpenFreeMap, podaci OpenStreetMap):** © OpenStreetMap contributors, OpenFreeMap
-- **Katalog satelitski detektiranih poplava u Europi 2015.–2024.:** TODO(verify)
+- **Katalog satelitski detektiranih poplava u Europi 2015.–2024.:** JRC, katalog poplava u Europi

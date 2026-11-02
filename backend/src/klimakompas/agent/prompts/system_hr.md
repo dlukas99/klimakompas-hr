@@ -13,3 +13,5 @@ Pravila:
 9. Brojeve piši hrvatskim zapisom: decimalni zarez i točka za tisućice.
 10. Ako je u rezultatu shown_instead_of_local_pm25 true, izričito reci što je prikazano i s koje postaje.
 11. Razredi rizika su relativni, u odnosu na ostatak Hrvatske, i nisu službena procjena.
+12. Razinu rizika prepiši točno iz polja label. Ne procjenjuj je sam i ne navodi nazive polja.
+13. Piši običan tekst, bez oznaka formatiranja.

@@ -21,6 +21,7 @@ HAZARD_COLUMNS = {
     "air": "r_air",
 }
 SEARCH_TIMEOUT_S = 8.0
+HAZARD_NAMES_HR = {"flood": "poplave", "heat": "toplina", "fire": "pozar", "air": "zrak"}
 
 
 def _sources(conn: Connection, ids: list[str]) -> list[dict[str, Any]]:
@@ -67,30 +68,33 @@ def tool_place_card(conn: Connection, lat: float, lon: float) -> dict[str, Any]:
     if card is None:
         return _result(conn, {"error": "Lokacija je izvan područja Hrvatske."}, ["dgu_au"])
     air = card["live"]["air_now"]
+    location = card["location"]
     summary = {
-        "location": card["location"],
-        "ikr": card["ikr"],
-        "hazards": {
-            name: {
-                "level": block["level"],
-                "label": block["label"],
-                "values": block["key_value"],
-            }
+        "mjesto": location["label"],
+        "opcina_ili_grad": location["jls"]["name"],
+        "zupanija": location["zupanija"]["name"],
+        "lat": location["lat"],
+        "lon": location["lon"],
+        "ukupni_rizik": {
+            "label": card["ikr"]["label"],
+            "veci_od_postotka_naseljenih_podrucja": card["ikr"]["percentile"],
+        },
+        "opasnosti": {
+            HAZARD_NAMES_HR[name]: {"label": block["label"], "vrijednosti": block["key_value"]}
             for name, block in card["hazards"].items()
         },
-        "population": card["population"],
-        "warnings": [
-            {"event": item["event"], "onset": item["onset"], "expires": item["expires"]}
+        "upozorenja": [
+            {"dogadaj": item["event"], "od": item["onset"], "do": item["expires"]}
             for item in card["live"]["warnings"]
         ],
-        "air_now": (
+        "zrak_sada": (
             {
-                "station": air["station"],
-                "pollutant": air["pollutant"],
+                "postaja": air["station"]["name"],
+                "udaljenost_km": air["station"]["distance_km"],
+                "tvar": air["pollutant"],
                 "shown_instead_of_local_pm25": air["substitution"] != "local",
-                "value": air["value"]["value"],
-                "unit": air["value"]["unit"],
-                "eaqi_label": air["value"]["eaqi_label"],
+                "vrijednost": air["value"]["value"],
+                "razina": air["value"]["eaqi_label"],
             }
             if air
             else None
@@ -134,14 +138,22 @@ def tool_jls_profile(conn: Connection, jls: str) -> dict[str, Any]:
     detail = data.jls_detail(conn, code) if code else None
     if detail is None:
         return _result(conn, {"error": f"Nije pronađena općina ili grad: {jls}"}, ["dgu_au"])
-    keep = ("code", "name", "kind", "zupanija", "pop", "pop65", "ikr", "ikr_class", "ikr_label")
-    payload = {key: detail[key] for key in keep}
-    payload |= {
-        "rank_hr": detail["rank_hr"],
-        "rank_zup": detail["rank_zup"],
-        "total_hr": detail["total_hr"],
-        "total_zup": detail["total_zup"],
-        "exposed_in_class_4_or_5": detail["exposed"],
+    payload = {
+        "name": detail["name"],
+        "zupanija": detail["zupanija"]["name"],
+        "stanovnika": detail["pop"],
+        "stanovnika_65_plus": detail["pop65"],
+        "label": detail["ikr_label"],
+        "rang_u_hrvatskoj": detail["rank_hr"],
+        "od_ukupno": detail["total_hr"],
+        "rang_u_zupaniji": detail["rank_zup"],
+        "osobe_u_podrucjima_visokog_rizika": {
+            HAZARD_NAMES_HR[name]: {
+                "osobe": round(values["pop"]),
+                "osobe_65_plus": round(values["pop65"]),
+            }
+            for name, values in detail["exposed"].items()
+        },
         "lat": detail["lat"],
         "lon": detail["lon"],
     }

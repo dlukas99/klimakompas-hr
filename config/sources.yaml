@@ -152,7 +152,7 @@
       - "Europe_RP100_filled_depth.tif"
       - "Europe_RP500_filled_depth.tif"
   format: geotiff
-  license: "TODO(verify) - proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0; dok JRC ne odgovori, izvedeni sloj nosi ODbL 1.0 (ADR 0003)"
+  license: "Proturječno: copyright.txt navodi CC BY 4.0, a katalog i README ODbL 1.0. Dok JRC ne odgovori, izvedeni sloj nosi ODbL 1.0 (ADR 0003)"
   citation: >-
     Baugh, C.; Colonese, J.; D'Angelo, C.; Dottori, F.; Neal, J.; Prudhomme, C.; Salamon, P. (2024).
     An updated dataset of global and European flood hazard maps. Manuscript under preparation.
@@ -675,7 +675,7 @@
     type: wms
     url: "https://geoportal.dgu.hr/services/inspire/orthophoto_2020/wms"
   format: wms
-  license: "TODO(verify)"
+  license: "Nije provjereno, servis se ne koristi (P2)"
   attribution: "Izvor: Geoportal Državne geodetske uprave"
   schedule: null
   robots_allowed: true
@@ -719,9 +719,9 @@
   access:
     type: landing_page
     url: "https://data.jrc.ec.europa.eu/collection/id-0054"
-  format: "TODO(verify)"
-  license: "TODO(verify)"
-  attribution: "TODO(verify)"
+  format: "nije provjereno, skup se ne koristi"
+  license: "Nije provjereno, skup se ne koristi (P2)"
+  attribution: "JRC, katalog poplava u Europi"
   schedule: null
   robots_allowed: true
   used_for: [flood_validation]

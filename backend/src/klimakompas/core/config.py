@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     llm_base_url: str = ""
     llm_model: str = ""
     llm_api_key: SecretStr = SecretStr("")
+    # structured: the model only reads the question (ADR 0008). tools: full tool loop, for larger
+    # models that pass the evaluation.
+    llm_mode: str = "structured"
 
 
 class CountSpec(BaseModel):

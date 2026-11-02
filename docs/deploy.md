@@ -35,10 +35,10 @@ make smoke URL=https://demo.primjer.hr
 
 ```bash
 docker compose -f docker-compose.prod.yml --profile llm up -d ollama
-docker compose -f docker-compose.prod.yml exec ollama ollama pull qwen3:4b
+docker compose -f docker-compose.prod.yml exec ollama ollama pull granite4:3b
 ```
 
-U `.env` zatim postavite `LLM_BASE_URL=http://ollama:11434/v1` i `LLM_MODEL=qwen3:4b`. Na CPU-u izmjerite brzinu; ako je odgovor predug, ostavite `LLM_BASE_URL` prazan.
+U `.env` zatim postavite `LLM_BASE_URL=http://ollama:11434/v1` i `LLM_MODEL=granite4:3b`. Na CPU-u izmjerite brzinu; ako je odgovor predug, ostavite `LLM_BASE_URL` prazan.
 
 ## Rad
 

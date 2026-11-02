@@ -5,6 +5,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Run from a copy in frontend/, so its packages resolve; the repository root is one level up.
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILES = [
   "README.md",

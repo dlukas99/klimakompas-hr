@@ -29,6 +29,7 @@ from klimakompas.ml.features import (
     rmse,
     rolling_origin_splits,
 )
+from klimakompas.sources.base import mark_source_used
 
 log = structlog.get_logger()
 
@@ -37,7 +38,7 @@ HISTORY_DAYS = 730
 MIN_STATION_HOURS = 2000
 # The AZO service returns at most 1000 records per request, so chunks must stay below that.
 BACKFILL_CHUNK_DAYS = 40
-BACKFILL_DONE_SHARE = 0.5
+BACKFILL_DONE_SHARE = 0.9
 MODEL_DIR = ROOT / "data" / "processed" / "ml"
 RESULTS_PATH = ROOT / "docs" / "ml-rezultati.json"
 FOLDS = 3
@@ -54,7 +55,7 @@ PARAMS: dict[str, Any] = {
     "n_jobs": 8,
 }
 QUANTILES = {"lo": 0.1, "hi": 0.9}
-MODEL_VERSION = "lgbm-1"
+MODEL_VERSION = "lgbm-2"
 FORECAST_FRESH_HOURS = 3
 
 
@@ -203,9 +204,15 @@ def build_dataset(
 
 
 def _fit(train: pd.DataFrame, **extra: Any) -> lgb.LGBMRegressor:
+    """Learns the change from the current value, so short horizons start from persistence."""
     model = lgb.LGBMRegressor(**PARAMS, **extra)
-    model.fit(train[FEATURES], train["y"], categorical_feature=["station"])
+    model.fit(train[FEATURES], train["y"] - train["pm25_now"], categorical_feature=["station"])
     return model
+
+
+def _predict(model: Any, frame: pd.DataFrame) -> np.ndarray:
+    values: np.ndarray = model.predict(frame[FEATURES]) + frame["pm25_now"].to_numpy()
+    return np.asarray(np.maximum(values, 0.0))
 
 
 def evaluate(samples: pd.DataFrame) -> dict[str, Any]:
@@ -217,13 +224,9 @@ def evaluate(samples: pd.DataFrame) -> dict[str, Any]:
         test = samples[(samples["issued_at"] >= start) & (samples["target_time"] <= end)].copy()
         if train.empty or test.empty:
             continue
-        test["yhat"] = _fit(train).predict(test[FEATURES])
-        test["lo"] = _fit(train, objective="quantile", alpha=QUANTILES["lo"]).predict(
-            test[FEATURES]
-        )
-        test["hi"] = _fit(train, objective="quantile", alpha=QUANTILES["hi"]).predict(
-            test[FEATURES]
-        )
+        test["yhat"] = _predict(_fit(train), test)
+        test["lo"] = _predict(_fit(train, objective="quantile", alpha=QUANTILES["lo"]), test)
+        test["hi"] = _predict(_fit(train, objective="quantile", alpha=QUANTILES["hi"]), test)
         parts.append(test)
         log.info("fold done", start=str(start), rows=len(test))
     results = pd.concat(parts, ignore_index=True)
@@ -294,6 +297,7 @@ def train(engine: Engine, client: HttpClient) -> dict[str, Any]:
         json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     with engine.begin() as conn:
+        mark_source_used(conn, "open_meteo", len(codes))
         conn.execute(
             text(
                 "INSERT INTO ml.models (model_version, trained_at, params, metrics, artifact_path) "
@@ -372,6 +376,12 @@ def predict(engine: Engine, client: HttpClient) -> int:
         return 0
     results = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))
     serve_model = bool(results["serve_model"])
+    # A horizon is shown only where the model beat persistence on validation.
+    horizons = [
+        horizon
+        for horizon in HORIZONS
+        if (results["by_horizon"][str(horizon)]["skill_vs_persistence"] or 0) > 0
+    ]
     codes: dict[str, int] = json.loads((MODEL_DIR / "stations.json").read_text(encoding="utf-8"))
     point = lgb.Booster(model_file=str(point_path))
     low = lgb.Booster(model_file=str(MODEL_DIR / "pm25_lo.txt"))
@@ -399,11 +409,13 @@ def predict(engine: Engine, client: HttpClient) -> int:
         pm25 = series[station.station_id]
         weather, cams = frames[station.station_id]
         frame = forecast_rows(pm25, weather, cams, codes[station.station_id], pm25.index.max())
+        frame = frame[frame["horizon"].isin(horizons)]
         features = frame[FEATURES].astype(float)
         if serve_model:
-            yhat = np.maximum(point.predict(features), 0)
-            lo = np.maximum(low.predict(features), 0)
-            hi = np.maximum(high.predict(features), 0)
+            now_value = features["pm25_now"].to_numpy()
+            yhat = np.maximum(point.predict(features) + now_value, 0)
+            lo = np.maximum(low.predict(features) + now_value, 0)
+            hi = np.maximum(high.predict(features) + now_value, 0)
             version = MODEL_VERSION
         else:
             yhat = frame["cams_pm25"].to_numpy(dtype=float)

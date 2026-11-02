@@ -67,6 +67,18 @@ def record(ctx: RunContext, check_id: str, value: float) -> None:
     log.info("measure", source=ctx.source.id, check=check_id, value=value)
 
 
+def mark_source_used(conn: Connection, source_id: str, rows: int) -> None:
+    """For a source read inside another connector, so /podaci shows when it was last used."""
+    conn.execute(
+        text(
+            "INSERT INTO meta.sources (source_id, last_success_at, last_status, record_count) "
+            "VALUES (:id, now(), 'success', :rows) ON CONFLICT (source_id) DO UPDATE SET "
+            "last_success_at = now(), last_status = 'success', record_count = EXCLUDED.record_count"
+        ),
+        {"id": source_id, "rows": rows},
+    )
+
+
 def _write_checks(conn: Connection, ctx: RunContext, now: datetime) -> None:
     for check in ctx.checks:
         conn.execute(

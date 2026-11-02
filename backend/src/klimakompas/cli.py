@@ -273,5 +273,10 @@ def agent_eval() -> None:
     """Run the assistant on the question set and write docs/agent-rezultati.json."""
     settings = get_settings()
     configure_logging(settings.log_level)
-    result = run_eval(get_engine(), OpenAiCompatibleClient(settings), settings.llm_model)
+    result = run_eval(
+        get_engine(),
+        OpenAiCompatibleClient(settings),
+        settings.llm_model,
+        settings.llm_mode,
+    )
     structlog.get_logger().info("evaluated", **result["summary"])

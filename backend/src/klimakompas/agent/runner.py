@@ -17,16 +17,18 @@ from klimakompas.core.config import Settings
 MAX_STEPS = 4
 MAX_INPUT_CHARS = 1000
 LLM_TIMEOUT_S = 90.0
+MAX_ANSWER_TOKENS = 500
 PROMPT = (Path(__file__).parent / "prompts" / "system_hr.md").read_text(encoding="utf-8")
 THINK = re.compile(r"<think>.*?</think>", re.DOTALL)
 CITATION = re.compile(r"\[(\d+)\]")
+OUT_OF_SCOPE = (
+    "Mogu pomoći samo oko klimatskih rizika, okoliša i otvorenih podataka za mjesta u Hrvatskoj. "
+    "Za takvo pitanje nemam provjerene podatke."
+)
+MARKDOWN_EMPHASIS = re.compile(r"\*\*(.+?)\*\*")
 RETRY = (
     "Ovi brojevi nisu u rezultatima alata: {numbers}. Napiši odgovor ponovno i koristi samo "
     "brojeve iz rezultata alata, uz citate [n]."
-)
-TOOLS_FALLBACK = (
-    "Ako ti treba alat, odgovori isključivo JSON objektom oblika "
-    '{"tool": "naziv_alata", "arguments": {...}}.'
 )
 
 
@@ -47,7 +49,12 @@ class OpenAiCompatibleClient:
         self.key = settings.llm_api_key.get_secret_value()
 
     def chat(self, messages: list[dict[str, Any]], use_tools: bool) -> dict[str, Any]:
-        payload: dict[str, Any] = {"model": self.model, "messages": messages, "temperature": 0.1}
+        payload: dict[str, Any] = {
+            "model": self.model,
+            "messages": messages,
+            "temperature": 0.1,
+            "max_tokens": MAX_ANSWER_TOKENS,
+        }
         if use_tools:
             payload["tools"] = TOOL_SCHEMAS
             payload["tool_choice"] = "auto"
@@ -119,16 +126,8 @@ def _map_actions(name: str, result: dict[str, Any]) -> list[dict[str, Any]]:
     if name == "geocode" and isinstance(data, list) and data:
         first = data[0]
         return [{"type": "show", "lat": first["lat"], "lon": first["lon"], "label": first["label"]}]
-    if name == "get_place_card" and isinstance(data, dict) and "location" in data:
-        location = data["location"]
-        return [
-            {
-                "type": "show",
-                "lat": location["lat"],
-                "lon": location["lon"],
-                "label": location["label"],
-            }
-        ]
+    if name == "get_place_card" and isinstance(data, dict) and "mjesto" in data:
+        return [{"type": "show", "lat": data["lat"], "lon": data["lon"], "label": data["mjesto"]}]
     if name == "get_jls_profile" and isinstance(data, dict) and "lat" in data:
         return [{"type": "show", "lat": data["lat"], "lon": data["lon"], "label": data["name"]}]
     return []
@@ -146,7 +145,7 @@ def _strip_unknown_citations(text: str, count: int) -> str:
 def run_agent(conn: Connection, llm: LlmClient, question: str) -> Iterator[dict[str, Any]]:
     """Yields progress events and one final `answer` event."""
     messages: list[dict[str, Any]] = [
-        {"role": "system", "content": f"{PROMPT}\n\n{TOOLS_FALLBACK}"},
+        {"role": "system", "content": PROMPT},
         {"role": "user", "content": question[:MAX_INPUT_CHARS]},
     ]
     outputs: list[Any] = []
@@ -213,9 +212,12 @@ def run_agent(conn: Connection, llm: LlmClient, question: str) -> Iterator[dict[
         numbers_total = check.total
         numbers_ungrounded = len(check.ungrounded)
         if not check.ok:
-            answer = remove_ungrounded(answer, outputs, question_text)
+            # With no tool result at all, nothing in the answer can be trusted.
+            answer = (
+                OUT_OF_SCOPE if not outputs else remove_ungrounded(answer, outputs, question_text)
+            )
 
-    answer = _strip_unknown_citations(answer, len(sources))
+    answer = _strip_unknown_citations(MARKDOWN_EMPHASIS.sub(r"\1", answer), len(sources))
     yield {
         "event": "answer",
         "result": AgentResult(

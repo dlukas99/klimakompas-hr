@@ -258,7 +258,7 @@
       "failed": "Greška",
       "static": "Učitano jednom",
       "browser": "Samo u pregledniku",
-      "unused": "Još nije učitano"
+      "unused": "Ne koristi se"
     },
     "qualityTitle": "Kvaliteta podataka",
     "qualityIntro": "Automatske provjere nakon svakog učitavanja. Preporuke izdavateljima su u dokumentaciji.",

@@ -15,7 +15,7 @@ DEFAULT_URL = (
     "postgresql+psycopg://kk_test:kk_test"  # pragma: allowlist secret
     "@localhost:5433/klimakompas_test"
 )
-SCHEMAS = ("tiles", "ml", "idx", "live", "haz", "pop", "meta", "ref")
+SCHEMAS = ("ogc", "tiles", "ml", "idx", "live", "haz", "pop", "meta", "ref")
 
 
 @pytest.fixture(scope="session")

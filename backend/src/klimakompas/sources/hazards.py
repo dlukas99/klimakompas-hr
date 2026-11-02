@@ -34,7 +34,13 @@ from klimakompas.pipeline.satellite import (
     worldcover_counts,
 )
 from klimakompas.pipeline.static_layers import build_air, build_flood, clip_flood
-from klimakompas.sources.base import LoadResult, RunContext, control, record
+from klimakompas.sources.base import (
+    LoadResult,
+    RunContext,
+    control,
+    mark_source_used,
+    record,
+)
 from klimakompas.sources.ecde import (
     REQUESTS,
     climatology,
@@ -228,6 +234,7 @@ def _corrected_hot_days(
         int(config["neighbours"]),
         float(config["max_km"]) * 1000,
     )
+    mark_source_used(ctx.db, climate.id, len(observed))
     record(ctx, "hot_days_mae_grid_only", raw_mae)
     record(ctx, "hot_days_mae_leave_one_out", loo_mae)
     return corrected

@@ -21,6 +21,7 @@ from klimakompas.agent.runner import (
     llm_available,
     run_agent,
 )
+from klimakompas.agent.structured import run_structured
 from klimakompas.api import data
 from klimakompas.api.geocode import geocode
 from klimakompas.api.schemas import (
@@ -104,7 +105,10 @@ def _chat_events(message: str) -> Iterator[str]:
     """The conversation is not stored; only this stream carries it."""
     try:
         with get_engine().connect() as conn:
-            for item in run_agent(conn, OpenAiCompatibleClient(get_settings()), message):
+            settings = get_settings()
+            llm = OpenAiCompatibleClient(settings)
+            run = run_agent if settings.llm_mode == "tools" else run_structured
+            for item in run(conn, llm, message):
                 if item["event"] == "tool":
                     yield _sse("tool", {"name": item["name"]})
                 else:

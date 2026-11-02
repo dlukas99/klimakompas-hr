@@ -26,6 +26,7 @@ dependencies = [
     "pyyaml",
     "rasterio>=1.5.2",
     "rdflib>=7.6.0",
+    "scikit-learn>=1.9.1",
     "scipy>=1.18.1",
     "shapely>=2.2.0",
     "sqlalchemy>=2.1.6",

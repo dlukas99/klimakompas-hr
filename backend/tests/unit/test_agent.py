@@ -149,6 +149,17 @@ def test_citation_without_a_source_is_removed(fake_tool: list[Any]) -> None:
     assert result.text == "Nemam taj podatak ."
 
 
+def test_invented_numbers_without_any_tool_become_a_refusal() -> None:
+    llm = FakeLlm([{"content": "Za sarmu treba 500 g mesa."}, {"content": "Uzmite 600 g mesa."}])
+    result = final(llm)
+    assert result.text == runner.OUT_OF_SCOPE
+    assert not result.grounded
+
+
+def test_formatting_marks_are_removed() -> None:
+    assert final(FakeLlm([{"content": "Rizik je **visok**."}])).text == "Rizik je visok."
+
+
 def test_answer_without_tools_for_a_refusal() -> None:
     result = final(FakeLlm([{"content": "Mogu pomoći samo oko klimatskih rizika."}]))
     assert result.grounded
@@ -207,6 +218,7 @@ def test_eval_scores_tool_choice_and_forbidden_words() -> None:
     )
     assert row["tool_ok"] is True
     assert row["grounded"] is False
+    assert row["content_ok"] is False
     refused = score_answer(
         {"id": 2, "kind": "out_of_scope", "question": "?", "tools": []},
         AgentResult("Mogu samo o klimi.", [], [], True, []),
@@ -218,6 +230,7 @@ def test_eval_summary_shares() -> None:
     rows = [
         {
             "tool_ok": True,
+            "content_ok": True,
             "grounded": True,
             "cited": True,
             "tools_used": ["a"],
@@ -227,6 +240,7 @@ def test_eval_summary_shares() -> None:
         },
         {
             "tool_ok": False,
+            "content_ok": True,
             "grounded": True,
             "cited": False,
             "tools_used": [],
