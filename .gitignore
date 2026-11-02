@@ -28,3 +28,6 @@ frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
 dist/
+
+# Temporary browser profiles from Lighthouse
+frontend/C:*
