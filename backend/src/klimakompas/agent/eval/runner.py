@@ -14,6 +14,7 @@ from klimakompas.core.config import ROOT
 
 QUESTIONS = Path(__file__).parent / "questions.jsonl"
 RESULTS_PATH = ROOT / "docs" / "agent-rezultati.json"
+RULES_RESULTS_PATH = ROOT / "docs" / "agent-rezultati-pravila.json"
 
 
 def load_questions() -> list[dict[str, Any]]:
@@ -74,8 +75,12 @@ def run_eval(engine: Engine, llm: LlmClient, model: str, mode: str) -> dict[str,
         started = time.monotonic()
         try:
             with engine.connect() as conn:
-                run = run_agent if mode == "tools" else run_structured
-                events = list(run(conn, llm, question["question"]))
+                if mode == "tools":
+                    events = list(run_agent(conn, llm, question["question"]))
+                else:
+                    events = list(
+                        run_structured(conn, None if mode == "rules" else llm, question["question"])
+                    )
             row = score_answer(question, events[-1]["result"])
             row["latency_s"] = round(time.monotonic() - started, 1)
         except LlmUnavailableError as error:
@@ -89,7 +94,7 @@ def run_eval(engine: Engine, llm: LlmClient, model: str, mode: str) -> dict[str,
         "summary_holdout": summarize([row for row in rows if row.get("holdout")]),
         "rows": rows,
     }
-    RESULTS_PATH.write_text(
+    (RULES_RESULTS_PATH if mode == "rules" else RESULTS_PATH).write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     return result

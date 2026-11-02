@@ -17,7 +17,7 @@ from pydantic import BaseModel, ValidationError
 from sqlalchemy import Connection, text
 
 from klimakompas.agent.grounding import check_answer
-from klimakompas.agent.runner import AgentResult, LlmClient
+from klimakompas.agent.runner import AgentResult, LlmClient, LlmUnavailableError
 from klimakompas.agent.tools import (
     tool_active_warnings,
     tool_air_quality,
@@ -377,16 +377,28 @@ def _open_data_answer(conn: Connection, intent: Intent) -> tuple[str, dict[str, 
     return f"Broj skupova na Portalu za taj pojam: {count} [1]. Primjeri: {listed}.", result
 
 
-def run_structured(conn: Connection, llm: LlmClient, question: str) -> Iterator[dict[str, Any]]:
-    """Same events as the tool loop: progress first, then one final answer."""
-    message = llm.chat(
-        [
-            {"role": "system", "content": PROMPT},
-            {"role": "user", "content": question[:MAX_INPUT_CHARS]},
-        ],
-        use_tools=False,
-    )
-    intent = parse_intent(message.get("content") or "")
+def run_structured(
+    conn: Connection, llm: LlmClient | None, question: str
+) -> Iterator[dict[str, Any]]:
+    """Same events as the tool loop: progress first, then one final answer.
+
+    Without a model, or when it does not answer, the question is read by fixed rules.
+    """
+    from klimakompas.agent.rules import parse_rules
+
+    question = question[:MAX_INPUT_CHARS]
+    intent: Intent | None = None
+    if llm is not None:
+        try:
+            message = llm.chat(
+                [{"role": "system", "content": PROMPT}, {"role": "user", "content": question}],
+                use_tools=False,
+            )
+            intent = parse_intent(message.get("content") or "")
+        except LlmUnavailableError:
+            intent = None
+    if intent is None:
+        intent = parse_rules(conn, question)
     if intent is not None and (
         (intent.intent == "rank" and not _mentions(question, RANK_WORDS))
         or (intent.intent == "advice" and not _mentions(question, ADVICE_WORDS))

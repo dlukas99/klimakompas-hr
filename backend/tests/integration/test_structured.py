@@ -64,8 +64,15 @@ def test_out_of_scope_and_advice_use_fixed_text(seeded: Connection) -> None:
     assert ask(seeded, '{"intent": "no_data"}').text == structured.NO_DATA
 
 
-def test_unreadable_model_reply_asks_again(seeded: Connection) -> None:
-    assert ask(seeded, "Rizik je 99 %.").text == structured.NOT_UNDERSTOOD
+def test_unreadable_model_reply_falls_back_to_the_rules(seeded: Connection) -> None:
+    # The model's own text is never shown; the rules read the original question instead.
+    answer = ask(seeded, "Rizik je 99 %.", "Napiši pjesmu.")
+    assert answer.text == structured.OUT_OF_SCOPE
+
+
+def test_works_without_any_model(seeded: Connection) -> None:
+    events = list(run_structured(seeded, None, "Ima li danas upozorenja?"))
+    assert events[-1]["result"].tools_used == ["get_active_warnings"]
 
 
 def test_warnings_answer_is_cited(seeded: Connection) -> None:

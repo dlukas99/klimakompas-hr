@@ -269,14 +269,18 @@ def docs_sources() -> None:
 
 
 @agent_app.command("eval")
-def agent_eval() -> None:
-    """Run the assistant on the question set and write docs/agent-rezultati.json."""
+def agent_eval(
+    rules: Annotated[
+        bool, typer.Option(help="Evaluate the rules that work without a model.")
+    ] = False,
+) -> None:
+    """Run the assistant on the question set and write the results to docs/."""
     settings = get_settings()
     configure_logging(settings.log_level)
     result = run_eval(
         get_engine(),
         OpenAiCompatibleClient(settings),
-        settings.llm_model,
-        settings.llm_mode,
+        "pravila (bez modela)" if rules else settings.llm_model,
+        "rules" if rules else settings.llm_mode,
     )
     structlog.get_logger().info("evaluated", **result["summary"])
