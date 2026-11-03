@@ -58,7 +58,7 @@ make web              # web na http://localhost:5173
 make worker           # po želji: osvježavanje upozorenja i kvalitete zraka
 ```
 
-Aplikacija je tada na http://localhost:5173. Bez `make worker` upozorenja i mjerenja zraka ostaju na zadnjem dohvatu, a iskaznica to jasno navodi. AI model nije obavezan: za njega postavite `LLM_BASE_URL` i `LLM_MODEL` u `.env` (npr. lokalni Ollama).
+Aplikacija je tada na http://localhost:5173. Ako su zadani portovi zauzeti, promijenite `DB_PORT`, `MARTIN_PORT`, `API_PORT` i `WEB_DEV_PORT` u `.env` (i port u `DATABASE_URL`). Bez `make worker` upozorenja i mjerenja zraka ostaju na zadnjem dohvatu, a iskaznica to jasno navodi. AI model nije obavezan: za njega postavite `LLM_BASE_URL` i `LLM_MODEL` u `.env` (npr. lokalni Ollama).
 
 Ostale naredbe: `make check` (testovi i provjere), `make e2e` (Playwright i axe), `make worker` (živi izvori), `make ml-train` (nowcast), `make quality`, `make export`, `make screenshots`, `make docs-pdf`. Produkcija: [deploy](docs/deploy.md).
 

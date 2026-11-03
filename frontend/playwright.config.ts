@@ -1,6 +1,8 @@
+import { loadEnv } from "vite";
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = process.env.E2E_BASE_URL ?? "http://localhost:5173";
+const webPort = loadEnv("development", "..", "").WEB_DEV_PORT || "5173";
+const baseURL = process.env.E2E_BASE_URL ?? `http://localhost:${webPort}`;
 
 // Needs the running stack: `make up`, `make api` and loaded data.
 export default defineConfig({

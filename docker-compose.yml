@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
       POSTGRES_DB: ${POSTGRES_DB:?set in .env}
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
@@ -40,7 +40,7 @@ services:
     volumes:
       - ./infra/martin.yaml:/config/martin.yaml:ro
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:${MARTIN_PORT:-3000}:3000"
     depends_on:
       db:
         condition: service_healthy

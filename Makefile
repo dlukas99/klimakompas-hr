@@ -6,6 +6,9 @@ export PATH := $(HOME)/.local/bin:$(NVM_NODE_BIN):$(PATH)
 
 UV := uv --directory backend run
 NPM := npm --prefix frontend
+# Development ports can be moved in .env when another project already uses the defaults.
+env_value = $(shell grep -E '^$(1)=' .env 2>/dev/null | tail -1 | cut -d= -f2)
+API_PORT ?= $(or $(call env_value,API_PORT),8000)
 
 .PHONY: setup up down test-db migrate sources-verify etl etl-all index sensitivity quality export worker ml-train tiles api web gen-api e2e check check-backend check-frontend licenses db-dump db-restore prod-up smoke screenshots docs-sources docs-pdf
 
@@ -71,7 +74,7 @@ smoke:
 
 screenshots:
 	mkdir -p docs/images
-	cp infra/screenshots.mjs frontend/.screenshots.mjs && (cd frontend && node .screenshots.mjs); rm -f frontend/.screenshots.mjs
+	cp infra/screenshots.mjs frontend/.screenshots.mjs && (cd frontend && BASE_URL=$${BASE_URL:-http://localhost:$(or $(call env_value,WEB_DEV_PORT),5173)} node .screenshots.mjs); rm -f frontend/.screenshots.mjs
 
 docs-pdf:
 	cp infra/docs_pdf.mjs frontend/.docs_pdf.mjs && (cd frontend && node .docs_pdf.mjs); rm -f frontend/.docs_pdf.mjs
@@ -86,7 +89,7 @@ tiles:
 
 # No access log: the geocoder query is in the URL and must not be logged (SPEC §9.7).
 api:
-	$(UV) uvicorn klimakompas.api.app:app --reload --no-access-log --port 8000
+	$(UV) uvicorn klimakompas.api.app:app --reload --no-access-log --port $(API_PORT)
 
 web:
 	$(NPM) run dev
